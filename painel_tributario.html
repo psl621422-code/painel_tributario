@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Freire | Dashboard Tributário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS VISUAIS --- */
+        :root {
+            --brand-dark: #0f172a;    
+            --brand-blue: #2563eb;    
+            --bg-body: #f1f5f9;       
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --highlight-bg: #eff6ff;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; }
+
+        /* HEADER */
+        header { background-color: var(--brand-dark); color: white; padding: 1.5rem 0; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header-content { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        
+        h1 { font-family: 'Merriweather', serif; font-size: 1.6rem; margin: 0; letter-spacing: -0.5px; }
+        .subtitulo { font-size: 0.9rem; opacity: 0.8; font-weight: normal; margin-top: 5px; }
+
+        /* CONTAINER & FILTROS */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px 20px; }
+        .filtros-container { background: white; padding: 15px; border-radius: 10px; display: flex; gap: 15px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
+        select, input { padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; flex: 1; font-family: 'Inter', sans-serif; min-width: 200px; }
+
+        /* CARDS */
+        .card { background: var(--card-bg); border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+        .badge-tribunal { background-color: var(--brand-dark); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .card-title { font-family: 'Merriweather', serif; font-size: 1.25rem; color: var(--brand-dark); margin: 12px 0; }
+        .tag { background-color: #f1f5f9; color: #64748b; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; margin-right: 5px; font-weight: 600; display: inline-block; margin-bottom: 5px; }
+        .impacto-box { background-color: var(--highlight-bg); border-left: 4px solid var(--brand-blue); padding: 15px; border-radius: 4px; margin: 15px 0; }
+        .btn { background-color: var(--brand-blue); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block; margin-top: 10px; }
+        .btn:hover { background-color: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Painel Tributário Executivo</h1>
+            <div class="subtitulo">Inteligência Jurídica William Freire Advogados | Atualizado em <span id="data-hoje"></span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filtros-container">
+            <select id="filtro-tribunal" onchange="renderizarNoticias()">
+                <option value="Todos">Todas as Fontes</option>
+                <option value="Judiciário">Judiciário / STJ / STF</option>
+                <option value="Legislativo">Legislativo / Executivo</option>
+                <option value="Reforma Tributária">Reforma Tributária</option>
+                <option value="CARF">CARF</option>
+            </select>
+            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Mineração, Agro)..." onkeyup="renderizarNoticias()">
+        </div>
+        <div id="feed-noticias"></div>
+    </div>
+
+    <script>
+        // LISTA DE NOTÍCIAS (JSON)
+        const noticias = [
+            {
+               titulo: "Judiciário afasta IRRF na doação de cotas de fundos de investimento",
+               tribunal: "Judiciário",
+               tags: ["#IRRF", "#Fundos", "#Sucessão"],
+               resumo: "Decisões recentes reforçam que não incide IRRF na transferência de titularidade de cotas de fundos (doação/herança) pelo valor de custo.",
+               impacto: "Vitória para Wealth Management. Permite planejamento sucessório sem tributação antecipada.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/judiciario-afasta-incidencia-de-irrf-na-doacao-de-cotas-de-fundos-de-investimento.ghtml"
+            },
+            {
+               titulo: "Receita Federal antecipa tributação do Lucro Presumido",
+               tribunal: "Legislativo",
+               tags: ["#LucroPresumido", "#IRPJ", "#CSLL"],
+               resumo: "Novas normas visam antecipar o recolhimento ou ajustar bases de cálculo do Lucro Presumido em 2026, elevando a carga efetiva.",
+               impacto: "Alerta vermelho: Simular urgentemente a migração para Lucro Real.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/receita-federal-antecipa-tributacao-do-lucro-presumido-dizem-especialistas.ghtml"
+            },
+            {
+               titulo: "Começa fase de testes do novo sistema (IBS/CBS)",
+               tribunal: "Reforma Tributária",
+               tags: ["#ReformaTributaria", "#Compliance"],
+               resumo: "Início da fase de testes com cobrança simbólica. Foco na validação tecnológica e split payment.",
+               impacto: "Operacional: Revisar parametrização de ERPs para emissão correta de notas.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/02/comeca-a-fase-de-testes-do-novo-sistema-tributario.ghtml"
+            },
+            {
+               titulo: "Taxas Minerárias: Proposta de Lei Complementar",
+               tribunal: "Legislativo",
+               tags: ["#Mineração", "#TFRM"],
+               resumo: "Debate sobre necessidade de Lei Complementar para validar taxas estaduais de fiscalização minerária.",
+               impacto: "Reforça teses de defesa contra aumento de carga tributária estadual na mineração.",
+               link: "https://www.conjur.com.br/2026-jan-05/taxas-minerarias-uma-proposta-de-lei-complementar/"
+            },
+            {
+               titulo: "Penhora no rosto da RJ para resguardar crédito tributário",
+               tribunal: "Judiciário",
+               tags: ["#RecuperaçãoJudicial", "#Execução"],
+               resumo: "Jurisprudência consolida a penhora no rosto dos autos da RJ, substituindo bloqueios de caixa.",
+               impacto: "Estratégia: Direcionar penhoras para o rosto dos autos para preservar fluxo de caixa.",
+               link: "https://www.conjur.com.br/2026-jan-05/penhora-no-rosto-da-recuperacao-judicial-para-resguardar-credito-tributario-e-cabivel/"
+            },
+            {
+               titulo: "CARF aprova 28 súmulas em 2025 (Viés Pró-Fisco)",
+               tribunal: "CARF",
+               tags: ["#Súmulas", "#Contencioso"],
+               resumo: "Alta produtividade na edição de súmulas, mas com inclinação favorável à Fazenda.",
+               impacto: "Avaliar judicialização imediata para teses onde o CARF fechou entendimento desfavorável.",
+               link: "https://www.jota.info/tributos/carf-aprova-28-sumulas-em-2025-advogados-criticam-maioria-de-teses-pro-fisco"
+            },
+             {
+               titulo: "Redução de incentivos no Agro: Inconstitucionalidades",
+               tribunal: "Legislativo",
+               tags: ["#Agro", "#Incentivos"],
+               resumo: "Revogação abrupta de benefícios viola anterioridade e proteção à confiança.",
+               impacto: "Argumento forte para clientes do Agro judicializarem contra aumento de carga.",
+               link: "https://rota.apet.org.br/2026/01/reducao-de-incentivos-fiscais-no-setor-do-agronegocio-inconstitucionalidades/"
+            }
+        ];
+
+        // FUNÇÃO DE RENDERIZAÇÃO
+        function renderizarNoticias() {
+            const feed = document.getElementById('feed-noticias');
+            const busca = document.getElementById('barra-busca').value.toLowerCase();
+            const filtro = document.getElementById('filtro-tribunal').value;
+            
+            feed.innerHTML = '';
+            
+            const filtradas = noticias.filter(n => {
+                const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
+                const matchFiltro = filtro === 'Todos' || n.tribunal.includes(filtro) || (filtro === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF'));
+                return matchTexto && matchFiltro;
+            });
+
+            if (filtradas.length === 0) {
+                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada.</p>';
+                return;
+            }
+
+            filtradas.forEach(n => {
+                feed.innerHTML += `
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between;">
+                            <span class="badge-tribunal">${n.tribunal}</span>
+                        </div>
+                        <h2 class="card-title">${n.titulo}</h2>
+                        <div style="margin-bottom:10px;">
+                            ${n.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <p style="color:#334155;">${n.resumo}</p>
+                        <div class="impacto-box">
+                            <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
+                            <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
+                        </div>
+                        <a href="${n.link}" target="_blank" class="btn">🔗 Ler na Fonte</a>
+                    </div>
+                `;
+            });
+        }
+
+        // INICIALIZA
+        document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('pt-BR');
+        renderizarNoticias();
+    </script>
+</body>
+</html>
