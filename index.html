@@ -1,6 +1,93 @@
-// LISTA DE NOTÍCIAS (JSON) - BASE COMPLETA (17 Notícias)
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Freire | Dashboard Tributário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS VISUAIS --- */
+        :root {
+            --brand-dark: #0f172a;    
+            --brand-blue: #2563eb;    
+            --brand-red: #dc2626;
+            --bg-body: #f1f5f9;       
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --highlight-bg: #eff6ff;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; }
+
+        /* HEADER */
+        header { background-color: var(--brand-dark); color: white; padding: 1.5rem 0; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header-content { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        
+        h1 { font-family: 'Merriweather', serif; font-size: 1.6rem; margin: 0; letter-spacing: -0.5px; }
+        .subtitulo { font-size: 0.9rem; opacity: 0.8; font-weight: normal; margin-top: 5px; }
+
+        /* CONTAINER & FILTROS */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px 20px; }
+        .filtros-container { background: white; padding: 15px; border-radius: 10px; display: flex; gap: 15px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
+        select, input { padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; flex: 1; font-family: 'Inter', sans-serif; min-width: 200px; }
+
+        /* CARDS */
+        .card { background: var(--card-bg); border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+        
+        .card-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .badge-tribunal { background-color: var(--brand-dark); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .data-news { font-size: 0.8rem; color: #64748b; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+
+        .card-title { font-family: 'Merriweather', serif; font-size: 1.25rem; color: var(--brand-dark); margin: 5px 0 12px 0; }
+        .tag { background-color: #f1f5f9; color: #64748b; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; margin-right: 5px; font-weight: 600; display: inline-block; margin-bottom: 5px; }
+        
+        .resumo-texto { color: #334155; font-size: 0.95rem; line-height: 1.6; text-align: justify; margin-bottom: 15px; }
+        
+        .impacto-box { background-color: var(--highlight-bg); border-left: 4px solid var(--brand-blue); padding: 15px; border-radius: 4px; margin: 15px 0; }
+        
+        /* BOTÕES */
+        .actions { display: flex; gap: 10px; margin-top: 15px; }
+        .btn { padding: 10px 16px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }
+        
+        .btn-source { background-color: var(--brand-blue); color: white; border: 1px solid var(--brand-blue); }
+        .btn-source:hover { background-color: #1d4ed8; }
+        
+        .btn-pdf { background-color: white; color: var(--brand-red); border: 1px solid #fee2e2; }
+        .btn-pdf:hover { background-color: #fef2f2; border-color: var(--brand-red); }
+        
+        .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Painel Tributário Executivo</h1>
+            <div class="subtitulo">Inteligência Jurídica William Freire Advogados | Atualizado em <span id="data-hoje"></span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filtros-container">
+            <select id="filtro-tribunal" onchange="renderizarNoticias()">
+                <option value="Todos">Todas as Fontes</option>
+                <option value="Judiciário">Judiciário / STJ / STF</option>
+                <option value="Legislativo">Legislativo / Executivo</option>
+                <option value="Reforma Tributária">Reforma Tributária</option>
+                <option value="CARF">CARF</option>
+            </select>
+            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Mineração, Agro)..." onkeyup="renderizarNoticias()">
+        </div>
+        <div id="feed-noticias"></div>
+    </div>
+
+    <script>
+        // LISTA DE NOTÍCIAS (JSON)
         const noticias = [
-            // --- NOVAS (06/01) ---
+            // --- NOVAS (06/01/2026) ---
             {
                titulo: "Decreto não retroage para revogar Regime Tributário Especial: Vitória da Segurança Jurídica",
                tribunal: "Judiciário",
@@ -36,7 +123,7 @@
                tribunal: "STF",
                data: "06/01/2026",
                tags: ["#Dividendos", "#Lucros", "#Constitucional", "#PlanejamentoSucessório"],
-               resumo: "Após diversos pedidos de vista, o STF retomará o julgamento sobre a constitucionalidade da tributação de dividendos distribuídos. O foco é a violação à irretroatividade (tributar lucros acumulados de anos anteriores) e no confisco. A Corte deve definir se a nova incidência pode alcançar reservas de lucros constituídas antes da vigência da lei, um ponto que define a solvência e a estratégia de distribuição de milhares de empresas.",
+               resumo: "Após diversos pedidos de vista, o STF retomará o julgamento sobre a constitucionalidade da tributação de dividendos distribuídos. O foco está na violação à irretroatividade (tributar lucros acumulados de anos anteriores) e no confisco. A Corte deve definir se a nova incidência pode alcançar reservas de lucros constituídas antes da vigência da lei, um ponto que define a solvência e a estratégia de distribuição de milhares de empresas.",
                impacto: "Momento decisivo para o Planejamento Societário. Caso o STF sinalize favoravelmente à tributação retroativa sobre estoques de lucros, haverá uma corrida para distribuições extraordinárias. Devemos manter os clientes informados em tempo real para executar deliberações de dividendos antes da publicação da ata de julgamento.",
                link: "https://www.conjur.com.br/2026-jan-06/apos-prorrogacao-stf-analisara-pontos-sensiveis-sobre-dividendos/",
                pdf: "#"
@@ -98,4 +185,136 @@
                tags: ["#Institucional", "#ProcessoAdministrativo", "#Celeridade"],
                resumo: "Presidente do CARF anuncia meta de obter certificações internacionais de gestão de qualidade (ISO) para os processos do tribunal administrativo em 2026. O objetivo é padronizar o tempo de tramitação e a estrutura dos acórdãos, respondendo às críticas sobre a morosidade e a imprevisibilidade das pautas de julgamento.",
                impacto: "Impacto processual indireto. A busca por eficiência pode acelerar a inclusão de processos antigos em pauta. Advogados devem estar atentos às publicações de pauta para não serem surpreendidos com julgamentos relâmpago de casos parados há anos.",
-               link: "https://
+               link: "https://www.jota.info/tributos/relatorio-especial/carf-planeja-buscar-certificacao-de-qualidade-em-2026-diz-presidente",
+               pdf: "#"
+            },
+
+            // --- ANTIGAS (05/01/2026) ---
+            {
+               titulo: "Judiciário afasta IRRF na doação de cotas de fundos de investimento",
+               tribunal: "Judiciário",
+               data: "05/01/2026",
+               tags: ["#IRRF", "#Fundos", "#Sucessão"],
+               resumo: "Decisões recentes reforçam que não incide IRRF na transferência de titularidade de cotas de fundos (doação/herança) pelo valor de custo. A jurisprudência reconhece que a sucessão causa mortis ou doação em vida não configura realização de renda (disponibilidade econômica) se mantido o valor histórico.",
+               impacto: "Vitória para Wealth Management e Family Offices. Permite planejamento sucessório de grandes fortunas sem o custo imediato de tributação (come-cotas antecipado), preservando a liquidez do patrimônio familiar.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/judiciario-afasta-incidencia-de-irrf-na-doacao-de-cotas-de-fundos-de-investimento.ghtml",
+               pdf: "#" 
+            },
+            {
+               titulo: "Receita Federal antecipa tributação do Lucro Presumido",
+               tribunal: "Legislativo",
+               data: "05/01/2026",
+               tags: ["#LucroPresumido", "#IRPJ", "#CSLL"],
+               resumo: "Instruções normativas recentes indicam um movimento da Receita para ajustar as bases de cálculo do Lucro Presumido já em 2026. Especialistas apontam que a medida visa compensar perdas arrecadatórias da transição, elevando a carga efetiva de prestadores de serviço.",
+               impacto: "Alerta vermelho para clientes no Lucro Presumido. É urgente rodar simulações comparativas com o Lucro Real para o exercício de 2026. A inércia pode custar pontos percentuais relevantes de margem líquida.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/receita-federal-antecipa-tributacao-do-lucro-presumido-dizem-especialistas.ghtml",
+               pdf: "#"
+            },
+            {
+               titulo: "Começa fase de testes do novo sistema (IBS/CBS)",
+               tribunal: "Reforma Tributária",
+               data: "02/01/2026",
+               tags: ["#ReformaTributaria", "#Compliance", "#ERP"],
+               resumo: "Início oficial da fase de testes ('sandbox') com cobrança simbólica dos novos tributos sobre consumo. O foco atual é a validação tecnológica das obrigações acessórias, mensageria de notas fiscais e o funcionamento do split payment automático.",
+               impacto: "Atenção Operacional: As empresas devem revisar a parametrização de seus ERPs imediatamente. Erros no preenchimento das novas tags de IBS/CBS podem travar a emissão de notas e o faturamento.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/02/comeca-a-fase-de-testes-do-novo-sistema-tributario.ghtml",
+               pdf: "#"
+            },
+            {
+               titulo: "Taxas Minerárias: Proposta de Lei Complementar",
+               tribunal: "Legislativo",
+               data: "05/01/2026",
+               tags: ["#Mineração", "#TFRM", "#TributárioEstadual"],
+               resumo: "Debate jurídico avança sobre a inconstitucionalidade das taxas estaduais de fiscalização minerária (TFRM) sem Lei Complementar federal que as balize. A tese central é a violação de competência e a desproporcionalidade entre o valor cobrado e o custo da fiscalização.",
+               impacto: "Reforço essencial para as teses de defesa de mineradoras contra os estados (MG, PA, AP). O escritório pode atuar proativamente sugerindo ações declaratórias para limitar o valor dessas taxas.",
+               link: "https://www.conjur.com.br/2026-jan-05/taxas-minerarias-uma-proposta-de-lei-complementar/",
+               pdf: "#"
+            },
+            {
+               titulo: "Penhora no rosto da RJ para resguardar crédito tributário",
+               tribunal: "Judiciário",
+               data: "05/01/2026",
+               tags: ["#RecuperaçãoJudicial", "#ExecuçãoFiscal", "#Penhora"],
+               resumo: "STJ consolida entendimento permitindo a penhora no rosto dos autos da Recuperação Judicial. A medida substitui bloqueios diretos de caixa (Sisbajud), equilibrando o interesse do Fisco com o princípio da preservação da empresa em crise.",
+               impacto: "Mudança estratégica em processos de RJ: Em vez de combater a penhora em si, o foco da defesa deve ser direcioná-la para o rosto dos autos (reserva de crédito futuro), protegendo o fluxo de caixa operacional imediato.",
+               link: "https://www.conjur.com.br/2026-jan-05/penhora-no-rosto-da-recuperacao-judicial-para-resguardar-credito-tributario-e-cabivel/",
+               pdf: "#"
+            },
+            {
+               titulo: "CARF aprova 28 súmulas em 2025 (Viés Pró-Fisco)",
+               tribunal: "CARF",
+               data: "05/01/2026",
+               tags: ["#Súmulas", "#ContenciosoAdministrativo"],
+               resumo: "Balanço anual mostra alta produtividade na edição de súmulas pelo CARF, mas com nítida inclinação favorável à Fazenda Nacional. Teses controversas foram pacificadas contra o contribuinte, limitando o espaço de defesa administrativa.",
+               impacto: "Fim da linha administrativa para diversos temas. Devemos auditar os processos em andamento e avaliar a judicialização imediata (Mandado de Segurança) para teses onde o CARF já fechou entendimento desfavorável.",
+               link: "https://www.jota.info/tributos/carf-aprova-28-sumulas-em-2025-advogados-criticam-maioria-de-teses-pro-fisco",
+               pdf: "#"
+            },
+             {
+               titulo: "Redução de incentivos no Agro: Inconstitucionalidades",
+               tribunal: "Legislativo",
+               data: "05/01/2026",
+               tags: ["#Agro", "#IncentivosFiscais", "#Anterioridade"],
+               resumo: "Análise aponta que a revogação abrupta de benefícios fiscais do agronegócio viola os princípios da anterioridade (anual e nonagesimal) e a proteção à confiança. Mudanças nas regras do jogo não podem surpreender o produtor no meio da safra.",
+               impacto: "Argumento forte para clientes do Agro judicializarem contra o aumento de carga tributária em 2026, buscando liminares para manter as alíquotas antigas até o fim do exercício financeiro.",
+               link: "https://rota.apet.org.br/2026/01/reducao-de-incentivos-fiscais-no-setor-do-agronegocio-inconstitucionalidades/",
+               pdf: "#"
+            }
+        ];
+
+        // FUNÇÃO DE RENDERIZAÇÃO
+        function renderizarNoticias() {
+            const feed = document.getElementById('feed-noticias');
+            const busca = document.getElementById('barra-busca').value.toLowerCase();
+            const filtro = document.getElementById('filtro-tribunal').value;
+            
+            feed.innerHTML = '';
+            
+            const filtradas = noticias.filter(n => {
+                const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
+                const matchFiltro = filtro === 'Todos' || n.tribunal.includes(filtro) || (filtro === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
+                return matchTexto && matchFiltro;
+            });
+
+            if (filtradas.length === 0) {
+                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada.</p>';
+                return;
+            }
+
+            filtradas.forEach(n => {
+                // Lógica do PDF
+                const temPDF = n.pdf && n.pdf !== "#" && n.pdf !== "";
+                const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
+                const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
+                const pdfAction = temPDF ? "target='_blank'" : "onclick='alert(\"PDF indisponível no momento.\")'";
+
+                feed.innerHTML += `
+                    <div class="card">
+                        <div class="card-header-row">
+                            <span class="badge-tribunal">${n.tribunal}</span>
+                            <span class="data-news">📅 ${n.data}</span>
+                        </div>
+                        <h2 class="card-title">${n.titulo}</h2>
+                        <div style="margin-bottom:10px;">
+                            ${n.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <p class="resumo-texto">${n.resumo}</p>
+                        <div class="impacto-box">
+                            <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
+                            <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
+                        </div>
+                        <div class="actions">
+                            <a href="${n.link}" target="_blank" class="btn btn-source">🔗 Ler na Fonte</a>
+                            <a href="${pdfLink}" ${pdfAction} class="btn ${pdfClass}">📄 Ver PDF</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // INICIALIZA
+        document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('pt-BR');
+        renderizarNoticias();
+    </script>
+</body>
+</html>
