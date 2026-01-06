@@ -1,174 +1,101 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Freire | Dashboard Tributário</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- ESTILOS VISUAIS --- */
-        :root {
-            --brand-dark: #0f172a;    
-            --brand-blue: #2563eb;    
-            --bg-body: #f1f5f9;       
-            --card-bg: #ffffff;
-            --text-main: #334155;
-            --highlight-bg: #eff6ff;
-        }
-
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; }
-
-        /* HEADER */
-        header { background-color: var(--brand-dark); color: white; padding: 1.5rem 0; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .header-content { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        
-        h1 { font-family: 'Merriweather', serif; font-size: 1.6rem; margin: 0; letter-spacing: -0.5px; }
-        .subtitulo { font-size: 0.9rem; opacity: 0.8; font-weight: normal; margin-top: 5px; }
-
-        /* CONTAINER & FILTROS */
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px 20px; }
-        .filtros-container { background: white; padding: 15px; border-radius: 10px; display: flex; gap: 15px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
-        select, input { padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; flex: 1; font-family: 'Inter', sans-serif; min-width: 200px; }
-
-        /* CARDS */
-        .card { background: var(--card-bg); border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
-        .badge-tribunal { background-color: var(--brand-dark); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        .card-title { font-family: 'Merriweather', serif; font-size: 1.25rem; color: var(--brand-dark); margin: 12px 0; }
-        .tag { background-color: #f1f5f9; color: #64748b; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; margin-right: 5px; font-weight: 600; display: inline-block; margin-bottom: 5px; }
-        .impacto-box { background-color: var(--highlight-bg); border-left: 4px solid var(--brand-blue); padding: 15px; border-radius: 4px; margin: 15px 0; }
-        .btn { background-color: var(--brand-blue); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block; margin-top: 10px; }
-        .btn:hover { background-color: #1d4ed8; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="header-content">
-            <h1>Painel Tributário Executivo</h1>
-            <div class="subtitulo">Inteligência Jurídica William Freire Advogados | Atualizado em <span id="data-hoje"></span></div>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="filtros-container">
-            <select id="filtro-tribunal" onchange="renderizarNoticias()">
-                <option value="Todos">Todas as Fontes</option>
-                <option value="Judiciário">Judiciário / STJ / STF</option>
-                <option value="Legislativo">Legislativo / Executivo</option>
-                <option value="Reforma Tributária">Reforma Tributária</option>
-                <option value="CARF">CARF</option>
-            </select>
-            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Mineração, Agro)..." onkeyup="renderizarNoticias()">
-        </div>
-        <div id="feed-noticias"></div>
-    </div>
-
-    <script>
-        // LISTA DE NOTÍCIAS (JSON)
+// LISTA DE NOTÍCIAS (JSON) - BASE COMPLETA (17 Notícias)
         const noticias = [
+            // --- NOVAS (06/01) ---
             {
-               titulo: "Judiciário afasta IRRF na doação de cotas de fundos de investimento",
+               titulo: "Decreto não retroage para revogar Regime Tributário Especial: Vitória da Segurança Jurídica",
                tribunal: "Judiciário",
-               tags: ["#IRRF", "#Fundos", "#Sucessão"],
-               resumo: "Decisões recentes reforçam que não incide IRRF na transferência de titularidade de cotas de fundos (doação/herança) pelo valor de custo.",
-               impacto: "Vitória para Wealth Management. Permite planejamento sucessório sem tributação antecipada.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/judiciario-afasta-incidencia-de-irrf-na-doacao-de-cotas-de-fundos-de-investimento.ghtml"
+               data: "06/01/2026",
+               tags: ["#SegurançaJurídica", "#BenefíciosFiscais", "#Anterioridade"],
+               resumo: "O Judiciário reafirmou o princípio da irretroatividade tributária ao decidir que decretos executivos não podem retroagir para revogar regimes especiais ou benefícios fiscais já concedidos sob condição onerosa e prazo certo. A decisão destaca a proteção à confiança legítima do contribuinte e a necessidade de respeito ao artigo 178 do CTN (Súmula 544 do STF), impedindo que mudanças políticas abruptas gerem passivos inesperados sobre fatos geradores passados ou em curso de fruição garantida.",
+               impacto: "Precedente fundamental para clientes com Regimes Especiais (Reintegra, Drawback ou benefícios estaduais de ICMS). Abre-se a oportunidade de contestar judicialmente qualquer ato do Executivo que tente anular incentivos antes do prazo final, garantindo a manutenção da margem de lucro projetada nos contratos de longo prazo.",
+               link: "https://www.conjur.com.br/2026-jan-06/decreto-nao-retroage-para-revogar-regime-tributario-especial/",
+               pdf: "#"
             },
             {
-               titulo: "Receita Federal antecipa tributação do Lucro Presumido",
-               tribunal: "Legislativo",
-               tags: ["#LucroPresumido", "#IRPJ", "#CSLL"],
-               resumo: "Novas normas visam antecipar o recolhimento ou ajustar bases de cálculo do Lucro Presumido em 2026, elevando a carga efetiva.",
-               impacto: "Alerta vermelho: Simular urgentemente a migração para Lucro Real.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/receita-federal-antecipa-tributacao-do-lucro-presumido-dizem-especialistas.ghtml"
-            },
-            {
-               titulo: "Começa fase de testes do novo sistema (IBS/CBS)",
-               tribunal: "Reforma Tributária",
-               tags: ["#ReformaTributaria", "#Compliance"],
-               resumo: "Início da fase de testes com cobrança simbólica. Foco na validação tecnológica e split payment.",
-               impacto: "Operacional: Revisar parametrização de ERPs para emissão correta de notas.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/02/comeca-a-fase-de-testes-do-novo-sistema-tributario.ghtml"
-            },
-            {
-               titulo: "Taxas Minerárias: Proposta de Lei Complementar",
-               tribunal: "Legislativo",
-               tags: ["#Mineração", "#TFRM"],
-               resumo: "Debate sobre necessidade de Lei Complementar para validar taxas estaduais de fiscalização minerária.",
-               impacto: "Reforça teses de defesa contra aumento de carga tributária estadual na mineração.",
-               link: "https://www.conjur.com.br/2026-jan-05/taxas-minerarias-uma-proposta-de-lei-complementar/"
-            },
-            {
-               titulo: "Penhora no rosto da RJ para resguardar crédito tributário",
-               tribunal: "Judiciário",
-               tags: ["#RecuperaçãoJudicial", "#Execução"],
-               resumo: "Jurisprudência consolida a penhora no rosto dos autos da RJ, substituindo bloqueios de caixa.",
-               impacto: "Estratégia: Direcionar penhoras para o rosto dos autos para preservar fluxo de caixa.",
-               link: "https://www.conjur.com.br/2026-jan-05/penhora-no-rosto-da-recuperacao-judicial-para-resguardar-credito-tributario-e-cabivel/"
-            },
-            {
-               titulo: "CARF aprova 28 súmulas em 2025 (Viés Pró-Fisco)",
+               titulo: "CARF mantém IRRF de 25% em Fundo ao identificar investidor final em Paraíso Fiscal",
                tribunal: "CARF",
-               tags: ["#Súmulas", "#Contencioso"],
-               resumo: "Alta produtividade na edição de súmulas, mas com inclinação favorável à Fazenda.",
-               impacto: "Avaliar judicialização imediata para teses onde o CARF fechou entendimento desfavorável.",
-               link: "https://www.jota.info/tributos/carf-aprova-28-sumulas-em-2025-advogados-criticam-maioria-de-teses-pro-fisco"
+               data: "06/01/2026",
+               tags: ["#PlanejamentoInternacional", "#FIP", "#IRRF", "#Simulação"],
+               resumo: "Em julgamento de grande repercussão, o CARF aplicou a doutrina do 'look through' (desconsideração da personalidade jurídica interposta) para tributar remessas ao exterior. O tribunal identificou que, embora o veículo de investimento estivesse em jurisdição comum, o beneficiário final (UBO) residia em Paraíso Fiscal, validando a incidência da alíquota majorada de 25% de IRRF, em vez dos 15% ou 0% aplicáveis a investidores qualificados regulares.",
+               impacto: "Alerta máximo para estruturas de Private Equity e fundos offshore. É imperativo revisar a estrutura de capital e a documentação de substância econômica (business purpose) de veículos intermediários. O escritório deve auditar estruturas de clientes com investidores não-residentes para mitigar o risco de requalificação fiscal e multas qualificadas.",
+               link: "https://www.jota.info/tributos/carf-mantem-irrf-de-25-em-fundo-ao-identificar-investidor-final-em-paraiso-fiscal",
+               pdf: "#"
             },
-             {
-               titulo: "Redução de incentivos no Agro: Inconstitucionalidades",
+            {
+               titulo: "ICMS na base de cálculo da CBS/IBS na transição: O debate de 2026 e a exclusão",
+               tribunal: "Reforma Tributária",
+               data: "06/01/2026",
+               tags: ["#TeseDoSeculo", "#CBS", "#IBS", "#Transição"],
+               resumo: "Juristas apontam que a inclusão do ICMS na base de cálculo dos novos tributos (CBS e IBS) durante o período de transição (2026-2032) viola o conceito constitucional de valor adicionado e a jurisprudência consolidada do STF no 'Tema 69'. A legislação infraconstitucional da reforma ainda permite essa distorção ('imposto sobre imposto'), criando uma nova 'Tese do Século' focada especificamente no período de convivência entre os sistemas antigo e novo.",
+               impacto: "Desenvolvimento de nova tese tributária de alto valor. Recomendamos a preparação de Mandados de Segurança preventivos para grandes varejistas e indústrias, visando excluir o ICMS da base de cálculo da CBS/IBS logo no início da cobrança em 2026, evitando o desembolso de caixa indevido durante os anos de transição.",
+               link: "https://www.conjur.com.br/2026-jan-06/icms-na-base-de-calculo-da-cbs-ibs-na-transicao-o-debate-de-2026-e-a-tendencia-de-inclusao-a-partir-de-2027/",
+               pdf: "#"
+            },
+            {
+               titulo: "STF analisará pontos sensíveis sobre tributação de dividendos após prorrogação",
+               tribunal: "STF",
+               data: "06/01/2026",
+               tags: ["#Dividendos", "#Lucros", "#Constitucional", "#PlanejamentoSucessório"],
+               resumo: "Após diversos pedidos de vista, o STF retomará o julgamento sobre a constitucionalidade da tributação de dividendos distribuídos. O foco é a violação à irretroatividade (tributar lucros acumulados de anos anteriores) e no confisco. A Corte deve definir se a nova incidência pode alcançar reservas de lucros constituídas antes da vigência da lei, um ponto que define a solvência e a estratégia de distribuição de milhares de empresas.",
+               impacto: "Momento decisivo para o Planejamento Societário. Caso o STF sinalize favoravelmente à tributação retroativa sobre estoques de lucros, haverá uma corrida para distribuições extraordinárias. Devemos manter os clientes informados em tempo real para executar deliberações de dividendos antes da publicação da ata de julgamento.",
+               link: "https://www.conjur.com.br/2026-jan-06/apos-prorrogacao-stf-analisara-pontos-sensiveis-sobre-dividendos/",
+               pdf: "#"
+            },
+            {
+               titulo: "Ciclos de desconfiança no plano tributário e a necessidade de blindagem contratual",
+               tribunal: "Reforma Tributária",
+               data: "06/01/2026",
+               tags: ["#Contratos", "#RiscoFiscal", "#Compliance", "#Consultoria"],
+               resumo: "Análise econômica e jurídica aponta que a instabilidade das normas regulamentadoras da Reforma Tributária gerou um 'ciclo de desconfiança' no mercado. A indefinição sobre alíquotas de referência e créditos não cumulativos exige que as empresas adotem cláusulas contratuais de 'gross-up' e repasse de custos tributários mais agressivas para se protegerem da volatilidade legislativa prevista para este ano.",
+               impacto: "Ação consultiva imediata: Revisão de contratos de fornecimento e prestação de serviços de longo prazo. É necessário inserir cláusulas gatilho que permitam o reequilíbrio econômico-financeiro automático em caso de variação da carga tributária efetiva (não apenas nominal) com a entrada do IBS/CBS.",
+               link: "https://valor.globo.com/legislacao/coluna/ciclos-de-desconfianca-no-plano-tributario.ghtml",
+               pdf: "#"
+            },
+            {
+               titulo: "PLP nº 125/2022: Conformidade tributária e autorregularização orientada",
                tribunal: "Legislativo",
-               tags: ["#Agro", "#Incentivos"],
-               resumo: "Revogação abrupta de benefícios viola anterioridade e proteção à confiança.",
-               impacto: "Argumento forte para clientes do Agro judicializarem contra aumento de carga.",
-               link: "https://rota.apet.org.br/2026/01/reducao-de-incentivos-fiscais-no-setor-do-agronegocio-inconstitucionalidades/"
-            }
-        ];
-
-        // FUNÇÃO DE RENDERIZAÇÃO
-        function renderizarNoticias() {
-            const feed = document.getElementById('feed-noticias');
-            const busca = document.getElementById('barra-busca').value.toLowerCase();
-            const filtro = document.getElementById('filtro-tribunal').value;
-            
-            feed.innerHTML = '';
-            
-            const filtradas = noticias.filter(n => {
-                const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
-                const matchFiltro = filtro === 'Todos' || n.tribunal.includes(filtro) || (filtro === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF'));
-                return matchTexto && matchFiltro;
-            });
-
-            if (filtradas.length === 0) {
-                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada.</p>';
-                return;
-            }
-
-            filtradas.forEach(n => {
-                feed.innerHTML += `
-                    <div class="card">
-                        <div style="display:flex; justify-content:space-between;">
-                            <span class="badge-tribunal">${n.tribunal}</span>
-                        </div>
-                        <h2 class="card-title">${n.titulo}</h2>
-                        <div style="margin-bottom:10px;">
-                            ${n.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-                        </div>
-                        <p style="color:#334155;">${n.resumo}</p>
-                        <div class="impacto-box">
-                            <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
-                            <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
-                        </div>
-                        <a href="${n.link}" target="_blank" class="btn">🔗 Ler na Fonte</a>
-                    </div>
-                `;
-            });
-        }
-
-        // INICIALIZA
-        document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('pt-BR');
-        renderizarNoticias();
-    </script>
-</body>
-</html>
+               data: "06/01/2026",
+               tags: ["#Compliance", "#Autorregularização", "#Fiscalização"],
+               resumo: "O avanço do PLP 125/2022 institucionaliza a mudança de paradigma na fiscalização federal, priorizando a 'autorregularização orientada' em detrimento da autuação punitiva imediata. A norma cria um ambiente onde o contribuinte notificado tem prazo para sanar inconsistências sem multa de ofício, desde que mantenha programas de conformidade ativos e boa classificação de risco fiscal.",
+               impacto: "Valorização dos serviços de Compliance Tributário do escritório. Podemos oferecer diagnósticos preventivos para garantir que os clientes sejam classificados como 'bons pagadores' (Rating A/B), garantindo acesso aos benefícios da autorregularização e evitando multas de 75% a 150% em fiscalizações futuras.",
+               link: "https://www.conjur.com.br/2026-jan-06/plp-no-125-2022-conformidade-tributaria-autorregularizacao-orientada-e-o-papel-da-receita-federal/",
+               pdf: "#"
+            },
+            {
+               titulo: "CARF mantém CIDE sobre royalties pagos ao exterior, mas exclui ISS da base",
+               tribunal: "CARF",
+               data: "06/01/2026",
+               tags: ["#CIDE", "#Royalties", "#ISS", "#TeseFilhote"],
+               resumo: "Aplicando racional similar à 'Tese do Século', a Câmara Superior do CARF decidiu que o ISS não compõe a base de cálculo da CIDE incidente sobre remessas de royalties ao exterior. Embora a incidência da CIDE tenha sido mantida (derrota no mérito principal), a exclusão do imposto municipal da base reduz o custo efetivo da operação para empresas de tecnologia e franquias.",
+               impacto: "Oportunidade de recuperação de créditos para importadores de serviços e tecnologia. Devemos levantar os pagamentos de CIDE-Royalties dos últimos 5 anos e propor a retificação das bases para excluir o ISS, gerando um 'cash-in' relevante para empresas do setor de TI e Franchising.",
+               link: "https://rota.apet.org.br/2026/01/carf-mantem-cide-sobre-royalties-pagos-ao-exterior-mas-exclui-iss-da-base-de-calculo/",
+               pdf: "#"
+            },
+            {
+               titulo: "Ampliação de programas de negociação na Receita preocupa Advocacia Pública",
+               tribunal: "Legislativo",
+               data: "06/01/2026",
+               tags: ["#TransaçãoTributária", "#PGFN", "#DívidaAtiva"],
+               resumo: "A expansão agressiva dos editais de transação tributária e negócios jurídicos processuais (NJP) pela Receita Federal tem gerado tensão institucional. Enquanto a medida visa reduzir o estoque de dívida e aumentar a arrecadação imediata com descontos, procuradores alertam para o risco de 'moral hazard', onde contribuintes deixam de pagar no vencimento aguardando anistias futuras.",
+               impacto: "Janela de oportunidade para regularização de passivos. O cenário político indica que 2026 será um ano de condições facilitadas para transação (descontos de até 70% em multas/juros). É o momento ideal para mapear o passivo dos clientes e propor adesão antes de um eventual endurecimento das regras.",
+               link: "https://www.jota.info/tributos/relatorio-especial/ampliacao-de-programas-de-negociacao-na-receita-preocupa-advocacia-publica",
+               pdf: "#"
+            },
+            {
+               titulo: "Jurisprudência tributária do STF e STJ em 2025: Consolidações e tensões",
+               tribunal: "Judiciário",
+               data: "06/01/2026",
+               tags: ["#Retrospectiva", "#Precedentes", "#STJ", "#STF"],
+               resumo: "Análise sistêmica dos julgados de 2025 revela uma tendência das Cortes Superiores em privilegiar a arrecadação em teses macroeconômicas (modulação de efeitos), mas garantindo direitos individuais em questões processuais. O texto destaca o aumento das tensões federativas, com Estados e Municípios litigando contra a União pela repartição de receitas na nova reforma.",
+               impacto: "Inteligência Estratégica: O escritório deve monitorar não apenas o mérito, mas a probabilidade de modulação de efeitos em novas teses. A orientação para o cliente deve sempre considerar o risco de 'ganhar, mas não levar' para o passado, ajustando o provisionamento contábil.",
+               link: "https://www.conjur.com.br/2026-jan-06/jurisprudencia-tributaria-do-stf-e-do-stj-em-2025-consolidacoes-tensoes-federativas-e-desafios/",
+               pdf: "#"
+            },
+            {
+               titulo: "CARF planeja buscar certificação de qualidade em 2026",
+               tribunal: "CARF",
+               data: "06/01/2026",
+               tags: ["#Institucional", "#ProcessoAdministrativo", "#Celeridade"],
+               resumo: "Presidente do CARF anuncia meta de obter certificações internacionais de gestão de qualidade (ISO) para os processos do tribunal administrativo em 2026. O objetivo é padronizar o tempo de tramitação e a estrutura dos acórdãos, respondendo às críticas sobre a morosidade e a imprevisibilidade das pautas de julgamento.",
+               impacto: "Impacto processual indireto. A busca por eficiência pode acelerar a inclusão de processos antigos em pauta. Advogados devem estar atentos às publicações de pauta para não serem surpreendidos com julgamentos relâmpago de casos parados há anos.",
+               link: "https://
