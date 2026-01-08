@@ -77,9 +77,9 @@
                 <option value="Judiciário">Judiciário / STJ / STF</option>
                 <option value="Legislativo">Legislativo / Executivo</option>
                 <option value="Reforma Tributária">Reforma Tributária</option>
-                <option value="CARF">CARF</option>
+                <option value="Receita Federal">Receita Federal / CARF</option>
             </select>
-            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Mineração, Agro)..." onkeyup="renderizarNoticias()">
+            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Imóveis, IRRF, Créditos)..." onkeyup="renderizarNoticias()">
         </div>
         <div id="feed-noticias"></div>
     </div>
@@ -87,178 +87,115 @@
     <script>
         // LISTA DE NOTÍCIAS (JSON)
         const noticias = [
-            // --- NOVAS (06/01/2026) ---
             {
-               titulo: "Decreto não retroage para revogar Regime Tributário Especial: Vitória da Segurança Jurídica",
+               titulo: "Lula sanciona Lei nº 15.329: Mudanças no IRRF sobre juros ao exterior",
+               tribunal: "Legislativo",
+               data: "08/01/2026",
+               tags: ["#IRRF", "#Remessas", "#Internacional", "#Lei15329"],
+               resumo: "Foi sancionada a Lei nº 15.329/2026, que altera significativamente as regras de tributação de IRRF sobre remessas de juros ao exterior. A nova legislação impõe restrições para a aplicação de alíquotas zero ou reduzidas, exigindo maior substância econômica nas operações de financiamento internacional e alinhando o Brasil às diretrizes da OCDE para evitar a erosão de base tributária (BEPS). A norma impacta diretamente estruturas de dívida intragrupo e financiamentos de importação.",
+               impacto: "Necessidade imediata de revisão de contratos de mútuo e financiamento internacional. Clientes com operações estruturadas via juros sobre capital próprio (JCP) ou dívida externa devem recalcular o custo efetivo da operação (gross-up) sob a nova lei para evitar passivos ocultos.",
+               link: "https://www.jota.info/tributos/matinal/lula-sanciona-lei-que-altera-regra-sobre-ir-em-remessas-de-juros",
+               pdf: "lei-15329-irrf.pdf"
+            },
+            {
+               titulo: "Texto Oficial da Lei nº 15.329/2026 (Planalto)",
+               tribunal: "Legislativo",
+               data: "08/01/2026",
+               tags: ["#Legislação", "#TextoLegal", "#Consultoria"],
+               resumo: "Disponibilizado o texto integral da Lei nº 15.329, publicada no Diário Oficial. O diploma legal consolida as alterações nas alíquotas de Imposto de Renda Retido na Fonte e estabelece as datas de vigência para as novas regras de tributação de juros, incluindo disposições transitórias para contratos já em andamento. É a base normativa primária para as análises de impacto financeiro nas remessas.",
+               impacto: "Material de consulta obrigatória para a equipe técnica. Recomendamos o cruzamento deste texto com os acordos de bitributação (ADTs) vigentes para identificar se há cláusulas de proteção (treaty shopping) que possam mitigar o aumento da carga tributária local.",
+               link: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/Lei/L15329.htm",
+               pdf: "texto-lei-15329.pdf"
+            },
+            {
+               titulo: "STJ derruba autuação milionária por uso de ágio derivado de privatização",
                tribunal: "Judiciário",
-               data: "06/01/2026",
-               tags: ["#SegurançaJurídica", "#BenefíciosFiscais", "#Anterioridade"],
-               resumo: "O Judiciário reafirmou o princípio da irretroatividade tributária ao decidir que decretos executivos não podem retroagir para revogar regimes especiais ou benefícios fiscais já concedidos sob condição onerosa e prazo certo. A decisão destaca a proteção à confiança legítima do contribuinte e a necessidade de respeito ao artigo 178 do CTN (Súmula 544 do STF), impedindo que mudanças políticas abruptas gerem passivos inesperados sobre fatos geradores passados ou em curso de fruição garantida.",
-               impacto: "Precedente fundamental para clientes com Regimes Especiais (Reintegra, Drawback ou benefícios estaduais de ICMS). Abre-se a oportunidade de contestar judicialmente qualquer ato do Executivo que tente anular incentivos antes do prazo final, garantindo a manutenção da margem de lucro projetada nos contratos de longo prazo.",
-               link: "https://www.conjur.com.br/2026-jan-06/decreto-nao-retroage-para-revogar-regime-tributario-especial/",
-               pdf: "Decreto regime tributário especial"
+               data: "07/01/2026",
+               tags: ["#STJ", "#Ágio", "#Privatização", "#IRPJ"],
+               resumo: "Em decisão paradigmática, o STJ anulou autuação fiscal que questionava a dedutibilidade de despesas de amortização de ágio gerado em processo de privatização. A Corte entendeu que, no contexto de desestatização, as regras rígidas sobre 'partes relacionadas' e 'confusão patrimonial' devem ser interpretadas à luz do edital e da finalidade pública da venda, validando o aproveitamento fiscal do ágio pago pelo adquirente.",
+               impacto: "Precedente valioso para grandes contribuintes e concessionárias de serviço público. Fortalece teses de defesa em autos de infração que questionam a 'artificialidade' de estruturas de aquisição em leilões públicos, permitindo a manutenção de créditos tributários relevantes no balanço.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/07/stj-derruba-autuacao-milionaria-por-uso-de-agio-derivado-de-privatizacao.ghtml",
+               pdf: "stj-agio-privatizacao.pdf"
             },
             {
-               titulo: "CARF mantém IRRF de 25% em Fundo ao identificar investidor final em Paraíso Fiscal",
-               tribunal: "CARF",
-               data: "06/01/2026",
-               tags: ["#PlanejamentoInternacional", "#FIP", "#IRRF", "#Simulação"],
-               resumo: "Em julgamento de grande repercussão, o CARF aplicou a doutrina do 'look through' (desconsideração da personalidade jurídica interposta) para tributar remessas ao exterior. O tribunal identificou que, embora o veículo de investimento estivesse em jurisdição comum, o beneficiário final (UBO) residia em Paraíso Fiscal, validando a incidência da alíquota majorada de 25% de IRRF, em vez dos 15% ou 0% aplicáveis a investidores qualificados regulares.",
-               impacto: "Alerta máximo para estruturas de Private Equity e fundos offshore. É imperativo revisar a estrutura de capital e a documentação de substância econômica (business purpose) de veículos intermediários. O escritório deve auditar estruturas de clientes com investidores não-residentes para mitigar o risco de requalificação fiscal e multas qualificadas.",
-               link: "https://www.jota.info/tributos/carf-mantem-irrf-de-25-em-fundo-ao-identificar-investidor-final-em-paraiso-fiscal",
-               pdf: "Carf IRRF 25% fundo investidor pararaíso fiscal"
-            },
-            {
-               titulo: "ICMS na base de cálculo da CBS/IBS na transição: O debate de 2026 e a exclusão",
+               titulo: "Reforma Tributária e o limbo dos créditos de PIS/COFINS na transição para a CBS",
                tribunal: "Reforma Tributária",
-               data: "06/01/2026",
-               tags: ["#TeseDoSeculo", "#CBS", "#IBS", "#Transição"],
-               resumo: "Juristas apontam que a inclusão do ICMS na base de cálculo dos novos tributos (CBS e IBS) durante o período de transição (2026-2032) viola o conceito constitucional de valor adicionado e a jurisprudência consolidada do STF no 'Tema 69'. A legislação infraconstitucional da reforma ainda permite essa distorção ('imposto sobre imposto'), criando uma nova 'Tese do Século' focada especificamente no período de convivência entre os sistemas antigo e novo.",
-               impacto: "Desenvolvimento de nova tese tributária de alto valor. Recomendamos a preparação de Mandados de Segurança preventivos para grandes varejistas e indústrias, visando excluir o ICMS da base de cálculo da CBS/IBS logo no início da cobrança em 2026, evitando o desembolso de caixa indevido durante os anos de transição.",
-               link: "https://www.conjur.com.br/2026-jan-06/icms-na-base-de-calculo-da-cbs-ibs-na-transicao-o-debate-de-2026-e-a-tendencia-de-inclusao-a-partir-de-2027/",
-               pdf: "CBS e IBS teste base do ICMS"
+               data: "08/01/2026",
+               tags: ["#ReformaTributaria", "#Creditos", "#PISCOFINS", "#CBS"],
+               resumo: "Artigo jurídico alerta para a complexidade das regras de utilização de créditos acumulados de PIS/COFINS durante a transição para a CBS (Contribuição sobre Bens e Serviços). O texto destaca o risco de 'empoçamento' desses créditos caso as empresas não realizem um planejamento contábil rigoroso para compensá-los antes da vigência plena do novo sistema, ou se não houver regras claras de ressarcimento em dinheiro.",
+               impacto: "Ação Consultiva: Devemos auditar o estoque de créditos de PIS/COFINS dos clientes agora. A estratégia é acelerar a compensação ou monetização desses ativos antes de 2027, pois as regras de conversão para o novo sistema podem impor deságios ou prazos longos de utilização.",
+               link: "https://www.conjur.com.br/2026-jan-08/reforma-tributaria-e-as-regras-de-utilizacao-de-creditos-na-transicao-do-pis-cofins-para-a-cbs/",
+               pdf: "creditos-transicao-pis-cbs.pdf"
             },
             {
-               titulo: "STF analisará pontos sensíveis sobre tributação de dividendos após prorrogação",
-               tribunal: "STF",
-               data: "06/01/2026",
-               tags: ["#Dividendos", "#Lucros", "#Constitucional", "#PlanejamentoSucessório"],
-               resumo: "Após diversos pedidos de vista, o STF retomará o julgamento sobre a constitucionalidade da tributação de dividendos distribuídos. O foco está na violação à irretroatividade (tributar lucros acumulados de anos anteriores) e no confisco. A Corte deve definir se a nova incidência pode alcançar reservas de lucros constituídas antes da vigência da lei, um ponto que define a solvência e a estratégia de distribuição de milhares de empresas.",
-               impacto: "Momento decisivo para o Planejamento Societário. Caso o STF sinalize favoravelmente à tributação retroativa sobre estoques de lucros, haverá uma corrida para distribuições extraordinárias. Devemos manter os clientes informados em tempo real para executar deliberações de dividendos antes da publicação da ata de julgamento.",
-               link: "https://www.conjur.com.br/2026-jan-06/apos-prorrogacao-stf-analisara-pontos-sensiveis-sobre-dividendos/",
-               pdf: "Prazo não é único problema da lei da taxação de dividendos"
+               titulo: "Receita disponibiliza REARP: Prazo para adesão até 19 de fevereiro",
+               tribunal: "Receita Federal",
+               data: "08/01/2026",
+               tags: ["#REARP", "#Imóveis", "#Regularização", "#Prazo"],
+               resumo: "A Receita Federal abriu oficialmente o prazo para adesão ao Regime Especial de Atualização e Regularização Patrimonial (REARP), permitindo que contribuintes atualizem o valor de imóveis na declaração com alíquotas reduzidas. O sistema já está operacional e o prazo é exíguo, encerrando-se impreterivelmente em 19 de fevereiro. A adesão exige pagamento à vista do tributo calculado sobre a diferença.",
+               impacto: "Janela de oportunidade curta e estratégica. O escritório deve contatar clientes Pessoa Física e Holdings Patrimoniais imediatamente para simular se a atualização vale a pena (trade-off entre pagar imposto reduzido agora vs. ganho de capital cheio na venda futura).",
+               link: "https://rota.apet.org.br/2026/01/rearp-atualizacao-receita-federal-disponibiliza-declaracao-com-data-limite-ate-19-de-fevereiro/",
+               pdf: "rearp-prazo-fevereiro.pdf"
             },
             {
-               titulo: "Ciclos de desconfiança no plano tributário e a necessidade de blindagem contratual",
-               tribunal: "Reforma Tributária",
-               data: "06/01/2026",
-               tags: ["#Contratos", "#RiscoFiscal", "#Compliance", "#Consultoria"],
-               resumo: "Análise econômica e jurídica aponta que a instabilidade das normas regulamentadoras da Reforma Tributária gerou um 'ciclo de desconfiança' no mercado. A indefinição sobre alíquotas de referência e créditos não cumulativos exige que as empresas adotem cláusulas contratuais de 'gross-up' e repasse de custos tributários mais agressivas para se protegerem da volatilidade legislativa prevista para este ano.",
-               impacto: "Ação consultiva imediata: Revisão de contratos de fornecimento e prestação de serviços de longo prazo. É necessário inserir cláusulas gatilho que permitam o reequilíbrio econômico-financeiro automático em caso de variação da carga tributária efetiva (não apenas nominal) com a entrada do IBS/CBS.",
-               link: "https://valor.globo.com/legislacao/coluna/ciclos-de-desconfianca-no-plano-tributario.ghtml",
-               pdf: "plano tributário _ Legislação _ Valor Econômico"
-            },
-            {
-               titulo: "PLP nº 125/2022: Conformidade tributária e autorregularização orientada",
+               titulo: "Governo estima R$ 1,5 bi com atualização de imóveis (REARP) e detalha regras",
                tribunal: "Legislativo",
-               data: "06/01/2026",
-               tags: ["#Compliance", "#Autorregularização", "#Fiscalização"],
-               resumo: "O avanço do PLP 125/2022 institucionaliza a mudança de paradigma na fiscalização federal, priorizando a 'autorregularização orientada' em detrimento da autuação punitiva imediata. A norma cria um ambiente onde o contribuinte notificado tem prazo para sanar inconsistências sem multa de ofício, desde que mantenha programas de conformidade ativos e boa classificação de risco fiscal.",
-               impacto: "Valorização dos serviços de Compliance Tributário do escritório. Podemos oferecer diagnósticos preventivos para garantir que os clientes sejam classificados como 'bons pagadores' (Rating A/B), garantindo acesso aos benefícios da autorregularização e evitando multas de 75% a 150% em fiscalizações futuras.",
-               link: "https://www.conjur.com.br/2026-jan-06/plp-no-125-2022-conformidade-tributaria-autorregularizacao-orientada-e-o-papel-da-receita-federal/",
-               pdf: "PLP sistematiza autorregularização tributária como direito"
+               data: "08/01/2026",
+               tags: ["#Imóveis", "#GanhoDeCapital", "#Planejamento"],
+               resumo: "Além do prazo, novas instruções detalham que a atualização do valor dos bens imóveis incidirá uma alíquota definitiva (provavelmente 4% a 6%, conforme texto final), sem possibilidade de deduções futuras. A medida visa antecipar receita para o governo, mas oferece ao contribuinte uma redução substancial comparada à alíquota progressiva de Ganho de Capital (15% a 22,5%).",
+               impacto: "Complementar à notícia do prazo. Essencial para o cálculo financeiro da vantagem. Holdings que planejam vender imóveis nos próximos 2 a 5 anos são as maiores beneficiadas e devem aderir ao programa para reduzir a carga tributária na saída (venda).",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/08/receita-estima-arrecadar-r-15-bilhao-com-atualizacao-do-valor-de-bens-imoveis.ghtml",
+               pdf: "atualizacao-imoveis-valor.pdf"
             },
             {
-               titulo: "CARF mantém CIDE sobre royalties pagos ao exterior, mas exclui ISS da base",
-               tribunal: "CARF",
-               data: "06/01/2026",
-               tags: ["#CIDE", "#Royalties", "#ISS", "#TeseFilhote"],
-               resumo: "Aplicando racional similar à 'Tese do Século', a Câmara Superior do CARF decidiu que o ISS não compõe a base de cálculo da CIDE incidente sobre remessas de royalties ao exterior. Embora a incidência da CIDE tenha sido mantida (derrota no mérito principal), a exclusão do imposto municipal da base reduz o custo efetivo da operação para empresas de tecnologia e franquias.",
-               impacto: "Oportunidade de recuperação de créditos para importadores de serviços e tecnologia. Devemos levantar os pagamentos de CIDE-Royalties dos últimos 5 anos e propor a retificação das bases para excluir o ISS, gerando um 'cash-in' relevante para empresas do setor de TI e Franchising.",
-               link: "https://rota.apet.org.br/2026/01/carf-mantem-cide-sobre-royalties-pagos-ao-exterior-mas-exclui-iss-da-base-de-calculo/",
-               pdf: "CARF CIDE exclui ISS  – Rota"
-            },
-            {
-               titulo: "Ampliação de programas de negociação na Receita preocupa Advocacia Pública",
+               titulo: "Governo altera regra de IRRF sobre juros em compras a prazo (Importação)",
                tribunal: "Legislativo",
-               data: "06/01/2026",
-               tags: ["#TransaçãoTributária", "#PGFN", "#DívidaAtiva"],
-               resumo: "A expansão agressiva dos editais de transação tributária e negócios jurídicos processuais (NJP) pela Receita Federal tem gerado tensão institucional. Enquanto a medida visa reduzir o estoque de dívida e aumentar a arrecadação imediata com descontos, procuradores alertam para o risco de 'moral hazard', onde contribuintes deixam de pagar no vencimento aguardando anistias futuras.",
-               impacto: "Janela de oportunidade para regularização de passivos. O cenário político indica que 2026 será um ano de condições facilitadas para transação (descontos de até 70% em multas/juros). É o momento ideal para mapear o passivo dos clientes e propor adesão antes de um eventual endurecimento das regras.",
-               link: "https://www.jota.info/tributos/relatorio-especial/ampliacao-de-programas-de-negociacao-na-receita-preocupa-advocacia-publica",
-               pdf: "JOTA PRO -  Receita preocupa advocacia pública"
+               data: "08/01/2026",
+               tags: ["#Importação", "#ComércioExterior", "#IRRF"],
+               resumo: "Um ponto específico da nova legislação atinge o setor de comércio exterior: a alteração nas regras de IRRF sobre juros pagos a fornecedores externos em compras a prazo. Anteriormente isentas ou com alíquota zero em certas condições, essas operações passam a sofrer tributação se não enquadradas em requisitos estritos de prazo e taxas de mercado.",
+               impacto: "Impacto direto no custo da mercadoria importada (Landed Cost). Importadoras e indústrias que compram insumos a prazo devem revisar suas planilhas de custo, pois o novo imposto encarecerá o produto final no mercado interno.",
+               link: "https://rota.apet.org.br/2026/01/governo-altera-regra-de-irrf-sobre-juros-pagos-ao-exterior-em-compras-a-prazo/",
+               pdf: "irrf-compras-prazo.pdf"
             },
             {
-               titulo: "Jurisprudência tributária do STF e STJ em 2025: Consolidações e tensões",
-               tribunal: "Judiciário",
-               data: "06/01/2026",
-               tags: ["#Retrospectiva", "#Precedentes", "#STJ", "#STF"],
-               resumo: "Análise sistêmica dos julgados de 2025 revela uma tendência das Cortes Superiores em privilegiar a arrecadação em teses macroeconômicas (modulação de efeitos), mas garantindo direitos individuais em questões processuais. O texto destaca o aumento das tensões federativas, com Estados e Municípios litigando contra a União pela repartição de receitas na nova reforma.",
-               impacto: "Inteligência Estratégica: O escritório deve monitorar não apenas o mérito, mas a probabilidade de modulação de efeitos em novas teses. A orientação para o cliente deve sempre considerar o risco de 'ganhar, mas não levar' para o passado, ajustando o provisionamento contábil.",
-               link: "https://www.conjur.com.br/2026-jan-06/jurisprudencia-tributaria-do-stf-e-do-stj-em-2025-consolidacoes-tensoes-federativas-e-desafios/",
-               pdf: "Em 2025, STF e STJ enfrentaram tensões da transição"
-            },
-            {
-               titulo: "CARF planeja buscar certificação de qualidade em 2026",
-               tribunal: "CARF",
-               data: "06/01/2026",
-               tags: ["#Institucional", "#ProcessoAdministrativo", "#Celeridade"],
-               resumo: "Presidente do CARF anuncia meta de obter certificações internacionais de gestão de qualidade (ISO) para os processos do tribunal administrativo em 2026. O objetivo é padronizar o tempo de tramitação e a estrutura dos acórdãos, respondendo às críticas sobre a morosidade e a imprevisibilidade das pautas de julgamento.",
-               impacto: "Impacto processual indireto. A busca por eficiência pode acelerar a inclusão de processos antigos em pauta. Advogados devem estar atentos às publicações de pauta para não serem surpreendidos com julgamentos relâmpago de casos parados há anos.",
-               link: "https://www.jota.info/tributos/relatorio-especial/carf-planeja-buscar-certificacao-de-qualidade-em-2026-diz-presidente",
-               pdf: "JOTA PRO - Carf qualidade em 2026 presidente"
-            },
-
-            // --- ANTIGAS (05/01/2026) ---
-            {
-               titulo: "Judiciário afasta IRRF na doação de cotas de fundos de investimento",
-               tribunal: "Judiciário",
-               data: "05/01/2026",
-               tags: ["#IRRF", "#Fundos", "#Sucessão"],
-               resumo: "Decisões recentes reforçam que não incide IRRF na transferência de titularidade de cotas de fundos (doação/herança) pelo valor de custo. A jurisprudência reconhece que a sucessão causa mortis ou doação em vida não configura realização de renda (disponibilidade econômica) se mantido o valor histórico.",
-               impacto: "Vitória para Wealth Management e Family Offices. Permite planejamento sucessório de grandes fortunas sem o custo imediato de tributação (come-cotas antecipado), preservando a liquidez do patrimônio familiar.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/judiciario-afasta-incidencia-de-irrf-na-doacao-de-cotas-de-fundos-de-investimento.ghtml",
-               pdf: "IRRF na doação de cotas  _ Legislação _ Valor Econômico" 
-            },
-            {
-               titulo: "Receita Federal antecipa tributação do Lucro Presumido",
+               titulo: "Ampliação de poderes de negociação da Receita preocupa AGU e PGFN",
                tribunal: "Legislativo",
-               data: "05/01/2026",
-               tags: ["#LucroPresumido", "#IRPJ", "#CSLL"],
-               resumo: "Instruções normativas recentes indicam um movimento da Receita para ajustar as bases de cálculo do Lucro Presumido já em 2026. Especialistas apontam que a medida visa compensar perdas arrecadatórias da transição, elevando a carga efetiva de prestadores de serviço.",
-               impacto: "Alerta vermelho para clientes no Lucro Presumido. É urgente rodar simulações comparativas com o Lucro Real para o exercício de 2026. A inércia pode custar pontos percentuais relevantes de margem líquida.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/05/receita-federal-antecipa-tributacao-do-lucro-presumido-dizem-especialistas.ghtml",
-               pdf: "lucro presumido_ Legislação _ Valor Econômico"
+               data: "07/01/2026",
+               tags: ["#Transação", "#PGFN", "#ConflitoInstitucional"],
+               resumo: "Aumenta a tensão institucional entre a Receita Federal e a PGFN/AGU devido à ampliação da competência da Receita para negociar transações tributárias antes da inscrição em Dívida Ativa. Procuradores alegam que a medida pode esvaziar a Dívida Ativa e criar um cenário de 'balcão de negócios' duplicado, gerando insegurança jurídica sobre qual órgão detém a palavra final nos acordos.",
+               impacto: "Inteligência para negociação de passivos: O contribuinte pode se ver em meio a um 'fogo cruzado'. A estratégia recomendada é avaliar onde as condições são melhores (RFB ou PGFN) e fechar o acordo rapidamente antes que normas internas restrinjam a competência de um dos órgãos.",
+               link: "https://www.jota.info/tributos/ampliacao-de-programas-de-negociacao-na-receita-preocupa-agu-e-pgfn",
+               pdf: "tensao-agu-receita.pdf"
             },
             {
-               titulo: "Começa fase de testes do novo sistema (IBS/CBS)",
-               tribunal: "Reforma Tributária",
-               data: "02/01/2026",
-               tags: ["#ReformaTributaria", "#Compliance", "#ERP"],
-               resumo: "Início oficial da fase de testes ('sandbox') com cobrança simbólica dos novos tributos sobre consumo. O foco atual é a validação tecnológica das obrigações acessórias, mensageria de notas fiscais e o funcionamento do split payment automático.",
-               impacto: "Atenção Operacional: As empresas devem revisar a parametrização de seus ERPs imediatamente. Erros no preenchimento das novas tags de IBS/CBS podem travar a emissão de notas e o faturamento.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/02/comeca-a-fase-de-testes-do-novo-sistema-tributario.ghtml",
-               pdf: "#"
+               titulo: "Compliance Cooperativo na Receita ('Confia'): Saneamento e Competitividade",
+               tribunal: "Receita Federal",
+               data: "07/01/2026",
+               tags: ["#Compliance", "#Confia", "#Fiscalização"],
+               resumo: "Análise sobre o avanço do programa 'Confia' e o modelo de conformidade cooperativa. A Receita busca transicionar de um modelo puramente punitivo para um de orientação e classificação de risco. Empresas que aderirem voluntariamente à abertura de dados e controle interno terão tratamento diferenciado, com menos travas em renovação de certidões e desembaraço aduaneiro.",
+               impacto: "Mudança de cultura necessária. Clientes de grande porte devem ser orientados a buscar a certificação no Confia. Isso não apenas reduz o risco de autuação, mas torna-se um diferencial competitivo em licitações e contratos com grandes players que exigem compliance estrito.",
+               link: "https://www.conjur.com.br/2026-jan-07/compliance-cooperativo-na-receita-federal-saneamento-de-mercado-competitividade-economica-e-integracao-sistemica/",
+               pdf: "compliance-cooperativo.pdf"
             },
             {
-               titulo: "Taxas Minerárias: Proposta de Lei Complementar",
+               titulo: "Crédito acumulado de ICMS para transportadoras: O que é permitido?",
                tribunal: "Legislativo",
-               data: "05/01/2026",
-               tags: ["#Mineração", "#TFRM", "#TributárioEstadual"],
-               resumo: "Debate jurídico avança sobre a inconstitucionalidade das taxas estaduais de fiscalização minerária (TFRM) sem Lei Complementar federal que as balize. A tese central é a violação de competência e a desproporcionalidade entre o valor cobrado e o custo da fiscalização.",
-               impacto: "Reforço essencial para as teses de defesa de mineradoras contra os estados (MG, PA, AP). O escritório pode atuar proativamente sugerindo ações declaratórias para limitar o valor dessas taxas.",
-               link: "https://www.conjur.com.br/2026-jan-05/taxas-minerarias-uma-proposta-de-lei-complementar/",
-               pdf: "novo sistema tributário _ Legislação _ Valor Econômico"
+               data: "08/01/2026",
+               tags: ["#ICMS", "#Transporte", "#Logística", "#Créditos"],
+               resumo: "Esclarecimento sobre as regras atuais para aproveitamento de créditos de ICMS por transportadoras, um setor que tradicionalmente acumula saldos credores devido à compra de combustível e pneus em diversos estados. O texto detalha as possibilidades de transferência desses créditos para terceiros ou para pagamento de fornecedores, conforme convênios recentes do CONFAZ.",
+               impacto: "Oportunidade de Monetização. Para clientes do setor logístico, o acúmulo de ICMS é um problema de caixa. Devemos revisar a escrituração fiscal para identificar oportunidades de venda ou uso desses créditos para compra de ativos (caminhões/peças), melhorando a liquidez.",
+               link: "https://apet.org.br/noticia/credito-acumulado-icms-para-transportadoras-o-que-e-permitido/",
+               pdf: "icms-transportadoras.pdf"
             },
             {
-               titulo: "Penhora no rosto da RJ para resguardar crédito tributário",
-               tribunal: "Judiciário",
-               data: "05/01/2026",
-               tags: ["#RecuperaçãoJudicial", "#ExecuçãoFiscal", "#Penhora"],
-               resumo: "STJ consolida entendimento permitindo a penhora no rosto dos autos da Recuperação Judicial. A medida substitui bloqueios diretos de caixa (Sisbajud), equilibrando o interesse do Fisco com o princípio da preservação da empresa em crise.",
-               impacto: "Mudança estratégica em processos de RJ: Em vez de combater a penhora em si, o foco da defesa deve ser direcioná-la para o rosto dos autos (reserva de crédito futuro), protegendo o fluxo de caixa operacional imediato.",
-               link: "https://www.conjur.com.br/2026-jan-05/penhora-no-rosto-da-recuperacao-judicial-para-resguardar-credito-tributario-e-cabivel/",
-               pdf: "penhora r j por crédito tributário"
-            },
-            {
-               titulo: "CARF aprova 28 súmulas em 2025 (Viés Pró-Fisco)",
-               tribunal: "CARF",
-               data: "05/01/2026",
-               tags: ["#Súmulas", "#ContenciosoAdministrativo"],
-               resumo: "Balanço anual mostra alta produtividade na edição de súmulas pelo CARF, mas com nítida inclinação favorável à Fazenda Nacional. Teses controversas foram pacificadas contra o contribuinte, limitando o espaço de defesa administrativa.",
-               impacto: "Fim da linha administrativa para diversos temas. Devemos auditar os processos em andamento e avaliar a judicialização imediata (Mandado de Segurança) para teses onde o CARF já fechou entendimento desfavorável.",
-               link: "https://www.jota.info/tributos/carf-aprova-28-sumulas-em-2025-advogados-criticam-maioria-de-teses-pro-fisco",
-               pdf: "Carf súmulas 2025; teses pró-fisco"
-            },
-             {
-               titulo: "Redução de incentivos no Agro: Inconstitucionalidades",
+               titulo: "Prefeitura de Belford Roxo prorroga Refis até 26 de junho",
                tribunal: "Legislativo",
-               data: "05/01/2026",
-               tags: ["#Agro", "#IncentivosFiscais", "#Anterioridade"],
-               resumo: "Análise aponta que a revogação abrupta de benefícios fiscais do agronegócio viola os princípios da anterioridade (anual e nonagesimal) e a proteção à confiança. Mudanças nas regras do jogo não podem surpreender o produtor no meio da safra.",
-               impacto: "Argumento forte para clientes do Agro judicializarem contra o aumento de carga tributária em 2026, buscando liminares para manter as alíquotas antigas até o fim do exercício financeiro.",
-               link: "https://rota.apet.org.br/2026/01/reducao-de-incentivos-fiscais-no-setor-do-agronegocio-inconstitucionalidades/",
-               pdf: "Redução agro  – Rota da Jurisprudência"
+               data: "08/01/2026",
+               tags: ["#Refis", "#Municipal", "#RioDeJaneiro"],
+               resumo: "Oportunidade local: A Prefeitura de Belford Roxo prorrogou o prazo de adesão ao seu programa de refinanciamento de dívidas (Refis) até junho de 2026. O programa oferece descontos agressivos em multas e juros para contribuintes (pessoas físicas e jurídicas) com débitos de IPTU, ISS e taxas municipais.",
+               impacto: "Ação pontual: Verificar na base de clientes se há empresas com filiais ou operações em Belford Roxo/RJ. A regularização com descontos é uma forma eficiente de limpar certidões negativas municipais essenciais para licitações.",
+               link: "https://prefeituradebelfordroxo.rj.gov.br/2026/01/08/prefeitura-de-belford-roxo-prorroga-refis-ate-o-dia-26-de-junho-com-descontos-e-parcelamento/",
+               pdf: "refis-belford-roxo.pdf"
             }
         ];
 
@@ -282,11 +219,12 @@
             }
 
             filtradas.forEach(n => {
-                // Lógica do PDF
+                // Lógica Inteligente para verificar o PDF
                 const temPDF = n.pdf && n.pdf !== "#" && n.pdf !== "";
                 const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
                 const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
                 const pdfAction = temPDF ? "target='_blank'" : "onclick='alert(\"PDF indisponível no momento.\")'";
+                const pdfText = temPDF ? "📄 Ver PDF" : "🚫 PDF Indisponível";
 
                 feed.innerHTML += `
                     <div class="card">
@@ -305,7 +243,7 @@
                         </div>
                         <div class="actions">
                             <a href="${n.link}" target="_blank" class="btn btn-source">🔗 Ler na Fonte</a>
-                            <a href="${pdfLink}" ${pdfAction} class="btn ${pdfClass}">📄 Ver PDF</a>
+                            <a href="${pdfLink}" ${pdfAction} class="btn ${pdfClass}">${pdfText}</a>
                         </div>
                     </div>
                 `;
@@ -318,5 +256,3 @@
     </script>
 </body>
 </html>
-
-
