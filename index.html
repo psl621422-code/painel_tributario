@@ -11,7 +11,6 @@
         :root {
             --brand-dark: #0f172a;    
             --brand-blue: #2563eb;    
-            --brand-red: #dc2626;
             --bg-body: #f1f5f9;       
             --card-bg: #ffffff;
             --text-main: #334155;
@@ -20,19 +19,16 @@
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; }
 
-        /* HEADER */
         header { background-color: var(--brand-dark); color: white; padding: 1.5rem 0; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .header-content { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
         h1 { font-family: 'Merriweather', serif; font-size: 1.6rem; margin: 0; letter-spacing: -0.5px; }
         .subtitulo { font-size: 0.9rem; opacity: 0.8; font-weight: normal; margin-top: 5px; }
 
-        /* CONTAINER & FILTROS */
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px 20px; }
         .filtros-container { background: white; padding: 15px; border-radius: 10px; display: flex; gap: 15px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
         select, input { padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; flex: 1; font-family: 'Inter', sans-serif; min-width: 200px; }
 
-        /* CARDS */
         .card { background: var(--card-bg); border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
         .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
         
@@ -42,23 +38,16 @@
 
         .card-title { font-family: 'Merriweather', serif; font-size: 1.25rem; color: var(--brand-dark); margin: 5px 0 12px 0; }
         .tag { background-color: #f1f5f9; color: #64748b; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; margin-right: 5px; font-weight: 600; display: inline-block; margin-bottom: 5px; }
-        
         .resumo-texto { color: #334155; font-size: 0.95rem; line-height: 1.6; text-align: justify; margin-bottom: 15px; }
-        
         .impacto-box { background-color: var(--highlight-bg); border-left: 4px solid var(--brand-blue); padding: 15px; border-radius: 4px; margin: 15px 0; }
         
-        /* BOTÕES */
         .actions { display: flex; gap: 10px; margin-top: 15px; }
         .btn { padding: 10px 16px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }
-        
         .btn-source { background-color: var(--brand-blue); color: white; border: 1px solid var(--brand-blue); }
         .btn-source:hover { background-color: #1d4ed8; }
-        
-        .btn-pdf { background-color: white; color: var(--brand-red); border: 1px solid #fee2e2; }
-        .btn-pdf:hover { background-color: #fef2f2; border-color: var(--brand-red); }
-        
+        .btn-pdf { background-color: white; color: #dc2626; border: 1px solid #fee2e2; }
+        .btn-pdf:hover { background-color: #fef2f2; border-color: #dc2626; }
         .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
-
     </style>
 </head>
 <body>
@@ -79,22 +68,21 @@
                 <option value="Reforma Tributária">Reforma Tributária</option>
                 <option value="Receita Federal">Receita Federal / CARF</option>
             </select>
-            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Imóveis, IRRF, Créditos)..." onkeyup="renderizarNoticias()">
+            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema..." onkeyup="renderizarNoticias()">
         </div>
         <div id="feed-noticias"></div>
     </div>
 
     <script>
-        // LISTA DE NOTÍCIAS (JSON)
-        // Correção: Todos os arquivos apontando para .pdf.pdf conforme seus prints do GitHub
+        // --- DADOS (Validado: Extensões .pdf.pdf) ---
         const noticias = [
             {
                titulo: "Lula sanciona Lei nº 15.329: Mudanças no IRRF sobre juros ao exterior",
                tribunal: "Legislativo",
                data: "08/01/2026",
                tags: ["#IRRF", "#Remessas", "#Internacional", "#Lei15329"],
-               resumo: "Foi sancionada a Lei nº 15.329/2026, que altera significativamente as regras de tributação de IRRF sobre remessas de juros ao exterior. A nova legislação impõe restrições para a aplicação de alíquotas zero ou reduzidas, exigindo maior substância econômica nas operações de financiamento internacional e alinhando o Brasil às diretrizes da OCDE para evitar a erosão de base tributária (BEPS). A norma impacta diretamente estruturas de dívida intragrupo e financiamentos de importação.",
-               impacto: "Necessidade imediata de revisão de contratos de mútuo e financiamento internacional. Clientes com operações estruturadas via juros sobre capital próprio (JCP) ou dívida externa devem recalcular o custo efetivo da operação (gross-up) sob a nova lei para evitar passivos ocultos.",
+               resumo: "Foi sancionada a Lei nº 15.329/2026, que altera significativamente as regras de tributação de IRRF sobre remessas de juros ao exterior. A nova legislação impõe restrições para a aplicação de alíquotas zero ou reduzidas, exigindo maior substância econômica nas operações.",
+               impacto: "Necessidade imediata de revisão de contratos de mútuo e financiamento internacional. Clientes devem recalcular o custo efetivo da operação (gross-up) sob a nova lei.",
                link: "https://www.jota.info/tributos/matinal/lula-sanciona-lei-que-altera-regra-sobre-ir-em-remessas-de-juros",
                pdf: "lei-15329-irrf.pdf.pdf"
             },
@@ -103,8 +91,8 @@
                tribunal: "Legislativo",
                data: "08/01/2026",
                tags: ["#Legislação", "#TextoLegal", "#Consultoria"],
-               resumo: "Disponibilizado o texto integral da Lei nº 15.329, publicada no Diário Oficial. O diploma legal consolida as alterações nas alíquotas de Imposto de Renda Retido na Fonte e estabelece as datas de vigência para as novas regras de tributação de juros, incluindo disposições transitórias para contratos já em andamento. É a base normativa primária para as análises de impacto financeiro nas remessas.",
-               impacto: "Material de consulta obrigatória para a equipe técnica. Recomendamos o cruzamento deste texto com os acordos de bitributação (ADTs) vigentes para identificar se há cláusulas de proteção (treaty shopping) que possam mitigar o aumento da carga tributária local.",
+               resumo: "Disponibilizado o texto integral da Lei nº 15.329, publicada no Diário Oficial. O diploma legal consolida as alterações nas alíquotas de Imposto de Renda Retido na Fonte e estabelece as datas de vigência para as novas regras.",
+               impacto: "Material de consulta obrigatória para a equipe técnica. Recomendamos o cruzamento deste texto com os acordos de bitributação (ADTs) vigentes.",
                link: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/Lei/L15329.htm",
                pdf: "texto-lei-15329.pdf.pdf"
             },
@@ -113,150 +101,142 @@
                tribunal: "Judiciário",
                data: "07/01/2026",
                tags: ["#STJ", "#Ágio", "#Privatização", "#IRPJ"],
-               resumo: "Em decisão paradigmática, o STJ anulou autuação fiscal que questionava a dedutibilidade de despesas de amortização de ágio gerado em processo de privatização. A Corte entendeu que, no contexto de desestatização, as regras rígidas sobre 'partes relacionadas' e 'confusão patrimonial' devem ser interpretadas à luz do edital e da finalidade pública da venda, validando o aproveitamento fiscal do ágio pago pelo adquirente.",
-               impacto: "Precedente valioso para grandes contribuintes e concessionárias de serviço público. Fortalece teses de defesa em autos de infração que questionam a 'artificialidade' de estruturas de aquisição em leilões públicos, permitindo a manutenção de créditos tributários relevantes no balanço.",
+               resumo: "Em decisão paradigmática, o STJ anulou autuação fiscal que questionava a dedutibilidade de despesas de amortização de ágio gerado em processo de privatização, validando o aproveitamento fiscal do ágio pago pelo adquirente.",
+               impacto: "Precedente valioso para grandes contribuintes. Fortalece teses de defesa em autos de infração que questionam a 'artificialidade' de estruturas de aquisição.",
                link: "https://valor.globo.com/legislacao/noticia/2026/01/07/stj-derruba-autuacao-milionaria-por-uso-de-agio-derivado-de-privatizacao.ghtml",
                pdf: "stj-agio-privatizacao.pdf.pdf"
             },
             {
-               titulo: "Reforma Tributária e o limbo dos créditos de PIS/COFINS na transição para a CBS",
+               titulo: "Reforma Tributária e o limbo dos créditos de PIS/COFINS na transição",
                tribunal: "Reforma Tributária",
                data: "08/01/2026",
                tags: ["#ReformaTributaria", "#Creditos", "#PISCOFINS", "#CBS"],
-               resumo: "Artigo jurídico alerta para a complexidade das regras de utilização de créditos acumulados de PIS/COFINS durante a transição para a CBS (Contribuição sobre Bens e Serviços). O texto destaca o risco de 'empoçamento' desses créditos caso as empresas não realizem um planejamento contábil rigoroso para compensá-los antes da vigência plena do novo sistema, ou se não houver regras claras de ressarcimento em dinheiro.",
-               impacto: "Ação Consultiva: Devemos auditar o estoque de créditos de PIS/COFINS dos clientes agora. A estratégia é acelerar a compensação ou monetização desses ativos antes de 2027, pois as regras de conversão para o novo sistema podem impor deságios ou prazos longos de utilização.",
+               resumo: "Artigo alerta para a complexidade das regras de utilização de créditos acumulados de PIS/COFINS durante a transição para a CBS, destacando o risco de 'empoçamento' desses créditos.",
+               impacto: "Ação Consultiva: Auditar estoque de créditos de PIS/COFINS. Estratégia de acelerar a compensação ou monetização antes de 2027.",
                link: "https://www.conjur.com.br/2026-jan-08/reforma-tributaria-e-as-regras-de-utilizacao-de-creditos-na-transicao-do-pis-cofins-para-a-cbs/",
                pdf: "creditos-transicao-pis-cbs.pdf.pdf"
             },
             {
-               titulo: "Receita disponibiliza REARP: Prazo para adesão até 19 de fevereiro",
+               titulo: "Receita disponibiliza REARP: Prazo até 19 de fevereiro",
                tribunal: "Receita Federal",
                data: "08/01/2026",
                tags: ["#REARP", "#Imóveis", "#Regularização", "#Prazo"],
-               resumo: "A Receita Federal abriu oficialmente o prazo para adesão ao Regime Especial de Atualização e Regularização Patrimonial (REARP), permitindo que contribuintes atualizem o valor de imóveis na declaração com alíquotas reduzidas. O sistema já está operacional e o prazo é exíguo, encerrando-se impreterivelmente em 19 de fevereiro. A adesão exige pagamento à vista do tributo calculado sobre a diferença.",
-               impacto: "Janela de oportunidade curta e estratégica. O escritório deve contatar clientes Pessoa Física e Holdings Patrimoniais imediatamente para simular se a atualização vale a pena (trade-off entre pagar imposto reduzido agora vs. ganho de capital cheio na venda futura).",
+               resumo: "A Receita Federal abriu oficialmente o prazo para adesão ao Regime Especial de Atualização e Regularização Patrimonial (REARP). O sistema já está operacional e o prazo encerra-se em 19 de fevereiro.",
+               impacto: "Janela de oportunidade curta. Contatar clientes Pessoa Física e Holdings imediatamente para simular se a atualização vale a pena.",
                link: "https://rota.apet.org.br/2026/01/rearp-atualizacao-receita-federal-disponibiliza-declaracao-com-data-limite-ate-19-de-fevereiro/",
                pdf: "rearp-prazo-fevereiro.pdf.pdf"
             },
             {
-               titulo: "Governo estima R$ 1,5 bi com atualização de imóveis (REARP) e detalha regras",
+               titulo: "Governo estima R$ 1,5 bi com atualização de imóveis (REARP)",
                tribunal: "Legislativo",
                data: "08/01/2026",
                tags: ["#Imóveis", "#GanhoDeCapital", "#Planejamento"],
-               resumo: "Além do prazo, novas instruções detalham que a atualização do valor dos bens imóveis incidirá uma alíquota definitiva (provavelmente 4% a 6%, conforme texto final), sem possibilidade de deduções futuras. A medida visa antecipar receita para o governo, mas oferece ao contribuinte uma redução substancial comparada à alíquota progressiva de Ganho de Capital (15% a 22,5%).",
-               impacto: "Complementar à notícia do prazo. Essencial para o cálculo financeiro da vantagem. Holdings que planejam vender imóveis nos próximos 2 a 5 anos são as maiores beneficiadas e devem aderir ao programa para reduzir a carga tributária na saída (venda).",
+               resumo: "Novas instruções detalham que a atualização do valor dos bens imóveis incidirá uma alíquota definitiva, sem possibilidade de deduções futuras, visando antecipar receita.",
+               impacto: "Holdings que planejam vender imóveis nos próximos 2 a 5 anos são as maiores beneficiadas e devem aderir ao programa.",
                link: "https://valor.globo.com/legislacao/noticia/2026/01/08/receita-estima-arrecadar-r-15-bilhao-com-atualizacao-do-valor-de-bens-imoveis.ghtml",
                pdf: "atualizacao-imoveis-valor.pdf.pdf"
             },
             {
-               titulo: "Governo altera regra de IRRF sobre juros em compras a prazo (Importação)",
+               titulo: "Governo altera regra de IRRF sobre juros em compras a prazo",
                tribunal: "Legislativo",
                data: "08/01/2026",
                tags: ["#Importação", "#ComércioExterior", "#IRRF"],
-               resumo: "Um ponto específico da nova legislação atinge o setor de comércio exterior: a alteração nas regras de IRRF sobre juros pagos a fornecedores externos em compras a prazo. Anteriormente isentas ou com alíquota zero em certas condições, essas operações passam a sofrer tributação se não enquadradas em requisitos estritos de prazo e taxas de mercado.",
-               impacto: "Impacto direto no custo da mercadoria importada (Landed Cost). Importadoras e indústrias que compram insumos a prazo devem revisar suas planilhas de custo, pois o novo imposto encarecerá o produto final no mercado interno.",
+               resumo: "Alteração nas regras de IRRF sobre juros pagos a fornecedores externos em compras a prazo. Operações antes isentas passam a sofrer tributação se não enquadradas em requisitos estritos.",
+               impacto: "Impacto no custo da mercadoria importada. Importadoras devem revisar suas planilhas de custo, pois o novo imposto encarecerá o produto final.",
                link: "https://rota.apet.org.br/2026/01/governo-altera-regra-de-irrf-sobre-juros-pagos-ao-exterior-em-compras-a-prazo/",
                pdf: "irrf-compras-prazo.pdf.pdf"
             },
             {
-               titulo: "Ampliação de poderes de negociação da Receita preocupa AGU e PGFN",
+               titulo: "Ampliação de poderes de negociação da Receita preocupa AGU",
                tribunal: "Legislativo",
                data: "07/01/2026",
                tags: ["#Transação", "#PGFN", "#ConflitoInstitucional"],
-               resumo: "Aumenta a tensão institucional entre a Receita Federal e a PGFN/AGU devido à ampliação da competência da Receita para negociar transações tributárias antes da inscrição em Dívida Ativa. Procuradores alegam que a medida pode esvaziar a Dívida Ativa e criar um cenário de 'balcão de negócios' duplicado, gerando insegurança jurídica sobre qual órgão detém a palavra final nos acordos.",
-               impacto: "Inteligência para negociação de passivos: O contribuinte pode se ver em meio a um 'fogo cruzado'. A estratégia recomendada é avaliar onde as condições são melhores (RFB ou PGFN) e fechar o acordo rapidamente antes que normas internas restrinjam a competência de um dos órgãos.",
+               resumo: "Tensão institucional entre Receita e PGFN devido à ampliação da competência da Receita para negociar transações tributárias antes da inscrição em Dívida Ativa.",
+               impacto: "Estratégia: Avaliar onde as condições são melhores (RFB ou PGFN) e fechar o acordo rapidamente antes que normas restrinjam a competência.",
                link: "https://www.jota.info/tributos/ampliacao-de-programas-de-negociacao-na-receita-preocupa-agu-e-pgfn",
                pdf: "tensao-agu-receita.pdf.pdf"
             },
             {
-               titulo: "Compliance Cooperativo na Receita ('Confia'): Saneamento e Competitividade",
+               titulo: "Compliance Cooperativo na Receita ('Confia'): Saneamento",
                tribunal: "Receita Federal",
                data: "07/01/2026",
                tags: ["#Compliance", "#Confia", "#Fiscalização"],
-               resumo: "Análise sobre o avanço do programa 'Confia' e o modelo de conformidade cooperativa. A Receita busca transicionar de um modelo puramente punitivo para um de orientação e classificação de risco. Empresas que aderirem voluntariamente à abertura de dados e controle interno terão tratamento diferenciado, com menos travas em renovação de certidões e desembaraço aduaneiro.",
-               impacto: "Mudança de cultura necessária. Clientes de grande porte devem ser orientados a buscar a certificação no Confia. Isso não apenas reduz o risco de autuação, mas torna-se um diferencial competitivo em licitações e contratos com grandes players que exigem compliance estrito.",
+               resumo: "Análise sobre o avanço do programa 'Confia'. A Receita busca transicionar para um modelo de orientação e classificação de risco, privilegiando empresas transparentes.",
+               impacto: "Clientes de grande porte devem buscar certificação no Confia para reduzir risco de autuação e ganhar diferencial competitivo.",
                link: "https://www.conjur.com.br/2026-jan-07/compliance-cooperativo-na-receita-federal-saneamento-de-mercado-competitividade-economica-e-integracao-sistemica/",
                pdf: "compliance-cooperativo.pdf.pdf"
             },
             {
-               titulo: "Crédito acumulado de ICMS para transportadoras: O que é permitido?",
+               titulo: "Crédito acumulado de ICMS para transportadoras",
                tribunal: "Legislativo",
                data: "08/01/2026",
                tags: ["#ICMS", "#Transporte", "#Logística", "#Créditos"],
-               resumo: "Esclarecimento sobre as regras atuais para aproveitamento de créditos de ICMS por transportadoras, um setor que tradicionalmente acumula saldos credores devido à compra de combustível e pneus em diversos estados. O texto detalha as possibilidades de transferência desses créditos para terceiros ou para pagamento de fornecedores, conforme convênios recentes do CONFAZ.",
-               impacto: "Oportunidade de Monetização. Para clientes do setor logístico, o acúmulo de ICMS é um problema de caixa. Devemos revisar a escrituração fiscal para identificar oportunidades de venda ou uso desses créditos para compra de ativos (caminhões/peças), melhorando a liquidez.",
+               resumo: "Esclarecimento sobre regras atuais para aproveitamento e transferência de créditos acumulados de ICMS por transportadoras.",
+               impacto: "Oportunidade de Monetização. Revisar escrituração fiscal para identificar oportunidades de venda ou uso desses créditos.",
                link: "https://apet.org.br/noticia/credito-acumulado-icms-para-transportadoras-o-que-e-permitido/",
                pdf: "icms-transportadoras.pdf.pdf"
             },
             {
-               titulo: "Prefeitura de Belford Roxo prorroga Refis até 26 de junho",
+               titulo: "Prefeitura de Belford Roxo prorroga Refis até junho",
                tribunal: "Legislativo",
                data: "08/01/2026",
                tags: ["#Refis", "#Municipal", "#RioDeJaneiro"],
-               resumo: "Oportunidade local: A Prefeitura de Belford Roxo prorrogou o prazo de adesão ao seu programa de refinanciamento de dívidas (Refis) até junho de 2026. O programa oferece descontos agressivos em multas e juros para contribuintes (pessoas físicas e jurídicas) com débitos de IPTU, ISS e taxas municipais.",
-               impacto: "Ação pontual: Verificar na base de clientes se há empresas com filiais ou operações em Belford Roxo/RJ. A regularização com descontos é uma forma eficiente de limpar certidões negativas municipais essenciais para licitações.",
+               resumo: "Prefeitura de Belford Roxo prorrogou prazo de adesão ao Refis até junho de 2026, com descontos em multas e juros de IPTU e ISS.",
+               impacto: "Verificar na base de clientes se há empresas com operações em Belford Roxo/RJ para regularização com desconto.",
                link: "https://prefeituradebelfordroxo.rj.gov.br/2026/01/08/prefeitura-de-belford-roxo-prorroga-refis-ate-o-dia-26-de-junho-com-descontos-e-parcelamento/",
                pdf: "refis-belford-roxo.pdf.pdf"
             }
         ];
 
-        // FUNÇÃO DE RENDERIZAÇÃO
         function renderizarNoticias() {
-            try {
-                const feed = document.getElementById('feed-noticias');
-                if(!feed) return;
+            const feed = document.getElementById('feed-noticias');
+            const busca = document.getElementById('barra-busca').value.toLowerCase();
+            const filtro = document.getElementById('filtro-tribunal').value;
+            
+            feed.innerHTML = '';
+            
+            const filtradas = noticias.filter(n => {
+                const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
+                const matchFiltro = filtro === 'Todos' || n.tribunal.includes(filtro) || (filtro === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
+                return matchTexto && matchFiltro;
+            });
 
-                const busca = document.getElementById('barra-busca').value.toLowerCase();
-                const filtro = document.getElementById('filtro-tribunal').value;
-                
-                feed.innerHTML = '';
-                
-                const filtradas = noticias.filter(n => {
-                    const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
-                    const matchFiltro = filtro === 'Todos' || n.tribunal.includes(filtro) || (filtro === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
-                    return matchTexto && matchFiltro;
-                });
-
-                if (filtradas.length === 0) {
-                    feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada.</p>';
-                    return;
-                }
-
-                filtradas.forEach(n => {
-                    const temPDF = n.pdf && n.pdf !== "#" && n.pdf !== "";
-                    const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
-                    const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
-                    const pdfAction = temPDF ? "target='_blank'" : "onclick='alert(\"PDF indisponível no momento.\")'";
-                    const pdfText = temPDF ? "📄 Ver PDF" : "🚫 PDF Indisponível";
-
-                    feed.innerHTML += `
-                        <div class="card">
-                            <div class="card-header-row">
-                                <span class="badge-tribunal">${n.tribunal}</span>
-                                <span class="data-news">📅 ${n.data}</span>
-                            </div>
-                            <h2 class="card-title">${n.titulo}</h2>
-                            <div style="margin-bottom:10px;">
-                                ${n.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-                            </div>
-                            <p class="resumo-texto">${n.resumo}</p>
-                            <div class="impacto-box">
-                                <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
-                                <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
-                            </div>
-                            <div class="actions">
-                                <a href="${n.link}" target="_blank" class="btn btn-source">🔗 Ler na Fonte</a>
-                                <a href="${pdfLink}" ${pdfAction} class="btn ${pdfClass}">${pdfText}</a>
-                            </div>
-                        </div>
-                    `;
-                });
-            } catch (e) {
-                console.error(e);
+            if (filtradas.length === 0) {
+                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada.</p>';
+                return;
             }
+
+            filtradas.forEach(n => {
+                const temPDF = n.pdf && n.pdf.length > 0;
+                const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
+                const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
+                const pdfTarget = temPDF ? 'target="_blank"' : 'onclick="alert(\'PDF indisponível.\')"';
+                const pdfText = temPDF ? "📄 Ver PDF" : "🚫 PDF Indisponível";
+
+                feed.innerHTML += `
+                    <div class="card">
+                        <div class="card-header-row">
+                            <span class="badge-tribunal">${n.tribunal}</span>
+                            <span class="data-news">📅 ${n.data}</span>
+                        </div>
+                        <h2 class="card-title">${n.titulo}</h2>
+                        <div style="margin-bottom:10px;">
+                            ${n.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <p class="resumo-texto">${n.resumo}</p>
+                        <div class="impacto-box">
+                            <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
+                            <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
+                        </div>
+                        <div class="actions">
+                            <a href="${n.link}" target="_blank" class="btn btn-source">🔗 Ler na Fonte</a>
+                            <a href="${pdfLink}" ${pdfTarget} class="btn ${pdfClass}">${pdfText}</a>
+                        </div>
+                    </div>
+                `;
+            });
         }
 
-        // INICIALIZA
         document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('pt-BR');
         renderizarNoticias();
     </script>
