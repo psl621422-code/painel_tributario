@@ -86,7 +86,7 @@
 
     <script>
         // LISTA DE NOTÍCIAS (JSON)
-        // OBS: Nomes ajustados para .pdf.pdf conforme print do GitHub
+        // Correção: Todos os arquivos apontando para .pdf.pdf conforme seus prints do GitHub
         const noticias = [
             {
                titulo: "Lula sanciona Lei nº 15.329: Mudanças no IRRF sobre juros ao exterior",
@@ -152,4 +152,113 @@
                titulo: "Governo altera regra de IRRF sobre juros em compras a prazo (Importação)",
                tribunal: "Legislativo",
                data: "08/01/2026",
-               tags: ["#Importação", "#ComércioExterior", "#IRRF
+               tags: ["#Importação", "#ComércioExterior", "#IRRF"],
+               resumo: "Um ponto específico da nova legislação atinge o setor de comércio exterior: a alteração nas regras de IRRF sobre juros pagos a fornecedores externos em compras a prazo. Anteriormente isentas ou com alíquota zero em certas condições, essas operações passam a sofrer tributação se não enquadradas em requisitos estritos de prazo e taxas de mercado.",
+               impacto: "Impacto direto no custo da mercadoria importada (Landed Cost). Importadoras e indústrias que compram insumos a prazo devem revisar suas planilhas de custo, pois o novo imposto encarecerá o produto final no mercado interno.",
+               link: "https://rota.apet.org.br/2026/01/governo-altera-regra-de-irrf-sobre-juros-pagos-ao-exterior-em-compras-a-prazo/",
+               pdf: "irrf-compras-prazo.pdf.pdf"
+            },
+            {
+               titulo: "Ampliação de poderes de negociação da Receita preocupa AGU e PGFN",
+               tribunal: "Legislativo",
+               data: "07/01/2026",
+               tags: ["#Transação", "#PGFN", "#ConflitoInstitucional"],
+               resumo: "Aumenta a tensão institucional entre a Receita Federal e a PGFN/AGU devido à ampliação da competência da Receita para negociar transações tributárias antes da inscrição em Dívida Ativa. Procuradores alegam que a medida pode esvaziar a Dívida Ativa e criar um cenário de 'balcão de negócios' duplicado, gerando insegurança jurídica sobre qual órgão detém a palavra final nos acordos.",
+               impacto: "Inteligência para negociação de passivos: O contribuinte pode se ver em meio a um 'fogo cruzado'. A estratégia recomendada é avaliar onde as condições são melhores (RFB ou PGFN) e fechar o acordo rapidamente antes que normas internas restrinjam a competência de um dos órgãos.",
+               link: "https://www.jota.info/tributos/ampliacao-de-programas-de-negociacao-na-receita-preocupa-agu-e-pgfn",
+               pdf: "tensao-agu-receita.pdf.pdf"
+            },
+            {
+               titulo: "Compliance Cooperativo na Receita ('Confia'): Saneamento e Competitividade",
+               tribunal: "Receita Federal",
+               data: "07/01/2026",
+               tags: ["#Compliance", "#Confia", "#Fiscalização"],
+               resumo: "Análise sobre o avanço do programa 'Confia' e o modelo de conformidade cooperativa. A Receita busca transicionar de um modelo puramente punitivo para um de orientação e classificação de risco. Empresas que aderirem voluntariamente à abertura de dados e controle interno terão tratamento diferenciado, com menos travas em renovação de certidões e desembaraço aduaneiro.",
+               impacto: "Mudança de cultura necessária. Clientes de grande porte devem ser orientados a buscar a certificação no Confia. Isso não apenas reduz o risco de autuação, mas torna-se um diferencial competitivo em licitações e contratos com grandes players que exigem compliance estrito.",
+               link: "https://www.conjur.com.br/2026-jan-07/compliance-cooperativo-na-receita-federal-saneamento-de-mercado-competitividade-economica-e-integracao-sistemica/",
+               pdf: "compliance-cooperativo.pdf.pdf"
+            },
+            {
+               titulo: "Crédito acumulado de ICMS para transportadoras: O que é permitido?",
+               tribunal: "Legislativo",
+               data: "08/01/2026",
+               tags: ["#ICMS", "#Transporte", "#Logística", "#Créditos"],
+               resumo: "Esclarecimento sobre as regras atuais para aproveitamento de créditos de ICMS por transportadoras, um setor que tradicionalmente acumula saldos credores devido à compra de combustível e pneus em diversos estados. O texto detalha as possibilidades de transferência desses créditos para terceiros ou para pagamento de fornecedores, conforme convênios recentes do CONFAZ.",
+               impacto: "Oportunidade de Monetização. Para clientes do setor logístico, o acúmulo de ICMS é um problema de caixa. Devemos revisar a escrituração fiscal para identificar oportunidades de venda ou uso desses créditos para compra de ativos (caminhões/peças), melhorando a liquidez.",
+               link: "https://apet.org.br/noticia/credito-acumulado-icms-para-transportadoras-o-que-e-permitido/",
+               pdf: "icms-transportadoras.pdf.pdf"
+            },
+            {
+               titulo: "Prefeitura de Belford Roxo prorroga Refis até 26 de junho",
+               tribunal: "Legislativo",
+               data: "08/01/2026",
+               tags: ["#Refis", "#Municipal", "#RioDeJaneiro"],
+               resumo: "Oportunidade local: A Prefeitura de Belford Roxo prorrogou o prazo de adesão ao seu programa de refinanciamento de dívidas (Refis) até junho de 2026. O programa oferece descontos agressivos em multas e juros para contribuintes (pessoas físicas e jurídicas) com débitos de IPTU, ISS e taxas municipais.",
+               impacto: "Ação pontual: Verificar na base de clientes se há empresas com filiais ou operações em Belford Roxo/RJ. A regularização com descontos é uma forma eficiente de limpar certidões negativas municipais essenciais para licitações.",
+               link: "https://prefeituradebelfordroxo.rj.gov.br/2026/01/08/prefeitura-de-belford-roxo-prorroga-refis-ate-o-dia-26-de-junho-com-descontos-e-parcelamento/",
+               pdf: "refis-belford-roxo.pdf.pdf"
+            }
+        ];
+
+        // FUNÇÃO DE RENDERIZAÇÃO
+        function renderizarNoticias() {
+            try {
+                const feed = document.getElementById('feed-noticias');
+                if(!feed) return;
+
+                const busca = document.getElementById('barra-busca').value.toLowerCase();
+                const filtro = document.getElementById('filtro-tribunal').value;
+                
+                feed.innerHTML = '';
+                
+                const filtradas = noticias.filter(n => {
+                    const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
+                    const matchFiltro = filtro === 'Todos' || n.tribunal.includes(filtro) || (filtro === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
+                    return matchTexto && matchFiltro;
+                });
+
+                if (filtradas.length === 0) {
+                    feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada.</p>';
+                    return;
+                }
+
+                filtradas.forEach(n => {
+                    const temPDF = n.pdf && n.pdf !== "#" && n.pdf !== "";
+                    const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
+                    const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
+                    const pdfAction = temPDF ? "target='_blank'" : "onclick='alert(\"PDF indisponível no momento.\")'";
+                    const pdfText = temPDF ? "📄 Ver PDF" : "🚫 PDF Indisponível";
+
+                    feed.innerHTML += `
+                        <div class="card">
+                            <div class="card-header-row">
+                                <span class="badge-tribunal">${n.tribunal}</span>
+                                <span class="data-news">📅 ${n.data}</span>
+                            </div>
+                            <h2 class="card-title">${n.titulo}</h2>
+                            <div style="margin-bottom:10px;">
+                                ${n.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                            </div>
+                            <p class="resumo-texto">${n.resumo}</p>
+                            <div class="impacto-box">
+                                <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
+                                <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
+                            </div>
+                            <div class="actions">
+                                <a href="${n.link}" target="_blank" class="btn btn-source">🔗 Ler na Fonte</a>
+                                <a href="${pdfLink}" ${pdfAction} class="btn ${pdfClass}">${pdfText}</a>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        // INICIALIZA
+        document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('pt-BR');
+        renderizarNoticias();
+    </script>
+</body>
+</html>
