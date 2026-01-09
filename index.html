@@ -68,123 +68,113 @@
                 <option value="Reforma Tributária">Reforma Tributária</option>
                 <option value="Receita Federal">Receita Federal / CARF</option>
             </select>
-            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema..." onkeyup="renderizarNoticias()">
+            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Imóveis, IRRF, Créditos)..." onkeyup="renderizarNoticias()">
         </div>
         <div id="feed-noticias"></div>
     </div>
 
     <script>
-        // --- DADOS (Validado: Extensões .pdf.pdf) ---
+        // --- LISTA DE NOTÍCIAS (Configurado para ler .pdf.pdf) ---
         const noticias = [
             {
-               titulo: "Lula sanciona Lei nº 15.329: Mudanças no IRRF sobre juros ao exterior",
+               titulo: "Lula sanciona devedor contumaz com vetos em descontos a bons pagadores",
                tribunal: "Legislativo",
-               data: "08/01/2026",
-               tags: ["#IRRF", "#Remessas", "#Internacional", "#Lei15329"],
-               resumo: "Foi sancionada a Lei nº 15.329/2026, que altera significativamente as regras de tributação de IRRF sobre remessas de juros ao exterior. A nova legislação impõe restrições para a aplicação de alíquotas zero ou reduzidas, exigindo maior substância econômica nas operações.",
-               impacto: "Necessidade imediata de revisão de contratos de mútuo e financiamento internacional. Clientes devem recalcular o custo efetivo da operação (gross-up) sob a nova lei.",
-               link: "https://www.jota.info/tributos/matinal/lula-sanciona-lei-que-altera-regra-sobre-ir-em-remessas-de-juros",
-               pdf: "lei-15329-irrf.pdf.pdf"
+               data: "09/01/2026",
+               tags: ["#DevedorContumaz", "#Sanções", "#Vetos"],
+               resumo: "A sanção da lei que define o devedor contumaz veio acompanhada de vetos presidenciais estratégicos, removendo dispositivos que concederiam descontos automáticos e bônus de adimplência para os 'bons pagadores'. O governo justificou que tais benefícios renunciariam receitas sem contrapartida clara. O foco da norma permanece no endurecimento das regras para quem utiliza a inadimplência como estratégia de negócio, prevendo cancelamento de CNPJ e impedimento de novos negócios.",
+               impacto: "Atenção ao Compliance: A lei fecha o cerco contra estruturas empresariais desenhadas para inadimplência sistemática. Por outro lado, a frustração com o veto aos bônus exige que empresas 'boas pagadoras' busquem outras vias de otimização fiscal, já que o benefício automático esperado foi barrado.",
+               link: "https://www.jota.info/tributos/relatorio-especial/lula-sanciona-devedor-contumaz-com-vetos-em-descontos-a-bons-pagadores",
+               pdf: "sancao-devedor-contumaz-vetos.pdf.pdf"
             },
             {
-               titulo: "Texto Oficial da Lei nº 15.329/2026 (Planalto)",
+               titulo: "Mudanças no ITCMD levam contribuintes a buscar bancas para rever planejamentos sucessórios",
+               tribunal: "Planejamento Sucessório",
+               data: "09/01/2026",
+               tags: ["#ITCMD", "#Sucessão", "#ReformaTributaria", "#Holdings"],
+               resumo: "A iminente progressividade obrigatória do ITCMD (imposto sobre heranças), trazida pela Reforma Tributária, gerou uma corrida aos escritórios de advocacia. Famílias com grandes patrimônios estão antecipando doações e reestruturando holdings familiares para travar a alíquota atual antes que os estados publiquem as novas tabelas progressivas, que podem elevar a tributação para o teto de 8% (ou mais, dependendo de regulamentação) de forma escalonada.",
+               impacto: "Call to Action urgente: O 'timing' é crucial. Devemos provocar reuniões com clientes Private para apresentar cenários comparativos (doação agora vs. sucessão futura). A janela de oportunidade para eficiência tributária na transmissão de bens está se fechando rapidamente.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/09/mudancas-no-itcmd-levam-contribuintes-a-buscar-bancas-para-rever-planejamentos-sucessorios.ghtml",
+               pdf: "mudancas-itcmd-planejamento.pdf.pdf"
+            },
+            {
+               titulo: "Código de Defesa do Contribuinte sancionado com vetos a alguns benefícios",
                tribunal: "Legislativo",
-               data: "08/01/2026",
-               tags: ["#Legislação", "#TextoLegal", "#Consultoria"],
-               resumo: "Disponibilizado o texto integral da Lei nº 15.329, publicada no Diário Oficial. O diploma legal consolida as alterações nas alíquotas de Imposto de Renda Retido na Fonte e estabelece as datas de vigência para as novas regras.",
-               impacto: "Material de consulta obrigatória para a equipe técnica. Recomendamos o cruzamento deste texto com os acordos de bitributação (ADTs) vigentes.",
-               link: "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/Lei/L15329.htm",
-               pdf: "texto-lei-15329.pdf.pdf"
+               data: "09/01/2026",
+               tags: ["#CDC", "#DireitosDoContribuinte", "#Defesa"],
+               resumo: "O tão aguardado Código de Defesa do Contribuinte foi sancionado, consolidando direitos fundamentais e deveres da administração tributária. Contudo, vetos importantes retiraram dispositivos que limitavam o poder de fiscalização e prazos prescricionais mais favoráveis ao contribuinte. A norma avança na uniformização do atendimento e na exigência de motivação dos atos administrativos, mas é menos protetiva do que o projeto original.",
+               impacto: "Ferramenta Processual: O novo Código, mesmo vetado, deve ser utilizado como fundamento preliminar em defesas administrativas para anular autuações que violem o devido processo legal ou a motivação adequada, criando nulidades formais a favor do cliente.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/09/cdigo-de-defesa-do-contribuinte-sancionado-com-vetos-a-alguns-benefcios.ghtml",
+               pdf: "codigo-defesa-contribuinte-vetos.pdf.pdf"
             },
             {
-               titulo: "STJ derruba autuação milionária por uso de ágio derivado de privatização",
-               tribunal: "Judiciário",
-               data: "07/01/2026",
-               tags: ["#STJ", "#Ágio", "#Privatização", "#IRPJ"],
-               resumo: "Em decisão paradigmática, o STJ anulou autuação fiscal que questionava a dedutibilidade de despesas de amortização de ágio gerado em processo de privatização, validando o aproveitamento fiscal do ágio pago pelo adquirente.",
-               impacto: "Precedente valioso para grandes contribuintes. Fortalece teses de defesa em autos de infração que questionam a 'artificialidade' de estruturas de aquisição.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/07/stj-derruba-autuacao-milionaria-por-uso-de-agio-derivado-de-privatizacao.ghtml",
-               pdf: "stj-agio-privatizacao.pdf.pdf"
-            },
-            {
-               titulo: "Reforma Tributária e o limbo dos créditos de PIS/COFINS na transição",
+               titulo: "O contencioso judicial na reforma tributária",
                tribunal: "Reforma Tributária",
-               data: "08/01/2026",
-               tags: ["#ReformaTributaria", "#Creditos", "#PISCOFINS", "#CBS"],
-               resumo: "Artigo alerta para a complexidade das regras de utilização de créditos acumulados de PIS/COFINS durante a transição para a CBS, destacando o risco de 'empoçamento' desses créditos.",
-               impacto: "Ação Consultiva: Auditar estoque de créditos de PIS/COFINS. Estratégia de acelerar a compensação ou monetização antes de 2027.",
-               link: "https://www.conjur.com.br/2026-jan-08/reforma-tributaria-e-as-regras-de-utilizacao-de-creditos-na-transicao-do-pis-cofins-para-a-cbs/",
-               pdf: "creditos-transicao-pis-cbs.pdf.pdf"
+               data: "09/01/2026",
+               tags: ["#Contencioso", "#IBS", "#CBS", "#Judicialização"],
+               resumo: "Análise aprofundada prevê uma explosão de litígios judiciais decorrentes das lacunas e conceitos indeterminados da Reforma Tributária (IBS/CBS). A indefinição sobre 'não cumulatividade plena', base de cálculo e a competência do Comitê Gestor criará um novo contencioso bilionário. O texto alerta que, ao contrário da simplificação prometida, a transição gerará um período de convívio caótico entre normas antigas e novas.",
+               impacto: "Oportunidade de Novos Negócios: O escritório deve se posicionar como especialista em 'Teses de Transição'. Clientes precisarão de mandados de segurança preventivos para garantir créditos e afastar interpretações restritivas do Fisco nos primeiros anos de vigência.",
+               link: "https://valor.globo.com/legislacao/coluna/o-contencioso-judicial-na-reforma-tributaria.ghtml",
+               pdf: "contencioso-judicial-reforma.pdf.pdf"
             },
             {
-               titulo: "Receita disponibiliza REARP: Prazo até 19 de fevereiro",
-               tribunal: "Receita Federal",
-               data: "08/01/2026",
-               tags: ["#REARP", "#Imóveis", "#Regularização", "#Prazo"],
-               resumo: "A Receita Federal abriu oficialmente o prazo para adesão ao Regime Especial de Atualização e Regularização Patrimonial (REARP). O sistema já está operacional e o prazo encerra-se em 19 de fevereiro.",
-               impacto: "Janela de oportunidade curta. Contatar clientes Pessoa Física e Holdings imediatamente para simular se a atualização vale a pena.",
-               link: "https://rota.apet.org.br/2026/01/rearp-atualizacao-receita-federal-disponibiliza-declaracao-com-data-limite-ate-19-de-fevereiro/",
-               pdf: "rearp-prazo-fevereiro.pdf.pdf"
+               titulo: "PIS/Cofins: cana-de-açúcar e o crédito presumido — parte 1",
+               tribunal: "Judiciário",
+               data: "09/01/2026",
+               tags: ["#Agro", "#PISCOFINS", "#CréditoPresumido", "#Cana"],
+               resumo: "Artigo técnico detalha a controvérsia sobre a base de cálculo dos créditos presumidos de PIS/Cofins na cadeia sucroenergética. A discussão gira em torno da inclusão ou não do ICMS e de custos agrícolas na formação desse crédito, fundamental para a margem das usinas. A jurisprudência ainda oscila, mas há caminhos sólidos para defender uma base ampliada, maximizando o ressarcimento.",
+               impacto: "Revisão Fiscal para Usinas: Clientes do setor de açúcar e álcool devem revisar o cálculo do crédito presumido dos últimos 5 anos. Há potencial relevante de recuperação de valores se aplicada a tese de base ampliada defendida no artigo.",
+               link: "https://www.conjur.com.br/2026-jan-09/pis-cofins-cana-de-acucar-e-o-credito-presumido-parte-1/",
+               pdf: "pis-cofins-cana-credito.pdf.pdf"
             },
             {
-               titulo: "Governo estima R$ 1,5 bi com atualização de imóveis (REARP)",
+               titulo: "A economia digital não cabe mais no velho sistema tributário e 2026 vai provar isso",
+               tribunal: "Economia Digital",
+               data: "09/01/2026",
+               tags: ["#EconomiaDigital", "#OCDE", "#Pilar1", "#Pilar2"],
+               resumo: "O texto discute o descompasso entre a legislação tributária brasileira (focada em mercadorias físicas) e a realidade digital (streaming, SaaS, marketplaces). 2026 é apontado como o ano da virada, com a implementação global dos Pilares 1 e 2 da OCDE e a entrada da Reforma Tributária, que tenta capturar essa riqueza intangível. A bitributação internacional e conflitos de competência (ISS x ICMS) serão intensificados.",
+               impacto: "Consultoria Internacional: Empresas de tecnologia e plataformas digitais precisam de 'Tax Assessment' urgente para adequação às regras da OCDE e da Reforma. O risco de dupla tributação é alto e exige planejamento de preços de transferência e revisão de contratos de licenciamento.",
+               link: "https://www.conjur.com.br/2026-jan-09/a-economia-digital-nao-cabe-mais-no-velho-sistema-tributario-e-2026-vai-provar-isso/",
+               pdf: "economia-digital-sistema-tributario.pdf.pdf"
+            },
+            {
+               titulo: "Por voto de qualidade, CARF reforça exigência de liminar para afastar multa de ofício mesmo com sentença favorável",
+               tribunal: "CARF",
+               data: "09/01/2026",
+               tags: ["#CARF", "#MultaDeOficio", "#VotoDeQualidade", "#Processual"],
+               resumo: "Em julgamento desfavorável via voto de qualidade, o CARF decidiu que a mera existência de sentença judicial favorável ao contribuinte, sem liminar expressa suspendendo a exigibilidade, não impede a aplicação da multa de ofício em lançamentos concomitantes. O tribunal administrativo adotou postura formalista, exigindo a suspensão técnica do crédito (art. 151 do CTN) para afastar a penalidade.",
+               impacto: "Alerta Processual: Não basta ajuizar a ação; a obtenção de liminar é indispensável. A estratégia jurídica deve focar na tutela de urgência para suspender a exigibilidade antes de qualquer autuação, blindando o cliente contra multas qualificadas (75% a 150%).",
+               link: "https://apet.org.br/noticia/por-voto-de-qualidade-carf-reforca-exigencia-de-liminar-para-afastar-multa-de-oficio-mesmo-com-sentenca-favoravel/",
+               pdf: "carf-multa-oficio-liminar.pdf.pdf"
+            },
+            {
+               titulo: "CARF afasta tese de SCP e mantém cobrança sobre prestadores de serviços jurídicos",
+               tribunal: "CARF",
+               data: "09/01/2026",
+               tags: ["#SCP", "#Planejamento", "#ServiçosJurídicos", "#Simulação"],
+               resumo: "O CARF descaracterizou uma estrutura de Sociedade em Conta de Participação (SCP) utilizada por prestadores de serviços jurídicos, considerando-a simulação para reduzir a carga tributária incidente sobre a pessoa física. O tribunal entendeu que faltava substância econômica e risco compartilhado, requalificando os rendimentos como trabalho assalariado ou pro-labore, sujeitos à tabela progressiva do IRPF e contribuição previdenciária.",
+               impacto: "Risco para Profissionais Liberais: Estruturas de 'pejotização' via SCP estão na mira. É vital auditar contratos de sócios e associados para garantir que a realidade fática corresponda ao modelo societário, reforçando a autonomia e o risco do negócio para evitar autuações.",
+               link: "https://rota.apet.org.br/2026/01/carf-afasta-tese-de-scp-e-mantem-cobranca-sobre-prestadores-de-servicos-juridicos/",
+               pdf: "carf-scp-servicos-juridicos.pdf.pdf"
+            },
+            {
+               titulo: "A tributação do ISS sobre hospedagem via plataformas digitais",
+               tribunal: "Judiciário",
+               data: "08/01/2026",
+               tags: ["#ISS", "#PlataformasDigitais", "#Hospedagem", "#Airbnb"],
+               resumo: "O debate jurídico avança sobre a natureza da tributação de serviços de hospedagem via apps (como Airbnb). A discussão central é se incide ISS (serviço de agenciamento/hospedagem) ou se trata de locação por temporada (não tributada pelo ISS). Municípios têm editado leis para cobrar o imposto, gerando conflitos com a Lei Complementar 116/03. O artigo defende a não incidência sobre a locação pura.",
+               impacto: "Defesa de Proprietários e Plataformas: Para clientes que gerenciam múltiplos imóveis, a cobrança de ISS pode inviabilizar a margem. A tese de defesa é sólida no sentido de que a locação civil, ainda que via app, não configura prestação de serviço de hotelaria tributável.",
+               link: "https://www.conjur.com.br/2026-jan-08/a-tributacao-do-iss-sobre-hospedagem-via-plataformas-digitais/",
+               pdf: "iss-hospedagem-plataformas.pdf.pdf"
+            },
+            {
+               titulo: "Lula sanciona lei que altera regra sobre IR em remessas de juros",
                tribunal: "Legislativo",
-               data: "08/01/2026",
-               tags: ["#Imóveis", "#GanhoDeCapital", "#Planejamento"],
-               resumo: "Novas instruções detalham que a atualização do valor dos bens imóveis incidirá uma alíquota definitiva, sem possibilidade de deduções futuras, visando antecipar receita.",
-               impacto: "Holdings que planejam vender imóveis nos próximos 2 a 5 anos são as maiores beneficiadas e devem aderir ao programa.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/08/receita-estima-arrecadar-r-15-bilhao-com-atualizacao-do-valor-de-bens-imoveis.ghtml",
-               pdf: "atualizacao-imoveis-valor.pdf.pdf"
-            },
-            {
-               titulo: "Governo altera regra de IRRF sobre juros em compras a prazo",
-               tribunal: "Legislativo",
-               data: "08/01/2026",
-               tags: ["#Importação", "#ComércioExterior", "#IRRF"],
-               resumo: "Alteração nas regras de IRRF sobre juros pagos a fornecedores externos em compras a prazo. Operações antes isentas passam a sofrer tributação se não enquadradas em requisitos estritos.",
-               impacto: "Impacto no custo da mercadoria importada. Importadoras devem revisar suas planilhas de custo, pois o novo imposto encarecerá o produto final.",
-               link: "https://rota.apet.org.br/2026/01/governo-altera-regra-de-irrf-sobre-juros-pagos-ao-exterior-em-compras-a-prazo/",
-               pdf: "irrf-compras-prazo.pdf.pdf"
-            },
-            {
-               titulo: "Ampliação de poderes de negociação da Receita preocupa AGU",
-               tribunal: "Legislativo",
-               data: "07/01/2026",
-               tags: ["#Transação", "#PGFN", "#ConflitoInstitucional"],
-               resumo: "Tensão institucional entre Receita e PGFN devido à ampliação da competência da Receita para negociar transações tributárias antes da inscrição em Dívida Ativa.",
-               impacto: "Estratégia: Avaliar onde as condições são melhores (RFB ou PGFN) e fechar o acordo rapidamente antes que normas restrinjam a competência.",
-               link: "https://www.jota.info/tributos/ampliacao-de-programas-de-negociacao-na-receita-preocupa-agu-e-pgfn",
-               pdf: "tensao-agu-receita.pdf.pdf"
-            },
-            {
-               titulo: "Compliance Cooperativo na Receita ('Confia'): Saneamento",
-               tribunal: "Receita Federal",
-               data: "07/01/2026",
-               tags: ["#Compliance", "#Confia", "#Fiscalização"],
-               resumo: "Análise sobre o avanço do programa 'Confia'. A Receita busca transicionar para um modelo de orientação e classificação de risco, privilegiando empresas transparentes.",
-               impacto: "Clientes de grande porte devem buscar certificação no Confia para reduzir risco de autuação e ganhar diferencial competitivo.",
-               link: "https://www.conjur.com.br/2026-jan-07/compliance-cooperativo-na-receita-federal-saneamento-de-mercado-competitividade-economica-e-integracao-sistemica/",
-               pdf: "compliance-cooperativo.pdf.pdf"
-            },
-            {
-               titulo: "Crédito acumulado de ICMS para transportadoras",
-               tribunal: "Legislativo",
-               data: "08/01/2026",
-               tags: ["#ICMS", "#Transporte", "#Logística", "#Créditos"],
-               resumo: "Esclarecimento sobre regras atuais para aproveitamento e transferência de créditos acumulados de ICMS por transportadoras.",
-               impacto: "Oportunidade de Monetização. Revisar escrituração fiscal para identificar oportunidades de venda ou uso desses créditos.",
-               link: "https://apet.org.br/noticia/credito-acumulado-icms-para-transportadoras-o-que-e-permitido/",
-               pdf: "icms-transportadoras.pdf.pdf"
-            },
-            {
-               titulo: "Prefeitura de Belford Roxo prorroga Refis até junho",
-               tribunal: "Legislativo",
-               data: "08/01/2026",
-               tags: ["#Refis", "#Municipal", "#RioDeJaneiro"],
-               resumo: "Prefeitura de Belford Roxo prorrogou prazo de adesão ao Refis até junho de 2026, com descontos em multas e juros de IPTU e ISS.",
-               impacto: "Verificar na base de clientes se há empresas com operações em Belford Roxo/RJ para regularização com desconto.",
-               link: "https://prefeituradebelfordroxo.rj.gov.br/2026/01/08/prefeitura-de-belford-roxo-prorroga-refis-ate-o-dia-26-de-junho-com-descontos-e-parcelamento/",
-               pdf: "refis-belford-roxo.pdf.pdf"
+               data: "09/01/2026",
+               tags: ["#IRRF", "#Remessas", "#Lei15329", "#Juros"],
+               resumo: "Reforçando a notícia anterior, a sanção da lei que altera o IRRF sobre juros ao exterior consolida o fim de alíquotas favorecidas para operações sem propósito negocial robusto. A nova norma alinha o Brasil às práticas anti-abuso internacionais, impactando diretamente o custo de captação externa de empresas brasileiras.",
+               impacto: "Revisão Financeira: Tesourarias de empresas multinacionais devem refazer o orçamento de 2026 considerando o aumento do 'tax burden' nas operações intercompany. A busca por fontes de financiamento locais pode se tornar mais atrativa comparativamente.",
+               link: "https://www.jota.info/tributos/matinal/lula-sanciona-lei-que-altera-regra-sobre-ir-em-remessas-de-juros",
+               pdf: "sancao-lei-ir-remessas-juros.pdf.pdf"
             }
         ];
 
@@ -207,6 +197,7 @@
             }
 
             filtradas.forEach(n => {
+                // Lógica para ler .pdf.pdf
                 const temPDF = n.pdf && n.pdf.length > 0;
                 const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
                 const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
