@@ -26,14 +26,27 @@
         .subtitulo { font-size: 0.9rem; opacity: 0.8; font-weight: normal; margin-top: 5px; }
 
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px 20px; }
+        
+        /* FILTROS */
         .filtros-container { background: white; padding: 15px; border-radius: 10px; display: flex; gap: 15px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
-        select, input { padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; flex: 1; font-family: 'Inter', sans-serif; min-width: 200px; }
+        
+        /* Estilo dos Selects e Input */
+        select, input { padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: 'Inter', sans-serif; }
+        
+        /* Tamanhos específicos para melhor layout */
+        #filtro-tribunal { flex: 1; min-width: 180px; }
+        #filtro-veiculo { flex: 1; min-width: 150px; }
+        #barra-busca { flex: 2; min-width: 200px; }
 
         .card { background: var(--card-bg); border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
         .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
         
         .card-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        
+        .badge-group { display: flex; gap: 8px; align-items: center; }
         .badge-tribunal { background-color: var(--brand-dark); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .badge-veiculo { background-color: #e2e8f0; color: #475569; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; border: 1px solid #cbd5e1; }
+
         .data-news { font-size: 0.8rem; color: #64748b; font-weight: 500; display: flex; align-items: center; gap: 5px; }
 
         .card-title { font-family: 'Merriweather', serif; font-size: 1.25rem; color: var(--brand-dark); margin: 5px 0 12px 0; }
@@ -62,117 +75,295 @@
     <div class="container">
         <div class="filtros-container">
             <select id="filtro-tribunal" onchange="renderizarNoticias()">
-                <option value="Todos">Todas as Fontes</option>
-                <option value="Judiciário">Judiciário / STJ / STF</option>
+                <option value="Todos">Todos os Temas</option>
+                <option value="Judiciário">Judiciário / STF</option>
                 <option value="Legislativo">Legislativo / Executivo</option>
                 <option value="Reforma Tributária">Reforma Tributária</option>
-                <option value="Receita Federal">Receita Federal / CARF</option>
+                <option value="CARF">CARF / Receita</option>
             </select>
-            <input type="text" id="barra-busca" placeholder="🔍 Buscar por tema (ex: Imóveis, IRRF, Créditos)..." onkeyup="renderizarNoticias()">
+
+            <select id="filtro-veiculo" onchange="renderizarNoticias()">
+                <option value="Todos">Todas as Fontes</option>
+                <option value="Jota">Jota</option>
+                <option value="Valor">Valor Econômico</option>
+                <option value="Conjur">Conjur</option>
+                <option value="APET">APET</option>
+                <option value="Receita Federal">Receita Federal</option>
+            </select>
+
+            <input type="text" id="barra-busca" placeholder="🔍 Buscar por palavra-chave..." onkeyup="renderizarNoticias()">
         </div>
         <div id="feed-noticias"></div>
     </div>
 
     <script>
-        // --- LISTA DE NOTÍCIAS (Configurado para ler .pdf.pdf) ---
+        // --- BASE DE DADOS CONSOLIDADA ---
         const noticias = [
+            // --- NOTÍCIAS NOVAS (12/01) ---
+            {
+               titulo: "Lula deve sancionar 2ª fase da reforma tributária na terça-feira (13/1)",
+               veiculo: "Jota",
+               tribunal: "Legislativo",
+               data: "12/01/2026",
+               tags: ["#ReformaTributaria", "#Sanção", "#Renda"],
+               resumo: "Expectativa de sanção presidencial da segunda etapa da Reforma Tributária, focada na tributação da renda e patrimônio. O texto final trará as definições sobre dividendos e JCP que impactarão o planejamento anual das empresas.",
+               impacto: "Monitoramento em tempo real: A publicação da lei abrirá o prazo para adequação de estruturas societárias e revisão de política de remuneração de acionistas.",
+               link: "https://www.jota.info/tributos/apostas-da-semana/lula-deve-sancionar-2a-fase-da-reforma-tributaria-na-terca-feira-131",
+               pdf: "lula-sancao-2a-fase-reforma.pdf.pdf"
+            },
+            {
+               titulo: "Receita e Comitê Gestor do IBS explicam uso de notas fiscais em 2026",
+               veiculo: "Jota",
+               tribunal: "Reforma Tributária",
+               data: "12/01/2026",
+               tags: ["#IBS", "#CBS", "#NotaFiscal", "#Compliance"],
+               resumo: "Novas diretrizes conjuntas da Receita e do Comitê Gestor detalham o preenchimento das notas fiscais durante o período de convivência. O foco é a segregação correta dos novos tributos para garantir o creditamento.",
+               impacto: "Operacional: Equipes de TI e Fiscal devem validar se o ERP está parametrizado conforme o novo manual técnico para evitar rejeição de notas.",
+               link: "https://www.jota.info/tributos/receita-e-comite-gestor-do-ibs-explicam-uso-de-notas-fiscais-em-2026",
+               pdf: "notas-fiscais-ibs-2026.pdf.pdf"
+            },
+            {
+               titulo: "STF pauta para fevereiro julgamentos que podem custar R$ 519 bilhões para União",
+               veiculo: "APET",
+               tribunal: "Judiciário",
+               data: "12/01/2026",
+               tags: ["#STF", "#Pauta", "#RiscoFiscal"],
+               resumo: "O Supremo incluiu em pauta teses bilionárias, incluindo a discussão sobre a incidência de PIS/Cofins sobre receitas financeiras e crédito de IPI. O impacto fiscal pode levar a modulações de efeitos restritivas.",
+               impacto: "Provisionamento: Verificar a exposição da empresa a essas teses. Há risco alto de 'ganhar e não levar' para o passado caso não haja ação ajuizada antes do julgamento.",
+               link: "https://apet.org.br/noticia/stf-pauta-para-fevereiro-julgamentos-que-podem-custar-r-519-bilhoes-para-uniao/",
+               pdf: "stf-pauta-fevereiro-519bi.pdf.pdf"
+            },
+            {
+               titulo: "Receita Federal pode restringir compensação de benefícios de ICMS por contribuintes",
+               veiculo: "APET",
+               tribunal: "Receita Federal",
+               data: "12/01/2026",
+               tags: ["#ICMS", "#Subvenção", "#IRPJ", "#CSLL"],
+               resumo: "Normativa em estudo pela Receita visa limitar ainda mais o aproveitamento de créditos de subvenção de ICMS para abatimento de IRPJ/CSLL, exigindo prova rígida de aplicação em investimento (capex) e não custeio.",
+               impacto: "Risco de Autuação: Empresas que tratam benefícios fiscais estaduais como lucro não tributável devem auditar seus dossiês comprobatórios de expansão.",
+               link: "https://apet.org.br/noticia/receita-federal-pode-restringir-compensacao-de-beneficios-de-icms-por-contribuintes/",
+               pdf: "receita-restricao-compensacao-icms.pdf.pdf"
+            },
+            {
+               titulo: "Desafios e preparativos para a Reforma Tributária em 2026: o caminho das empresas",
+               veiculo: "Conjur",
+               tribunal: "Reforma Tributária",
+               data: "09/01/2026",
+               tags: ["#GestãoTributária", "#Planejamento", "#Transição"],
+               resumo: "Análise sobre o cronograma prático de implementação da Reforma. O artigo destaca que 2026 é o ano chave para revisão de contratos de longo prazo que possuem cláusulas de impostos (gross-up).",
+               impacto: "Consultoria Contratual: Revisar contratos com fornecedores e clientes para inserir cláusulas de reequilíbrio econômico automático diante da flutuação de alíquotas.",
+               link: "https://www.conjur.com.br/2026-jan-09/desafios-e-preparativos-para-a-reforma-tributaria-em-2026-o-caminho-das-empresas-brasileiras/",
+               pdf: "desafios-preparativos-reforma-2026.pdf.pdf"
+            },
+            {
+               titulo: "Receita corrige erro da época da ditadura sobre tributação de juros ao exterior",
+               veiculo: "Jota",
+               tribunal: "Receita Federal",
+               data: "12/01/2026",
+               tags: ["#IRRF", "#Juros", "#Internacional"],
+               resumo: "Ato declaratório da Receita revoga entendimento anacrônico, alinhando a tributação de juros remetidos ao exterior às práticas modernas e tratados internacionais, eliminando distorções de bases de cálculo antigas.",
+               impacto: "Compliance Internacional: Oportunidade de rever cálculos de IRRF em operações de mútuo antigas que seguiam a regra revogada.",
+               link: "https://www.jota.info/tributos/receita-corrige-erro-da-epoca-da-ditadura-sobre-tributacao-de-juros-ao-exterior",
+               pdf: "receita-erro-ditadura-juros.pdf.pdf"
+            },
+            {
+               titulo: "Empresas do Rio com incentivo fiscal pagarão percentual maior para fundo",
+               veiculo: "Valor",
+               tribunal: "Legislativo",
+               data: "12/01/2026",
+               tags: ["#RioDeJaneiro", "#FEEF", "#Incentivos"],
+               resumo: "Alteração na legislação estadual do RJ aumenta a alíquota de contribuição para o Fundo de Equilíbrio Fiscal (FEEF) exigida de empresas que gozam de benefícios fiscais. O custo efetivo do incentivo diminui.",
+               impacto: "Custo Brasil: Recalcular a vantagem comparativa de manter operações incentivadas no RJ versus outros estados que não aumentaram tais fundos.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/12/empresas-do-rio-com-incentivo-fiscal-pagarao-percentual-maior-para-fundo.ghtml",
+               pdf: "rio-incentivo-fiscal-fundo.pdf.pdf"
+            },
+            {
+               titulo: "Fisco impôs restrições para acesso a fundo de compensação dizem tributaristas",
+               veiculo: "Jota",
+               tribunal: "Reforma Tributária",
+               data: "12/01/2026",
+               tags: ["#FundoDeCompensação", "#BeneficiosFiscais", "#CIAP"],
+               resumo: "Especialistas apontam que a regulamentação do Fundo de Compensação de Benefícios Fiscais (Reforma Tributária) criou travas burocráticas não previstas na Emenda Constitucional, dificultando o acesso aos recursos.",
+               impacto: "Judicialização: Preparar teses para garantir o ressarcimento integral das perdas de incentivos, contestando as restrições infralegais.",
+               link: "https://www.jota.info/tributos/matinal/fisco-impos-restricoes-para-acesso-a-fundo-de-compensacao-dizem-tributaristas",
+               pdf: "fisco-restricoes-fundo-compensacao.pdf.pdf"
+            },
+            {
+               titulo: "Código de Defesa do Contribuinte: chuva no molhado",
+               veiculo: "Valor",
+               tribunal: "Legislativo",
+               data: "12/01/2026",
+               tags: ["#CDC", "#Critica", "#Vetos"],
+               resumo: "Artigo de opinião critica o novo Código de Defesa do Contribuinte, argumentando que, após os vetos presidenciais, a lei tornou-se inócua, apenas repetindo garantias constitucionais sem trazer ferramentas efetivas de defesa.",
+               impacto: "Análise Crítica: O CDC servirá mais como vetor interpretativo do que como base para anulação direta de autos, exigindo criatividade na defesa administrativa.",
+               link: "https://valor.globo.com/legislacao/fio-da-meada/post/2026/01/codigo-de-defesa-do-contribuinte-chuva-no-molhado.ghtml",
+               pdf: "codigo-defesa-contribuinte-critica.pdf.pdf"
+            },
+            {
+               titulo: "O impacto da tokenização de ativos na tributação brasileira",
+               veiculo: "Conjur",
+               tribunal: "Economia Digital",
+               data: "09/01/2026",
+               tags: ["#Tokenização", "#Cripto", "#GanhoDeCapital"],
+               resumo: "Estudo sobre os desafios de tributar ativos tokenizados (Real Estate, Recebíveis). A dúvida persiste sobre se a tributação segue o ativo lastro (imóvel/crédito) ou a natureza mobiliária do token.",
+               impacto: "Inovação: Orientar clientes que emitem ou investem em tokens a buscar consultas formais (Solução de Consulta) para mitigar risco de requalificação fiscal.",
+               link: "https://www.conjur.com.br/2026-jan-09/o-impacto-da-tokenizacao-de-ativos-na-tributacao-brasileira-desafios-e-oportunidades-para-o-fisco-e-empresas/",
+               pdf: "tokenizacao-ativos-tributacao.pdf.pdf"
+            },
+            {
+               titulo: "Reforma Tributária: o que muda a partir de 2026",
+               veiculo: "Conjur",
+               tribunal: "Reforma Tributária",
+               data: "09/01/2026",
+               tags: ["#IBS", "#CBS", "#Transição"],
+               resumo: "Guia prático das alterações vigentes a partir de janeiro de 2026. Foco na extinção gradual dos regimes especiais e início da cobrança plena dos novos tributos em setores piloto.",
+               impacto: "Treinamento: Material essencial para capacitação interna das equipes fiscal e comercial das empresas.",
+               link: "http://conjur.com.br/2026-jan-09/reforma-tributaria-o-que-muda-a-partir-de-2026/",
+               pdf: "reforma-tributaria-mudancas-2026.pdf.pdf"
+            },
+            {
+               titulo: "Atos Recentes da COSIT: Soluções de Consulta 2026",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "12/01/2026",
+               tags: ["#COSIT", "#Consulta", "#SegurançaJuridica"],
+               resumo: "Acesso direto às últimas Soluções de Consulta da COSIT publicadas em 2026. Acompanhar o entendimento do fisco é vital para evitar autuações por interpretação divergente da norma.",
+               impacto: "Compliance: Verificar periodicamente se alguma nova solução de consulta altera o entendimento aplicado nas apurações mensais da empresa.",
+               link: "https://normas.receita.fazenda.gov.br/sijut2consulta/consulta.action?facetsExistentes=anoAtoFacet%2C%2CsiglaOrgaoFacet&orgaosSelecionados=&tiposAtosSelecionados=&lblTiposAtosSelecionados=&ordemColuna=&ordemDirecao=&tipoConsulta=formulario&tipoAtoFacet=&siglaOrgaoFacet=Cosit&anoAtoFacet=2026&termoBusca=&numero_ato=&tipoData=2&dt_inicio=&dt_fim=&ano_ato=&optOrdem=Publicacao_DESC",
+               pdf: "cosit-atos-recentes-2026.pdf.pdf"
+            },
+             // --- DUPLICATAS TRATADAS (Mantendo links diferentes para fontes diferentes) ---
+            {
+               titulo: "Receita Federal pode restringir compensação de benefícios de ICMS (Visão Valor)",
+               veiculo: "Valor",
+               tribunal: "Receita Federal",
+               data: "12/01/2026",
+               tags: ["#ICMS", "#Subvenção", "#ValorEconomico"],
+               resumo: "Reportagem do Valor Econômico reforça a tendência de endurecimento da Receita contra o uso de créditos de ICMS para abater IRPJ, detalhando os setores mais afetados (Varejo e Indústria).",
+               impacto: "Confirmação de Tendência: A repercussão em múltiplos veículos confirma que este será um foco de fiscalização em 2026.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/12/receita-federal-pode-restringir-compensacao-de-beneficios-de-icms-por-contribuintes.ghtml",
+               pdf: "valor-restricao-compensacao-icms.pdf.pdf"
+            },
+             {
+               titulo: "STF pauta julgamentos de R$ 519 bilhões (Visão Valor)",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "10/01/2026",
+               tags: ["#STF", "#Pauta", "#ValorEconomico"],
+               resumo: "O Valor destaca o impacto econômico sistêmico da pauta de fevereiro do STF, com foco na preocupação da equipe econômica do governo com o possível rombo nas contas públicas.",
+               impacto: "Risco Político: O alto valor envolvido aumenta a pressão política sobre os ministros para decisões pró-fisco ou modulações severas.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/10/stf-pauta-para-fevereiro-julgamentos-que-podem-custar-r-519-bilhoes-para-uniao.ghtml",
+               pdf: "valor-stf-pauta-519bi.pdf.pdf"
+            },
+
+            // --- NOTÍCIAS ANTERIORES (Atualizadas com campo 'veiculo') ---
             {
                titulo: "Lula sanciona devedor contumaz com vetos em descontos a bons pagadores",
+               veiculo: "Jota",
                tribunal: "Legislativo",
                data: "09/01/2026",
                tags: ["#DevedorContumaz", "#Sanções", "#Vetos"],
-               resumo: "A sanção da lei que define o devedor contumaz veio acompanhada de vetos presidenciais estratégicos, removendo dispositivos que concederiam descontos automáticos e bônus de adimplência para os 'bons pagadores'. O governo justificou que tais benefícios renunciariam receitas sem contrapartida clara. O foco da norma permanece no endurecimento das regras para quem utiliza a inadimplência como estratégia de negócio, prevendo cancelamento de CNPJ e impedimento de novos negócios.",
-               impacto: "Atenção ao Compliance: A lei fecha o cerco contra estruturas empresariais desenhadas para inadimplência sistemática. Por outro lado, a frustração com o veto aos bônus exige que empresas 'boas pagadoras' busquem outras vias de otimização fiscal, já que o benefício automático esperado foi barrado.",
+               resumo: "A sanção da lei que define o devedor contumaz veio acompanhada de vetos presidenciais estratégicos, removendo dispositivos que concederiam descontos automáticos.",
+               impacto: "Atenção ao Compliance: A lei fecha o cerco contra estruturas empresariais desenhadas para inadimplência sistemática.",
                link: "https://www.jota.info/tributos/relatorio-especial/lula-sanciona-devedor-contumaz-com-vetos-em-descontos-a-bons-pagadores",
                pdf: "sancao-devedor-contumaz-vetos.pdf.pdf"
             },
             {
-               titulo: "Mudanças no ITCMD levam contribuintes a buscar bancas para rever planejamentos sucessórios",
+               titulo: "Mudanças no ITCMD levam contribuintes a buscar bancas para rever planejamentos",
+               veiculo: "Valor",
                tribunal: "Planejamento Sucessório",
                data: "09/01/2026",
-               tags: ["#ITCMD", "#Sucessão", "#ReformaTributaria", "#Holdings"],
-               resumo: "A iminente progressividade obrigatória do ITCMD (imposto sobre heranças), trazida pela Reforma Tributária, gerou uma corrida aos escritórios de advocacia. Famílias com grandes patrimônios estão antecipando doações e reestruturando holdings familiares para travar a alíquota atual antes que os estados publiquem as novas tabelas progressivas, que podem elevar a tributação para o teto de 8% (ou mais, dependendo de regulamentação) de forma escalonada.",
-               impacto: "Call to Action urgente: O 'timing' é crucial. Devemos provocar reuniões com clientes Private para apresentar cenários comparativos (doação agora vs. sucessão futura). A janela de oportunidade para eficiência tributária na transmissão de bens está se fechando rapidamente.",
+               tags: ["#ITCMD", "#Sucessão", "#ReformaTributaria"],
+               resumo: "A iminente progressividade obrigatória do ITCMD gerou uma corrida aos escritórios de advocacia para antecipar doações.",
+               impacto: "Call to Action urgente: O 'timing' é crucial. Devemos provocar reuniões com clientes Private.",
                link: "https://valor.globo.com/legislacao/noticia/2026/01/09/mudancas-no-itcmd-levam-contribuintes-a-buscar-bancas-para-rever-planejamentos-sucessorios.ghtml",
                pdf: "mudancas-itcmd-planejamento.pdf.pdf"
             },
             {
                titulo: "Código de Defesa do Contribuinte sancionado com vetos a alguns benefícios",
+               veiculo: "Valor",
                tribunal: "Legislativo",
                data: "09/01/2026",
                tags: ["#CDC", "#DireitosDoContribuinte", "#Defesa"],
-               resumo: "O tão aguardado Código de Defesa do Contribuinte foi sancionado, consolidando direitos fundamentais e deveres da administração tributária. Contudo, vetos importantes retiraram dispositivos que limitavam o poder de fiscalização e prazos prescricionais mais favoráveis ao contribuinte. A norma avança na uniformização do atendimento e na exigência de motivação dos atos administrativos, mas é menos protetiva do que o projeto original.",
-               impacto: "Ferramenta Processual: O novo Código, mesmo vetado, deve ser utilizado como fundamento preliminar em defesas administrativas para anular autuações que violem o devido processo legal ou a motivação adequada, criando nulidades formais a favor do cliente.",
+               resumo: "Código sancionado consolida direitos, mas vetos retiraram limites à fiscalização e prazos prescricionais favoráveis.",
+               impacto: "Ferramenta Processual: Utilizar como fundamento preliminar em defesas administrativas para anular autuações.",
                link: "https://valor.globo.com/legislacao/noticia/2026/01/09/cdigo-de-defesa-do-contribuinte-sancionado-com-vetos-a-alguns-benefcios.ghtml",
                pdf: "codigo-defesa-contribuinte-vetos.pdf.pdf"
             },
             {
                titulo: "O contencioso judicial na reforma tributária",
+               veiculo: "Valor",
                tribunal: "Reforma Tributária",
                data: "09/01/2026",
                tags: ["#Contencioso", "#IBS", "#CBS", "#Judicialização"],
-               resumo: "Análise aprofundada prevê uma explosão de litígios judiciais decorrentes das lacunas e conceitos indeterminados da Reforma Tributária (IBS/CBS). A indefinição sobre 'não cumulatividade plena', base de cálculo e a competência do Comitê Gestor criará um novo contencioso bilionário. O texto alerta que, ao contrário da simplificação prometida, a transição gerará um período de convívio caótico entre normas antigas e novas.",
-               impacto: "Oportunidade de Novos Negócios: O escritório deve se posicionar como especialista em 'Teses de Transição'. Clientes precisarão de mandados de segurança preventivos para garantir créditos e afastar interpretações restritivas do Fisco nos primeiros anos de vigência.",
+               resumo: "Análise prevê explosão de litígios decorrentes das lacunas da Reforma Tributária e indefinições sobre não cumulatividade.",
+               impacto: "Oportunidade: Escritório deve se posicionar como especialista em 'Teses de Transição'.",
                link: "https://valor.globo.com/legislacao/coluna/o-contencioso-judicial-na-reforma-tributaria.ghtml",
                pdf: "contencioso-judicial-reforma.pdf.pdf"
             },
             {
                titulo: "PIS/Cofins: cana-de-açúcar e o crédito presumido — parte 1",
+               veiculo: "Conjur",
                tribunal: "Judiciário",
                data: "09/01/2026",
-               tags: ["#Agro", "#PISCOFINS", "#CréditoPresumido", "#Cana"],
-               resumo: "Artigo técnico detalha a controvérsia sobre a base de cálculo dos créditos presumidos de PIS/Cofins na cadeia sucroenergética. A discussão gira em torno da inclusão ou não do ICMS e de custos agrícolas na formação desse crédito, fundamental para a margem das usinas. A jurisprudência ainda oscila, mas há caminhos sólidos para defender uma base ampliada, maximizando o ressarcimento.",
-               impacto: "Revisão Fiscal para Usinas: Clientes do setor de açúcar e álcool devem revisar o cálculo do crédito presumido dos últimos 5 anos. Há potencial relevante de recuperação de valores se aplicada a tese de base ampliada defendida no artigo.",
+               tags: ["#Agro", "#PISCOFINS", "#CréditoPresumido"],
+               resumo: "Artigo técnico detalha controvérsia sobre base de cálculo dos créditos presumidos de PIS/Cofins na cadeia sucroenergética.",
+               impacto: "Revisão Fiscal: Clientes do setor de açúcar e álcool devem revisar cálculo do crédito presumido.",
                link: "https://www.conjur.com.br/2026-jan-09/pis-cofins-cana-de-acucar-e-o-credito-presumido-parte-1/",
                pdf: "pis-cofins-cana-credito.pdf.pdf"
             },
             {
-               titulo: "A economia digital não cabe mais no velho sistema tributário e 2026 vai provar isso",
+               titulo: "A economia digital não cabe mais no velho sistema tributário",
+               veiculo: "Conjur",
                tribunal: "Economia Digital",
                data: "09/01/2026",
-               tags: ["#EconomiaDigital", "#OCDE", "#Pilar1", "#Pilar2"],
-               resumo: "O texto discute o descompasso entre a legislação tributária brasileira (focada em mercadorias físicas) e a realidade digital (streaming, SaaS, marketplaces). 2026 é apontado como o ano da virada, com a implementação global dos Pilares 1 e 2 da OCDE e a entrada da Reforma Tributária, que tenta capturar essa riqueza intangível. A bitributação internacional e conflitos de competência (ISS x ICMS) serão intensificados.",
-               impacto: "Consultoria Internacional: Empresas de tecnologia e plataformas digitais precisam de 'Tax Assessment' urgente para adequação às regras da OCDE e da Reforma. O risco de dupla tributação é alto e exige planejamento de preços de transferência e revisão de contratos de licenciamento.",
+               tags: ["#EconomiaDigital", "#OCDE", "#Pilar1"],
+               resumo: "Texto discute descompasso entre legislação tributária e realidade digital, apontando 2026 como ano da virada com a Reforma.",
+               impacto: "Consultoria Internacional: Empresas de tecnologia precisam de 'Tax Assessment' urgente.",
                link: "https://www.conjur.com.br/2026-jan-09/a-economia-digital-nao-cabe-mais-no-velho-sistema-tributario-e-2026-vai-provar-isso/",
                pdf: "economia-digital-sistema-tributario.pdf.pdf"
             },
             {
-               titulo: "Por voto de qualidade, CARF reforça exigência de liminar para afastar multa de ofício mesmo com sentença favorável",
+               titulo: "Por voto de qualidade, CARF reforça exigência de liminar",
+               veiculo: "APET",
                tribunal: "CARF",
                data: "09/01/2026",
-               tags: ["#CARF", "#MultaDeOficio", "#VotoDeQualidade", "#Processual"],
-               resumo: "Em julgamento desfavorável via voto de qualidade, o CARF decidiu que a mera existência de sentença judicial favorável ao contribuinte, sem liminar expressa suspendendo a exigibilidade, não impede a aplicação da multa de ofício em lançamentos concomitantes. O tribunal administrativo adotou postura formalista, exigindo a suspensão técnica do crédito (art. 151 do CTN) para afastar a penalidade.",
-               impacto: "Alerta Processual: Não basta ajuizar a ação; a obtenção de liminar é indispensável. A estratégia jurídica deve focar na tutela de urgência para suspender a exigibilidade antes de qualquer autuação, blindando o cliente contra multas qualificadas (75% a 150%).",
+               tags: ["#CARF", "#MultaDeOficio", "#VotoDeQualidade"],
+               resumo: "CARF decidiu que sentença favorável sem liminar expressa não impede multa de ofício em lançamentos concomitantes.",
+               impacto: "Alerta Processual: Obtenção de liminar é indispensável para afastar penalidade.",
                link: "https://apet.org.br/noticia/por-voto-de-qualidade-carf-reforca-exigencia-de-liminar-para-afastar-multa-de-oficio-mesmo-com-sentenca-favoravel/",
                pdf: "carf-multa-oficio-liminar.pdf.pdf"
             },
             {
-               titulo: "CARF afasta tese de SCP e mantém cobrança sobre prestadores de serviços jurídicos",
+               titulo: "CARF afasta tese de SCP e mantém cobrança sobre serviços jurídicos",
+               veiculo: "APET",
                tribunal: "CARF",
                data: "09/01/2026",
-               tags: ["#SCP", "#Planejamento", "#ServiçosJurídicos", "#Simulação"],
-               resumo: "O CARF descaracterizou uma estrutura de Sociedade em Conta de Participação (SCP) utilizada por prestadores de serviços jurídicos, considerando-a simulação para reduzir a carga tributária incidente sobre a pessoa física. O tribunal entendeu que faltava substância econômica e risco compartilhado, requalificando os rendimentos como trabalho assalariado ou pro-labore, sujeitos à tabela progressiva do IRPF e contribuição previdenciária.",
-               impacto: "Risco para Profissionais Liberais: Estruturas de 'pejotização' via SCP estão na mira. É vital auditar contratos de sócios e associados para garantir que a realidade fática corresponda ao modelo societário, reforçando a autonomia e o risco do negócio para evitar autuações.",
+               tags: ["#SCP", "#Planejamento", "#ServiçosJurídicos"],
+               resumo: "CARF descaracterizou SCP de prestadores de serviços jurídicos, considerando simulação para reduzir carga tributária.",
+               impacto: "Risco: Estruturas de 'pejotização' via SCP estão na mira.",
                link: "https://rota.apet.org.br/2026/01/carf-afasta-tese-de-scp-e-mantem-cobranca-sobre-prestadores-de-servicos-juridicos/",
                pdf: "carf-scp-servicos-juridicos.pdf.pdf"
             },
             {
                titulo: "A tributação do ISS sobre hospedagem via plataformas digitais",
+               veiculo: "Conjur",
                tribunal: "Judiciário",
                data: "08/01/2026",
-               tags: ["#ISS", "#PlataformasDigitais", "#Hospedagem", "#Airbnb"],
-               resumo: "O debate jurídico avança sobre a natureza da tributação de serviços de hospedagem via apps (como Airbnb). A discussão central é se incide ISS (serviço de agenciamento/hospedagem) ou se trata de locação por temporada (não tributada pelo ISS). Municípios têm editado leis para cobrar o imposto, gerando conflitos com a Lei Complementar 116/03. O artigo defende a não incidência sobre a locação pura.",
-               impacto: "Defesa de Proprietários e Plataformas: Para clientes que gerenciam múltiplos imóveis, a cobrança de ISS pode inviabilizar a margem. A tese de defesa é sólida no sentido de que a locação civil, ainda que via app, não configura prestação de serviço de hotelaria tributável.",
+               tags: ["#ISS", "#PlataformasDigitais", "#Hospedagem"],
+               resumo: "Debate sobre natureza da tributação de hospedagem via apps (Airbnb). Discussão se incide ISS ou se é locação por temporada.",
+               impacto: "Defesa: Tese sólida de que locação civil via app não configura hotelaria tributável.",
                link: "https://www.conjur.com.br/2026-jan-08/a-tributacao-do-iss-sobre-hospedagem-via-plataformas-digitais/",
                pdf: "iss-hospedagem-plataformas.pdf.pdf"
             },
             {
                titulo: "Lula sanciona lei que altera regra sobre IR em remessas de juros",
+               veiculo: "Jota",
                tribunal: "Legislativo",
                data: "09/01/2026",
-               tags: ["#IRRF", "#Remessas", "#Lei15329", "#Juros"],
-               resumo: "Reforçando a notícia anterior, a sanção da lei que altera o IRRF sobre juros ao exterior consolida o fim de alíquotas favorecidas para operações sem propósito negocial robusto. A nova norma alinha o Brasil às práticas anti-abuso internacionais, impactando diretamente o custo de captação externa de empresas brasileiras.",
-               impacto: "Revisão Financeira: Tesourarias de empresas multinacionais devem refazer o orçamento de 2026 considerando o aumento do 'tax burden' nas operações intercompany. A busca por fontes de financiamento locais pode se tornar mais atrativa comparativamente.",
+               tags: ["#IRRF", "#Remessas", "#Lei15329"],
+               resumo: "Sanção da lei que altera IRRF sobre juros ao exterior consolida fim de alíquotas favorecidas.",
+               impacto: "Revisão Financeira: Tesourarias devem refazer orçamento de 2026 considerando aumento do custo.",
                link: "https://www.jota.info/tributos/matinal/lula-sanciona-lei-que-altera-regra-sobre-ir-em-remessas-de-juros",
                pdf: "sancao-lei-ir-remessas-juros.pdf.pdf"
             }
@@ -181,33 +372,45 @@
         function renderizarNoticias() {
             const feed = document.getElementById('feed-noticias');
             const busca = document.getElementById('barra-busca').value.toLowerCase();
-            const filtro = document.getElementById('filtro-tribunal').value;
+            const filtroTribunal = document.getElementById('filtro-tribunal').value;
+            const filtroVeiculo = document.getElementById('filtro-veiculo').value;
             
             feed.innerHTML = '';
             
             const filtradas = noticias.filter(n => {
                 const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
-                const matchFiltro = filtro === 'Todos' || n.tribunal.includes(filtro) || (filtro === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
-                return matchTexto && matchFiltro;
+                
+                // Lógica Filtro Tribunal
+                const matchTribunal = filtroTribunal === 'Todos' || n.tribunal.includes(filtroTribunal) || (filtroTribunal === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
+                
+                // Lógica Filtro Veículo (NOVO)
+                const matchVeiculo = filtroVeiculo === 'Todos' || n.veiculo === filtroVeiculo;
+
+                return matchTexto && matchTribunal && matchVeiculo;
             });
 
             if (filtradas.length === 0) {
-                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada.</p>';
+                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada com esses filtros.</p>';
                 return;
             }
 
             filtradas.forEach(n => {
-                // Lógica para ler .pdf.pdf
                 const temPDF = n.pdf && n.pdf.length > 0;
                 const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
                 const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
                 const pdfTarget = temPDF ? 'target="_blank"' : 'onclick="alert(\'PDF indisponível.\')"';
                 const pdfText = temPDF ? "📄 Ver PDF" : "🚫 PDF Indisponível";
 
+                // Badges dinâmicos
+                let badges = `<span class="badge-tribunal">${n.tribunal}</span>`;
+                if(n.veiculo) {
+                    badges += `<span class="badge-veiculo">${n.veiculo}</span>`;
+                }
+
                 feed.innerHTML += `
                     <div class="card">
                         <div class="card-header-row">
-                            <span class="badge-tribunal">${n.tribunal}</span>
+                            <div class="badge-group">${badges}</div>
                             <span class="data-news">📅 ${n.data}</span>
                         </div>
                         <h2 class="card-title">${n.titulo}</h2>
