@@ -89,3 +89,142 @@
                 <option value="APET">APET / Rota</option>
                 <option value="Receita Federal">Receita Federal</option>
             </select>
+
+            <input type="text" id="barra-busca" placeholder="🔍 Buscar por palavra-chave..." onkeyup="renderizarNoticias()">
+        </div>
+        <div id="feed-noticias"></div>
+    </div>
+
+    <script>
+        // --- BASE DE DADOS CONSOLIDADA (16/01/2026) ---
+        const noticias = [
+            {
+               titulo: "Lei extingue multa por erro em classificação fiscal na importação",
+               veiculo: "Valor",
+               tribunal: "Legislativo",
+               data: "16/01/2026",
+               tags: ["#Aduaneiro", "#Multas", "#ClassificaçãoFiscal", "#NCM"],
+               resumo: "Nova legislação elimina a multa isolada aplicada por simples erro de classificação fiscal (NCM) na importação, quando não há prejuízo ao recolhimento de tributos ou dolo. A norma prestigia a boa-fé e reduz o contencioso aduaneiro puramente formal.",
+               impacto: "Redução de Passivo: Vitórias para importadores. Revisar autos de infração em andamento baseados apenas em erro formal de NCM para pedir cancelamento com base na retroatividade da lei mais benéfica.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/16/lei-extingue-multa-por-erro-em-classificacao-fiscal.ghtml",
+               pdf: "lei-extingue-multa-classificacao-fiscal.pdf.pdf"
+            },
+            {
+               titulo: "CONFAZ estende em um mês prazos para Refis de ICMS autorizados em 2025",
+               veiculo: "Jota",
+               tribunal: "Legislativo",
+               data: "16/01/2026",
+               tags: ["#ICMS", "#Refis", "#CONFAZ", "#Prazos"],
+               resumo: "O Conselho Nacional de Política Fazendária (CONFAZ) prorrogou por 30 dias os prazos finais para adesão a programas de parcelamento (Refis) de ICMS que haviam sido autorizados em convênios de 2025. A medida visa dar fôlego aos contribuintes que não conseguiram aderir a tempo.",
+               impacto: "Oportunidade de Caixa: Revisar imediatamente a situação fiscal de filiais estaduais. Contribuintes que perderam o prazo original ganham uma última chance de regularizar débitos com descontos de multas e juros.",
+               link: "https://www.jota.info/tributos/matinal/confaz-estende-em-um-mes-prazos-para-refis-de-icms-autorizados-em-2025",
+               pdf: "confaz-prorrogacao-refis-icms.pdf.pdf"
+            },
+            {
+               titulo: "Por voto de qualidade, CARF valida tributação dos lucros de controlada no exterior",
+               veiculo: "APET",
+               tribunal: "CARF",
+               data: "16/01/2026",
+               tags: ["#CARF", "#LucrosNoExterior", "#IRPJ", "#CSLL"],
+               resumo: "Em julgamento apertado decidido pelo voto de qualidade, o CARF manteve a tributação automática (em 31 de dezembro) dos lucros de controladas no exterior, afastando a tese de disponibilização efetiva. A decisão reforça o entendimento pró-fisco sobre a Lei 12.973/14.",
+               impacto: "Risco Imediato: Empresas com offshore ou filiais operacionais devem manter o provisionamento do IRPJ/CSLL sobre o lucro universal. A tese de defesa administrativa perde força, exigindo judicialização.",
+               link: "https://rota.apet.org.br/2026/01/por-voto-de-qualidade-carf-valida-tributacao-dos-lucros-de-controlada-no-exterior/",
+               pdf: "carf-voto-qualidade-lucros-exterior.pdf.pdf"
+            },
+            {
+               titulo: "Especialistas veem ganhos para grupos brasileiros com 'side-by-side' da OCDE",
+               veiculo: "Jota",
+               tribunal: "Internacional",
+               data: "16/01/2026",
+               tags: ["#OCDE", "#PreçosTransferência", "#Internacional"],
+               resumo: "Análise sobre o novo mecanismo 'side-by-side' da OCDE, que permite a comparação simultânea de dados fiscais entre países. Especialistas apontam que a ferramenta reduzirá litígios de dupla tributação para multinacionais brasileiras, facilitando acordos antecipados de preços (APAs).",
+               impacto: "Compliance Internacional: Grupos multinacionais devem preparar seus dados para essa transparência total. A vantagem é a maior segurança jurídica e celeridade na resolução de controvérsias internacionais.",
+               link: "https://www.jota.info/tributos/relatorio-especial/especialistas-veem-ganhos-para-grupos-brasileiros-com-side-by-side-da-ocde",
+               pdf: "ocde-side-by-side-ganhos-brasileiros.pdf.pdf"
+            },
+            {
+               titulo: "Transação tributária e a modernização do fisco",
+               veiculo: "Valor",
+               tribunal: "Receita Federal",
+               data: "16/01/2026",
+               tags: ["#Transação", "#PGFN", "#Modernização"],
+               resumo: "Artigo analisa a consolidação da Transação Tributária como principal ferramenta de recuperação de crédito. O texto destaca a mudança de postura do Fisco, saindo do litígio eterno para a composição consensual, e os benefícios de descontos e uso de prejuízo fiscal.",
+               impacto: "Estratégia de Dívida: Reforça a necessidade de monitorar editais de transação ativos. A via consensual se confirma como a mais eficiente para limpeza de passivo tributário e regularidade fiscal.",
+               link: "https://valor.globo.com/legislacao/coluna/transacao-tributaria-e-a-modernizacao-do-fisco.ghtml",
+               pdf: "transacao-tributaria-modernizacao-fisco.pdf.pdf"
+            },
+            {
+               titulo: "Brasileiro residente no exterior não precisa declarar IR, reafirma Justiça",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "16/01/2026",
+               tags: ["#IRPF", "#Exterior", "#SaídaDefinitiva"],
+               resumo: "Decisão judicial reafirma que brasileiros que fizeram a Declaração de Saída Definitiva do País não estão obrigados a apresentar Declaração de Ajuste Anual, mesmo que mantenham bens no Brasil (sujeitos à tributação exclusiva na fonte ou definitiva).",
+               impacto: "Gestão de Expatriados: Segurança para clientes Private que mudaram de domicílio fiscal. Importante apenas garantir que a Saída Definitiva foi formalizada corretamente para evitar malha fina.",
+               link: "https://www.conjur.com.br/2026-jan-16/brasileiro-residente-no-exterior-nao-precisa-declarar-ir/",
+               pdf: "ir-brasileiro-residente-exterior.pdf.pdf"
+            }
+        ];
+
+        function renderizarNoticias() {
+            const feed = document.getElementById('feed-noticias');
+            const busca = document.getElementById('barra-busca').value.toLowerCase();
+            const filtroTribunal = document.getElementById('filtro-tribunal').value;
+            const filtroVeiculo = document.getElementById('filtro-veiculo').value;
+            
+            feed.innerHTML = '';
+            
+            const filtradas = noticias.filter(n => {
+                const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
+                const matchTribunal = filtroTribunal === 'Todos' || n.tribunal.includes(filtroTribunal) || (filtroTribunal === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
+                const matchVeiculo = filtroVeiculo === 'Todos' || n.veiculo === filtroVeiculo;
+
+                return matchTexto && matchTribunal && matchVeiculo;
+            });
+
+            if (filtradas.length === 0) {
+                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada com esses filtros.</p>';
+                return;
+            }
+
+            filtradas.forEach(n => {
+                const temPDF = n.pdf && n.pdf.length > 0;
+                const pdfLink = temPDF ? n.pdf : "javascript:void(0)";
+                const pdfClass = temPDF ? "btn-pdf" : "btn-pdf btn-disabled";
+                const pdfTarget = temPDF ? 'target="_blank"' : 'onclick="alert(\'PDF indisponível.\')"';
+                const pdfText = temPDF ? "📄 Ver PDF" : "🚫 PDF Indisponível";
+
+                let badges = `<span class="badge-tribunal">${n.tribunal}</span>`;
+                if(n.veiculo) {
+                    badges += `<span class="badge-veiculo">${n.veiculo}</span>`;
+                }
+
+                feed.innerHTML += `
+                    <div class="card">
+                        <div class="card-header-row">
+                            <div class="badge-group">${badges}</div>
+                            <span class="data-news">📅 ${n.data}</span>
+                        </div>
+                        <h2 class="card-title">${n.titulo}</h2>
+                        <div style="margin-bottom:10px;">
+                            ${n.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <p class="resumo-texto">${n.resumo}</p>
+                        <div class="impacto-box">
+                            <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
+                            <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
+                        </div>
+                        <div class="actions">
+                            <a href="${n.link}" target="_blank" class="btn btn-source">🔗 Ler na Fonte</a>
+                            <a href="${pdfLink}" ${pdfTarget} class="btn ${pdfClass}">${pdfText}</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('pt-BR');
+        renderizarNoticias();
+    </script>
+</body>
+</html>
