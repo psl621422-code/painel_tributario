@@ -78,6 +78,7 @@
                 <option value="Legislativo">Legislativo / Executivo</option>
                 <option value="Reforma Tributária">Reforma Tributária</option>
                 <option value="CARF">CARF / Receita</option>
+                <option value="Internacional">Internacional / OCDE</option>
             </select>
 
             <select id="filtro-veiculo" onchange="renderizarNoticias()">
@@ -95,140 +96,85 @@
     </div>
 
     <script>
-        // --- BASE DE DADOS CONSOLIDADA (15/01/2026) ---
+        // --- BASE DE DADOS CONSOLIDADA (16/01/2026) ---
         // Configurado para ler arquivos com extensão .pdf.pdf
         const noticias = [
             {
-               titulo: "Norma regulamenta e veda antecipação de ITCMD sobre Trust no exterior",
+               titulo: "Lei extingue multa por erro em classificação fiscal na importação",
                veiculo: "Valor",
                tribunal: "Legislativo",
-               data: "15/01/2026",
-               tags: ["#ITCMD", "#Trust", "#PlanejamentoSucessório", "#Offshore"],
-               resumo: "Nova norma regulamentadora proíbe expressamente a cobrança antecipada de ITCMD sobre estruturas de Trust no exterior antes da efetiva distribuição aos beneficiários. A medida visa dar segurança jurídica e evitar a bitributação ou tributação sobre patrimônio ainda não disponível.",
-               impacto: "Planejamento Patrimonial: Vitória para estruturas de Wealth Management. É fundamental revisar os Trusts dos clientes para garantir que não houve recolhimento indevido e ajustar as expectativas de sucessão.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/15/norma-regulamenta-e-veda-antecipacao-de-itcmd-sobre-trust.ghtml",
-               pdf: "norma-veda-antecipacao-itcmd-trust.pdf.pdf"
+               data: "16/01/2026",
+               tags: ["#Aduaneiro", "#Multas", "#ClassificaçãoFiscal", "#NCM"],
+               resumo: "Nova legislação elimina a multa isolada aplicada por simples erro de classificação fiscal (NCM) na importação, quando não há prejuízo ao recolhimento de tributos ou dolo. A norma prestigia a boa-fé e reduz o contencioso aduaneiro puramente formal.",
+               impacto: "Redução de Passivo: Vitórias para importadores. Revisar autos de infração em andamento baseados apenas em erro formal de NCM para pedir cancelamento com base na retroatividade da lei mais benéfica.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/16/lei-extingue-multa-por-erro-em-classificacao-fiscal.ghtml",
+               pdf: "lei-extingue-multa-classificacao-fiscal.pdf.pdf"
             },
             {
-               titulo: "CNI ajuíza ação no STF contra trecho de lei que reduz benefícios fiscais",
+               titulo: "CONFAZ estende em um mês prazos para Refis de ICMS autorizados em 2025",
                veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "15/01/2026",
-               tags: ["#STF", "#CNI", "#IncentivosFiscais", "#ADI"],
-               resumo: "A Confederação Nacional da Indústria (CNI) protocolou Ação Direta de Inconstitucionalidade (ADI) no STF questionando dispositivos da lei recente que cortou benefícios fiscais setoriais. O argumento central é a violação ao direito adquirido e à segurança jurídica de planos de investimento em curso.",
-               impacto: "Monitoramento: Acompanhar a concessão de liminar. Clientes industriais afetados pelos cortes devem avaliar o ingresso como 'amicus curiae' ou preparar ações individuais baseadas nos mesmos fundamentos.",
-               link: "https://www.jota.info/tributos/matinal/cni-ajuiza-acao-no-stf-contra-trecho-de-lei-que-reduz-beneficios-fiscais",
-               pdf: "cni-acao-stf-beneficios.pdf.pdf"
+               tribunal: "Legislativo",
+               data: "16/01/2026",
+               tags: ["#ICMS", "#Refis", "#CONFAZ", "#Prazos"],
+               resumo: "O Conselho Nacional de Política Fazendária (CONFAZ) prorrogou por 30 dias os prazos finais para adesão a programas de parcelamento (Refis) de ICMS que haviam sido autorizados em convênios de 2025. A medida visa dar fôlego aos contribuintes que não conseguiram aderir a tempo.",
+               impacto: "Oportunidade de Caixa: Revisar imediatamente a situação fiscal de filiais estaduais. Contribuintes que perderam o prazo original ganham uma última chance de regularizar débitos com descontos de multas e juros.",
+               link: "https://www.jota.info/tributos/matinal/confaz-estende-em-um-mes-prazos-para-refis-de-icms-autorizados-em-2025",
+               pdf: "confaz-prorrogacao-refis-icms.pdf.pdf"
             },
             {
-               titulo: "Receita Federal afasta limite de dedução do PAT com base em parecer da PGFN",
+               titulo: "Por voto de qualidade, CARF valida tributação dos lucros de controlada no exterior",
                veiculo: "APET",
-               tribunal: "Receita Federal",
-               data: "15/01/2026",
-               tags: ["#PAT", "#IRPJ", "#IncentivoFiscal", "#PGFN"],
-               resumo: "Acatando parecer da PGFN, a Receita Federal reconheceu a ilegalidade da limitação de dedução das despesas com o Programa de Alimentação do Trabalhador (PAT) introduzida por decreto. O entendimento volta a permitir a dedução sobre a base cheia, respeitando a legislação hierarquicamente superior.",
-               impacto: "Recuperação de Crédito: Oportunidade imediata de 'cash-in'. Devemos revisar as apurações de IRPJ/CSLL dos últimos 5 anos de clientes no Lucro Real para retificar e compensar os valores limitados indevidamente.",
-               link: "https://rota.apet.org.br/2026/01/receita-federal-afasta-limite-de-deducao-do-pat-com-base-em-parecer-da-pgfn/",
-               pdf: "receita-afasta-limite-pat.pdf.pdf"
+               tribunal: "CARF",
+               data: "16/01/2026",
+               tags: ["#CARF", "#LucrosNoExterior", "#IRPJ", "#CSLL"],
+               resumo: "Em julgamento apertado decidido pelo voto de qualidade, o CARF manteve a tributação automática (em 31 de dezembro) dos lucros de controladas no exterior, afastando a tese de disponibilização efetiva. A decisão reforça o entendimento pró-fisco sobre a Lei 12.973/14.",
+               impacto: "Risco Imediato: Empresas com offshore ou filiais operacionais devem manter o provisionamento do IRPJ/CSLL sobre o lucro universal. A tese de defesa administrativa perde força, exigindo judicialização.",
+               link: "https://rota.apet.org.br/2026/01/por-voto-de-qualidade-carf-valida-tributacao-dos-lucros-de-controlada-no-exterior/",
+               pdf: "carf-voto-qualidade-lucros-exterior.pdf.pdf"
             },
             {
-               titulo: "ITCMD após a reforma tributária: a aplicabilidade das alíquotas progressivas e bens no exterior",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "15/01/2026",
-               tags: ["#ITCMD", "#ReformaTributaria", "#Progressividade"],
-               resumo: "Artigo detalha como a obrigatoriedade da progressividade do ITCMD (imposto sobre herança) e a competência para tributar bens no exterior afetarão os planejamentos atuais. A análise sugere que a 'corrida' para doações em vida deve considerar as alíquotas estaduais que serão majoradas.",
-               impacto: "Consultoria: Reforça a urgência de implementar planejamentos sucessórios antes da virada das leis estaduais, prevista para ocorrer ao longo de 2026.",
-               link: "https://www.conjur.com.br/2026-jan-15/itcmd-apos-a-reforma-tributaria-a-aplicabilidade-das-aliquotas-progressivas-e-tributacao-de-bens-no-exterior/",
-               pdf: "itcmd-pos-reforma-progressividade.pdf.pdf"
+               titulo: "Especialistas veem ganhos para grupos brasileiros com 'side-by-side' da OCDE",
+               veiculo: "Jota",
+               tribunal: "Internacional",
+               data: "16/01/2026",
+               tags: ["#OCDE", "#PreçosTransferência", "#Internacional"],
+               resumo: "Análise sobre o novo mecanismo 'side-by-side' da OCDE, que permite a comparação simultânea de dados fiscais entre países. Especialistas apontam que a ferramenta reduzirá litígios de dupla tributação para multinacionais brasileiras, facilitando acordos antecipados de preços (APAs).",
+               impacto: "Compliance Internacional: Grupos multinacionais devem preparar seus dados para essa transparência total. A vantagem é a maior segurança jurídica e celeridade na resolução de controvérsias internacionais.",
+               link: "https://www.jota.info/tributos/relatorio-especial/especialistas-veem-ganhos-para-grupos-brasileiros-com-side-by-side-da-ocde",
+               pdf: "ocde-side-by-side-ganhos-brasileiros.pdf.pdf"
             },
             {
-               titulo: "Transição da reforma, 'teses filhotes' e dividendos pautam tributário em 2026",
-               veiculo: "Conjur",
-               tribunal: "Mercado",
-               data: "15/01/2026",
-               tags: ["#Tendências", "#Dividendos", "#Contencioso"],
-               resumo: "Especialistas mapeiam o ano de 2026 como o início das 'teses filhotes' da Reforma (discussões sobre conceitos novos da lei) e a volta da tributação de dividendos à mesa. O cenário é de alta litigiosidade e necessidade de adaptação rápida.",
-               impacto: "Estratégia: O escritório deve se antecipar na formulação dessas teses (ex: o que compõe a base do IBS) para oferecer produtos jurídicos inovadores.",
-               link: "https://www.conjur.com.br/2026-jan-15/transicao-da-reforma-teses-filhotes-e-dividendos-pautam-tributario-em-2026-dizem-especialistas/",
-               pdf: "tendencias-tributario-2026.pdf.pdf"
-            },
-            {
-               titulo: "STF suspende análise de ICMS sobre subvenção pela tarifa social de energia elétrica",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "15/01/2026",
-               tags: ["#STF", "#ICMS", "#Energia", "#TarifaSocial"],
-               resumo: "O STF suspendeu o julgamento que define se a subvenção da tarifa social de energia deve compor a base de cálculo do ICMS. A discussão impacta diretamente as concessionárias de energia e o custo final para consumidores de baixa renda.",
-               impacto: "Setor Elétrico: Clientes concessionários devem manter o provisionamento. A tendência é que o STF exclua a subvenção da base, seguindo a lógica de não tributar repasses governamentais.",
-               link: "https://www.conjur.com.br/2026-jan-15/stf-suspende-analise-de-icms-sobre-subvencao-pela-tarifa-social-de-energia-eletrica/",
-               pdf: "stf-suspensao-icms-tarifa-social.pdf.pdf"
-            },
-            {
-               titulo: "Reforma tributária 2026: o que muda (Resumo Valor)",
+               titulo: "Transação tributária e a modernização do fisco",
                veiculo: "Valor",
-               tribunal: "Reforma Tributária",
-               data: "14/01/2026",
-               tags: ["#ReformaTributaria", "#Resumo", "#Cronograma"],
-               resumo: "Guia prático do Valor Econômico sobre o cronograma de implementação da Reforma em 2026, destacando o início da cobrança teste e a extinção gradual do PIS/Cofins.",
-               impacto: "Didático: Material excelente para enviar em newsletters para clientes ou usar em apresentações executivas sobre o cronograma de conformidade.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/14/reforma-tributaria-2026-o-que-muda.ghtml",
-               pdf: "reforma-tributaria-mudancas-2026-valor.pdf.pdf"
+               tribunal: "Receita Federal",
+               data: "16/01/2026",
+               tags: ["#Transação", "#PGFN", "#Modernização"],
+               resumo: "Artigo analisa a consolidação da Transação Tributária como principal ferramenta de recuperação de crédito. O texto destaca a mudança de postura do Fisco, saindo do litígio eterno para a composição consensual, e os benefícios de descontos e uso de prejuízo fiscal.",
+               impacto: "Estratégia de Dívida: Reforça a necessidade de monitorar editais de transação ativos. A via consensual se confirma como a mais eficiente para limpeza de passivo tributário e regularidade fiscal.",
+               link: "https://valor.globo.com/legislacao/coluna/transacao-tributaria-e-a-modernizacao-do-fisco.ghtml",
+               pdf: "transacao-tributaria-modernizacao-fisco.pdf.pdf"
             },
             {
-               titulo: "Reforma tributária: Lula veta redução de alíquota para bebidas lácteas e SAF",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "14/01/2026",
-               tags: ["#Vetos", "#Bebidas", "#SAF", "#Agronegócio"],
-               resumo: "Confirmação dos vetos presidenciais que retiram bebidas lácteas e SAFs (Sociedades Anônimas do Futebol) da lista de alíquotas reduzidas do IBS/CBS, frustrando o lobby desses setores.",
-               impacto: "Impacto Financeiro: Clubes de futebol e laticínios terão carga tributária plena. Necessário rever planos de negócios e preços finais.",
-               link: "https://www.jota.info/tributos/reforma-tributaria-lula-veta-reducao-de-aliquota-para-bebidas-lacteas-e-parcialmente-para-saf",
-               pdf: "veto-bebidas-saf-reforma.pdf.pdf"
-            },
-            {
-               titulo: "Lei Complementar nº 225/2026: Aspectos controvertidos dos créditos em situação irregular",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "14/01/2026",
-               tags: ["#LC225", "#Créditos", "#Regularização"],
-               resumo: "Análise da LC 225/2026, focando na polêmica sobre o tratamento de créditos tributários considerados 'irregulares' pelo Fisco. O texto aponta riscos de glosa em massa e a necessidade de comprovação documental robusta.",
-               impacto: "Compliance: Auditoria preventiva em estoques de créditos de ICMS/IPI que serão migrados ou compensados. O risco de não homologação é alto.",
-               link: "https://www.conjur.com.br/2026-jan-14/lei-complementar-no-225-2026-aspectos-controvertidos-dos-creditos-em-situacao-irregular/",
-               pdf: "lc-225-creditos-irregulares.pdf.pdf"
-            },
-            {
-               titulo: "Utilização de prejuízo fiscal não configura benefício fiscal e tampouco renúncia de receita",
+               titulo: "Brasileiro residente no exterior não precisa declarar IR, reafirma Justiça",
                veiculo: "Conjur",
                tribunal: "Judiciário",
-               data: "14/01/2026",
-               tags: ["#PrejuízoFiscal", "#IRPJ", "#Doutrina"],
-               resumo: "Artigo doutrinário reforça a tese de que abater prejuízo fiscal é um direito de apuração do lucro real, e não um favor fiscal (benefício). Isso protege o uso do prejuízo contra restrições impostas por leis que limitam incentivos.",
-               impacto: "Defesa: Argumento central para combater travas administrativas ao uso de prejuízo fiscal acumulado (trava de 30% ou outras limitações).",
-               link: "https://www.conjur.com.br/2026-jan-14/utilizacao-de-prejuizo-fiscal-e-base-de-calculo-negativa-nao-configura-beneficio-fiscal-e-tampouco-renuncia-de-receita/",
-               pdf: "prejuizo-fiscal-nao-e-beneficio.pdf.pdf"
+               data: "16/01/2026",
+               tags: ["#IRPF", "#Exterior", "#SaídaDefinitiva"],
+               resumo: "Decisão judicial reafirma que brasileiros que fizeram a Declaração de Saída Definitiva do País não estão obrigados a apresentar Declaração de Ajuste Anual, mesmo que mantenham bens no Brasil (sujeitos à tributação exclusiva na fonte ou definitiva).",
+               impacto: "Gestão de Expatriados: Segurança para clientes Private que mudaram de domicílio fiscal. Importante apenas garantir que a Saída Definitiva foi formalizada corretamente para evitar malha fina.",
+               link: "https://www.conjur.com.br/2026-jan-16/brasileiro-residente-no-exterior-nao-precisa-declarar-ir/",
+               pdf: "ir-brasileiro-residente-exterior.pdf.pdf"
             },
             {
-               titulo: "Reforma tributária e proteção da confiança: o fundo de compensação de benefícios de ICMS",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "14/01/2026",
-               tags: ["#FundoCompensação", "#ICMS", "#SegurançaJurídica"],
-               resumo: "Discussão sobre o Fundo de Compensação criado para indenizar empresas que perderão benefícios de ICMS com a Reforma. O texto alerta para a burocracia e possíveis redutores que podem esvaziar a indenização prometida.",
-               impacto: "Planejamento: Empresas com benefícios de ICMS vigentes devem calcular o valor presente da indenização do Fundo versus o benefício atual para ajustar o valuation.",
-               link: "https://www.conjur.com.br/2026-jan-14/reforma-tributaria-e-protecao-da-confianca-o-fundo-de-compensacao-de-beneficios-fiscais-de-icms/",
-               pdf: "fundo-compensacao-icms-protecao-confianca.pdf.pdf"
-            },
-            {
-               titulo: "Seleção de Informativos STJ: Janeiro/2026",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "15/01/2026",
-               tags: ["#STJ", "#Jurisprudência", "#Informativo"],
-               resumo: "Compilado oficial do STJ com os principais julgados tributários do início de 2026. Essencial para atualização jurisprudencial das peças do escritório.",
-               impacto: "Técnico: Atualização obrigatória para a equipe do contencioso.",
-               link: "https://scon.stj.jus.br/docs_internet/informativos/download/SelecaoInformativosRamos20260115131445500.pdf",
-               pdf: "informativo-stj-janeiro-2026.pdf.pdf"
+               titulo: "Consulta Normas: Atos Recentes da Receita Federal",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "16/01/2026",
+               tags: ["#Normas", "#ReceitaFederal", "#Atualização"],
+               resumo: "Link direto para os atos normativos recém-publicados pela Receita Federal, abrangendo instruções normativas e soluções de consulta que impactam o dia a dia operacional das empresas.",
+               impacto: "Monitoramento Diário: Checagem de rotina para garantir compliance nas obrigações acessórias da semana.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/148866/visao/multivigente",
+               pdf: "normas-receita-atualizacao-16jan.pdf.pdf"
             }
         ];
 
