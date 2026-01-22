@@ -78,7 +78,7 @@
                 <option value="Legislativo">Legislativo / Executivo</option>
                 <option value="Reforma Tributária">Reforma Tributária</option>
                 <option value="CARF">CARF / Receita</option>
-                <option value="Internacional">Internacional / OCDE</option>
+                <option value="Municipal">Municipal / ISS</option>
             </select>
 
             <select id="filtro-veiculo" onchange="renderizarNoticias()">
@@ -87,7 +87,7 @@
                 <option value="Valor">Valor Econômico</option>
                 <option value="Conjur">Conjur</option>
                 <option value="APET">APET / Rota</option>
-                <option value="Receita Federal">Receita Federal</option>
+                <option value="Outros">Outros</option>
             </select>
 
             <input type="text" id="barra-busca" placeholder="🔍 Buscar por palavra-chave..." onkeyup="renderizarNoticias()">
@@ -96,206 +96,140 @@
     </div>
 
     <script>
-        // --- BASE DE DADOS CONSOLIDADA (21/01/2026) ---
+        // --- BASE DE DADOS CONSOLIDADA (22/01/2026) ---
         // Configurado para ler arquivos com extensão .pdf.pdf
         const noticias = [
             {
-               titulo: "LC 227 cria sistema híbrido de contagem de prazos e CARF estuda possíveis ajustes",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "21/01/2026",
-               tags: ["#LC227", "#Prazos", "#Processual", "#CARF"],
-               resumo: "A Lei Complementar 227 introduziu um sistema híbrido de contagem de prazos processuais (dias úteis e corridos), gerando insegurança jurídica. O CARF avalia ajustes em seu regimento interno para harmonizar as novas regras e evitar perdas de prazo pelos contribuintes.",
-               impacto: "Atenção Processual: Risco elevado de intempestividade. O escritório deve adotar a contagem mais conservadora (dias corridos) em todos os processos administrativos até que haja regulamentação clara do CARF.",
-               link: "https://www.jota.info/tributos/relatorio-especial/lc-227-cria-sistema-hibrido-de-contagem-de-prazos-e-carf-estuda-possiveis-ajustes",
-               pdf: "lc-227-prazos-hibridos-carf.pdf.pdf"
-            },
-            {
-               titulo: "Lei muda prazo para recurso em processos fiscais (Visão Valor)",
-               veiculo: "Valor",
-               tribunal: "Legislativo",
-               data: "21/01/2026",
-               tags: ["#Prazos", "#ProcessoAdministrativo", "#ValorEconomico"],
-               resumo: "Valor destaca a mudança legislativa que altera os prazos recursais em processos fiscais, impactando a defesa dos contribuintes. A nova lei exige adaptação imediata dos departamentos jurídicos para evitar preclusão.",
-               impacto: "Operacional: Revisão imediata de todos os prazos em aberto no sistema de gestão processual do escritório.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/21/lei-muda-prazo-para-recurso-em-processos-fiscais.ghtml",
-               pdf: "lei-muda-prazo-recurso-fiscal.pdf.pdf"
-            },
-            {
-               titulo: "O CARF pós-Súmula 231: limites à vinculação e crédito extemporâneo de PIS/Cofins",
-               veiculo: "Conjur",
-               tribunal: "CARF",
-               data: "21/01/2026",
-               tags: ["#Súmula231", "#PISCOFINS", "#CréditoExtemporâneo"],
-               resumo: "Análise sobre a aplicação da Súmula 231 do CARF, que trata de créditos extemporâneos de PIS/Cofins. O texto discute os limites da vinculação da súmula e como os contribuintes podem defender o aproveitamento de créditos antigos sem as restrições impostas pelo Fisco.",
-               impacto: "Recuperação de Créditos: Oportunidade de revisar a carteira de créditos de PIS/Cofins não aproveitados nos últimos 5 anos, preparando defesa técnica baseada nas limitações da Súmula.",
-               link: "https://www.conjur.com.br/2026-jan-21/o-carf-pos-sumula-231-limites-a-vinculacao-e-credito-extemporaneo-de-pis-cofins/",
-               pdf: "carf-sumula-231-credito-extemporaneo.pdf.pdf"
-            },
-            {
-               titulo: "Nova legislação destrava nomeação dos municípios para o Comitê Gestor do IBS",
-               veiculo: "Valor",
-               tribunal: "Legislativo",
-               data: "20/01/2026",
-               tags: ["#CGIBS", "#Municípios", "#Governança"],
-               resumo: "Mudança legislativa resolve o impasse sobre a indicação de representantes municipais para o Comitê Gestor do IBS, permitindo a instalação efetiva do órgão que gerirá a arrecadação e distribuição do novo imposto.",
-               impacto: "Institucional: A formação do Comitê acelera a publicação de resoluções infra-legais. Monitorar as primeiras pautas do órgão.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/20/nova-legislacao-destrava-nomeacao-dos-municipios-para-o-comite-gestor-do-ibs.ghtml",
-               pdf: "valor-municipios-comite-gestor.pdf.pdf"
-            },
-            {
-               titulo: "Lei Complementar resolve participação de municípios em Comitê Gestor do IBS (Visão Jota)",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "20/01/2026",
-               tags: ["#CGIBS", "#Municípios", "#Jota"],
-               resumo: "Jota detalha o acordo político que viabilizou a participação municipal no Comitê Gestor, destravando a governança do IBS. A medida é essencial para o início da transição tributária.",
-               impacto: "Acompanhamento: Confirmação da operacionalização do Comitê Gestor.",
-               link: "https://www.jota.info/tributos/matinal/lei-complementar-resolve-participacao-de-municipios-em-comite-gestor-do-ibs",
-               pdf: "municipios-comite-gestor-ibs.pdf.pdf"
-            },
-            {
-               titulo: "Redução de benefícios fiscais para 2026: o 'confisco silencioso' pela RFB (IN 2305/2025)",
-               veiculo: "Conjur",
-               tribunal: "Receita Federal",
-               data: "20/01/2026",
-               tags: ["#IN2305", "#PlanejamentoTributário", "#Confisco"],
-               resumo: "Crítica contundente à Instrução Normativa RFB nº 2305/2025, que impõe novas obrigações de reporte de planejamento tributário. O autor argumenta que a norma restringe indevidamente o uso de benefícios fiscais legítimos, configurando um 'confisco silencioso'.",
-               impacto: "Compliance e Risco: Revisar estruturas de planejamento tributário agressivo. A IN 2305 sinaliza fiscalização intensa sobre reorganizações societárias e uso de ágio.",
-               link: "https://www.conjur.com.br/2026-jan-20/reducao-de-beneficios-fiscais-para-2026-o-confisco-silencioso-pela-rfb-com-a-publicacao-da-in-rfb-no-2305-2025-sobre-o-planejamento-tributario/",
-               pdf: "in-rfb-2305-confisco-beneficios.pdf.pdf"
-            },
-            {
-               titulo: "Créditos de PIS/Cofins e a reforma tributária: o desafio da mineração na transição",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "20/01/2026",
-               tags: ["#Mineração", "#PISCOFINS", "#Transição", "#Créditos"],
-               resumo: "Análise setorial sobre os impactos da Reforma na mineração. O texto foca na dificuldade de escoar créditos acumulados de PIS/Cofins durante a transição, dado o perfil exportador do setor e as novas regras de ressarcimento.",
-               impacto: "Setor de Mineração: Clientes mineradores precisam de modelagem financeira urgente para evitar 'empoçamento' de créditos bilionários na virada do sistema.",
-               link: "https://www.conjur.com.br/2026-jan-20/creditos-de-pis-cofins-e-a-reforma-tributaria-o-desafio-tributario-da-mineracao-em-um-cenario-de-transicao/",
-               pdf: "pis-cofins-mineracao-reforma.pdf.pdf"
-            },
-            {
-               titulo: "De 2014 a 2026: A epopeia da conformidade tributária",
-               veiculo: "Conjur",
-               tribunal: "Mercado",
-               data: "20/01/2026",
-               tags: ["#Compliance", "#Histórico", "#Conformidade"],
-               resumo: "Artigo traça a evolução das exigências de compliance no Brasil na última década, culminando com as novas obrigações da Reforma Tributária. Reforça que a conformidade deixou de ser diferencial para ser requisito de sobrevivência.",
-               impacto: "Cultura Corporativa: Argumento de venda para projetos de consultoria em compliance e governança tributária.",
-               link: "https://www.conjur.com.br/2026-jan-20/de-5-12-2014-a-8-1-2026-a-epopeia-da-conformidade/",
-               pdf: "epopeia-conformidade-2026.pdf.pdf"
-            },
-            {
-               titulo: "Portal de Serviços do CGIBS é lançado e inaugura nova etapa da Reforma",
-               veiculo: "APET",
-               tribunal: "Reforma Tributária",
-               data: "20/01/2026",
-               tags: ["#CGIBS", "#Portal", "#Digitalização"],
-               resumo: "Lançamento oficial do portal digital do Comitê Gestor do IBS. A plataforma concentrará o cumprimento de obrigações acessórias do novo imposto, centralizando a relação Fisco-Contribuinte.",
-               impacto: "Operacional: TI e Fiscal devem acessar o portal imediatamente para cadastro e familiarização com o layout e funcionalidades.",
-               link: "https://rota.apet.org.br/2026/01/portal-de-servicos-do-cgibs-e-lancado-e-inaugura-nova-etapa-da-reforma-tributaria/",
-               pdf: "portal-servicos-cgibs-lancamento.pdf.pdf"
-            },
-            {
-               titulo: "Créditos de PIS/Cofins no varejo seguem indefinidos e à espera da reforma",
-               veiculo: "Jota",
-               tribunal: "Reforma Tributária",
-               data: "19/01/2026",
-               tags: ["#Varejo", "#PISCOFINS", "#Créditos", "#Incerteza"],
-               resumo: "Varejistas enfrentam insegurança sobre o estoque de créditos de PIS/Cofins monofásicos. A legislação de transição ainda deixa lacunas sobre como esses saldos serão tratados ou monetizados.",
-               impacto: "Varejo: Manter postura conservadora na contabilidade dos créditos e provisionar possíveis perdas ou deságios na conversão para IBS/CBS.",
-               link: "https://www.jota.info/tributos/relatorio-especial/creditos-de-piscofins-no-varejo-seguem-indefinidos-e-a-espera-da-reforma",
-               pdf: "pis-cofins-varejo-indefinicao.pdf.pdf"
-            },
-            {
-               titulo: "STJ: Não cabe novo pagamento de honorários após parcelamento que inclui a cobrança",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "19/01/2026",
-               tags: ["#STJ", "#Honorários", "#Parcelamento", "#BisInIdem"],
-               resumo: "Decisão do STJ impede a cobrança duplicada de honorários advocatícios quando o contribuinte adere a parcelamento que já engloba essa verba. Vitória contra o 'bis in idem' na execução fiscal.",
-               impacto: "Gestão de Passivo: Verificar parcelamentos ativos. Se houver cobrança extra de honorários fora da parcela consolidada, cabe impugnação imediata.",
-               link: "https://www.jota.info/tributos/stj-nao-cabe-novo-pagamento-de-honorarios-apos-parcelamento-que-inclui-a-cobranca",
-               pdf: "stj-honorarios-parcelamento.pdf.pdf"
-            },
-            {
-               titulo: "Decisões dos tribunais superiores não encerram discussão no CARF, diz procurador",
+               titulo: "CARF permite crédito de IRRF em remessas ao exterior em ano de prejuízo fiscal",
                veiculo: "Jota",
                tribunal: "CARF",
-               data: "19/01/2026",
-               tags: ["#Precedentes", "#SegurançaJurídica", "#PGFN"],
-               resumo: "Procurador da Fazenda defende que o CARF não está automaticamente vinculado a todas as decisões do STF/STJ, exceto em repercussão geral/repetitivos transitados em julgado, mantendo acesa a litigiosidade administrativa.",
-               impacto: "Estratégia de Defesa: Não abandonar a via judicial. Mesmo com precedente favorável no STF, a vitória no CARF não é garantida se o caso tiver distinções fáticas.",
-               link: "https://www.jota.info/tributos/relatorio-especial/decisoes-dos-tribunais-superiores-nao-encerram-discussao-no-carf-diz-procurador",
-               pdf: "tribunais-superiores-vs-carf.pdf.pdf"
+               data: "22/01/2026",
+               tags: ["#IRRF", "#Crédito", "#Exterior", "#PrejuízoFiscal"],
+               resumo: "Decisão favorável da 1ª Turma da CSRF permite que empresas usem créditos de IRRF sobre remessas de serviços ao exterior mesmo em anos de prejuízo fiscal. O tribunal entendeu que a trava de 30% não se aplica à constituição do crédito, garantindo a liquidez do ativo fiscal para exercícios futuros.",
+               impacto: "Recuperação de Ativos: Revisar apurações de anos com prejuízo. Há oportunidade de levantar créditos de IRRF não aproveitados anteriormente.",
+               link: "https://www.jota.info/tributos/direto-do-carf/carf-permite-credito-de-irrf-em-remessas-ao-exterior-em-ano-de-prejuizo-fiscal",
+               pdf: "carf-credito-irrf-prejuizo-fiscal.pdf.pdf"
             },
             {
-               titulo: "STJ pode definir discussão envolvendo compensação de créditos reconhecidos pela justiça",
+               titulo: "CARF derruba duas autuações fiscais do Santander no valor de R$ 1 bilhão",
+               veiculo: "Valor",
+               tribunal: "CARF",
+               data: "22/01/2026",
+               tags: ["#CARF", "#Ágio", "#PLR", "#Bancos"],
+               resumo: "Vitória expressiva no CARF afasta cobranças bilionárias referentes a amortização de ágio e dedutibilidade de PLR. A decisão reforça a validade de estruturas societárias com propósito negocial e o cumprimento de requisitos legais para pagamentos a empregados, revertendo entendimento anterior da fiscalização.",
+               impacto: "Precedente Bancário: Fortalece teses de defesa para instituições financeiras e grandes grupos sobre ágio interno e regras de PLR.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/22/carf-derruba-duas-autuacoes-fiscais-do-santander-no-valor-de-r-1-bilhao.ghtml",
+               pdf: "carf-derruba-autuacao-santander-1bi.pdf.pdf"
+            },
+            {
+               titulo: "TRFs validam migração da compensação para o precatório em créditos da 'Tese do Século'",
                veiculo: "Conjur",
                tribunal: "Judiciário",
-               data: "19/01/2026",
-               tags: ["#STJ", "#Compensação", "#HabilitaçãoDeCrédito"],
-               resumo: "STJ deve uniformizar o momento em que o contribuinte pode iniciar a compensação de créditos judiciais: se a partir do trânsito em julgado ou apenas após a habilitação administrativa na Receita.",
-               impacto: "Fluxo de Caixa: Acompanhar o julgamento. A tese favorável (trânsito em julgado) antecipa o uso do caixa em meses vitais para a empresa.",
-               link: "https://www.conjur.com.br/2026-jan-19/stj-pode-definir-mais-uma-discussao-envolvendo-a-compensacao-de-creditos-tributarios-reconhecidos-pela-justica/",
-               pdf: "stj-compensacao-creditos-judiciais.pdf.pdf"
+               data: "22/01/2026",
+               tags: ["#TeseDoSéculo", "#PISCOFINS", "#Precatório", "#Compensação"],
+               resumo: "TRFs consolidam o direito de contribuintes converterem créditos judiciais da exclusão do ICMS do PIS/Cofins em precatórios, mesmo após habilitação inicial para compensação. A medida beneficia empresas com baixo débito tributário que não conseguiriam exaurir o crédito via compensação administrativa.",
+               impacto: "Gestão de Caixa: Alternativa de liquidez para empresas com créditos 'empoçados'. Avaliar a troca da compensação lenta pela fila de precatórios ou venda do ativo judicial.",
+               link: "https://www.conjur.com.br/2026-jan-22/trfs-validam-migracao-da-compensacao-para-o-precatorio-em-creditos-tributarios-da-tese-do-seculo/",
+               pdf: "trfs-migracao-compensacao-precatorio.pdf.pdf"
             },
             {
-               titulo: "Por falta de dolo, TRF-3 absolve empresário acusado de sonegação",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "19/01/2026",
-               tags: ["#PenalTributário", "#Sonegação", "#Dolo"],
-               resumo: "TRF-3 absolveu empresário por entender que não houve dolo (intenção) na falta de recolhimento de tributos, mas sim dificuldade financeira e erro contábil, afastando a tipicidade penal.",
-               impacto: "Defesa Penal Tributária: Precedente importante para clientes que enfrentam representações fiscais para fins penais decorrentes de crises financeiras.",
-               link: "https://www.conjur.com.br/2026-jan-19/por-falta-de-dolo-trf-3-absolve-empresario-acusado-de-sonegacao/",
-               pdf: "trf3-absolvicao-sonegacao-dolo.pdf.pdf"
-            },
-            {
-               titulo: "Conceito de simulação tributária: equívocos do veto na Reforma",
+               titulo: "A relação Fisco-Contribuinte e as contradições legislativas de 2026: conformidade vs. multas",
                veiculo: "Conjur",
                tribunal: "Legislativo",
-               data: "19/01/2026",
-               tags: ["#Simulação", "#PlanejamentoTributário", "#Vetos"],
-               resumo: "Artigo critica o veto presidencial ao dispositivo que definiria critérios claros para 'simulação' na Reforma Tributária. A ausência de definição legal mantém o poder discricionário do fiscal para desconsiderar planejamentos.",
-               impacto: "Insegurança Jurídica: Reforça a necessidade de documentar o 'propósito negocial' (business purpose) de qualquer reestruturação para evitar a pecha de simulação.",
-               link: "https://www.conjur.com.br/2026-jan-19/conceito-de-simulacao-tributaria-equivocos-do-veto-a-inclusao-do-artigo-341-f-%c2%a7-2o-iii-na-reforma/",
-               pdf: "conceito-simulacao-tributaria-veto.pdf.pdf"
+               data: "22/01/2026",
+               tags: ["#Compliance", "#Multas", "#SegurançaJurídica"],
+               resumo: "Artigo crítico aponta o paradoxo de 2026: enquanto a Receita promove programas de 'Conformidade Cooperativa' (Confia), novas leis aumentam o poder punitivo e criam multas qualificadas para planejamentos tributários. O cenário exige cautela redobrada na gestão fiscal.",
+               impacto: "Risco de Compliance: A 'cooperação' com o Fisco não elimina o risco de autuação agressiva. Necessário blindar planejamentos com documentação robusta de propósito negocial.",
+               link: "https://www.conjur.com.br/2026-jan-22/a-relacao-fisco-contribuinte-e-as-contradicoes-legislativas-de-2026-entre-a-conformidade-cooperativa-e-a-industria-das-multas/",
+               pdf: "relacao-fisco-contribuinte-contradicoes-2026.pdf.pdf"
             },
             {
-               titulo: "STF julga em fevereiro PIS/Cofins sobre reservas técnicas de seguradoras",
+               titulo: "Com maioria pró-fisco, STF julgou 229 casos tributários em repercussão geral",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "22/01/2026",
+               tags: ["#STF", "#RepercussãoGeral", "#Estatística"],
+               resumo: "Levantamento mostra que, até 2025, o STF julgou 229 temas tributários com repercussão geral, com placar majoritariamente favorável à União. A tendência de validar a arrecadação em detrimento dos contribuintes se acentuou nos últimos anos.",
+               impacto: "Inteligência Judicial: O cenário exige filtros rigorosos antes de judicializar novas teses. A chance de êxito no STF é estatisticamente baixa sem um forte argumento constitucional.",
+               link: "https://www.jota.info/tributos/matinal/com-maioria-pro-fisco-stf-julgou-229-casos-tributarios-em-repercussao-geral",
+               pdf: "stf-maioria-pro-fisco-repercussao-geral.pdf.pdf"
+            },
+            {
+               titulo: "Supremo julgou 229 ações tributárias com efeito de repercussão geral (Visão Valor)",
                veiculo: "Valor",
                tribunal: "Judiciário",
-               data: "17/01/2026",
-               tags: ["#STF", "#Seguros", "#PISCOFINS", "#ReservasTécnicas"],
-               resumo: "STF pautou para fevereiro o julgamento bilionário sobre a incidência de PIS/Cofins nas receitas financeiras das reservas técnicas das seguradoras. O setor defende que esses valores não são faturamento, mas garantia de solvência.",
-               impacto: "Setor de Seguros: Provisionamento máximo. Uma derrota no STF terá impacto direto no resultado e solvência das companhias.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/17/stf-julga-em-fevereiro-cobranca-de-pis-e-cofins-sobre-ganhos-com-reservas-tecnicas-de-seguradoras.ghtml",
-               pdf: "stf-pis-cofins-reservas-seguradoras.pdf.pdf"
+               data: "22/01/2026",
+               tags: ["#STF", "#ValorEconomico", "#Balanço"],
+               resumo: "Valor Econômico destaca o impacto financeiro dos julgamentos do STF, ressaltando que a Corte tem atuado como garantidora do equilíbrio fiscal do Estado, validando teses arrecadatórias em momentos de crise.",
+               impacto: "Análise de Risco: Reforça a necessidade de provisionamento conservador para teses que dependem de virada jurisprudencial no Supremo.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/22/supremo-julgou-229-acoes-tributarias-com-efeito-de-repercussao-geral-ate-2025.ghtml",
+               pdf: "stf-229-acoes-tributarias-repercussao.pdf.pdf"
             },
             {
-               titulo: "Redução de incentivos na LC 224/25 fere a legalidade estrita?",
-               veiculo: "Valor",
-               tribunal: "Legislativo",
-               data: "17/01/2026",
-               tags: ["#IncentivosFiscais", "#Legalidade", "#LC224"],
-               resumo: "Colunista questiona a constitucionalidade da LC 224/25, que reduziu incentivos fiscais de forma abrupta. A tese é de violação à legalidade e segurança jurídica, abrindo margem para judicialização.",
-               impacto: "Oportunidade de Ação: Analisar a viabilidade de Mandado de Segurança para manter os incentivos com base na proteção da confiança e legalidade.",
-               link: "https://valor.globo.com/legislacao/coluna/reducao-de-incentivos-na-lc-224-25-fere-a-legalidade-estrita.ghtml",
-               pdf: "lc-224-reducao-incentivos-legalidade.pdf.pdf"
+               titulo: "CNI contesta no Supremo lei que reduz incentivos fiscais",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "21/01/2026",
+               tags: ["#CNI", "#Incentivos", "#STF", "#ADI"],
+               resumo: "A Confederação Nacional da Indústria ingressou com ADI no STF contra a lei que cortou benefícios fiscais setoriais. O argumento é a violação à segurança jurídica e ao direito adquirido de empresas que realizaram investimentos baseados nesses incentivos.",
+               impacto: "Indústria: Acompanhar o pedido de liminar. Empresas afetadas podem avaliar ingresso como 'amicus curiae' para fortalecer a ação coletiva.",
+               link: "https://www.conjur.com.br/2026-jan-21/cni-contesta-no-supremo-lei-que-reduz-incentivos-fiscais/",
+               pdf: "cni-contesta-supremo-reducao-incentivos.pdf.pdf"
             },
             {
-               titulo: "Distribuição de lucros exige estratégias bem elaboradas após mudança na tributação",
+               titulo: "Nova lei da Reforma Tributária alimenta tese contra ITCMD em estados com alíquota fixa",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "21/01/2026",
+               tags: ["#ITCMD", "#ReformaTributaria", "#AlíquotaFixa"],
+               resumo: "A regulamentação da Reforma, ao impor a progressividade do ITCMD, gera um vácuo legislativo em estados que ainda operam com alíquota fixa. Juristas apontam a inconstitucionalidade de cobranças majoradas antes da adaptação plena das leis estaduais.",
+               impacto: "Planejamento Sucessório: Janela de oportunidade para questionar aumentos de ITCMD em estados que não atualizaram sua legislação local conforme o rito constitucional.",
+               link: "https://www.conjur.com.br/2026-jan-21/nova-lei-da-reforma-tributaria-alimenta-tese-contra-itcmd-em-estados-com-aliquota-fixa/",
+               pdf: "reforma-tributaria-tese-itcmd-aliquota-fixa.pdf.pdf"
+            },
+            {
+               titulo: "CARF publica pautas de julgamento de 13 turmas",
+               veiculo: "Jota",
+               tribunal: "CARF",
+               data: "22/01/2026",
+               tags: ["#CARF", "#Pauta", "#Julgamento"],
+               resumo: "Publicadas as pautas de 13 turmas do CARF para o final de janeiro e início de fevereiro. Processos relevantes sobre ágio, PLR e planejamento tributário voltam à mesa após o recesso.",
+               impacto: "Monitoramento: Verificar se processos de interesse do escritório ou de clientes estratégicos foram pautados para preparação de memoriais e sustentação oral.",
+               link: "https://www.jota.info/tributos/matinal/carf-publica-pautas-de-julgamento-de-13-turmas",
+               pdf: "carf-pautas-julgamento-13-turmas.pdf.pdf"
+            },
+            {
+               titulo: "Tributação sobre bets poderá garantir isenção de IR a professores",
                veiculo: "APET",
-               tribunal: "Mercado",
-               data: "17/01/2026",
-               tags: ["#Lucros", "#Dividendos", "#Planejamento"],
-               resumo: "Com as mudanças nas regras de tributação de lucros, empresas precisam revisar suas políticas de distribuição. O texto sugere antecipação de dividendos ou reinvestimento como estratégias para otimizar a carga tributária.",
-               impacto: "Consultoria Societária: Revisar acordos de acionistas e políticas de dividendos para 2026.",
-               link: "https://apet.org.br/noticia/distribuicao-de-lucros-exige-estrategias-bem-elaboradas-apos-mudanca-na-tributacao-do-pais/",
-               pdf: "distribuicao-lucros-estrategias.pdf.pdf"
+               tribunal: "Legislativo",
+               data: "22/01/2026",
+               tags: ["#Bets", "#IRPF", "#Isenção", "#Educação"],
+               resumo: "Projeto de lei propõe usar a arrecadação com a regulamentação das apostas esportivas (Bets) para custear a isenção de Imposto de Renda para professores. A medida vincula receita nova a despesa social, buscando apoio popular.",
+               impacto: "Legislativo: Monitorar a tramitação. Se aprovada, cria um precedente de vinculação de receitas de 'novos mercados' para benefícios fiscais específicos.",
+               link: "https://apet.org.br/noticia/tributacao-sobre-bets-podera-garantir-isencao-de-ir-a-professores/",
+               pdf: "tributacao-bets-isencao-ir-professores.pdf.pdf"
+            },
+            {
+               titulo: "A teoria da recepção que transforma isenções em imunidades",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "21/01/2026",
+               tags: ["#Imunidade", "#Isenção", "#TeoriaRecepção", "#Constitucional"],
+               resumo: "Artigo doutrinário debate como o STF tem aplicado a teoria da recepção para elevar isenções antigas ao status de imunidades constitucionais em certos contextos, blindando benefícios contra revogações por lei ordinária.",
+               impacto: "Tese de Defesa: Argumento sofisticado para defender a manutenção de benefícios fiscais antigos ameaçados por novas legislações infraconstitucionais.",
+               link: "https://www.conjur.com.br/2026-jan-21/a-teoria-da-recepcao-que-transforma-isencoes-em-imunidades-e-a-deferencia-constituinte-por-acolhimento/",
+               pdf: "teoria-recepcao-isencoes-imunidades.pdf.pdf"
+            },
+            {
+               titulo: "Contribuinte tem até 30 de junho para aderir ao Programa Regulariza Corumbá",
+               veiculo: "Outros",
+               tribunal: "Municipal",
+               data: "22/01/2026",
+               tags: ["#Refis", "#Municipal", "#Corumbá"],
+               resumo: "Prefeitura de Corumbá/MS estende prazo de adesão ao Refis municipal até junho de 2026. O programa oferece descontos em juros e multas para regularização de IPTU e ISS.",
+               impacto: "Regional: Oportunidade para clientes com operações ou imóveis no Mato Grosso do Sul regularizarem passivos locais.",
+               link: "https://corumba.ms.gov.br/noticias/contribuinte-tem-ate-o-dia-30-de-junho-para-aderir-ao-programa-regulariza-corumba",
+               pdf: "refis-regulariza-corumba-prazo-junho.pdf.pdf"
             }
         ];
 
@@ -310,7 +244,7 @@
             const filtradas = noticias.filter(n => {
                 const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
                 const matchTribunal = filtroTribunal === 'Todos' || n.tribunal.includes(filtroTribunal) || (filtroTribunal === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
-                const matchVeiculo = filtroVeiculo === 'Todos' || n.veiculo === filtroVeiculo;
+                const matchVeiculo = filtroVeiculo === 'Todos' || n.veiculo === filtroVeiculo || (filtroVeiculo === 'Outros' && n.veiculo === 'Outros');
 
                 return matchTexto && matchTribunal && matchVeiculo;
             });
