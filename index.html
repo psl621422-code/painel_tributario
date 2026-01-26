@@ -79,6 +79,7 @@
                 <option value="Reforma Tributária">Reforma Tributária</option>
                 <option value="CARF">CARF / Receita</option>
                 <option value="Internacional">Internacional</option>
+                <option value="Municipal">Municipal / ISS</option>
             </select>
 
             <select id="filtro-veiculo" onchange="renderizarNoticias()">
@@ -88,6 +89,7 @@
                 <option value="Conjur">Conjur</option>
                 <option value="APET">APET / Rota</option>
                 <option value="Receita Federal">Receita Federal</option>
+                <option value="Outros">Outros</option>
             </select>
 
             <input type="text" id="barra-busca" placeholder="🔍 Buscar por palavra-chave..." onkeyup="renderizarNoticias()">
@@ -96,141 +98,161 @@
     </div>
 
     <script>
-        // --- BASE DE DADOS CONSOLIDADA (23/01/2026) ---
+        // --- BASE DE DADOS CONSOLIDADA (26/01/2026) ---
         const noticias = [
-            // --- NOVA (IN 2306) ---
             {
-               titulo: "IN RFB 2.306/2026: Aumento de Carga no Lucro Presumido (Novo)",
+               titulo: "SC Cosit nº 4/2026: Receita impõe novo teto a deduções com esporte e cultura",
                veiculo: "Receita Federal",
                tribunal: "Receita Federal",
-               data: "23/01/2026",
-               tags: ["#LucroPresumido", "#IRPJ", "#CSLL", "#AumentoCarga", "#IN2306"],
-               resumo: "Publicada hoje, a IN 2.306/2026 altera as regras do Lucro Presumido. Ela determina um acréscimo de 10% nos percentuais de presunção do IRPJ e da CSLL sobre a parcela da receita bruta anual que exceder R$ 5 milhões. A medida visa equiparar a carga tributária de prestadores de serviço de médio porte.",
-               impacto: "Alerta Vermelho: Impacto direto no caixa de empresas do Lucro Presumido com faturamento médio/alto. É urgente rodar simulações comparativas: migrar para o Lucro Real pode ter se tornado mais vantajoso.",
-               link: "https://www.legisweb.com.br/legislacao/?id=489801",
-               pdf: "in-rfb-2306-lucro-presumido.pdf.pdf"
+               data: "26/01/2026",
+               tags: ["#IRPJ", "#LucroReal", "#IncentivosFiscais", "#Cosit"],
+               resumo: "A Receita Federal publicou a Solução de Consulta Cosit nº 4/2026, reformando entendimento anterior (SC 241/2025). O ato esclarece que o limite de 4% para deduções com projetos esportivos de inclusão social NÃO pode ser somado de forma simples ao limite de 2% para projetos esportivos gerais, nem cria um novo benefício autônomo. Além disso, confirma que os incentivos da Lei Rouanet estão submetidos ao limite global de 4% da Lei 9.532/97. A decisão veda o planejamento que visava acumular teto de 6% ou 8% sem observar as restrições globais.",
+               impacto: "Revisão Imediata de Apuração: Empresas no Lucro Real que utilizam incentivos fiscais devem recalcular suas deduções de IRPJ. A interpretação mais restritiva da Receita exige ajuste no provisionamento para evitar glosas em fiscalizações futuras, especialmente sobre a cumulatividade de tetos.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/148971",
+               pdf: "sc-cosit-4-2026-limites-incentivos.pdf.pdf"
             },
-            // --- DEMAIS NOTÍCIAS (Mantidas) ---
             {
-               titulo: "Reforma: empresas pedem CEP de cliente e mudam centros de distribuição",
+               titulo: "Vitórias tributárias no STF reduzem passivo judicial da União para 2026",
                veiculo: "Jota",
-               tribunal: "Reforma Tributária",
-               data: "23/01/2026",
-               tags: ["#Logística", "#CEP", "#IBS", "#CBS"],
-               resumo: "Com a tributação no destino, o CEP do cliente tornou-se o dado mais valioso para o cálculo do imposto. Empresas estão redesenhando sua malha logística e mudando fornecedores para otimizar a carga tributária, já que a localização do armazém perde relevância fiscal frente ao local de consumo.",
-               impacto: "Logística Fiscal: Atualização cadastral urgente. O sistema de vendas deve estar integrado ao CEP para cálculo correto do preço final e margem.",
-               link: "https://www.jota.info/tributos/relatorio-especial/reforma-empresas-pedem-cep-de-cliente-e-mudam-centros-de-distribuicao-e-fornecedores",
-               pdf: "reforma-logistica-cep-mudanca-cd.pdf.pdf"
+               tribunal: "Judiciário",
+               data: "26/01/2026",
+               tags: ["#STF", "#PassivoJudicial", "#PGFN", "#RiscoFiscal"],
+               resumo: "Levantamento aponta que recentes decisões do Supremo Tribunal Federal favoráveis à União, especialmente em temas de grande repercussão (Repercussão Geral), resultaram em uma redução significativa do passivo judicial tributário projetado para 2026. A consolidação de teses pró-fisco em matérias constitucionais permitiu à PGFN reverter provisões de risco bilionárias, aliviando as contas públicas, mas sinalizando um cenário de endurecimento jurisprudencial para os contribuintes em teses macroeconômicas.",
+               impacto: "Gestão de Expectativa: O cenário de 'redução de passivo' da União reflete derrotas dos contribuintes. É essencial revisar a classificação de risco (Probável/Possível/Remoto) dos processos judiciais da carteira do escritório, alinhando as expectativas dos clientes quanto ao êxito no STF.",
+               link: "https://www.jota.info/tributos/matinal/vitorias-tributarias-no-stf-reduzem-passivo-judicial-da-uniao-para-2026",
+               pdf: "vitorias-stf-reducao-passivo-uniao.pdf.pdf"
             },
             {
-               titulo: "Receita restringe uso de imposto pago no exterior para IRPJ e CSLL",
-               veiculo: "Jota",
-               tribunal: "Receita Federal",
-               data: "23/01/2026",
-               tags: ["#IRPJ", "#CSLL", "#Exterior", "#Compensação"],
-               resumo: "Nova diretriz da Receita limita a compensação de tributos pagos no exterior. A medida restringe o abatimento quando não há tratado específico ou reciprocidade comprovada, aumentando o custo fiscal de multinacionais brasileiras com operações em países de baixa tributação.",
-               impacto: "Multinacionais: Revisão imediata do cálculo do lucro mundial. Estruturas offshore podem ter aumento de carga efetiva no Brasil.",
-               link: "http://jota.info/tributos/matinal/receita-restringe-uso-de-imposto-pago-no-exterior-para-irpj-e-csll",
-               pdf: "receita-restringe-imposto-exterior-irpj.pdf.pdf"
+               titulo: "União reduz em 30% riscos fiscais com disputas na justiça (Visão Valor)",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "26/01/2026",
+               tags: ["#RiscoFiscal", "#ValorEconomico", "#STF"],
+               resumo: "Reportagem do Valor Econômico detalha os números por trás da redução de riscos fiscais. A atuação estratégica da Advocacia-Geral da União e decisões colegiadas do STF permitiram um corte de 30% no estoque de riscos prováveis. O texto destaca o impacto positivo para o atingimento das metas fiscais do governo, mas alerta para a insegurança que a mudança de jurisprudência pode causar no setor produtivo.",
+               impacto: "Análise Econômica: A notícia reforça a tendência de um Judiciário mais alinhado com a responsabilidade fiscal do Estado. Para o planejamento tributário, isso significa que teses baseadas em 'vácuos legislativos' terão vida curta e menor chance de êxito final.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/26/uniao-reduz-em-30-riscos-fiscais-com-disputas-na-justica.ghtml",
+               pdf: "uniao-reduz-riscos-fiscais.pdf.pdf"
             },
             {
-               titulo: "CARF mantém cobrança de IRPF contra jornalista PJ da Globo",
+               titulo: "Julgamentos em 2026 têm impacto de R$ 1.568 bi",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "26/01/2026",
+               tags: ["#Pauta", "#Bilhão", "#STF", "#STJ"],
+               resumo: "Mapeamento dos processos pautados ou com potencial de julgamento para 2026 no STF e STJ indica um impacto financeiro colossal de R$ 1,5 trilhão. Estão na mira teses sobre PIS/Cofins, IPI e questões previdenciárias. O volume financeiro coloca pressão máxima sobre os ministros e sugere que o ano será marcado por modulações de efeitos para evitar colapso orçamentário.",
+               impacto: "Monitoramento de Pauta: Acompanhar de perto cada item dessa pauta trilionária. Clientes com exposição a esses temas devem ser alertados sobre a iminência de desfechos, avaliando a conveniência de adesão a transações ou pagamento antecipado para evitar multas.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/26/julgamentos-em-2026-tem-impacto-de-r-1568-bi.ghtml",
+               pdf: "julgamentos-tributarios-impacto-1568bi.pdf.pdf"
+            },
+            {
+               titulo: "CARF libera crédito de IRRF em remessas ao exterior em ano de prejuízo fiscal",
                veiculo: "Jota",
                tribunal: "CARF",
-               data: "23/01/2026",
-               tags: ["#Pejotização", "#CARF", "#IRPF", "#Vínculo"],
-               resumo: "CARF validou autuação fiscal descaracterizando a 'pejotização' de jornalista. O tribunal entendeu haver pessoalidade e subordinação, cobrando IRPF (27,5%) sobre os rendimentos da PJ, mais multa qualificada.",
-               impacto: "Risco Contratual: Alerta para contratos PJ de executivos e personalidades. É vital garantir autonomia real na prestação de serviços para sustentar a estrutura.",
-               link: "http://jota.info/tributos/direto-do-carf/carf-mantem-cobranca-de-irpf-contra-jornalista-pj-da-globo",
-               pdf: "carf-pejotizacao-jornalista-globo.pdf.pdf"
+               data: "26/01/2026",
+               tags: ["#CARF", "#IRRF", "#PrejuízoFiscal", "#Crédito"],
+               resumo: "Em decisão favorável ao contribuinte, o CARF permitiu a apropriação de créditos de IRRF incidente sobre remessas ao exterior, mesmo quando a empresa apura prejuízo fiscal no ano-calendário. O entendimento afasta a trava que limitava o uso desses créditos apenas a exercícios com lucro tributável, reconhecendo o direito ao ativo fiscal independentemente do resultado contábil imediato.",
+               impacto: "Oportunidade de Recuperação: Empresas exportadoras ou com forte interação internacional que acumularam prejuízos recentes devem revisar sua escrita fiscal. Há possibilidade de recuperar créditos de IRRF que foram dados como perdidos ou não lançados.",
+               link: "https://www.jota.info/tributos/carf-libera-credito-de-irrf-em-remessas-ao-exterior-em-ano-de-prejuizo-fiscal",
+               pdf: "carf-credito-irrf-prejuizo-fiscal.pdf.pdf"
             },
             {
-               titulo: "Receita pretende arrecadar R$ 200 bi neste ano com cobrança amigável",
-               veiculo: "Jota",
-               tribunal: "Receita Federal",
-               data: "23/01/2026",
-               tags: ["#Autorregularização", "#Arrecadação", "#Conformidade"],
-               resumo: "Fisco aposta na 'cobrança amigável' (autorregularização) para bater meta de R$ 200 bi. A estratégia consiste em notificar divergências antes da autuação, incentivando o pagamento espontâneo sem multas de ofício.",
-               impacto: "Monitoramento: Atenção às caixas postais (DTE). Responder rápido aos avisos de autorregularização evita multas pesadas (75% a 150%).",
-               link: "https://www.jota.info/tributos/relatorio-especial/receita-pretende-arrecadar-r-200-bi-neste-ano-com-cobranca-amigavel",
-               pdf: "receita-arrecadacao-amigavel-200bi.pdf.pdf"
-            },
-            {
-               titulo: "Reforma tributária e o novo preço de venda",
-               veiculo: "Valor",
-               tribunal: "Reforma Tributária",
-               data: "23/01/2026",
-               tags: ["#Precificação", "#Margem", "#Custos"],
-               resumo: "Artigo analisa como o fim do 'imposto sobre imposto' altera a formação de preços. A tributação 'por fora' do IBS/CBS exige nova matemática para manter margens líquidas, especialmente em cadeias longas onde o crédito financeiro é crucial.",
-               impacto: "Comercial: Treinamento de vendas é essencial. A tabela de preços precisará ser refeita considerando a nova alíquota nominal maior, porém não cumulativa.",
-               link: "https://valor.globo.com/legislacao/coluna/reforma-tributaria-e-o-novo-preco-de-venda.ghtml",
-               pdf: "reforma-tributaria-novo-preco-venda.pdf.pdf"
-            },
-            {
-               titulo: "Os desafios práticos da transição tributária a partir de 2026",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "23/01/2026",
-               tags: ["#Transição", "#Compliance", "#Obrigações"],
-               resumo: "Texto detalha a complexidade de operar com dois sistemas tributários simultâneos (velho e novo) durante a transição. O custo de conformidade aumentará com a duplicidade de obrigações acessórias.",
-               impacto: "TI e Fiscal: Planejamento orçamentário deve prever aumento de custos com software e pessoal para gerenciar a escrituração dupla.",
-               link: "https://www.conjur.com.br/2026-jan-23/os-desafios-praticos-da-transicao-tributaria-a-partir-de-2026/",
-               pdf: "desafios-praticos-transicao-2026.pdf.pdf"
-            },
-            {
-               titulo: "Planejamento tributário da doação não se limita à incidência do ITCMD",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "23/01/2026",
-               tags: ["#Doação", "#ITCMD", "#GanhoDeCapital"],
-               resumo: "Alerta importante: focar apenas no ITCMD na doação é erro. É preciso calcular o IR sobre Ganho de Capital se a doação for a valor de mercado, custo que pode superar o próprio imposto estadual.",
-               impacto: "Patrimonial: Simular o custo total (ITCMD + IR) antes de doar. Às vezes, manter o bem no nome do doador é mais eficiente.",
-               link: "https://www.conjur.com.br/2026-jan-23/planejamento-tributario-da-doacao-nao-se-limita-a-incidencia-do-itcmd/",
-               pdf: "planejamento-doacao-alem-itcmd.pdf.pdf"
-            },
-            {
-               titulo: "Um respiro para os sócios das holdings patrimoniais (ITBI)",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "22/01/2026",
-               tags: ["#Holding", "#ITBI", "#Imunidade"],
-               resumo: "Decisões recentes flexibilizam a cobrança de ITBI na integralização de imóveis em holdings, protegendo a imunidade constitucional mesmo quando há atividade imobiliária futura, desde que não preponderante no momento do aporte.",
-               impacto: "Societário: Momento favorável para constituição de holdings familiares com integralização de imóveis, reduzindo custos de transação.",
-               link: "https://www.conjur.com.br/2026-jan-22/um-respiro-para-os-socios-das-holdings-patrimoniais/",
-               pdf: "respiro-socios-holdings-patrimoniais.pdf.pdf"
-            },
-            {
-               titulo: "60% das teses tributárias de repercussão geral do STF desde 2007 são pró-Fisco",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "22/01/2026",
-               tags: ["#STF", "#Estatística", "#PróFisco"],
-               resumo: "Levantamento estatístico confirma viés arrecadatório da Corte Suprema. Em matérias de grande impacto, o STF tende a decidir a favor da União para preservar o orçamento público.",
-               impacto: "Gestão de Expectativa: O jurídico deve ser conservador ao provisionar riscos. A chance de êxito em 'teses filhotes' deve ser ponderada com esse histórico.",
-               link: "https://www.conjur.com.br/2026-jan-22/60-das-teses-tributarias-de-repercussao-geral-do-stf-desde-2007-sao-pro-fisco/",
-               pdf: "estatistica-stf-teses-pro-fisco.pdf.pdf"
-            },
-            {
-               titulo: "Reforma tributária e a tributação de riqueza inexistente",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "22/01/2026",
-               tags: ["#CapacidadeContributiva", "#IBS", "#CBS"],
-               resumo: "Crítica jurídica sobre pontos da Reforma que podem tributar 'riqueza fictícia', como transferências não onerosas ou créditos estornados, violando o princípio da capacidade contributiva.",
-               impacto: "Tese Jurídica: Fundamento para futuras ações declaratórias contra a incidência do IBS/CBS sobre operações sem receita real.",
-               link: "https://www.conjur.com.br/2026-jan-22/reforma-tributaria-e-a-tributacao-de-riqueza-inexistente/",
-               pdf: "reforma-tributacao-riqueza-inexistente.pdf.pdf"
-            },
-            {
-               titulo: "Receita detalha acréscimo de 10% no IRPJ e CSLL para Lucro Presumido (IN)",
+               titulo: "Créditos de impostos estrangeiros: análise do ADI RFB nº 1/2026",
                veiculo: "APET",
                tribunal: "Receita Federal",
+               data: "26/01/2026",
+               tags: ["#ADI", "#Internacional", "#CréditoNoExterior"],
+               resumo: "Análise detalhada do Ato Declaratório Interpretativo (ADI) RFB nº 1/2026, que impôs novas restrições e requisitos documentais para a compensação de imposto de renda pago no exterior. A norma exige prova de reciprocidade de tratamento e detalhamento da base de cálculo estrangeira, dificultando o aproveitamento automático do crédito (tax credit).",
+               impacto: "Compliance Internacional: Multinacionais brasileiras devem auditar seus processos de compensação de impostos pagos lá fora. A documentação suporte (tax returns, comprovantes de pagamento) precisará ser muito mais robusta para passar pelo crivo da Receita.",
+               link: "https://rota.apet.org.br/2026/01/creditos-de-impostos-estrangeiros-analise-do-adi-rfb-no-1-2026/",
+               pdf: "adi-rfb-1-2026-creditos-estrangeiros.pdf.pdf"
+            },
+            {
+               titulo: "Novo tratamento da multa de 1% sobre o valor aduaneiro pela LC nº 227/2026",
+               veiculo: "Conjur",
+               tribunal: "Legislativo",
                data: "23/01/2026",
-               tags: ["#LucroPresumido", "#IRPJ", "#IN"],
-               resumo: "Nova Instrução Normativa esclarece a base de cálculo do adicional de 10% do IRPJ no Lucro Presumido, fechando brechas sobre ganhos de capital e outras receitas.",
-               impacto: "Contábil: Revisar apuração trimestral para evitar erro no cálculo do adicional, causa frequente de malha fina PJ.",
-               link: "https://rota.apet.org.br/2026/01/em-nova-instrucao-normativa-receita-detalha-aplicacao-de-acrescimo-de-10-no-irpj-e-csll-para-lucro-presumido/",
-               pdf: "in-receita-acrescimo-lucro-presumido.pdf.pdf"
+               tags: ["#Aduaneiro", "#Multa", "#LC227", "#Importação"],
+               resumo: "Artigo jurídico explora as alterações trazidas pela LC 227/2026 no regime de multas aduaneiras, especificamente a penalidade de 1% sobre o valor aduaneiro por erro de classificação ou falta de licença. A nova lei introduz critérios de proporcionalidade e teto para a multa, corrigindo distorções históricas que geravam passivos desproporcionais por erros formais.",
+               impacto: "Revisão de Autos de Infração: Importadores com autuações aduaneiras em aberto (administrativa ou judicialmente) devem peticionar invocando a retroatividade benigna da LC 227 para reduzir ou cancelar multas de 1% aplicadas sob a regra antiga.",
+               link: "https://www.conjur.com.br/2026-jan-23/novo-tratamento-da-multa-de-1-sobre-o-valor-aduaneiro-pela-lei-complementar-no-227-2026/",
+               pdf: "multa-aduaneira-lc-227-novo-tratamento.pdf.pdf"
+            },
+            {
+               titulo: "Mudam os prazos, permanece o desequilíbrio no processo administrativo fiscal",
+               veiculo: "Conjur",
+               tribunal: "Legislativo",
+               data: "26/01/2026",
+               tags: ["#ProcessoAdministrativo", "#Prazos", "#Defesa"],
+               resumo: "Crítica às alterações de prazos processuais promovidas pela legislação recente (LC 227). O autor argumenta que, embora tenha havido unificação de contagem (dias úteis/corridos em certos casos), o sistema continua favorecendo a Fazenda Pública, mantendo prazos exíguos para defesa do contribuinte em comparação aos prazos elásticos para a fiscalização.",
+               impacto: "Gestão de Prazos: O jurídico interno deve redobrar a atenção com a contagem de prazos. A recomendação é manter a contagem em dias corridos para evitar intempestividade até que a jurisprudência administrativa se pacifique sobre a aplicação das novas regras.",
+               link: "https://www.conjur.com.br/2026-jan-26/mudam-os-prazos-permanece-o-desequilibrio-no-processo-administrativo-fiscal/",
+               pdf: "desequilibrio-processo-administrativo-lc-227.pdf.pdf"
+            },
+            {
+               titulo: "STJ: Legitimidade para julgar validade de taxa portuária é da Justiça Federal",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "26/01/2026",
+               tags: ["#STJ", "#Portos", "#Competência", "#JustiçaFederal"],
+               resumo: "O STJ definiu que compete à Justiça Federal processar e julgar ações que discutem a validade e a cobrança de tarifas e taxas portuárias, quando a autoridade portuária for federal ou delegada. A decisão resolve conflitos de competência que travavam processos em varas estaduais e traz uniformidade processual para o setor de infraestrutura.",
+               impacto: "Setor Portuário e Logístico: Empresas que discutem tarifas portuárias devem verificar se suas ações estão no juízo correto. Processos em trâmite na Justiça Estadual correm risco de anulação ou declínio de competência, atrasando a solução do litígio.",
+               link: "https://www.jota.info/tributos/stj-legitimidade-para-julgar-validade-de-taxa-portuaria-e-da-justica-federal",
+               pdf: "stj-competencia-taxa-portuaria.pdf.pdf"
+            },
+            {
+               titulo: "STJ pauta julgamentos de casos tributários para 1ª Seção em fevereiro",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "25/01/2026",
+               tags: ["#STJ", "#Pauta", "#Repetitivo"],
+               resumo: "A 1ª Seção do STJ definiu sua pauta para fevereiro de 2026, priorizando o julgamento de Recursos Especiais Repetitivos. Entre os temas, destacam-se questões sobre prescrição intercorrente e a base de cálculo de contribuições previdenciárias. As decisões terão efeito vinculante para todas as instâncias inferiores e para o CARF.",
+               impacto: "Antecipação: Analisar a lista de temas pautados. Para processos suspensos aguardando repetitivo, o julgamento de fevereiro será o gatilho para a retomada. É hora de atualizar memoriais e preparar a estratégia pós-julgamento.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/25/stj-pauta-julgamentos-de-casos-tributarios-para-1a-secao-em-fevereiro.ghtml",
+               pdf: "stj-pauta-tributaria-fevereiro.pdf.pdf"
+            },
+            {
+               titulo: "Entre o litígio e a estratégia: a arbitragem tributária em perspectiva",
+               veiculo: "Conjur",
+               tribunal: "Legislativo",
+               data: "25/01/2026",
+               tags: ["#Arbitragem", "#ResoluçãoDeDisputas", "#Inovação"],
+               resumo: "Artigo discute o avanço da arbitragem tributária no Brasil como alternativa ao contencioso judicial moroso. O texto analisa as vantagens (especialização dos árbitros, celeridade) e os desafios (custos, indisponibilidade do crédito público) da implementação desse instituto, previsto em projetos de lei recentes.",
+               impacto: "Inovação Jurídica: Escritórios devem começar a se preparar para atuar em arbitragens tributárias. É um nicho de alto valor agregado que exige expertise técnica e negocial, diferente do contencioso tradicional de massa.",
+               link: "https://www.conjur.com.br/2026-jan-25/entre-o-litigio-e-a-estrategia-a-arbitragem-tributaria-em-perspectiva/",
+               pdf: "arbitragem-tributaria-estrategia.pdf.pdf"
+            },
+            {
+               titulo: "Restrições à repetição de indébito do IBS e da CBS: o novo do velho dilema",
+               veiculo: "Conjur",
+               tribunal: "Reforma Tributária",
+               data: "25/01/2026",
+               tags: ["#IBS", "#CBS", "#RepetiçãoDeIndébito", "#Art166CTN"],
+               resumo: "Análise crítica sobre as regras da Reforma Tributária que limitam a restituição de valores pagos indevidamente a título de IBS e CBS. O texto aponta que a legislação replicou a lógica do art. 166 do CTN (exigência de prova de não repasse do encargo financeiro), o que na prática inviabiliza a repetição de indébito para tributos indiretos.",
+               impacto: "Contencioso Futuro: A recuperação de IBS/CBS indevido será tão difícil quanto a de ICMS/ISS. A estratégia deve focar em evitar o pagamento indevido na origem (liminares preventivas) em vez de buscar a restituição posterior.",
+               link: "https://www.conjur.com.br/2026-jan-25/restricoes-a-repeticao-de-indebito-do-ibs-e-da-cbs-o-novo-do-velho-dilema/",
+               pdf: "restricoes-repeticao-indebito-ibs-cbs.pdf.pdf"
+            },
+            {
+               titulo: "Fisco estadual não pode usar dados do contribuinte sem norma própria",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "26/01/2026",
+               tags: ["#LGPD", "#SigiloFiscal", "#Dados"],
+               resumo: "Decisão judicial impede que fiscos estaduais utilizem indiscriminadamente dados bancários e fiscais de contribuintes compartilhados pela União, sem que haja legislação estadual específica regulamentando o sigilo e o tratamento dessas informações, em respeito à LGPD e ao direito à privacidade.",
+               impacto: "Proteção de Dados: Fundamento relevante para anular autos de infração estaduais baseados exclusivamente em cruzamento de dados massivos sem respaldo em lei local específica de proteção de dados.",
+               link: "https://www.conjur.com.br/2026-jan-26/fisco-estadual-nao-pode-usar-dados-do-contribuinte-sem-norma-propria/",
+               pdf: "fisco-estadual-uso-dados-contribuinte.pdf.pdf"
+            },
+            {
+               titulo: "IPVA 2026 RS: Última semana para garantir parcelamento e descontos",
+               veiculo: "Outros",
+               tribunal: "Municipal",
+               data: "26/01/2026",
+               tags: ["#IPVA", "#RioGrandeDoSul", "#Prazo"],
+               resumo: "Secretaria da Fazenda do RS alerta para o fim do prazo para adesão ao parcelamento em 6x do IPVA 2026 e aproveitamento dos descontos de antecipação (Bom Motorista e Bom Cidadão). O pagamento da primeira parcela ou cota única deve ocorrer até o final de janeiro.",
+               impacto: "Calendário Fiscal: Aviso prático para clientes com frota ou sede no Rio Grande do Sul. A perda do prazo implica em aumento direto do custo tributário sobre a propriedade de veículos.",
+               link: "https://fazenda.rs.gov.br/ipva-2026-ultima-semana-para-garantir-parcelamento-em-seis-vezes-e-descontos-de-janeiro",
+               pdf: "ipva-rs-2026-prazos-descontos.pdf.pdf"
             }
         ];
 
