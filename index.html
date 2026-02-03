@@ -9,7 +9,6 @@
     <style>
         /* --- IDENTIDADE VISUAL DEMAREST --- */
         :root {
-            /* Paleta baseada na imagem enviada */
             --brand-navy: #002540;      /* Fundo Azul Escuro */
             --brand-copper: #C19263;    /* Tom Cobre/Dourado do Logo */
             --bg-body: #f8f9fa;         /* Fundo da página mais claro */
@@ -21,86 +20,52 @@
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; }
 
-        /* HEADER SOFISTICADO */
         header { background-color: var(--brand-navy); color: white; padding: 2rem 0; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-bottom: 3px solid var(--brand-copper); }
         .header-content { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
         
-        /* LOGO ESTILIZADO EM CSS */
         h1 { 
             font-family: 'Inter', sans-serif; 
             font-size: 2.2rem; 
             margin: 0; 
             color: var(--brand-copper); 
             text-transform: uppercase; 
-            letter-spacing: 6px; /* Espaçamento característico do logo Demarest */
+            letter-spacing: 6px; 
             font-weight: 400;
         }
         .subtitulo { font-size: 0.85rem; color: #cbd5e1; font-weight: 300; margin-top: 10px; letter-spacing: 1px; text-transform: uppercase;}
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px 40px 20px; }
         
-        /* FILTROS E DATAS */
         .filtros-wrapper { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 30px; border: 1px solid #e2e8f0; }
-        
         .filtros-linha { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
         .filtros-linha:last-child { margin-bottom: 0; }
 
         label { font-size: 0.75rem; font-weight: 600; color: var(--brand-navy); display: block; margin-bottom: 5px; text-transform: uppercase; }
-        
-        select, input { 
-            padding: 10px; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 4px; 
-            font-family: 'Inter', sans-serif; 
-            width: 100%; 
-            box-sizing: border-box;
-            color: var(--brand-navy);
-        }
+        select, input { padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: 'Inter', sans-serif; width: 100%; box-sizing: border-box; color: var(--brand-navy); }
         select:focus, input:focus { outline: none; border-color: var(--brand-copper); }
 
-        /* Ajuste de largura dos inputs */
         .input-group { flex: 1; min-width: 200px; }
         .input-group-date { flex: 0 1 180px; } 
 
-        /* CARDS */
-        .card { 
-            background: var(--card-bg); 
-            border-radius: 8px; 
-            padding: 25px; 
-            margin-bottom: 20px; 
-            border: 1px solid #e2e8f0; 
-            border-left: 5px solid var(--brand-navy); /* Detalhe lateral azul */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
-            transition: all 0.2s ease; 
-        }
+        .card { background: var(--card-bg); border-radius: 8px; padding: 25px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-left: 5px solid var(--brand-navy); box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s ease; }
         .card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-left-color: var(--brand-copper); }
         
         .card-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        
         .badge-tribunal { background-color: var(--brand-navy); color: var(--brand-copper); padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .badge-veiculo { background-color: #f1f5f9; color: var(--brand-navy); padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; border: 1px solid #e2e8f0; }
-
         .data-news { font-size: 0.8rem; color: var(--text-light); font-weight: 500; display: flex; align-items: center; gap: 5px; }
 
         .card-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--brand-navy); margin: 8px 0 12px 0; line-height: 1.3; }
-        
         .tag { background-color: #f8fafc; color: var(--text-light); padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; margin-right: 5px; font-weight: 500; display: inline-block; margin-bottom: 5px; border: 1px solid #e2e8f0; }
-        
         .resumo-texto { color: #475569; font-size: 0.95rem; line-height: 1.7; text-align: justify; margin-bottom: 20px; }
-        
         .impacto-box { background-color: var(--highlight-bg); border: 1px solid #f0e0d0; padding: 15px; border-radius: 6px; margin: 15px 0; }
         
         .actions { display: flex; gap: 10px; margin-top: 20px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
-        
         .btn { padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
-        
         .btn-source { background-color: var(--brand-navy); color: white; border: 1px solid var(--brand-navy); }
         .btn-source:hover { background-color: #0f3555; }
-        
         .btn-pdf { background-color: white; color: #dc2626; border: 1px solid #fee2e2; }
         .btn-pdf:hover { background-color: #fef2f2; border-color: #dc2626; }
         .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
-
     </style>
 </head>
 <body>
@@ -123,7 +88,8 @@
                         <option value="Legislativo">Legislativo / Executivo</option>
                         <option value="Reforma Tributária">Reforma Tributária</option>
                         <option value="CARF">CARF / Receita</option>
-                        <option value="Municipal">Municipal</option>
+                        <option value="Internacional">Internacional / Aduaneiro</option>
+                        <option value="Municipal">Municipal / IPVA</option>
                     </select>
                 </div>
                 <div class="input-group">
@@ -135,14 +101,14 @@
                         <option value="Conjur">Conjur</option>
                         <option value="APET">APET / Rota</option>
                         <option value="Receita Federal">Receita Federal</option>
+                        <option value="Outros">Outros</option>
                     </select>
                 </div>
                 <div class="input-group" style="flex: 2;">
                     <label>Busca Textual</label>
-                    <input type="text" id="barra-busca" placeholder="Ex: PIS/Cofins, Ágio, IRRF..." onkeyup="renderizarNoticias()">
+                    <input type="text" id="barra-busca" placeholder="Ex: PIS/Cofins, SC Cosit, Liminar..." onkeyup="renderizarNoticias()">
                 </div>
             </div>
-
             <div class="filtros-linha">
                 <div class="input-group-date">
                     <label>Data Início</label>
@@ -162,631 +128,358 @@
     </div>
 
     <script>
-        // --- BASE DE DADOS CUMULATIVA (26/01 a 29/01) ---
         const noticias = [
-            // --- DIA 29/01/2026 ---
+            // --- DIA 03/02/2026 (HOJE) ---
             {
-               titulo: "SC Cosit nº 7/2026: Receita define marco temporal para Autorregularização Incentivada",
+               titulo: "SC Cosit nº 10/2026: INSS sobre Prêmios de Desempenho",
                veiculo: "Receita Federal",
                tribunal: "Receita Federal",
-               data: "29/01/2026",
-               tags: ["#Autorregularização", "#Cosit", "#Prazos", "#DCTF"],
-               resumo: "A Receita Federal publicou a Solução de Consulta Cosit nº 7/2026, esclarecendo limites para adesão ao programa de Autorregularização Incentivada (Lei 14.740/23). O ato define que tributos com vencimento original posterior a 30/11/2023 não poderiam ser incluídos. Além disso, firma o entendimento de que a data de entrega da DCTF é o marco de constituição do crédito tributário. A decisão impacta contribuintes que tentaram incluir débitos correntes ou futuros no programa de anistia.",
-               impacto: "Revisão de Adesões: Clientes que aderiram à Autorregularização devem auditar os débitos incluídos. Se houver tributos vencidos após 30/11/23, há risco iminente de exclusão do programa e cobrança da diferença com encargos plenos.",
-               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/148971",
-               pdf: "sc-cosit-7-2026-autorregularizacao.pdf.pdf"
+               data: "03/02/2026",
+               tags: ["#INSS", "#Prêmios", "#ReformaTrabalhista", "#Cosit"],
+               resumo: "A Receita Federal reformou seu entendimento (SC 151/2019) através da SC Cosit nº 10/2026. A norma define que, a partir da Reforma Trabalhista, não incide contribuição previdenciária sobre prêmios por desempenho superior, desde que pagos por liberalidade. O Fisco esclarece que a habitualidade no pagamento não descaracteriza a isenção, desde que não decorra de obrigação legal ou ajuste expresso. Exige-se comprovação objetiva do desempenho superior.",
+               impacto: "RH: Grande vitória. Permite flexibilidade na remuneração variável sem risco previdenciário, exigindo apenas documentação da 'liberalidade'.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149081",
+               pdf: "sc_cosit_10.pdf"
             },
             {
-               titulo: "Secretários estaduais de Fazenda prorrogam 285 convênios de ICMS",
+               titulo: "SC Cosit nº 9/2026: PIS/Cofins na Admissão Temporária",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "03/02/2026",
+               tags: ["#PISCOFINS", "#Importação", "#AdmissãoTemporária"],
+               resumo: "A SC Cosit nº 9/2026 confirma que empresas no Lucro Real podem tomar créditos de PIS/Cofins-Importação pagos no regime de Admissão Temporária para Utilização Econômica (1% ao mês). A solução também valida o creditamento extemporâneo em caso de devolução do bem ao exterior, mediante retificação da EFD-Contribuições.",
+               impacto: "Aduaneiro: Segurança jurídica para operações de óleo e gás que utilizam maquinário alugado. Revisar escrituração para recuperar créditos passados.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149053",
+               pdf: "sc_cosit_9.pdf"
+            },
+            {
+               titulo: "SC Cosit nº 8/2026: Autorregularização e DCOMP",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "03/02/2026",
+               tags: ["#Autorregularização", "#DCOMP", "#Compensação"],
+               resumo: "A SC Cosit nº 8/2026 esclarece que débitos objeto de DCOMP não homologada podem ser incluídos na Autorregularização Incentivada, desde que a transmissão da declaração e a ciência do despacho decisório tenham ocorrido dentro da janela do programa. Veda-se a inclusão se o débito já estava constituído definitivamente antes.",
+               impacto: "Passivo: Valida a estratégia de migrar discussões de compensação para o pagamento facilitado sem multas.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149052",
+               pdf: "sc_cosit_8.pdf"
+            },
+            {
+               titulo: "SC Cosit nº 7/2026: Prazos da Autorregularização",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "03/02/2026",
+               tags: ["#Autorregularização", "#Prazos", "#DCTF"],
+               resumo: "A SC Cosit nº 7/2026 define que tributos com vencimento original posterior a 30/11/2023 não poderiam ser incluídos na Autorregularização Incentivada. Fixa a data de entrega da DCTF como marco de constituição do crédito. Impacta contribuintes que tentaram incluir débitos correntes no programa.",
+               impacto: "Compliance: Risco de exclusão do programa para quem incluiu débitos vencidos após nov/23. Necessária auditoria das adesões.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149051",
+               pdf: "sc_cosit_7.pdf"
+            },
+            {
+               titulo: "SC Cosit nº 6/2026: Crédito Presumido ICMS x Subvenção",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "03/02/2026",
+               tags: ["#ICMS", "#Subvenção", "#Lei14789"],
+               resumo: "A Receita definiu na SC Cosit nº 6/2026 que o crédito presumido de ICMS concedido como método alternativo de apuração (Ex: Transportes) NÃO se qualifica como subvenção para investimento. Logo, não se aplicam as regras da Lei 14.789/23 para exclusão da base de cálculo do IRPJ/CSLL, devendo ser tributado.",
+               impacto: "Logística: Impacto severo. Empresas que tratavam esse crédito como não tributável devem rever a estratégia imediatamente.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149052",
+               pdf: "sc_cosit_6.pdf"
+            },
+            {
+               titulo: "SC Cosit nº 5/2026: Valor Aduaneiro no Remessa Conforme",
+               veiculo: "Receita Federal",
+               tribunal: "Aduaneiro",
+               data: "03/02/2026",
+               tags: ["#RemessaConforme", "#ValorAduaneiro", "#Marketplace"],
+               resumo: "A SC Cosit nº 5/2026 detalha que a comissão paga aos marketplaces DEVE compor o valor aduaneiro (base de cálculo do imposto) no Programa Remessa Conforme. Por outro lado, valores de garantia estendida opcional contratada à parte não integram a base. Afeta o custo final no e-commerce.",
+               impacto: "Varejo Digital: Plataformas devem ajustar sistemas para incluir a taxa de serviço na base de tributação na fonte.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149051",
+               pdf: "sc_cosit_5.pdf"
+            },
+            {
+               titulo: "SC Cosit nº 4/2026: Teto de Incentivos (Esporte/Cultura)",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "03/02/2026",
+               tags: ["#IRPJ", "#Incentivos", "#Rouanet"],
+               resumo: "A Receita endureceu o entendimento: a SC Cosit nº 4/2026 esclarece que o limite de 4% (Esporte Inclusão) e 2% (Esporte Geral) NÃO se somam de forma simples. Além disso, incentivos culturais e esportivos de inclusão concorrem dentro do limite global de 4%. Veda planejamentos que buscavam dedução de até 10%.",
+               impacto: "IRPJ: Empresas no Lucro Real devem recalcular uso de incentivos. Risco de glosa alto para quem soma tetos indiscriminadamente.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149051",
+               pdf: "sc_cosit_4.pdf"
+            },
+            {
+               titulo: "Receita estima menor risco fiscal judicial para 2026",
+               veiculo: "Jota",
+               tribunal: "Receita Federal",
+               data: "03/02/2026",
+               tags: ["#RiscoFiscal", "#Arrecadação"],
+               resumo: "A Receita projeta o menor risco fiscal judicial dos últimos oito anos para 2026, baseada na consolidação de vitórias no STF/STJ e sucesso das transações tributárias. O cenário indica estabilidade orçamentária, mas sinaliza pouca margem para novas teses dos contribuintes.",
+               impacto: "Macro: Endurecimento jurisprudencial confirmado. Foco deve ser gestão de passivo e não teses de compensação.",
+               link: "https://www.jota.info/tributos/relatorio-especial/receita-estima-para-2026-menor-risco-fiscal-com-acoes-tributarias-em-oito-anos",
+               pdf: "receita_menor_risco_fiscal_2026.pdf"
+            },
+            {
+               titulo: "STF retoma julgamentos com caso de R$ 17 bi (Funrural)",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "03/02/2026",
+               tags: ["#STF", "#Funrural", "#Agronegócio"],
+               resumo: "STF reinicia o ano com a pauta do Funrural (sub-rogação do adquirente), impacto de R$ 17 bi. Julgamento definirá se frigoríficos devem recolher contribuição não retida no passado, discutindo a constitucionalidade pós-Emenda da Previdência.",
+               impacto: "Agro: Risco sistêmico para frigoríficos. Recomendável auditoria de retenções passadas.",
+               link: "https://www.jota.info/tributos/apostas-da-semana/stf-retoma-julgamentos-com-caso-de-r-17-bi-sobre-sub-rogacao-do-funrural",
+               pdf: "jota_stf_funrural.pdf"
+            },
+            {
+               titulo: "CARF pauta recursos de BTG, Neoenergia e Unimed",
+               veiculo: "Jota",
+               tribunal: "CARF",
+               data: "03/02/2026",
+               tags: ["#CARF", "#Pauta", "#GrandesEmpresas"],
+               resumo: "Pauta de fevereiro do CARF traz casos de peso: ágio (BTG), planejamento em reorganizações (Neoenergia) e natureza cooperativa (Unimed). Mercado aguarda definições sobre voto de qualidade em casos complexos.",
+               impacto: "Monitoramento: Acórdãos servirão de guia para teses de M&A e desmutualização.",
+               link: "https://www.jota.info/tributos/matinal/carf-pauta-recursos-de-btg-pactual-neoenergia-unimed-entre-outros",
+               pdf: "jota_carf_pauta.pdf"
+            },
+            {
+               titulo: "CARF mantém CIDE em compras na App Store",
+               veiculo: "Jota",
+               tribunal: "CARF",
+               data: "03/02/2026",
+               tags: ["#CIDE", "#Software", "#Tecnologia"],
+               resumo: "CARF decidiu pela incidência de CIDE-Remessas sobre pagamentos a residentes no exterior por software via App Store, entendendo haver transferência de tecnologia/licença, negando tese de mercadoria digital.",
+               impacto: "Tech: Aumenta custo de distribuição de software estrangeiro. Revisar contratos de licenciamento.",
+               link: "https://www.jota.info/tributos/carf-mantem-incidencia-de-cide-em-compras-na-app-store",
+               pdf: "jota_cide_appstore.pdf"
+            },
+            {
+               titulo: "Receitas com ativos garantidores integram base do PIS/Cofins",
+               veiculo: "Jota",
+               tribunal: "CARF",
+               data: "03/02/2026",
+               tags: ["#CARF", "#Seguros", "#PISCOFINS"],
+               resumo: "CARF firmou entendimento de que rendimentos financeiros dos ativos garantidores das seguradoras compõem a base do PIS/Cofins, por serem receitas inerentes à atividade empresarial, não meramente financeiras.",
+               impacto: "Seguros: Derrota administrativa. Discussão deve migrar para o Judiciário.",
+               link: "https://www.jota.info/tributos/receitas-com-ativos-garantidores-integram-base-do-pis-cofins-diz-carf",
+               pdf: "jota_ativos_garantidores.pdf"
+            },
+            {
+               titulo: "CARF: Sócio indireto não atrai equiparação de FII a PJ",
+               veiculo: "Jota",
+               tribunal: "CARF",
+               data: "03/02/2026",
+               tags: ["#FII", "#Fundos", "#Planejamento"],
+               resumo: "Decisão favorável no CARF define que sócio indireto com mais de 25% das cotas não contamina o FII, evitando equiparação a PJ. Análise deve ser feita apenas no nível direto de cotistas.",
+               impacto: "Financeiro: Segurança para estruturação de FIIs em cadeia (Fundo de Fundos).",
+               link: "https://www.jota.info/tributos/direto-do-carf/carf-socio-indireto-nao-atrai-equiparacao-de-fii-a-pj-para-fins-de-tributacao",
+               pdf: "jota_fii_socio.pdf"
+            },
+            {
+               titulo: "Receita fiscaliza créditos da 'Tese do Século' e trava compensações",
+               veiculo: "Jota",
+               tribunal: "Receita Federal",
+               data: "03/02/2026",
+               tags: ["#PISCOFINS", "#ICMS", "#MalhaFina"],
+               resumo: "Receita iniciou operação massiva de fiscalização sobre compensações da exclusão do ICMS do PIS/Cofins. Foco em divergências de cálculo e prescrição. Muitas DCOMPs sendo travadas.",
+               impacto: "Risco: Clientes com compensações em análise devem revisar metodologia. Risco de glosa de 75%.",
+               link: "https://www.jota.info/tributos/receita-fiscaliza-creditos-oriundos-da-tese-do-seculo-e-trava-compensacoes",
+               pdf: "jota_tese_seculo.pdf"
+            },
+            {
+               titulo: "TJSP diverge sobre eleição de foro em contratos",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "03/02/2026",
+               tags: ["#Processual", "#Contratos", "#Foro"],
+               resumo: "Câmaras do TJSP divergem sobre validade de cláusulas de eleição de foro, especialmente em contratos de adesão ou com hipossuficientes. Gera insegurança sobre onde litígios serão julgados.",
+               impacto: "Contratos: Revisar cláusulas de foro em contratos padrão para evitar declínio de competência.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/02/03/tjsp-diverge-sobre-regras-de-eleicao-de-foro-para-conflito-contratual.ghtml",
+               pdf: "valor_tjsp_foro.pdf"
+            },
+            {
+               titulo: "STF: Ministros podem julgar honorários de parcelamentos",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "03/02/2026",
+               tags: ["#STF", "#Honorários", "#Parcelamento"],
+               resumo: "STF define pauta de fevereiro com temas sensíveis: incidência de honorários de sucumbência em adesão a parcelamentos fiscais e a validade da cobrança do Funrural.",
+               impacto: "Jurídico: Semana decisiva. Preparar comunicação para clientes com parcelamentos ativos.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/02/01/agenda-do-stf-ministros-podem-julgar-honorarios-de-parcelamentos-e-funrural.ghtml",
+               pdf: "valor_stf_honorarios.pdf"
+            },
+            {
+               titulo: "ITCMD e ITBI sobre operações imobiliárias pós-reforma",
+               veiculo: "Valor",
+               tribunal: "Reforma Tributária",
+               data: "03/02/2026",
+               tags: ["#Imobiliário", "#ITBI", "#ITCMD"],
+               resumo: "Artigo explica nova dinâmica entre ITCMD e ITBI nas operações imobiliárias. Base de cálculo e momento de incidência sofreram ajustes que podem encarecer transmissão de imóveis.",
+               impacto: "Real Estate: Custo de transação vai subir. Antecipar operações antes das novas leis locais.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/01/31/itcmd-e-itbi-sobre-as-operacoes-imobiliarias-apos-a-reforma-tributaria-entenda.ghtml",
+               pdf: "valor_itcmd_imoveis.pdf"
+            },
+            {
+               titulo: "Prescrição intercorrente nas multas aduaneiras (STJ x STF)",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "03/02/2026",
+               tags: ["#Aduaneiro", "#Prescrição", "#Multa"],
+               resumo: "Artigo analisa conflito sobre prescrição intercorrente em multas aduaneiras. Confronta Tema 1.293 do STJ com decisões do STF sobre a Lei 9.873/99.",
+               impacto: "Defesa Aduaneira: Tese vital para limpar passivos antigos parados na Receita.",
+               link: "https://www.conjur.com.br/2026-fev-03/prescricao-intercorrente-nas-multas-aduaneiras-dialogo-entre-temas-1-293-stj-e-487-stf/",
+               pdf: "conjur_prescricao_aduaneira.pdf"
+            },
+            {
+               titulo: "Peer-to-peer no comércio internacional: direito aduaneiro",
+               veiculo: "Conjur",
+               tribunal: "Aduaneiro",
+               data: "03/02/2026",
+               tags: ["#Comex", "#Blockchain", "#Inovação"],
+               resumo: "Análise sobre desafios tributários de transações P2P no comex via blockchain. Ausência de intermediários desafia controles de valoração e origem.",
+               impacto: "Inovação: Risco de autuação por subfaturamento em operações DeFi.",
+               link: "https://www.conjur.com.br/2026-fev-03/peer-to-peer-no-comercio-internacional-quando-a-inovacao-encontra-o-direito-aduaneiro/",
+               pdf: "conjur_p2p_comex.pdf"
+            },
+            {
+               titulo: "Crédito de CBS/IBS em planos de saúde: presente de grego?",
+               veiculo: "Conjur",
+               tribunal: "Reforma Tributária",
+               data: "03/02/2026",
+               tags: ["#IBS", "#CBS", "#Crédito"],
+               resumo: "Artigo questiona efetividade do crédito de IBS/CBS em planos de saúde corporativos. Restrições sobre 'uso pessoal' podem gerar controvérsia se benefício for visto como salário indireto.",
+               impacto: "RH: Avaliar se crédito será integral. Risco de glosa.",
+               link: "https://www.conjur.com.br/2026-fev-03/credito-de-cbs-ibs-na-aquisicao-de-planos-de-saude-para-empregados-presente-de-grego/",
+               pdf: "conjur_cbs_saude.pdf"
+            },
+            {
+               titulo: "Lei afasta interpretação do fisco para ITCMD sobre trusts",
+               veiculo: "Conjur",
+               tribunal: "Legislativo",
+               data: "02/02/2026",
+               tags: ["#ITCMD", "#Trust", "#Sucessão"],
+               resumo: "Nova legislação define fato gerador do ITCMD de trusts no exterior apenas na distribuição aos beneficiários, barrando cobrança na instituição.",
+               impacto: "Patrimonial: Segurança para estruturas de wealth planning.",
+               link: "https://www.conjur.com.br/2026-fev-02/lei-afasta-interpretacao-enviesada-do-fisco-para-cobranca-de-itcmd-sobre-trusts/",
+               pdf: "conjur_itcmd_trusts.pdf"
+            },
+            {
+               titulo: "ITCMD em heranças e doações no exterior pós-reforma",
+               veiculo: "Conjur",
+               tribunal: "Reforma Tributária",
+               data: "02/02/2026",
+               tags: ["#ITCMD", "#Exterior", "#Reforma"],
+               resumo: "Mudanças no ITCMD sobre bens no exterior: competência agora é do domicílio do doador/falecido, fechando brechas de não tributação.",
+               impacto: "Internacional: Residentes no exterior com bens no Brasil passarão a ser tributados.",
+               link: "https://www.conjur.com.br/2026-fev-02/itcmd-na-transmissao-de-herancas-e-doacoes-no-exterior-o-que-mudou-com-a-reforma-tributaria/",
+               pdf: "conjur_itcmd_exterior.pdf"
+            },
+            {
+               titulo: "CARF: Subvenções integram base do PIS/Cofins",
+               veiculo: "APET",
+               tribunal: "CARF",
+               data: "02/02/2026",
+               tags: ["#Subvenção", "#PISCOFINS", "#CARF"],
+               resumo: "CARF mantém posição de que subvenções para investimento compõem receita bruta e base do PIS/Cofins, alinhando-se à Lei 14.789/23.",
+               impacto: "Contencioso: Necessidade de judicializar exclusão de subvenções.",
+               link: "https://rota.apet.org.br/2026/02/subvencoes-integram-base-de-calculo-do-pis-cofins-no-regime-nao-cumulativo-reafirma-carf/",
+               pdf: "rota_subvencoes_carf.pdf"
+            },
+            {
+               titulo: "Rio das Ostras: IPTU à vista com 8% de desconto",
+               veiculo: "Outros",
+               tribunal: "Municipal",
+               data: "03/02/2026",
+               tags: ["#IPTU", "#RioDasOstras", "#Desconto"],
+               resumo: "Rio das Ostras/RJ oferece 8% de desconto para cota única do IPTU até final de fevereiro.",
+               impacto: "Regional: Aviso para clientes com imóveis na região.",
+               link: "https://www.riodasostras.rj.gov.br/iptu-a-vista-tem-8-de-desconto-ate-27-de-fevereiro/",
+               pdf: "iptu_rio_ostras.pdf"
+            },
+            {
+               titulo: "Goiás: Negocie Já com até 99% de desconto",
+               veiculo: "Outros",
+               tribunal: "Municipal",
+               data: "03/02/2026",
+               tags: ["#Refis", "#Goiás", "#ICMS"],
+               resumo: "Goiás lança 'Negocie Já' com descontos de até 99% em juros/multas de ICMS, IPVA e ITCD.",
+               impacto: "Oportunidade: Prioridade para regularização de passivos em GO.",
+               link: "https://agenciacoradenoticias.go.gov.br/182038-negocie-ja-oferece-ate-99-de-desconto-em-juros-e-multas-em-debitos-de-icms-ipva-e-itcd",
+               pdf: "goias_negocie_ja.pdf"
+            },
+
+            // --- HISTÓRICO (29/01) ---
+            {
+               titulo: "Secretários estaduais prorrogam 285 convênios de ICMS",
                veiculo: "Jota",
                tribunal: "Legislativo",
                data: "29/01/2026",
-               tags: ["#ICMS", "#Convênios", "#Confaz", "#Incentivos"],
-               resumo: "O CONFAZ aprovou a prorrogação de 285 convênios de ICMS que concedem benefícios fiscais em diversos setores, evitando um 'abismo tributário' no início do ano. A medida garante a continuidade de isenções e reduções de base de cálculo essenciais para a competitividade de indústrias e o comércio interestadual, mantendo o status quo enquanto a Reforma Tributária não entra plenamente em vigor.",
-               impacto: "Planejamento Fiscal: Validar se os benefícios estaduais utilizados pela empresa estão na lista de prorrogados. A descontinuidade inadvertida de um convênio pode gerar passivo oculto imediato nas apurações mensais.",
+               tags: ["#ICMS", "#Convênios", "#Confaz"],
+               resumo: "CONFAZ prorrogou 285 convênios de ICMS, garantindo continuidade de benefícios fiscais essenciais.",
+               impacto: "Planejamento: Validar se benefícios da empresa foram renovados.",
                link: "https://www.jota.info/tributos/matinal/secretarios-estaduais-de-fazenda-prorrogam-285-convenios-icms",
                pdf: "confaz-prorrogacao-convenios-icms.pdf.pdf"
             },
             {
-               titulo: "JBS consegue derrubar cobrança no CARF",
+               titulo: "JBS derruba cobrança bilionária no CARF",
                veiculo: "Valor",
                tribunal: "CARF",
                data: "29/01/2026",
-               tags: ["#CARF", "#JBS", "#Ágio", "#Vitória"],
-               resumo: "A JBS obteve importante vitória no CARF, cancelando uma cobrança bilionária referente à amortização de ágio e despesas financeiras. O tribunal validou a estrutura societária e a substância econômica das operações questionadas pela fiscalização, afastando a tese de simulação. A decisão reforça a segurança jurídica para grandes operações de M&A e reorganização societária.",
-               impacto: "Precedente M&A: Fortalece a defesa de planejamentos tributários baseados em ágio, desde que comprovado o propósito negocial e a efetividade da operação, servindo de paradigma para outros grandes contribuintes.",
+               tags: ["#CARF", "#JBS", "#Ágio"],
+               resumo: "JBS obteve vitória no CARF cancelando cobrança sobre ágio e despesas financeiras, validando estrutura societária.",
+               impacto: "M&A: Fortalece defesa de planejamentos com ágio.",
                link: "https://valor.globo.com/legislacao/noticia/2026/01/29/jbs-consegue-derrubar-cobranca-no-carf.ghtml",
                pdf: "jbs-derruba-cobranca-carf.pdf.pdf"
             },
             {
-               titulo: "CARF mantém cobrança de CSLL sobre valores para a reforma do Mineirão",
+               titulo: "CARF mantém CSLL sobre reforma do Mineirão",
                veiculo: "Jota",
                tribunal: "CARF",
                data: "29/01/2026",
-               tags: ["#CARF", "#CSLL", "#ConstruçãoCivil", "#ReceitaDiferida"],
-               resumo: "Em julgamento desfavorável, o CARF manteve a incidência de CSLL sobre receitas decorrentes das obras de reforma do estádio do Mineirão. A discussão girava em torno do momento de reconhecimento da receita e da natureza dos aportes recebidos. O tribunal entendeu que os valores compõem a base de cálculo da contribuição, rejeitando a tese de diferimento ou natureza indenizatória.",
-               impacto: "Setor de Infraestrutura: Alerta para concessionárias e construtoras sobre o tratamento contábil-fiscal de receitas em parcerias público-privadas (PPPs). O Fisco mantém postura restritiva quanto a exclusões da base de lucro.",
+               tags: ["#CARF", "#CSLL", "#Infraestrutura"],
+               resumo: "CARF manteve incidência de CSLL sobre receitas de obras do Mineirão, rejeitando tese de diferimento.",
+               impacto: "Infraestrutura: Alerta para concessionárias de PPPs.",
                link: "https://www.jota.info/tributos/direto-do-carf/carf-mantem-cobranca-de-csll-sobre-valores-para-a-reforma-do-mineirao",
                pdf: "carf-csll-reforma-mineirao.pdf.pdf"
             },
             {
-               titulo: "Fim da multa de 1% por erro na declaração de importação e novo regime",
+               titulo: "Fim da multa de 1% por erro em DI e novo regime",
                veiculo: "Conjur",
                tribunal: "Legislativo",
                data: "29/01/2026",
-               tags: ["#Aduaneiro", "#Multa", "#LC227", "#Importação"],
-               resumo: "Artigo detalha o impacto da revogação da multa de 1% sobre o valor aduaneiro (por erro de classificação na DI) trazida pela LC 227/2026. O texto explica o novo regime de infrações informacionais, que busca proporcionalidade e teto para penalidades meramente formais, encerrando um dos maiores focos de litígio aduaneiro do país.",
-               impacto: "Gestão de Passivo Aduaneiro: Empresas importadoras devem mapear autos de infração baseados na antiga regra e pleitear a aplicação retroativa da norma mais benéfica para reduzir multas em aberto.",
+               tags: ["#Aduaneiro", "#Multa", "#LC227"],
+               resumo: "LC 227/2026 revoga multa de 1% sobre valor aduaneiro, criando teto para infrações formais.",
+               impacto: "Aduaneiro: Pedir retroatividade para reduzir multas antigas.",
                link: "https://www.conjur.com.br/2026-jan-29/fim-da-multa-de-1-por-erro-na-declaracao-de-importacao-e-novo-regime-de-infracoes-informacionais/",
                pdf: "fim-multa-erro-declaracao-importacao.pdf.pdf"
             },
             {
-               titulo: "Canal de diálogo aberto pela Receita Federal realmente funciona?",
-               veiculo: "Conjur",
-               tribunal: "Receita Federal",
-               data: "28/01/2026",
-               tags: ["#Conformidade", "#Autorregularização", "#Relacionamento"],
-               resumo: "Análise crítica sobre a efetividade dos novos canais de autorregularização e diálogo propostos pela Receita (Programa Confia, Receita Soluciona). O autor questiona se a postura 'amigável' se traduz em soluções práticas ou se é apenas uma etapa prévia à fiscalização punitiva, recomendando cautela na exposição de dados sensíveis.",
-               impacto: "Estratégia de Defesa: Avaliar caso a caso a adesão a programas de conformidade. A transparência deve ser estratégica, evitando fornecer munição para futuras autuações sem garantia de anistia.",
-               link: "http://conjur.com.br/2026-jan-28/canal-de-dialogo-aberto-pela-receita-federal-realmente-funciona/",
-               pdf: "canal-dialogo-receita-funciona.pdf.pdf"
-            },
-            {
-               titulo: "Reforma tributária e precedentes do STF: o que muda e o que permanece",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "28/01/2026",
-               tags: ["#STF", "#Jurisprudência", "#IBS", "#CBS"],
-               resumo: "Estudo sobre a validade dos precedentes tributários do STF no novo regime do IBS/CBS. O texto discute quais teses (ex: não cumulatividade, imunidades) podem ser transportadas para o novo sistema e quais perderão o objeto, exigindo uma nova rodada de judicialização para definir os contornos constitucionais da Reforma.",
-               impacto: "Inteligência Jurídica: O estoque de vitórias judiciais da empresa precisa ser revalidado. Teses antigas podem não proteger contra o novo sistema, exigindo novos Mandados de Segurança preventivos.",
-               link: "https://www.conjur.com.br/2026-jan-28/reforma-tributaria-e-precedentes-do-stf-o-que-muda-e-o-que-permanece/",
-               pdf: "reforma-tributaria-precedentes-stf.pdf.pdf"
-            },
-            {
-               titulo: "Paranaguá lança campanha do IPTU 2026 com descontos e parcelamento",
+               titulo: "Paranaguá: IPTU 2026 com descontos",
                veiculo: "Outros",
                tribunal: "Municipal",
                data: "29/01/2026",
-               tags: ["#IPTU", "#Paranaguá", "#Desconto", "#Regional"],
-               resumo: "Prefeitura de Paranaguá/PR anuncia condições especiais para o IPTU 2026, oferecendo descontos para pagamento à vista e opções facilitadas de parcelamento. A medida visa incentivar a regularidade fiscal em um município portuário estratégico.",
-               impacto: "Regional: Importante para empresas de logística e terminais portuários na região. O desconto no IPTU de grandes áreas impacta diretamente o custo operacional.",
+               tags: ["#IPTU", "#Paraná"],
+               resumo: "Paranaguá lança campanha de IPTU com descontos.",
+               impacto: "Regional: Importante para empresas portuárias no PR.",
                link: "https://folhadolitoral.com.br/editorias/economia/com-possibilidade-de-descontos-e-parcelamento-paranagua-lanca-campanha-do-iptu-2026/",
                pdf: "iptu-paranagua-2026-descontos.pdf.pdf"
-            },
-
-            // --- DIA 28/01/2026 ---
-            {
-               titulo: "Lei cria Câmara Nacional para uniformizar contencioso sobre IBS e CBS",
-               veiculo: "Valor",
-               tribunal: "Reforma Tributária",
-               data: "28/01/2026",
-               tags: ["#Contencioso", "#IBS", "#CBS", "#Uniformização"],
-               resumo: "Sancionada a criação da Câmara Nacional de Uniformização, órgão superior encarregado de pacificar o entendimento administrativo sobre o IBS e a CBS. A medida visa evitar a fragmentação de interpretações entre os fiscos estaduais e municipais dentro do Comitê Gestor. O órgão terá composição paritária e suas súmulas terão efeito vinculante para a administração tributária.",
-               impacto: "Estratégico: Monitorar a composição e as primeiras pautas da Câmara. Ela será o fiel da balança na jurisprudência administrativa da Reforma.",
-               link: "http://valor.globo.com/legislacao/noticia/2026/01/28/lei-cria-camara-nacional-para-uniformizar-contencioso-administrativo-sobre-ibs-e-cbs.ghtml",
-               pdf: "lei-cria-camara-nacional-contencioso-ibs.pdf.pdf"
-            },
-            {
-               titulo: "União, estados e municípios trabalham nos regulamentos da reforma tributária",
-               veiculo: "Jota",
-               tribunal: "Reforma Tributária",
-               data: "28/01/2026",
-               tags: ["#Regulamentação", "#IBS", "#CBS", "#Cooperação"],
-               resumo: "Grupos de trabalho interfederativos aceleram a redação dos regulamentos infralegais da Reforma. O foco é harmonizar obrigações acessórias e conceitos operacionais antes do início da cobrança plena, evitando normas divergentes.",
-               impacto: "Compliance: O escritório deve acompanhar as minutas para antecipar adaptações nos ERPs dos clientes.",
-               link: "https://www.jota.info/tributos/relatorio-especial/uniao-estados-e-municipios-trabalham-nos-regulamentos-da-reforma-tributaria",
-               pdf: "uniao-estados-municipios-regulamentos-reforma.pdf.pdf"
-            },
-            {
-               titulo: "LC 224: Repetro não será reduzido, mas Sudam e Reidi podem ser atingidos",
-               veiculo: "Jota",
-               tribunal: "Receita Federal",
-               data: "28/01/2026",
-               tags: ["#Incentivos", "#LC224", "#Repetro", "#Sudam"],
-               resumo: "Receita Federal esclarece que o Repetro está blindado dos cortes da LC 224/2025, mas regimes como Sudam, Sudene e Reidi estão sob análise e podem sofrer restrições, gerando insegurança para projetos de infraestrutura.",
-               impacto: "Setorial: Alerta laranja para Indústria e Infraestrutura no Norte/Nordeste. Revisar contratos de concessão de incentivos regionais.",
-               link: "https://www.jota.info/opiniao-e-analise/colunas/coluna-barbara-mengardo/lc-224-repetro-nao-sera-reduzido-sudam-e-reidi-podem-ser-atingidos-diz-receita",
-               pdf: "lc-224-repetro-sudam-reidi-receita.pdf.pdf"
-            },
-            {
-               titulo: "Dino destaca alta renúncia fiscal e cobra dados sobre Perse",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "28/01/2026",
-               tags: ["#STF", "#Perse", "#RenúnciaFiscal", "#Transparência"],
-               resumo: "Ministro Flávio Dino (STF) intimou o governo a apresentar dados detalhados sobre o Perse, indicando possível revisão judicial do programa sob argumento de impacto desproporcional nas contas públicas.",
-               impacto: "Setor de Eventos: Risco de suspensão ou limitação retroativa. Empresas do Perse devem auditar seus dossiês de conformidade.",
-               link: "https://www.jota.info/tributos/relatorio-especial/dino-destaca-alta-renuncia-fiscal-e-cobra-dados-sobre-emendas-a-empresas-no-perse",
-               pdf: "dino-stf-dados-perse-renuncia.pdf.pdf"
-            },
-            {
-               titulo: "CARF mantém cobrança de IRPF contra Carla Vilhena por contrato PJ",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "28/01/2026",
-               tags: ["#Pejotização", "#IRPF", "#Vínculo", "#Globo"],
-               resumo: "CARF manteve autuação de IRPF contra jornalista, descaracterizando a 'pejotização' por considerar haver subordinação e pessoalidade na relação com a emissora.",
-               impacto: "Planejamento Patrimonial: Contratos de imagem e PJ de profissionais de alto rendimento continuam na mira da fiscalização.",
-               link: "https://www.jota.info/tributos/carf-mantem-cobranca-de-irpf-contra-carla-vilhena-por-contrato-pj-com-a-globo",
-               pdf: "carf-irpf-pejotizacao-carla-vilhena.pdf.pdf"
-            },
-            {
-               titulo: "Ao citar Tema 487 do STF, CARF suspende debate sobre multa por interposição",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "28/01/2026",
-               tags: ["#CARF", "#InterposiçãoFraudulenta", "#Multa", "#STF"],
-               resumo: "CARF suspendeu julgamentos sobre multa qualificada por interposição fraudulenta, aguardando a definição do Tema 487 pelo STF sobre a solidariedade e dolo.",
-               impacto: "Contencioso Aduaneiro: Solicitar sobrestamento de processos similares no CARF. Momento de aguardar a tese vinculante do STF.",
-               link: "https://www.jota.info/tributos/direto-do-carf/ao-citar-o-tema-487-do-stf-carf-suspende-debate-sobre-multa-por-interposicao",
-               pdf: "carf-suspensao-multa-interposicao-stf.pdf.pdf"
-            },
-            {
-               titulo: "Isenção do IR até R$ 5 mil e mitigação de benefícios tributários (LC 224)",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "27/01/2026",
-               tags: ["#IRPF", "#Isenção", "#LC224", "#ReformaRenda"],
-               resumo: "Análise sobre a troca da LC 224: ampliação da isenção do IRPF financiada pelo corte de benefícios corporativos. O texto explora o impacto na carga tributária das empresas.",
-               impacto: "Política Fiscal: O aumento de custo para as empresas deve ser repassado ao preço. Analisar impacto inflacionário.",
-               link: "https://www.conjur.com.br/2026-jan-27/isencao-do-imposto-de-renda-ate-r-5-mil-e-mitigacao-de-beneficios-tributarios-sobre-bens-de-consumo-na-lei-complementar-no-224-de-2025/",
-               pdf: "isencao-ir-5mil-mitigacao-beneficios.pdf.pdf"
-            },
-            {
-               titulo: "LC 227/2026: Um processo, vários relógios e uma esfinge sem segredos",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "28/01/2026",
-               tags: ["#ProcessoAdministrativo", "#Prazos", "#LC227", "#SegurançaJurídica"],
-               resumo: "Artigo crítico sobre a complexidade processual da LC 227/2026 (contagem de prazos em dias úteis vs. corridos), alertando para o risco de preclusão.",
-               impacto: "Gestão de Prazos: Adotar contagem conservadora (dias corridos) para evitar perdas de prazo.",
-               link: "https://www.conjur.com.br/2026-jan-28/lei-complementar-227-2026-um-processo-varios-relogios-e-uma-esfinge-sem-segredos/",
-               pdf: "lc-227-processo-administrativo-prazos.pdf.pdf"
-            },
-            {
-               titulo: "Código de Defesa do Contribuinte: tentativa de equilibrar relação desigual",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "28/01/2026",
-               tags: ["#CDC", "#Direitos", "#Defesa", "#Equilíbrio"],
-               resumo: "Análise do novo Código de Defesa do Contribuinte. O texto defende o uso do CDC como ferramenta hermenêutica para afastar abusos da fiscalização.",
-               impacto: "Defesa Administrativa: Incorporar os princípios do novo Código nas preliminares de impugnações.",
-               link: "https://www.conjur.com.br/2026-jan-28/codigo-de-defesa-do-contribuinte-tentativa-de-equilibrar-relacao-historicamente-desigual/",
-               pdf: "codigo-defesa-contribuinte-equilibrio.pdf.pdf"
-            },
-            {
-               titulo: "Falsa preservação do preço da cesta básica após redução de incentivos",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "28/01/2026",
-               tags: ["#CestaBásica", "#Inflação", "#Incentivos", "#Reforma"],
-               resumo: "Estudo aponta que a desoneração da cesta básica pode ser anulada pelo aumento de custos na cadeia produtiva (insumos, energia) devido à redução de incentivos fiscais.",
-               impacto: "Setor de Alimentos: Indústrias devem recalcular custos de produção e preparar o mercado para repasses.",
-               link: "https://www.conjur.com.br/2026-jan-28/falsa-preservacao-do-preco-da-cesta-basica-apos-reducao-de-incentivos-fiscais-federais/",
-               pdf: "falsa-preservacao-preco-cesta-basica.pdf.pdf"
-            },
-            {
-               titulo: "Omitir débito tributário federal gera autuação e multa elevada",
-               veiculo: "Conjur",
-               tribunal: "Receita Federal",
-               data: "28/01/2026",
-               tags: ["#DCTF", "#Omissão", "#MultaQualificada", "#Compliance"],
-               resumo: "Alerta sobre a prática de declarar valores menores em DCTF. A Receita tem cruzado dados e autuado a diferença como omissão de receita com multas qualificadas (75% a 150%).",
-               impacto: "Compliance: Auditoria rigorosa na consistência entre contabilidade e DCTF.",
-               link: "https://www.conjur.com.br/2026-jan-28/omitir-debito-tributario-federal-gera-autuacao-e-multa-elevada/",
-               pdf: "omitir-debito-federal-multa-elevada.pdf.pdf"
-            },
-            {
-               titulo: "Autorregularização de tributo só vale para débito anterior a programa",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "28/01/2026",
-               tags: ["#Autorregularização", "#DenúnciaEspontânea", "#STJ"],
-               resumo: "Decisões judiciais limitam a autorregularização incentivada a fatos geradores anteriores à instituição do programa, barrando o uso para débitos correntes futuros.",
-               impacto: "Planejamento: Não contar com Refis futuros para gerir passivo corrente.",
-               link: "https://www.conjur.com.br/2026-jan-28/autorregularizacao-de-tributo-so-vale-para-debito-anterior-a-programa/",
-               pdf: "autorregularizacao-limite-debito-anterior.pdf.pdf"
-            },
-            {
-               titulo: "Paz, carinho e cooperação: o fisco na aula de religião",
-               veiculo: "Conjur",
-               tribunal: "Doutrina",
-               data: "28/01/2026",
-               tags: ["#ConformidadeCooperativa", "#Confia", "#Crítica"],
-               resumo: "Artigo ironiza a retórica de 'cooperação' do Fisco, alertando que as prerrogativas de autotutela e punição severa continuam. Recomendação de cautela na adesão.",
-               impacto: "Estratégia: Aderir ao Confia com cautela jurídica e contratos claros.",
-               link: "https://www.conjur.com.br/2026-jan-28/paz-carinho-e-cooperacao-o-fisco-na-aula-de-religiao/",
-               pdf: "relacao-fisco-contribuinte-cooperacao-critica.pdf.pdf"
-            },
-            {
-               titulo: "Confaz publica acerto sobre isenção de ICMS na Copa do Mundo Feminina",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "28/01/2026",
-               tags: ["#ICMS", "#Isenção", "#CopaFeminina", "#Eventos"],
-               resumo: "CONFAZ formalizou isenção de ICMS para operações da Copa do Mundo Feminina de 2027 (importação de equipamentos, energia, telecom).",
-               impacto: "Oportunidade: Fornecedores do evento devem verificar enquadramento na isenção.",
-               link: "https://www.jota.info/tributos/matinal/confaz-publica-acerto-sobre-isencao-de-icms-na-copa-do-mundo-feminina",
-               pdf: "confaz-isencao-icms-copa-feminina.pdf.pdf"
-            },
-            {
-               titulo: "Contribuintes de Juazeiro do Norte podem pagar o IPTU com desconto",
-               veiculo: "Outros",
-               tribunal: "Municipal",
-               data: "28/01/2026",
-               tags: ["#IPTU", "#JuazeiroDoNorte", "#Desconto"],
-               resumo: "Prefeitura de Juazeiro do Norte lança campanha de IPTU 2026 com descontos para cota única.",
-               impacto: "Regional: Aviso para clientes com imóveis no Ceará.",
-               link: "https://www.juazeirodonorte.ce.gov.br/informa/31748/contribuintes-de-juazeiro-do-norte-podem-pagar-o-i",
-               pdf: "juazeiro-norte-pagamento-tributos.pdf.pdf"
-            },
-            {
-               titulo: "IPTU 2026 em Manaus oferece até 12% de desconto no pagamento digital",
-               veiculo: "Outros",
-               tribunal: "Municipal",
-               data: "28/01/2026",
-               tags: ["#IPTU", "#Manaus", "#Digital", "#Desconto"],
-               resumo: "Manaus oferece até 12% de desconto no IPTU 2026 para pagamento digital e contribuintes em dia.",
-               impacto: "Regional: Priorizar pagamento digital para clientes em Manaus.",
-               link: "https://emtempo.com.br/446721/economia/iptu-2026-em-manaus-oferece-ate-12-de-desconto-no-pagamento-digital/",
-               pdf: "iptu-manaus-2026-desconto-digital.pdf.pdf"
-            },
-
-            // --- DIA 27/01/2026 ---
-            {
-               titulo: "Receita antecipa adicional de IRPJ e CSLL no Lucro Presumido",
-               veiculo: "Jota",
-               tribunal: "Receita Federal",
-               data: "27/01/2026",
-               tags: ["#LucroPresumido", "#IRPJ", "#CSLL", "#Antecipação"],
-               resumo: "IN da Receita antecipa recolhimento do adicional de IRPJ/CSLL para Lucro Presumido, exigindo pagamentos mensais estimados em vez de trimestrais.",
-               impacto: "Fluxo de Caixa: Ajustar planejamento financeiro para saída de caixa mensal.",
-               link: "https://www.jota.info/tributos/matinal/receita-antecipa-adicional-de-irpj-e-csll-no-lucro-presumido",
-               pdf: "receita-antecipa-irpj-csll-lucro-presumido.pdf.pdf"
-            },
-            {
-               titulo: "Receita Federal confirma tributação antecipada do IRPJ (Visão Valor)",
-               veiculo: "Valor",
-               tribunal: "Receita Federal",
-               data: "27/01/2026",
-               tags: ["#IRPJ", "#ValorEconomico", "#FluxoDeCaixa"],
-               resumo: "Receita confirma novas regras de antecipação do IRPJ. Especialistas alertam para aumento do Custo Brasil e complexidade operacional.",
-               impacto: "Alerta de Mercado: Rodar folhas e apurações com a nova sistemática imediatamente.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/27/receita-federal-confirma-tributacao-antecipada-do-irpj.ghtml",
-               pdf: "receita-confirma-tributacao-antecipada-irpj.pdf.pdf"
-            },
-            {
-               titulo: "ITCMD: imposto sobre herança mais caro e difícil de planejar",
-               veiculo: "Valor",
-               tribunal: "Reforma Tributária",
-               data: "27/01/2026",
-               tags: ["#ITCMD", "#Sucessão", "#PlanejamentoPatrimonial"],
-               resumo: "Novas alíquotas progressivas do ITCMD e regra de domicílio do doador tornam o planejamento sucessório mais caro e complexo.",
-               impacto: "Wealth Management: Urgência em revisar testamentos e estruturas de holding.",
-               link: "https://valor.globo.com/legislacao/fio-da-meada/post/2026/01/itcmd-imposto-sobre-heranca-mais-caro-e-dificil-de-planejar.ghtml",
-               pdf: "itcmd-heranca-mais-caro-planejamento.pdf.pdf"
-            },
-            {
-               titulo: "STJ: Tributação de bonificações no varejo e mais 6 temas podem virar repetitivos",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "27/01/2026",
-               tags: ["#STJ", "#Repetitivo", "#Varejo", "#Bonificação"],
-               resumo: "STJ selecionou inclusão de bonificações na base do PIS/Cofins e IRPJ no varejo para rito dos repetitivos.",
-               impacto: "Varejo: Monitoramento crítico. Risco de passivos retroativos se decisão for desfavorável.",
-               link: "https://www.jota.info/tributos/relatorio-especial/stj-tributacao-de-bonificacoes-no-varejo-e-mais-6-temas-podem-virar-repetitivos",
-               pdf: "stj-repetitivos-bonificacao-varejo.pdf.pdf"
-            },
-            {
-               titulo: "CARF afasta PIS sobre receitas do FGTS mas mantém Cofins em caso de R$ 4 bi",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "27/01/2026",
-               tags: ["#CARF", "#FGTS", "#PISCOFINS", "#Bancos"],
-               resumo: "CARF excluiu PIS sobre receitas financeiras do FGTS (Caixa), mas manteve Cofins, criando precedente misto para fundos parafiscais.",
-               impacto: "Setor Financeiro: Analisar acórdão para discussões sobre receitas de fundos.",
-               link: "https://www.jota.info/tributos/direto-do-carf/carf-afasta-pis-sobre-receitas-do-fgts-mas-mantem-cofins-em-caso-de-r-4-bi",
-               pdf: "carf-pis-cofins-receitas-fgts.pdf.pdf"
-            },
-            {
-               titulo: "Sistemas geram notas fiscais com erro no cálculo do IBS e CBS",
-               veiculo: "Valor",
-               tribunal: "Reforma Tributária",
-               data: "27/01/2026",
-               tags: ["#IBS", "#CBS", "#NotaFiscal", "#ErroSistêmico"],
-               resumo: "Falhas em sistemas emissores de NF-e calculam errado alíquotas de teste do IBS/CBS, travando faturamento.",
-               impacto: "Operacional/TI: Aplicar correções manuais ou patches nos ERPs.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/27/sistemas-geram-notas-fiscais-com-erro-no-calculo-do-ibs-e-cbs.ghtml",
-               pdf: "erro-calculo-notas-fiscais-ibs-cbs.pdf.pdf"
-            },
-            {
-               titulo: "Revogação da multa de 1%: perda da aptidão punitiva sobre fatos pretéritos",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "27/01/2026",
-               tags: ["#Aduaneiro", "#Multa", "#Retroatividade", "#LC227"],
-               resumo: "Artigo defende retroatividade da revogação da multa aduaneira de 1% (LC 227/2026) para cancelar penalidades antigas.",
-               impacto: "Defesa Aduaneira: Pedir cancelamento de autos antigos com base na retroatividade benigna.",
-               link: "https://www.conjur.com.br/2026-jan-27/revogacao-da-multa-de-1-perda-da-aptidao-punitiva-sobre-fatos-preteritos/",
-               pdf: "revogacao-multa-1-porcento-retroatividade.pdf.pdf"
-            },
-            {
-               titulo: "Inconstitucionalidade da vedação à distribuição de lucros por devedores tributários",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "27/01/2026",
-               tags: ["#Lucros", "#Devedor", "#Lei4357", "#SançãoPolítica"],
-               resumo: "Análise sobre inconstitucionalidade da proibição de distribuir lucros para empresas com débitos fiscais (sanção política).",
-               impacto: "Contencioso: Fundamento para MS visando liberar dividendos em empresas com passivo.",
-               link: "https://www.conjur.com.br/2026-jan-27/inconstitucionalidade-do-art-32-da-lei-4-357-e-vedacao-a-distribuicao-de-lucros-por-devedores-tributarios/",
-               pdf: "inconstitucionalidade-vedacao-distribuicao-lucros.pdf.pdf"
-            },
-            {
-               titulo: "Garantia do juízo não pode ser pedágio para tutela provisória em ação anulatória",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "27/01/2026",
-               tags: ["#ProcessoCivil", "#Tutela", "#Garantia", "#Anulatória"],
-               resumo: "Crítica à exigência de garantia integral para analisar tutela de urgência. Autor defende análise do mérito independentemente de depósito.",
-               impacto: "Processual: Argumento para Agravos contra exigência de depósito prévio.",
-               link: "https://www.conjur.com.br/2026-jan-27/garantia-do-juizo-nao-pode-ser-pedagio-para-a-concessao-de-tutela-provisoria-na-acao-anulatoria-tributaria/",
-               pdf: "garantia-juizo-tutela-provisoria-anulatoria.pdf.pdf"
-            },
-            {
-               titulo: "IBS e CBS: desafios de obrigações acessórias em operações não tributadas",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "26/01/2026",
-               tags: ["#IBS", "#CBS", "#ObrigaçõesAcessórias", "#Imunidade"],
-               resumo: "Reforma impõe obrigações acessórias mesmo para operações imunes/isentas, aumentando custo de conformidade.",
-               impacto: "Terceiro Setor: Isenção de tributo não isenta de informar. Risco de multas por omissão.",
-               link: "https://www.conjur.com.br/2026-jan-26/ibs-e-cbs-desafios-quanto-ao-cumprimento-de-obrigacoes-acessorias-em-operacoes-historicamente-nao-tributadas/",
-               pdf: "desafios-obrigacoes-acessorias-ibs-cbs.pdf.pdf"
-            },
-            {
-               titulo: "Reforma tributária e os novos paradigmas do ITCMD para holdings",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "26/01/2026",
-               tags: ["#ITCMD", "#Holdings", "#Planejamento", "#ValorDeMercado"],
-               resumo: "Reforma permite ITCMD sobre distribuição desproporcional e reavaliação de ativos de holdings.",
-               impacto: "Planejamento Sucessório: Reavaliar contratos de holdings para mitigar tributação sobre mais-valia.",
-               link: "https://www.conjur.com.br/2026-jan-26/reforma-tributaria-e-os-novos-paradigmas-do-itcmd-a-necessidade-de-reavaliacao-das-holdings-patrimoniais/",
-               pdf: "reforma-itcmd-reavaliacao-holdings.pdf.pdf"
-            },
-            {
-               titulo: "Redução de benefícios fiscais: Receita lança Perguntas e Respostas sobre LC 224",
-               veiculo: "APET",
-               tribunal: "Receita Federal",
-               data: "27/01/2026",
-               tags: ["#BeneficiosFiscais", "#LC224", "#Consulta", "#PerguntasERespostas"],
-               resumo: "Guia da Receita esclarece cortes de benefícios da LC 224/2025, detalhando transição e exceções.",
-               impacto: "Compliance: Leitura obrigatória para entender a interpretação do Fisco sobre os cortes.",
-               link: "https://rota.apet.org.br/2026/01/reducao-de-beneficios-fiscais-receita-federal-lanca-perguntas-e-respostas-sobre-alcance-da-lei-complementar-224-2025/",
-               pdf: "receita-perguntas-respostas-lc-224-beneficios.pdf.pdf"
-            },
-            {
-               titulo: "Comitê Gestor do IBS lança Volume 2 da Cartilha do IBS para empresas piloto",
-               veiculo: "APET",
-               tribunal: "Reforma Tributária",
-               data: "27/01/2026",
-               tags: ["#CGIBS", "#Cartilha", "#EmpresasPiloto", "#Manual"],
-               resumo: "Volume 2 da cartilha orienta empresas piloto sobre apuração e emissão de documentos no novo sistema.",
-               impacto: "Treinamento: Material didático para capacitação de equipes fiscais.",
-               link: "https://rota.apet.org.br/2026/01/comite-gestor-do-ibs-lanca-volume-2-da-cartilha-do-ibs-que-orienta-empresas-piloto-sobre-nova-sistematica-fiscal/",
-               pdf: "comite-gestor-cartilha-ibs-volume-2.pdf.pdf"
-            },
-            {
-               titulo: "Compensação com títulos antigos é rechaçada pelo CARF com multa qualificada",
-               veiculo: "APET",
-               tribunal: "CARF",
-               data: "27/01/2026",
-               tags: ["#CARF", "#Compensação", "#TítulosPodres", "#MultaQualificada"],
-               resumo: "CARF mantém multa de 150% e responsabilidade de gestores em compensação com títulos públicos antigos (TDA).",
-               impacto: "Risco Penal: Alerta máximo contra uso de 'títulos podres'. Responsabilização pessoal é real.",
-               link: "https://rota.apet.org.br/2026/01/compensacao-com-titulos-antigos-e-rechacada-pelo-carf-que-mantem-multa-qualificada-e-responsabilidade-de-administradores/",
-               pdf: "carf-compensacao-titulos-podres-multa.pdf.pdf"
-            },
-            {
-               titulo: "CARF julga casos sobre tributação de ativos garantidores e multa de perdimento",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "27/01/2026",
-               tags: ["#CARF", "#Seguros", "#AtivosGarantidores", "#Aduaneiro"],
-               resumo: "Pauta do CARF inclui tributação de rendimentos de ativos garantidores de seguradoras.",
-               impacto: "Setor de Seguros: Decisão afetará base de cálculo do IRPJ/CSLL das seguradoras.",
-               link: "https://www.jota.info/tributos/apostas-da-semana/carf-julga-casos-sobre-tributacao-de-ativos-garantidores-e-multa-de-perdimento",
-               pdf: "carf-ativos-garantidores-multa-perdimento.pdf.pdf"
-            },
-            {
-               titulo: "Regulariza Paraná: Desconto de ICMS e IPVA",
-               veiculo: "Gazeta do Povo",
-               tribunal: "Municipal",
-               data: "27/01/2026",
-               tags: ["#Refis", "#Paraná", "#ICMS", "#IPVA"],
-               resumo: "Paraná lança programa de regularização com descontos em multas e juros de ICMS/IPVA.",
-               impacto: "Regional: Oportunidade para empresas com passivo no PR.",
-               link: "https://www.gazetadopovo.com.br/vozes/parana-sa/regulariza-parana-desconto-icms-ipva/",
-               pdf: "regulariza-parana-desconto-icms-ipva.pdf.pdf"
-            },
-
-            // --- DIA 26/01/2026 ---
-            {
-               titulo: "SC Cosit nº 4/2026: Receita impõe novo teto a deduções com esporte e cultura",
-               veiculo: "Receita Federal",
-               tribunal: "Receita Federal",
-               data: "26/01/2026",
-               tags: ["#IRPJ", "#LucroReal", "#IncentivosFiscais", "#Cosit"],
-               resumo: "A Receita Federal publicou a Solução de Consulta Cosit nº 4/2026, reformando entendimento anterior. O ato esclarece que o limite de 4% para deduções com projetos esportivos de inclusão social NÃO pode ser somado de forma simples ao limite de 2% para projetos esportivos gerais.",
-               impacto: "Revisão Imediata de Apuração: Empresas no Lucro Real devem recalcular deduções de IRPJ.",
-               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/148971",
-               pdf: "sc-cosit-4-2026-limites-incentivos.pdf.pdf"
-            },
-            {
-               titulo: "Vitórias tributárias no STF reduzem passivo judicial da União para 2026",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "26/01/2026",
-               tags: ["#STF", "#PassivoJudicial", "#PGFN", "#RiscoFiscal"],
-               resumo: "Decisões do STF favoráveis à União reduziram o passivo judicial tributário projetado para 2026, sinalizando endurecimento jurisprudencial.",
-               impacto: "Gestão de Expectativa: Revisar classificação de risco dos processos (Probável/Possível).",
-               link: "https://www.jota.info/tributos/matinal/vitorias-tributarias-no-stf-reduzem-passivo-judicial-da-uniao-para-2026",
-               pdf: "vitorias-stf-reducao-passivo-uniao.pdf.pdf"
-            },
-            {
-               titulo: "União reduz em 30% riscos fiscais com disputas na justiça (Visão Valor)",
-               veiculo: "Valor",
-               tribunal: "Judiciário",
-               data: "26/01/2026",
-               tags: ["#RiscoFiscal", "#ValorEconomico", "#STF"],
-               resumo: "Atuação estratégica da AGU e decisões do STF cortaram 30% dos riscos fiscais da União.",
-               impacto: "Análise Econômica: Judiciário mais alinhado com a responsabilidade fiscal do Estado.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/26/uniao-reduz-em-30-riscos-fiscais-com-disputas-na-justica.ghtml",
-               pdf: "uniao-reduz-riscos-fiscais.pdf.pdf"
-            },
-            {
-               titulo: "Julgamentos em 2026 têm impacto de R$ 1.568 bi",
-               veiculo: "Valor",
-               tribunal: "Judiciário",
-               data: "26/01/2026",
-               tags: ["#Pauta", "#Bilhão", "#STF", "#STJ"],
-               resumo: "Pauta de 2026 do STF/STJ tem impacto de R$ 1,5 trilhão (PIS/Cofins, IPI). Pressão por modulação.",
-               impacto: "Monitoramento de Pauta: Alertar clientes sobre iminência de desfechos em teses bilionárias.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/26/julgamentos-em-2026-tem-impacto-de-r-1568-bi.ghtml",
-               pdf: "julgamentos-tributarios-impacto-1568bi.pdf.pdf"
-            },
-            {
-               titulo: "CARF libera crédito de IRRF em remessas ao exterior em ano de prejuízo fiscal",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "26/01/2026",
-               tags: ["#CARF", "#IRRF", "#PrejuízoFiscal", "#Crédito"],
-               resumo: "CARF permitiu uso de créditos de IRRF sobre remessas ao exterior mesmo em ano de prejuízo fiscal, afastando travas.",
-               impacto: "Recuperação: Revisar escrita fiscal de anos com prejuízo para recuperar créditos de IRRF.",
-               link: "https://www.jota.info/tributos/carf-libera-credito-de-irrf-em-remessas-ao-exterior-em-ano-de-prejuizo-fiscal",
-               pdf: "carf-credito-irrf-prejuizo-fiscal.pdf.pdf"
-            },
-            {
-               titulo: "Créditos de impostos estrangeiros: análise do ADI RFB nº 1/2026",
-               veiculo: "APET",
-               tribunal: "Receita Federal",
-               data: "26/01/2026",
-               tags: ["#ADI", "#Internacional", "#CréditoNoExterior"],
-               resumo: "ADI 1/2026 impõe requisitos rígidos para compensação de imposto pago no exterior (reciprocidade, base de cálculo).",
-               impacto: "Compliance Internacional: Auditar documentação de tax credit de multinacionais.",
-               link: "https://rota.apet.org.br/2026/01/creditos-de-impostos-estrangeiros-analise-do-adi-rfb-no-1-2026/",
-               pdf: "adi-rfb-1-2026-creditos-estrangeiros.pdf.pdf"
-            },
-            {
-               titulo: "Novo tratamento da multa de 1% sobre o valor aduaneiro pela LC nº 227/2026",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "23/01/2026",
-               tags: ["#Aduaneiro", "#Multa", "#LC227", "#Importação"],
-               resumo: "LC 227/2026 revoga multa de 1% sobre valor aduaneiro, introduzindo teto e proporcionalidade.",
-               impacto: "Revisão de Autos: Pleitear retroatividade da norma mais benéfica para reduzir multas antigas.",
-               link: "https://www.conjur.com.br/2026-jan-23/novo-tratamento-da-multa-de-1-sobre-o-valor-aduaneiro-pela-lei-complementar-no-227-2026/",
-               pdf: "multa-aduaneira-lc-227-novo-tratamento.pdf.pdf"
-            },
-            {
-               titulo: "Mudam os prazos, permanece o desequilíbrio no processo administrativo fiscal",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "26/01/2026",
-               tags: ["#ProcessoAdministrativo", "#Prazos", "#Defesa"],
-               resumo: "Crítica à manutenção de prazos exíguos para defesa na LC 227, apesar da unificação de contagem.",
-               impacto: "Gestão de Prazos: Manter contagem em dias corridos para segurança.",
-               link: "https://www.conjur.com.br/2026-jan-26/mudam-os-prazos-permanece-o-desequilibrio-no-processo-administrativo-fiscal/",
-               pdf: "desequilibrio-processo-administrativo-lc-227.pdf.pdf"
-            },
-            {
-               titulo: "STJ: Legitimidade para julgar validade de taxa portuária é da Justiça Federal",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "26/01/2026",
-               tags: ["#STJ", "#Portos", "#Competência", "#JustiçaFederal"],
-               resumo: "STJ define competência da Justiça Federal para julgar taxas portuárias de autoridades federais/delegadas.",
-               impacto: "Setor Portuário: Verificar competência dos processos em curso para evitar anulação.",
-               link: "https://www.jota.info/tributos/stj-legitimidade-para-julgar-validade-de-taxa-portuaria-e-da-justica-federal",
-               pdf: "stj-competencia-taxa-portuaria.pdf.pdf"
-            },
-            {
-               titulo: "STJ pauta julgamentos de casos tributários para 1ª Seção em fevereiro",
-               veiculo: "Valor",
-               tribunal: "Judiciário",
-               data: "25/01/2026",
-               tags: ["#STJ", "#Pauta", "#Repetitivo"],
-               resumo: "1ª Seção do STJ define pauta de repetitivos para fevereiro (prescrição, base previdenciária).",
-               impacto: "Antecipação: Preparar estratégia pós-julgamento para processos suspensos.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/01/25/stj-pauta-julgamentos-de-casos-tributarios-para-1a-secao-em-fevereiro.ghtml",
-               pdf: "stj-pauta-tributaria-fevereiro.pdf.pdf"
-            },
-            {
-               titulo: "Entre o litígio e a estratégia: a arbitragem tributária em perspectiva",
-               veiculo: "Conjur",
-               tribunal: "Legislativo",
-               data: "25/01/2026",
-               tags: ["#Arbitragem", "#ResoluçãoDeDisputas", "#Inovação"],
-               resumo: "Artigo discute avanço e desafios da arbitragem tributária como alternativa ao Judiciário.",
-               impacto: "Inovação: Preparar expertise para atuar em arbitragens, nicho de alto valor.",
-               link: "https://www.conjur.com.br/2026-jan-25/entre-o-litigio-e-a-estrategia-a-arbitragem-tributaria-em-perspectiva/",
-               pdf: "arbitragem-tributaria-estrategia.pdf.pdf"
-            },
-            {
-               titulo: "Restrições à repetição de indébito do IBS e da CBS: o novo do velho dilema",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "25/01/2026",
-               tags: ["#IBS", "#CBS", "#RepetiçãoDeIndébito", "#Art166CTN"],
-               resumo: "Reforma replica lógica do art. 166 CTN (prova de não repasse), dificultando restituição de IBS/CBS.",
-               impacto: "Contencioso: Focar em evitar pagamento na origem (liminares) em vez de restituir.",
-               link: "https://www.conjur.com.br/2026-jan-25/restricoes-a-repeticao-de-indebito-do-ibs-e-da-cbs-o-novo-do-velho-dilema/",
-               pdf: "restricoes-repeticao-indebito-ibs-cbs.pdf.pdf"
-            },
-            {
-               titulo: "Fisco estadual não pode usar dados do contribuinte sem norma própria",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "26/01/2026",
-               tags: ["#LGPD", "#SigiloFiscal", "#Dados"],
-               resumo: "Decisão impede uso indiscriminado de dados federais por estados sem lei local específica de proteção de dados.",
-               impacto: "Proteção de Dados: Fundamento para anular autos estaduais baseados em cruzamento massivo.",
-               link: "https://www.conjur.com.br/2026-jan-26/fisco-estadual-nao-pode-usar-dados-do-contribuinte-sem-norma-propria/",
-               pdf: "fisco-estadual-uso-dados-contribuinte.pdf.pdf"
-            },
-            {
-               titulo: "IPVA 2026 RS: Última semana para garantir parcelamento e descontos",
-               veiculo: "Outros",
-               tribunal: "Municipal",
-               data: "26/01/2026",
-               tags: ["#IPVA", "#RioGrandeDoSul", "#Prazo"],
-               resumo: "Sefaz-RS alerta para fim do prazo de adesão ao parcelamento e descontos do IPVA 2026.",
-               impacto: "Calendário Fiscal: Aviso prático para clientes com frota no RS.",
-               link: "https://fazenda.rs.gov.br/ipva-2026-ultima-semana-para-garantir-parcelamento-em-seis-vezes-e-descontos-de-janeiro",
-               pdf: "ipva-rs-2026-prazos-descontos.pdf.pdf"
             }
         ];
 
-        // --- FUNÇÃO DE PARSE DE DATA (Formato DD/MM/YYYY) ---
         function parseData(dataStr) {
             const [dia, mes, ano] = dataStr.split('/');
             return new Date(ano, mes - 1, dia);
         }
 
-        // --- RENDERIZAÇÃO ---
         function renderizarNoticias() {
             const feed = document.getElementById('feed-noticias');
             const busca = document.getElementById('barra-busca').value.toLowerCase();
             const filtroTribunal = document.getElementById('filtro-tribunal').value;
             const filtroVeiculo = document.getElementById('filtro-veiculo').value;
             
-            // Filtros de Data
             const dataInicioInput = document.getElementById('data-inicio').value;
             const dataFimInput = document.getElementById('data-fim').value;
             const dataInicio = dataInicioInput ? new Date(dataInicioInput) : null;
             const dataFim = dataFimInput ? new Date(dataFimInput) : null;
 
-            // Ajuste para pegar o final do dia na data fim
             if(dataFim) dataFim.setHours(23,59,59);
 
             feed.innerHTML = '';
@@ -796,7 +489,6 @@
                 const matchTribunal = filtroTribunal === 'Todos' || n.tribunal.includes(filtroTribunal) || (filtroTribunal === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
                 const matchVeiculo = filtroVeiculo === 'Todos' || n.veiculo === filtroVeiculo || (filtroVeiculo === 'Outros' && n.veiculo === 'Outros');
                 
-                // Lógica de Data
                 const dataNoticia = parseData(n.data);
                 const matchData = (!dataInicio || dataNoticia >= dataInicio) && (!dataFim || dataNoticia <= dataFim);
 
