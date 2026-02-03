@@ -3,100 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Freire | Dashboard Tributário</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <title>Demarest | Inteligência Tributária</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS VISUAIS --- */
+        /* --- IDENTIDADE VISUAL DEMAREST --- */
         :root {
-            --brand-dark: #0f172a;    
-            --brand-blue: #2563eb;    
-            --bg-body: #f1f5f9;       
+            /* Paleta baseada na imagem enviada */
+            --brand-navy: #002540;      /* Fundo Azul Escuro */
+            --brand-copper: #C19263;    /* Tom Cobre/Dourado do Logo */
+            --bg-body: #f8f9fa;         /* Fundo da página mais claro */
             --card-bg: #ffffff;
             --text-main: #334155;
-            --highlight-bg: #eff6ff;
+            --text-light: #64748b;
+            --highlight-bg: #fdf8f3;    /* Fundo suave para destaques */
         }
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; }
 
-        header { background-color: var(--brand-dark); color: white; padding: 1.5rem 0; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .header-content { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        /* HEADER SOFISTICADO */
+        header { background-color: var(--brand-navy); color: white; padding: 2rem 0; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-bottom: 3px solid var(--brand-copper); }
+        .header-content { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
         
-        h1 { font-family: 'Merriweather', serif; font-size: 1.6rem; margin: 0; letter-spacing: -0.5px; }
-        .subtitulo { font-size: 0.9rem; opacity: 0.8; font-weight: normal; margin-top: 5px; }
+        /* LOGO ESTILIZADO EM CSS */
+        h1 { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 2.2rem; 
+            margin: 0; 
+            color: var(--brand-copper); 
+            text-transform: uppercase; 
+            letter-spacing: 6px; /* Espaçamento característico do logo Demarest */
+            font-weight: 400;
+        }
+        .subtitulo { font-size: 0.85rem; color: #cbd5e1; font-weight: 300; margin-top: 10px; letter-spacing: 1px; text-transform: uppercase;}
 
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px 40px 20px; }
         
-        /* FILTROS */
-        .filtros-container { background: white; padding: 15px; border-radius: 10px; display: flex; gap: 15px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); flex-wrap: wrap; }
+        /* FILTROS E DATAS */
+        .filtros-wrapper { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 30px; border: 1px solid #e2e8f0; }
         
-        select, input { padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: 'Inter', sans-serif; }
-        
-        #filtro-tribunal { flex: 1; min-width: 180px; }
-        #filtro-veiculo { flex: 1; min-width: 150px; }
-        #barra-busca { flex: 2; min-width: 200px; }
+        .filtros-linha { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
+        .filtros-linha:last-child { margin-bottom: 0; }
 
-        .card { background: var(--card-bg); border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+        label { font-size: 0.75rem; font-weight: 600; color: var(--brand-navy); display: block; margin-bottom: 5px; text-transform: uppercase; }
         
-        .card-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        
-        .badge-group { display: flex; gap: 8px; align-items: center; }
-        .badge-tribunal { background-color: var(--brand-dark); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        .badge-veiculo { background-color: #e2e8f0; color: #475569; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; border: 1px solid #cbd5e1; }
+        select, input { 
+            padding: 10px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 4px; 
+            font-family: 'Inter', sans-serif; 
+            width: 100%; 
+            box-sizing: border-box;
+            color: var(--brand-navy);
+        }
+        select:focus, input:focus { outline: none; border-color: var(--brand-copper); }
 
-        .data-news { font-size: 0.8rem; color: #64748b; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+        /* Ajuste de largura dos inputs */
+        .input-group { flex: 1; min-width: 200px; }
+        .input-group-date { flex: 0 1 180px; } 
 
-        .card-title { font-family: 'Merriweather', serif; font-size: 1.25rem; color: var(--brand-dark); margin: 5px 0 12px 0; }
-        .tag { background-color: #f1f5f9; color: #64748b; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; margin-right: 5px; font-weight: 600; display: inline-block; margin-bottom: 5px; }
-        .resumo-texto { color: #334155; font-size: 0.95rem; line-height: 1.6; text-align: justify; margin-bottom: 15px; }
-        .impacto-box { background-color: var(--highlight-bg); border-left: 4px solid var(--brand-blue); padding: 15px; border-radius: 4px; margin: 15px 0; }
+        /* CARDS */
+        .card { 
+            background: var(--card-bg); 
+            border-radius: 8px; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            border: 1px solid #e2e8f0; 
+            border-left: 5px solid var(--brand-navy); /* Detalhe lateral azul */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02); 
+            transition: all 0.2s ease; 
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-left-color: var(--brand-copper); }
         
-        .actions { display: flex; gap: 10px; margin-top: 15px; }
-        .btn { padding: 10px 16px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }
-        .btn-source { background-color: var(--brand-blue); color: white; border: 1px solid var(--brand-blue); }
-        .btn-source:hover { background-color: #1d4ed8; }
+        .card-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        
+        .badge-tribunal { background-color: var(--brand-navy); color: var(--brand-copper); padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-veiculo { background-color: #f1f5f9; color: var(--brand-navy); padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; border: 1px solid #e2e8f0; }
+
+        .data-news { font-size: 0.8rem; color: var(--text-light); font-weight: 500; display: flex; align-items: center; gap: 5px; }
+
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--brand-navy); margin: 8px 0 12px 0; line-height: 1.3; }
+        
+        .tag { background-color: #f8fafc; color: var(--text-light); padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; margin-right: 5px; font-weight: 500; display: inline-block; margin-bottom: 5px; border: 1px solid #e2e8f0; }
+        
+        .resumo-texto { color: #475569; font-size: 0.95rem; line-height: 1.7; text-align: justify; margin-bottom: 20px; }
+        
+        .impacto-box { background-color: var(--highlight-bg); border: 1px solid #f0e0d0; padding: 15px; border-radius: 6px; margin: 15px 0; }
+        
+        .actions { display: flex; gap: 10px; margin-top: 20px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+        
+        .btn { padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .btn-source { background-color: var(--brand-navy); color: white; border: 1px solid var(--brand-navy); }
+        .btn-source:hover { background-color: #0f3555; }
+        
         .btn-pdf { background-color: white; color: #dc2626; border: 1px solid #fee2e2; }
         .btn-pdf:hover { background-color: #fef2f2; border-color: #dc2626; }
         .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
+
     </style>
 </head>
 <body>
 
     <header>
         <div class="header-content">
-            <h1>Painel Tributário Executivo</h1>
-            <div class="subtitulo">Inteligência Jurídica William Freire Advogados | Histórico Consolidado</div>
+            <h1>Demarest</h1>
+            <div class="subtitulo">Inteligência Tributária & Estratégia</div>
         </div>
     </header>
 
     <div class="container">
-        <div class="filtros-container">
-            <select id="filtro-tribunal" onchange="renderizarNoticias()">
-                <option value="Todos">Todos os Temas</option>
-                <option value="Judiciário">Judiciário / STJ / STF</option>
-                <option value="Legislativo">Legislativo / Executivo</option>
-                <option value="Reforma Tributária">Reforma Tributária</option>
-                <option value="CARF">CARF / Receita</option>
-                <option value="Municipal">Municipal / IPVA / ISS</option>
-            </select>
+        <div class="filtros-wrapper">
+            <div class="filtros-linha">
+                <div class="input-group">
+                    <label>Tribunal / Tema</label>
+                    <select id="filtro-tribunal" onchange="renderizarNoticias()">
+                        <option value="Todos">Todos</option>
+                        <option value="Judiciário">Judiciário / STJ / STF</option>
+                        <option value="Legislativo">Legislativo / Executivo</option>
+                        <option value="Reforma Tributária">Reforma Tributária</option>
+                        <option value="CARF">CARF / Receita</option>
+                        <option value="Municipal">Municipal</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Fonte</label>
+                    <select id="filtro-veiculo" onchange="renderizarNoticias()">
+                        <option value="Todos">Todas</option>
+                        <option value="Jota">Jota</option>
+                        <option value="Valor">Valor Econômico</option>
+                        <option value="Conjur">Conjur</option>
+                        <option value="APET">APET / Rota</option>
+                        <option value="Receita Federal">Receita Federal</option>
+                    </select>
+                </div>
+                <div class="input-group" style="flex: 2;">
+                    <label>Busca Textual</label>
+                    <input type="text" id="barra-busca" placeholder="Ex: PIS/Cofins, Ágio, IRRF..." onkeyup="renderizarNoticias()">
+                </div>
+            </div>
 
-            <select id="filtro-veiculo" onchange="renderizarNoticias()">
-                <option value="Todos">Todas as Fontes</option>
-                <option value="Jota">Jota</option>
-                <option value="Valor">Valor Econômico</option>
-                <option value="Conjur">Conjur</option>
-                <option value="APET">APET / Rota</option>
-                <option value="Receita Federal">Receita Federal</option>
-            </select>
-
-            <input type="text" id="barra-busca" placeholder="🔍 Buscar por palavra-chave..." onkeyup="renderizarNoticias()">
+            <div class="filtros-linha">
+                <div class="input-group-date">
+                    <label>Data Início</label>
+                    <input type="date" id="data-inicio" onchange="renderizarNoticias()">
+                </div>
+                <div class="input-group-date">
+                    <label>Data Fim</label>
+                    <input type="date" id="data-fim" onchange="renderizarNoticias()">
+                </div>
+                <div style="display:flex; align-items:flex-end;">
+                    <button onclick="limparFiltros()" style="padding:10px 20px; background:none; border:1px solid #cbd5e1; color:#64748b; border-radius:4px; cursor:pointer;">Limpar Filtros</button>
+                </div>
+            </div>
         </div>
+
         <div id="feed-noticias"></div>
     </div>
 
     <script>
-        // --- BASE DE DADOS CONSOLIDADA (HISTÓRICO) ---
+        // --- BASE DE DADOS CUMULATIVA (26/01 a 29/01) ---
         const noticias = [
             // --- DIA 29/01/2026 ---
             {
@@ -701,24 +767,44 @@
             }
         ];
 
+        // --- FUNÇÃO DE PARSE DE DATA (Formato DD/MM/YYYY) ---
+        function parseData(dataStr) {
+            const [dia, mes, ano] = dataStr.split('/');
+            return new Date(ano, mes - 1, dia);
+        }
+
+        // --- RENDERIZAÇÃO ---
         function renderizarNoticias() {
             const feed = document.getElementById('feed-noticias');
             const busca = document.getElementById('barra-busca').value.toLowerCase();
             const filtroTribunal = document.getElementById('filtro-tribunal').value;
             const filtroVeiculo = document.getElementById('filtro-veiculo').value;
             
+            // Filtros de Data
+            const dataInicioInput = document.getElementById('data-inicio').value;
+            const dataFimInput = document.getElementById('data-fim').value;
+            const dataInicio = dataInicioInput ? new Date(dataInicioInput) : null;
+            const dataFim = dataFimInput ? new Date(dataFimInput) : null;
+
+            // Ajuste para pegar o final do dia na data fim
+            if(dataFim) dataFim.setHours(23,59,59);
+
             feed.innerHTML = '';
             
             const filtradas = noticias.filter(n => {
                 const matchTexto = n.titulo.toLowerCase().includes(busca) || n.tags.some(t => t.toLowerCase().includes(busca));
                 const matchTribunal = filtroTribunal === 'Todos' || n.tribunal.includes(filtroTribunal) || (filtroTribunal === 'Judiciário' && (n.tribunal === 'STJ' || n.tribunal === 'STF' || n.tribunal === 'Judiciário'));
-                const matchVeiculo = filtroVeiculo === 'Todos' || n.veiculo === filtroVeiculo || (filtroVeiculo === 'Outros' && n.veiculo === 'Outros') || (filtroVeiculo === 'Gazeta do Povo' && n.veiculo === 'Gazeta do Povo');
+                const matchVeiculo = filtroVeiculo === 'Todos' || n.veiculo === filtroVeiculo || (filtroVeiculo === 'Outros' && n.veiculo === 'Outros');
+                
+                // Lógica de Data
+                const dataNoticia = parseData(n.data);
+                const matchData = (!dataInicio || dataNoticia >= dataInicio) && (!dataFim || dataNoticia <= dataFim);
 
-                return matchTexto && matchTribunal && matchVeiculo;
+                return matchTexto && matchTribunal && matchVeiculo && matchData;
             });
 
             if (filtradas.length === 0) {
-                feed.innerHTML = '<p style="text-align:center; padding:20px; color:#666;">Nenhuma notícia encontrada com esses filtros.</p>';
+                feed.innerHTML = '<p style="text-align:center; padding:40px; color:#64748b; font-size:1.1rem;">📭 Nenhuma notícia encontrada com os filtros selecionados.</p>';
                 return;
             }
 
@@ -746,8 +832,8 @@
                         </div>
                         <p class="resumo-texto">${n.resumo}</p>
                         <div class="impacto-box">
-                            <strong style="color:#2563eb; display:block; font-size:0.8rem;">⚡ IMPACTO ESTRATÉGICO</strong>
-                            <span style="color:#1e3a8a; font-size:0.9rem;">${n.impacto}</span>
+                            <strong style="color:var(--brand-navy); display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px;">⚡ Impacto Estratégico</strong>
+                            <span style="color:var(--brand-copper); font-size:0.9rem; font-weight:600;">${n.impacto}</span>
                         </div>
                         <div class="actions">
                             <a href="${n.link}" target="_blank" class="btn btn-source">🔗 Ler na Fonte</a>
@@ -758,7 +844,15 @@
             });
         }
 
-        document.getElementById('data-hoje').innerText = new Date().toLocaleDateString('pt-BR');
+        function limparFiltros() {
+            document.getElementById('filtro-tribunal').value = 'Todos';
+            document.getElementById('filtro-veiculo').value = 'Todos';
+            document.getElementById('barra-busca').value = '';
+            document.getElementById('data-inicio').value = '';
+            document.getElementById('data-fim').value = '';
+            renderizarNoticias();
+        }
+
         renderizarNoticias();
     </script>
 </body>
