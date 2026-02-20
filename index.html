@@ -52,6 +52,7 @@
         .actions { display: flex; gap: 10px; margin-top: 20px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
         .btn { padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-source { background-color: var(--brand-navy); color: white; border: 1px solid var(--brand-navy); }
+        .btn-source:hover { background-color: #001528; }
         .btn-pdf { background-color: white; color: #dc2626; border: 1px solid #fee2e2; }
         .btn-pdf:hover { background-color: #fef2f2; border-color: #dc2626; }
         .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
@@ -117,289 +118,216 @@
     </div>
 
     <script>
-        // --- BASE DE DADOS SEMANA ATUAL (09/02 a 12/02) ---
+        // --- BASE DE DADOS A PARTIR DE 13/02/2026 ---
         const noticias = [
-            // --- DIA 12/02/2026 (HOJE) ---
             {
-               titulo: "STJ derruba teto de 20 salários mínimos para contribuições de terceiros (Sistema S)",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "12/02/2026",
-               tags: ["#STJ", "#SistemaS", "#FolhaDePagamento", "#Teto20Salários"],
-               resumo: "O STJ, em julgamento de recursos repetitivos, decidiu que NÃO se aplica o limite de 20 salários mínimos para a base de cálculo das contribuições parafiscais (Sistema S, Incra, Salário-Educação). A decisão uniformiza o entendimento de que a base é a folha de salários integral, representando uma derrota bilionária para os contribuintes que buscavam a limitação.",
-               impacto: "Folha de Pagamento: Fim da tese do limite de 20 salários. Empresas devem provisionar a perda e encerrar ações que buscavam essa economia, evitando multas.",
-               link: "https://www.jota.info/tributos/direto-da-corte/stj-derruba-teto-de-20-salarios-minimos-para-mais-contribuicoes-a-terceiros",
-               pdf: "stj_derruba_teto_20_salarios.pdf.pdf"
+               titulo: "SC Cosit nº 16/2026: Isenção de Cofins para Associações Civis (Atividades Próprias)",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "19/02/2026",
+               tags: ["#Cofins", "#Isenção", "#Associação", "#TerceiroSetor"],
+               resumo: "A Receita Federal definiu, via SC Cosit 16/2026, que são isentas da Cofins as receitas de atividades próprias de associações sem fins lucrativos, incluindo aquelas auferidas em caráter contraprestacional (ex: taxas de certificação, mensalidades e registro de fundos), desde que decorram do exercício da finalidade precípua da entidade e não infrinjam a livre concorrência.",
+               impacto: "Terceiro Setor: Excelente precedente que amplia o conceito de 'atividade própria', blindando as entidades (como associações representativas do mercado financeiro) de cobranças sobre serviços alinhados ao seu estatuto.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149361",
+               pdf: "sc_cosit_16_isencao_associacoes.pdf.pdf"
             },
             {
-               titulo: "João Pessoa/PB: Antecipação do IPTU com até 20% de desconto",
+               titulo: "SC Cosit nº 17/2026: Não Retenção de PIS/Cofins em Passagens Aéreas por Órgãos Públicos",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "19/02/2026",
+               tags: ["#Retenção", "#ÓrgãoPúblico", "#AlíquotaZero", "#SetorAéreo"],
+               resumo: "A SC Cosit nº 17/2026 esclarece que órgãos da administração pública federal não devem efetuar a retenção de PIS/Cofins nos pagamentos a agências de viagens referentes à aquisição de passagens aéreas. A dispensa baseia-se na alíquota zero estabelecida pela Lei 14.592/2023 para o transporte aéreo regular, válida até 31 de dezembro de 2026.",
+               impacto: "Setor Aéreo e Turismo: Desoneração direta no fluxo de caixa das agências em contratos de fornecimento de passagens para a União.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149373",
+               pdf: "sc_cosit_17_agencias_viagens.pdf.pdf"
+            },
+            {
+               titulo: "SC Cosit nº 18/2026: Afastada retenção de IRRF sobre Subsídio de Juros pagos por Municípios",
+               veiculo: "Receita Federal",
+               tribunal: "Receita Federal",
+               data: "19/02/2026",
+               tags: ["#IRRF", "#ÓrgãoPúblico", "#OperaçãoDeCrédito", "#Municípios"],
+               resumo: "A Receita Federal afastou a obrigatoriedade de retenção de IRRF sobre pagamentos realizados por municípios a instituições financeiras referentes a subsídios de juros em programas locais de fomento (como 'Juros Zero'). A fundamentação conclui que operação de crédito não caracteriza prestação de serviço bancário, hipótese em que não incide a retenção da IN 1.234/2012.",
+               impacto: "Bancos e Setor Público: Elimina a burocracia de retenção e as dúvidas fiscais em repasses de subvenções econômicas de entes públicos para instituições financeiras.",
+               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149374",
+               pdf: "sc_cosit_18_subsidio_juros.pdf.pdf"
+            },
+            {
+               titulo: "STF: Ministro Fachin suspende julgamento de liminar sobre tributação de dividendos",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "19/02/2026",
+               tags: ["#STF", "#Dividendos", "#IRPF"],
+               resumo: "O Ministro Edson Fachin (STF) pediu vista e suspendeu o julgamento da liminar que havia postergado a vigência da nova lei de tributação de dividendos. O mercado aguarda a definição de como ficará a regra da anterioridade para a cobrança.",
+               impacto: "Planejamento Tributário: A janela para distribuição isenta de lucros apurados continua em aberto temporariamente, mas o nível de incerteza e risco escalou.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/02/19/fachin-suspende-julgamento-no-stf-de-liminar-que-postergou-tributao-de-dividendos.ghtml",
+               pdf: "valor_fachin_suspende_dividendos.pdf.pdf"
+            },
+            {
+               titulo: "STF: Ministro Fux rejeita PIS/Cofins sobre aplicações de reservas de seguradoras",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "18/02/2026",
+               tags: ["#STF", "#Seguradoras", "#PISCOFINS", "#ReservasTécnicas"],
+               resumo: "Decisão monocrática do Ministro Luiz Fux no STF afasta a incidência do PIS e da Cofins sobre as receitas financeiras decorrentes da aplicação de reservas técnicas de seguradoras e entidades de previdência privada. A decisão colide frontalmente com o recente entendimento desfavorável do CARF.",
+               impacto: "Seguradoras: Decisão bilionária que fortalece significativamente a tese do setor, servindo de paradigma contra autuações da Receita Federal.",
+               link: "https://www.conjur.com.br/2026-fev-18/fux-rejeita-pis-cofins-sobre-aplicacoes-de-reservas-de-seguradoras-e-previdencias-privadas/",
+               pdf: "conjur_fux_pis_cofins_seguradoras.pdf.pdf"
+            },
+            {
+               titulo: "STJ fixa tese sobre ágio interno e exige prova de efetiva operação econômica",
+               veiculo: "Rota",
+               tribunal: "Judiciário",
+               data: "19/02/2026",
+               tags: ["#STJ", "#ÁgioInterno", "#M&A", "#PropósitoNegocial"],
+               resumo: "O STJ firmou entendimento vinculante estabelecendo que a dedução fiscal do ágio gerado em operações entre partes relacionadas (o chamado 'ágio interno') só é lícita se o contribuinte comprovar a existência de efetiva operação econômica e o claro propósito negocial.",
+               impacto: "M&A e Societário: A jurisprudência defensiva da Receita ganha força no Judiciário. Operações societárias intragrupo exigirão laudos ainda mais robustos de materialidade.",
+               link: "https://rota.apet.org.br/2026/02/stj-fixa-tese-sobre-agio-interno-e-condiciona-deducao-a-prova-de-efetiva-operacao/",
+               pdf: "rota_stj_agio_interno.pdf.pdf"
+            },
+            {
+               titulo: "STJ decide que Fisco é obrigado a aceitar seguro garantia ou fiança bancária",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "18/02/2026",
+               tags: ["#STJ", "#ExecuçãoFiscal", "#SeguroGarantia"],
+               resumo: "Em decisão favorável aos contribuintes, o STJ reiterou que a Fazenda Pública é obrigada a aceitar o seguro garantia ou a fiança bancária como formas idôneas de caução em execuções fiscais, vedando a recusa injustificada em favor de penhora em dinheiro.",
+               impacto: "Contencioso: Preserva o caixa e a liquidez das empresas durante o longo andamento das disputas fiscais no Judiciário.",
+               link: "http://valor.globo.com/legislacao/noticia/2026/02/18/stj-decide-que-fisco-deve-aceitar-seguro-garantia-ou-fianca.ghtml",
+               pdf: "valor_stj_seguro_garantia.pdf.pdf"
+            },
+            {
+               titulo: "Volkswagen vence disputa com concessionárias sobre créditos da 'Tese do Século'",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "20/02/2026",
+               tags: ["#TJSP", "#TeseDoSéculo", "#Repasse", "#DireitoPrivado"],
+               resumo: "O Tribunal de Justiça de São Paulo (TJSP) decidiu a favor da Volkswagen em uma ação onde concessionárias cobravam o repasse dos valores recuperados pela montadora na 'Tese do Século'. O tribunal entendeu que o ganho tributário não impõe obrigação de repasse de preços na cadeia privada.",
+               impacto: "Contencioso Cível/Tributário: Importante precedente que protege o caixa de indústrias que recuperaram créditos e vêm sofrendo ações na justiça movidas por seus clientes e distribuidores.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/02/20/volkswagen-vence-no-tjsp-disputa-travada-com-concessionarias-por-creditos-da-tese-do-seculo.ghtml",
+               pdf: "valor_volkswagen_tjsp_tese_seculo.pdf.pdf"
+            },
+            {
+               titulo: "TJ-GO: Multa fiscal superior a 100% do imposto tem efeito de confisco",
+               veiculo: "APET",
+               tribunal: "Judiciário",
+               data: "19/02/2026",
+               tags: ["#TJGO", "#Multa", "#Confisco", "#TributárioEstadual"],
+               resumo: "Aplicando o precedente firmado pelo STF, o Tribunal de Justiça de Goiás determinou a redução de uma multa punitiva fiscal estadual que ultrapassava 100% do valor do tributo exigido, reconhecendo sua natureza inconstitucional e confiscatória.",
+               impacto: "Defesa Fiscal (Contencioso): Precedente útil para limpar o valor inflado de autos de infração estaduais, forçando o recálculo do passivo.",
+               link: "https://apet.org.br/noticia/multa-superior-a-100-do-valor-do-imposto-tem-efeito-de-confisco-decide-tj-go/",
+               pdf: "apet_multa_confisco_tjgo.pdf.pdf"
+            },
+            {
+               titulo: "CARF reconhece crédito de PIS/Cofins sobre despesas com meios de pagamento da Uber",
+               veiculo: "Rota",
+               tribunal: "CARF",
+               data: "19/02/2026",
+               tags: ["#CARF", "#PISCOFINS", "#Insumo", "#Plataformas", "#MeiosDePagamento"],
+               resumo: "Em grande vitória para o setor de economia digital, o CARF validou o creditamento de PIS e Cofins sobre os valores pagos pela Uber a administradoras de cartões de crédito e empresas de adquirência, classificando essas taxas financeiras como insumos indispensáveis ao funcionamento do aplicativo.",
+               impacto: "E-commerce e Apps: Abre caminho para que empresas do varejo digital monetizem suas despesas de intermediação financeira via não cumulatividade.",
+               link: "https://rota.apet.org.br/2026/02/carf-reconhece-credito-de-pis-e-cofins-sobre-despesas-com-meios-de-pagamento-da-uber/",
+               pdf: "rota_carf_credito_uber.pdf.pdf"
+            },
+            {
+               titulo: "Nova lei proíbe devedor contumaz de pedir recuperação e transacionar dívidas",
+               veiculo: "Valor",
+               tribunal: "Legislativo",
+               data: "19/02/2026",
+               tags: ["#DevedorContumaz", "#RecuperaçãoJudicial", "#Transação", "#Sanções"],
+               resumo: "Sancionada a lei que estabelece duras regras contra o 'devedor contumaz'. Contribuintes enquadrados nesse cadastro restritivo da Receita Federal ficam proibidos de solicitar Recuperação Judicial e perdem o direito a ingressar em programas de parcelamento ou transação tributária.",
+               impacto: "Compliance e Risco: Exige monitoramento extremo para evitar o enquadramento no cadastro, o que agora pode culminar em falência pela impossibilidade de negociação.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/02/19/nova-lei-impede-devedor-contumaz-de-pedir-recuperacao-e-negociar-divida-com-o-fisco.ghtml",
+               pdf: "valor_devedor_contumaz_recuperacao.pdf.pdf"
+            },
+            {
+               titulo: "O que muda para as empresas com a sanção do Código de Defesa do Contribuinte",
+               veiculo: "Conjur",
+               tribunal: "Legislativo",
+               data: "17/02/2026",
+               tags: ["#CDC", "#DefesaDoContribuinte", "#Compliance", "#Direitos"],
+               resumo: "Artigo analisa a fundo as inovações trazidas pelo recém-sancionado Código de Defesa do Contribuinte, que institui balizas de boa-fé, fixa limites para multas abusivas e amplia as garantias processuais das empresas diante de ações de fiscalização.",
+               impacto: "Tributário Geral: O Código fornece uma nova base principiológica que deve ser acionada nas defesas contra autuações federais desproporcionais.",
+               link: "https://www.conjur.com.br/2026-fev-17/o-que-muda-para-as-empresas-com-a-sancao-do-codigo-de-defesa-do-contribuinte/",
+               pdf: "conjur_codigo_defesa_contribuinte.pdf.pdf"
+            },
+            {
+               titulo: "Alta de IOF sobre títulos isentos (LCI/LCA) esbarra em barreira política eleitoral",
+               veiculo: "Jota",
+               tribunal: "Executivo",
+               data: "19/02/2026",
+               tags: ["#IOF", "#LCI", "#LCA", "#Investimentos", "#Agronegócio"],
+               resumo: "A equipe econômica da Fazenda vem estudando majorar o IOF sobre títulos hoje isentos ou incentivados (como LCI, LCA, CRI e CRA) com o fito de elevar a arrecadação. A medida, contudo, enfrenta forte resistência devido ao atual calendário eleitoral.",
+               impacto: "Mercado Financeiro: Risco fiscal no radar. Investidores e estruturadores de crédito do agronegócio e setor imobiliário devem considerar a ameaça na precificação.",
+               link: "https://www.jota.info/tributos/matinal/alta-de-iof-sobre-titulos-isentos-tem-eleicoes-como-barreira-politica",
+               pdf: "jota_iof_titulos_isentos.pdf.pdf"
+            },
+            {
+               titulo: "Comitê Gestor do IBS ainda não recebeu repasse da União para funcionamento",
+               veiculo: "Jota",
+               tribunal: "Reforma Tributária",
+               data: "19/02/2026",
+               tags: ["#ReformaTributária", "#IBS", "#ComitêGestor", "#Atraso"],
+               resumo: "Apesar de ter sido formalmente instalado, o Comitê Gestor do IBS encontra-se imobilizado. A União ainda não transferiu o repasse financeiro necessário para sua estruturação, o que deve atrasar a emissão de resoluções e o cronograma do sistema de cobrança.",
+               impacto: "Institucional: O atraso prático liga um sinal de alerta para as empresas na corrida para a adaptação sistêmica e sistêmica (ERPs) aos novos tributos.",
+               link: "https://www.jota.info/tributos/relatorio-especial/comite-gestor-do-ibs-ainda-nao-recebeu-repasse-da-uniao",
+               pdf: "jota_cgibs_repasse_uniao.pdf.pdf"
+            },
+            {
+               titulo: "Ausência de modulação no STJ gera desigualdade em contribuições parafiscais",
+               veiculo: "Conjur",
+               tribunal: "Doutrina",
+               data: "16/02/2026",
+               tags: ["#STJ", "#SistemaS", "#Modulação", "#InsegurançaJurídica"],
+               resumo: "Artigo doutrinário critica a decisão do STJ que derrubou o limite de 20 salários para as contribuições de terceiros sem adotar a modulação de efeitos, gerando insegurança jurídica e desigualdade concorrencial entre empresas que possuíam liminares e as que recolhiam integralmente.",
+               impacto: "Contencioso: Empresas que se beneficiaram de liminares precisam preparar a defesa (Embargos) ou caixa para quitar o retroativo.",
+               link: "https://www.conjur.com.br/2026-fev-16/ausencia-de-modulacao-gera-desigualdade-em-acoes-parafiscais/",
+               pdf: "conjur_modulacao_parafiscais.pdf.pdf"
+            },
+            {
+               titulo: "Incidência de IOF sobre Cash Pooling não pode ser uma discussão apenas 'em tese'",
+               veiculo: "Conjur",
+               tribunal: "Doutrina",
+               data: "14/02/2026",
+               tags: ["#IOF", "#CashPooling", "#Intercompany", "#CARF"],
+               resumo: "Especialistas discutem o rigor do CARF nas autuações sobre contas correntes centralizadas (cash pooling). A conclusão é que o Fisco não pode tributar operações intragrupo por presunção; é preciso analisar faticamente se houve mutação da conta corrente para empréstimo autônomo.",
+               impacto: "Tesouraria: Exige a estruturação de contratos intercompanhia extremamente detalhados, evitando saldos estáticos prolongados que denotem mútuo financeiro.",
+               link: "https://www.conjur.com.br/2026-fev-14/incidencia-de-iof-sobre-cash-pooling-nao-pode-ser-uma-discussao-de-direito-em-tese/",
+               pdf: "conjur_iof_cash_pooling.pdf.pdf"
+            },
+            {
+               titulo: "Mais do que o tamanho da dívida, o custo de financiá-la é o que pressiona o Fisco",
+               veiculo: "Rota",
+               tribunal: "Economia",
+               data: "19/02/2026",
+               tags: ["#Macroeconomia", "#DívidaPública", "#CargaTributária"],
+               resumo: "Análise macroeconômica destaca que o grande gargalo da trajetória fiscal brasileira é a rolagem dos juros da dívida pública atrelados à Selic. A pressão do endividamento dita a necessidade ininterrupta do Governo de caçar arrecadação em todos os setores.",
+               impacto: "Visão Macro: Contribuintes não devem esperar trégua da Receita Federal. O foco do Fisco continuará em teses restritivas e auditorias massivas.",
+               link: "https://rota.apet.org.br/2026/02/o-brasil-nao-deve-demais-deve-caro-mais-do-que-o-tamanho-da-divida-e-o-custo-de-financia-la-que-determina-a-trajetoria-fiscal/",
+               pdf: "rota_divida_trajetoria_fiscal.pdf.pdf"
+            },
+            {
+               titulo: "Notícia Legisweb: Atualizações na Legislação Tributária (ID 32609)",
+               veiculo: "Outros",
+               tribunal: "Legislativo",
+               data: "19/02/2026",
+               tags: ["#Legislação", "#AtualizaçãoEstadual", "#Sefaz"],
+               resumo: "Publicação recente no portal Legisweb referente a alterações normativas na esfera tributária. É recomendada a verificação pontual do ato pelo link ou documento anexo correspondente.",
+               impacto: "Compliance Fiscal: Analisar a norma para adaptação de rotinas de faturamento e ICMS/ISS.",
+               link: "https://www.legisweb.com.br/noticia/?id=32609",
+               pdf: "legisweb_noticia_32609.pdf.pdf"
+            },
+            {
+               titulo: "IPTU 2026: Prefeitura de Goiânia oferece 10% de desconto à vista",
                veiculo: "Outros",
                tribunal: "Municipal",
-               data: "12/02/2026",
-               tags: ["#IPTU", "#JoãoPessoa", "#Desconto", "#TCR"],
-               resumo: "A Prefeitura de João Pessoa liberou a antecipação do pagamento do IPTU e da Taxa de Coleta de Resíduos (TCR) com desconto de 15% na cota única (pagamento até março) e mais 5% adicionais se o contribuinte estiver em dia até o final do ano anterior, totalizando 20% de benefício.",
-               impacto: "Regional: Excelente oportunidade de caixa para empresas com imóveis na capital paraibana.",
-               link: "https://www.joaopessoa.pb.gov.br/noticias/contribuinte-de-joao-pessoa-ja-pode-antecipar-pagamento-de-iptu-e-tcr-com-descontos-de-ate-20/",
-               pdf: "iptu_joao_pessoa_pb.pdf.pdf"
-            },
-            {
-               titulo: "SC Cosit nº 15/2026: IRPJ sobre Software SaaS (Longo Prazo)",
-               veiculo: "Receita Federal",
-               tribunal: "Receita Federal",
-               data: "12/02/2026",
-               tags: ["#IRPJ", "#SaaS", "#LucroPresumido", "#Competência"],
-               resumo: "A Receita Federal publicou a SC Cosit nº 15/2026, esclarecendo que, em contratos de longo prazo com a Administração Pública para fornecimento de licenças de software SaaS (Software as a Service), a receita deve ser reconhecida pelo regime de competência, à medida do adimplemento das obrigações, e não pelo recebimento antecipado ou faturamento total.",
-               impacto: "Setor de Tecnologia: Alinha o reconhecimento da receita com a execução do serviço, evitando a tributação antecipada de contratos plurianuais.",
-               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149273",
-               pdf: "sc_cosit_15_saas_irpj.pdf.pdf"
-            },
-            {
-               titulo: "Justiça Federal de SP livra varejista do adicional de 10% sobre o Lucro Presumido",
-               veiculo: "Valor",
-               tribunal: "Judiciário",
-               data: "12/02/2026",
-               tags: ["#IRPJ", "#Adicional10", "#LucroPresumido", "#Varejo"],
-               resumo: "Decisão inédita da Justiça Federal de SP afastou a cobrança do adicional de 10% de IRPJ para uma varejista no regime do Lucro Presumido. O juiz acolheu a tese de que o adicional só deveria incidir sobre o lucro que excede R$ 20 mil mensais APÓS as deduções legais, e não sobre a base presumida bruta.",
-               impacto: "Contencioso: Tese arrojada que pode gerar economia relevante para empresas do Lucro Presumido. Vale a pena monitorar se a decisão será mantida no TRF3.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/02/12/justica-federal-de-sao-paulo-livra-varejista-do-adicional-de-10-sobre-o-lucro-presumido.ghtml",
-               pdf: "valor_adicional_10_irpj_varejista.pdf.pdf"
-            },
-            {
-               titulo: "STJ fixa tese no Tema 1390 e adia outros três repetitivos",
-               veiculo: "Rota",
-               tribunal: "Judiciário",
-               data: "12/02/2026",
-               tags: ["#STJ", "#Repetitivo", "#Tema1390", "#Pauta"],
-               resumo: "O STJ fixou tese por unanimidade no Tema 1.390 (referente à execução fiscal), consolidando a jurisprudência. No entanto, adiou o julgamento de outros três temas tributários de peso, prolongando a expectativa do mercado.",
-               impacto: "Acompanhamento: Verificar o teor exato da tese do Tema 1.390 e atualizar clientes sobre os adiamentos.",
-               link: "https://rota.apet.org.br/2026/02/stj-fixa-tese-por-unanimidade-no-tema-1390-e-adia-analise-de-outros-tres-temas-tributarios/",
-               pdf: "rota_stj_tema_1390.pdf.pdf"
-            },
-            {
-               titulo: "CARF começa a discutir contribuições previdenciárias sobre JCP extemporâneo",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "12/02/2026",
-               tags: ["#CARF", "#JCP", "#Previdenciário", "#Extemporâneo"],
-               resumo: "O CARF iniciou julgamento para definir se incidem contribuições previdenciárias sobre o pagamento de Juros sobre Capital Próprio (JCP) referente a exercícios anteriores (extemporâneo). A fiscalização entende que o pagamento acumulado desnatura o JCP, transmutando-o em remuneração sujeita a INSS.",
-               impacto: "Planejamento: Alerta amarelo. O pagamento de JCP retroativo é comum, e uma decisão desfavorável encareceria a operação em 20%.",
-               link: "https://www.jota.info/tributos/direto-do-carf/carf-comeca-a-discutir-contribuicoes-previdenciarias-sobre-jcp-extemporaneo",
-               pdf: "carf_previdencia_jcp_extemporaneo.pdf.pdf"
-            },
-            
-            // --- DIA 11/02/2026 ---
-            {
-               titulo: "Câmara dá aval mais amplo para setor químico e urgência para Redata",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "11/02/2026",
-               tags: ["#Reiq", "#SetorQuímico", "#Redata", "#Incentivos"],
-               resumo: "A Câmara dos Deputados aprovou regime de urgência para o projeto que amplia os benefícios do Reiq (Regime Especial da Indústria Química) e institui o Redata (regime de dados). A medida visa aumentar a competitividade do setor frente ao mercado externo.",
-               impacto: "Indústria Química: Acompanhar a tramitação. A ampliação do Reiq pode reduzir custos de PIS/Cofins na aquisição de insumos.",
-               link: "https://www.jota.info/tributos/matinal/camara-da-aval-mais-amplo-para-setor-quimico-e-urgencia-para-redata",
-               pdf: "jota_setor_quimico_redata.pdf.pdf"
-            },
-            {
-               titulo: "CARF: Descumprimento de periodicidade na PLR gera tributação apenas sobre excedente",
-               veiculo: "Rota",
-               tribunal: "CARF",
-               data: "11/02/2026",
-               tags: ["#CARF", "#PLR", "#INSS", "#Periodicidade"],
-               resumo: "Decisão importante: O CARF definiu que, se uma empresa descumpre a regra de periodicidade no pagamento de PLR (mais de 2 vezes ao ano), a incidência de contribuição previdenciária deve recair APENAS sobre os valores excedentes/irregulares, e não sobre o montante total pago.",
-               impacto: "Passivo Previdenciário: Ótimo precedente para reduzir multas em autuações de PLR. A tributação deixa de ser 'tudo ou nada'.",
-               link: "https://rota.apet.org.br/2026/02/carf-decide-que-descumprimento-de-periodicidade-na-plr-gera-tributacao-apenas-sobre-valores-excedentes/",
-               pdf: "rota_carf_plr_excedente.pdf.pdf"
-            },
-            {
-               titulo: "Produtores perdem no CARF disputas sobre cessão de terras rurais",
-               veiculo: "Valor",
-               tribunal: "CARF",
-               data: "11/02/2026",
-               tags: ["#CARF", "#Agro", "#IRPF", "#Arrendamento"],
-               resumo: "Produtores rurais sofreram derrotas no CARF em casos envolvendo a tributação de contratos de parceria agrícola descaracterizados para arrendamento. O tribunal entendeu que a cessão de terras com remuneração fixa configura aluguel (tributado a 27,5%) e não atividade rural.",
-               impacto: "Agronegócio: Revisar contratos de parceria. Se não houver compartilhamento de riscos, a Receita tributará como aluguel comum.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/02/11/produtores-perdem-no-carf-disputas-sobre-cessao-de-terras-rurais.ghtml",
-               pdf: "valor_carf_cessao_terras_rurais.pdf.pdf"
-            },
-            {
-               titulo: "Juiz suspende decisão do TCU que restringiu uso de prejuízo fiscal em transação",
-               veiculo: "Conjur",
-               tribunal: "Judiciário",
-               data: "11/02/2026",
-               tags: ["#Transação", "#TCU", "#PrejuízoFiscal", "#PGFN"],
-               resumo: "Liminar suspendeu os efeitos de decisão do TCU que tentava limitar o uso de prejuízo fiscal e base negativa da CSLL para amortizar dívidas em transações tributárias. O juiz reafirmou a competência da PGFN para negociar os termos.",
-               impacto: "Segurança Jurídica: Garante a manutenção das condições negociadas nos editais de transação, sem interferência do Tribunal de Contas.",
-               link: "https://www.conjur.com.br/2026-fev-11/juiz-suspende-efeitos-de-decisao-do-tcu-que-restringiu-uso-de-pf-bcn-em-transacao-tributaria/",
-               pdf: "conjur_tcu_transacao_tributaria.pdf.pdf"
-            },
-            {
-               titulo: "CARF anula multa milionária por falta de provas sobre fraude em importação",
-               veiculo: "Rota",
-               tribunal: "CARF",
-               data: "11/02/2026",
-               tags: ["#CARF", "#Aduaneiro", "#Fraude", "#MultaQualificada"],
-               resumo: "O CARF cancelou uma multa qualificada (150%) em caso de importação, entendendo que a fiscalização não apresentou provas robustas de fraude ou dolo, baseando-se apenas em presunções. A decisão reforça o ônus da prova do Fisco em acusações graves.",
-               impacto: "Defesa Aduaneira: Argumento forte para derrubar multas qualificadas quando a autuação é genérica.",
-               link: "https://rota.apet.org.br/2026/02/carf-anula-multa-milionaria-por-falta-de-provas-sobre-fraude-em-importacao/",
-               pdf: "rota_carf_fraude_importacao.pdf.pdf"
-            },
-            {
-               titulo: "CARF decide por voto de qualidade manutenção de multas sobre classificação incorreta",
-               veiculo: "Rota",
-               tribunal: "CARF",
-               data: "11/02/2026",
-               tags: ["#CARF", "#ClassificaçãoFiscal", "#Multa", "#VotoDeQualidade"],
-               resumo: "Por voto de qualidade (desempate pró-Fisco), o CARF manteve multas aplicadas a uma empresa por erro na classificação fiscal de produtos veterinários. O tribunal entendeu que o erro reiterado configura negligência, justificando a penalidade.",
-               impacto: "Compliance: Erros de NCM podem custar caro. Importante auditar o cadastro de produtos.",
-               link: "https://rota.apet.org.br/2026/02/carf-decide-por-voto-de-qualidade-manutencao-de-multas-sobre-classificacao-incorreta-de-produto-veterinario/",
-               pdf: "rota_carf_classificacao_veterinario.pdf.pdf"
-            },
-
-            // --- DIA 10/02/2026 ---
-            {
-               titulo: "2026 começa com indefinição sobre julgamento judicial de CBS/IBS",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "10/02/2026",
-               tags: ["#Reforma", "#Contencioso", "#CBS", "#IBS"],
-               resumo: "O ano legislativo inicia sem clareza sobre como será estruturado o contencioso judicial dos novos tributos (CBS/IBS). Há propostas divergentes sobre a competência (Justiça Federal vs. Estadual) e a criação de varas especializadas.",
-               impacto: "Institucional: A indefinição gera insegurança sobre onde ajuizar as futuras ações da Reforma.",
-               link: "https://www.jota.info/tributos/direto-do-legislativo/2026-comeca-com-indefinicao-sobre-proposta-de-julgamento-judicial-de-cbsibs",
-               pdf: "legislativo_cbs_ibs_julgamento.pdf.pdf"
-            },
-            {
-               titulo: "CARF mantém IOF sobre mútuo disfarçado em compra e venda de ações",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "10/02/2026",
-               tags: ["#CARF", "#IOF", "#Mútuo", "#Simulação"],
-               resumo: "O CARF manteve a cobrança de IOF sobre uma operação estruturada como compra e venda de ações, mas que o tribunal considerou ser um mútuo disfarçado (empréstimo) entre partes relacionadas, aplicando o princípio da primazia da essência sobre a forma.",
-               impacto: "Planejamento: Alerta para operações estruturadas intragrupo. A Receita está atenta à substância econômica.",
-               link: "https://www.jota.info/tributos/direto-do-carf/carf-mantem-iof-sobre-mutuo-disfarcado-em-compra-e-venda-de-acoes",
-               pdf: "carf_iof_mutuo_acoes.pdf.pdf"
-            },
-            {
-               titulo: "STJ: Vista suspende discussão sobre amortização de ágio com empresa veículo",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "10/02/2026",
-               tags: ["#STJ", "#Ágio", "#EmpresaVeículo", "#M&A"],
-               resumo: "Pedido de vista suspendeu julgamento crucial no STJ sobre a possibilidade de amortizar ágio gerado com o uso de 'empresa veículo'. O placar estava dividido, e a decisão definirá o futuro de bilhões em autuações.",
-               impacto: "M&A: O mercado aguarda ansioso. A validação ou não da empresa veículo definirá a estratégia de grandes aquisições.",
-               link: "https://www.jota.info/tributos/direto-da-corte/stj-vista-suspende-discussao-sobre-amortizacao-de-agio-com-empresa-veiculo",
-               pdf: "stj_vista_agio_empresa_veiculo.pdf.pdf"
-            },
-            {
-               titulo: "O Comitê Gestor e a verdadeira construção da Reforma Tributária",
-               veiculo: "Conjur",
-               tribunal: "Reforma Tributária",
-               data: "10/02/2026",
-               tags: ["#ComitêGestor", "#IBS", "#Federalismo"],
-               resumo: "Artigo analisa o papel central do Comitê Gestor na implementação prática da Reforma. Argumenta que o sucesso do IBS depende da capacidade desse órgão de harmonizar interesses estaduais e municipais sem criar um 'superfisco' burocrático.",
-               impacto: "Política Fiscal: O Comitê será o verdadeiro legislador infralegal. Acompanhar suas resoluções é mandatório.",
-               link: "https://www.conjur.com.br/2026-fev-10/2026-o-comite-gestor-e-a-verdadeira-construcao-da-reforma-tributaria/",
-               pdf: "conjur_comite_gestor_reforma.pdf.pdf"
-            },
-            {
-               titulo: "Fazenda consulta adoção de IOF de 35% sobre Criptoativos",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "10/02/2026",
-               tags: ["#IOF", "#Criptoativos", "#Bitcoin"],
-               resumo: "Ministério da Fazenda estuda alíquota de 35% de IOF sobre operações com criptoativos para equiparar a operações financeiras internacionais.",
-               impacto: "Investimentos: Risco de inviabilizar o mercado local de cripto.",
-               link: "https://www.jota.info/tributos/matinal/fazenda-vai-colocar-em-consulta-adocao-de-iof-de-35-sobre-cripto",
-               pdf: "jota_iof_cripto_35.pdf.pdf"
-            },
-            {
-               titulo: "SC Cosit nº 14/2026: Custo de Aquisição de Participação Societária",
-               veiculo: "Receita Federal",
-               tribunal: "Receita Federal",
-               data: "10/02/2026",
-               tags: ["#IRPJ", "#ParticipaçãoSocietária", "#Lei12973"],
-               resumo: "Receita define cálculo do custo de aquisição de participação societária na adoção inicial da Lei 12.973, baseado no patrimônio líquido.",
-               impacto: "Societário: Define base de cálculo para ganho de capital futuro.",
-               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149206",
-               pdf: "sc_cosit_14_custo_aquisicao.pdf.pdf"
-            },
-            {
-               titulo: "CNJ busca opiniões para destravar execuções fiscais",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "10/02/2026",
-               tags: ["#CNJ", "#ExecuçãoFiscal"],
-               resumo: "CNJ discute medidas extrajudiciais para agilizar cobrança de dívida ativa.",
-               impacto: "Passivo: Tendência de protesto e bloqueio administrativo.",
-               link: "https://www.jota.info/tributos/relatorio-especial/cnj-quer-opinioes-sobre-como-melhorar-as-execucoes-fiscais",
-               pdf: "jota_cnj_execucoes_fiscais.pdf.pdf"
-            },
-            {
-               titulo: "CARF permite crédito de PIS/Cofins sobre royalties de sementes",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "10/02/2026",
-               tags: ["#CARF", "#PISCOFINS", "#Royalties", "#Agro"],
-               resumo: "Royalties de sementes transgênicas geram crédito de PIS/Cofins como insumo.",
-               impacto: "Agronegócio: Precedente favorável.",
-               link: "https://www.jota.info/tributos/direto-do-carf/carf-permite-credito-de-piscofins-sobre-royalties-de-sementes-modificadas",
-               pdf: "carf_credito_royalties_sementes.pdf.pdf"
-            },
-
-            // --- DIA 09/02/2026 (MANTIDO CONFORME SOLICITADO) ---
-            {
-               titulo: "STJ permite dedução de PLR de trabalhadores de tecnologia (Lei do Bem)",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "09/02/2026",
-               tags: ["#STJ", "#PLR", "#LeiDoBem"],
-               resumo: "STJ autoriza dedução de PLR da base do IRPJ/CSLL para trabalhadores de inovação, aplicando incentivos da Lei do Bem.",
-               impacto: "Tecnologia: Vitória expressiva.",
-               link: "https://www.jota.info/tributos/stj-permite-deducao-de-plr-de-trabalhadores-de-tecnologia-da-base-do-irpj-e-csll",
-               pdf: "stj_plr_tecnologia.pdf.pdf"
-            },
-            {
-               titulo: "Liminar veda IR sobre dividendos de empresa no Simples Nacional",
-               veiculo: "Valor",
-               tribunal: "Judiciário",
-               data: "09/02/2026",
-               tags: ["#SimplesNacional", "#Dividendos", "#IRPF"],
-               resumo: "Liminar afasta incidência de IR sobre dividendos do Simples, com base na LC 123/2006.",
-               impacto: "Simples Nacional: Precedente importante.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/02/09/liminar-veda-ir-sobre-dividendos-de-empresa-no-simples.ghtml",
-               pdf: "liminar_ir_dividendos_simples.pdf.pdf"
-            },
-            {
-               titulo: "CARF: Receitas com ativos garantidores NÃO integram a base do PIS/Cofins",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "09/02/2026",
-               tags: ["#CARF", "#Seguros", "#PISCOFINS"],
-               resumo: "CARF exclui receitas financeiras de reservas técnicas da base do PIS/Cofins das seguradoras.",
-               impacto: "Seguradoras: Vitória relevante.",
-               link: "https://www.jota.info/tributos/receitas-obtidas-com-ativos-garantidores-nao-integram-a-base-do-pis-cofins-decide-carf",
-               pdf: "carf_ativos_garantidores_nao_integram.pdf.pdf"
-            },
-            {
-               titulo: "Receita fixa critérios para PIS/Cofins em entrega futura (SC 13)",
-               veiculo: "Rota",
-               tribunal: "Receita Federal",
-               data: "09/02/2026",
-               tags: ["#PISCOFINS", "#EntregaFutura"],
-               resumo: "Crédito na venda para entrega futura ocorre no contrato, mas exclusão do ICMS só na entrega física.",
-               impacto: "Contabilidade: Ajuste temporal necessário.",
-               link: "https://rota.apet.org.br/2026/02/receita-federal-fixa-criterios-para-creditos-de-pis-cofins-em-compras-com-entrega-futura/",
-               pdf: "receita_pis_cofins_entrega_futura.pdf.pdf"
-            },
-            {
-               titulo: "Tese do Século: Receita trava compensações e glosa créditos",
-               veiculo: "APET",
-               tribunal: "Receita Federal",
-               data: "09/02/2026",
-               tags: ["#PISCOFINS", "#ICMS", "#MalhaFina"],
-               resumo: "Receita intensifica glosas em compensações de PIS/Cofins com base na exclusão do ICMS.",
-               impacto: "Risco: Revisar DCOMPs.",
-               link: "https://apet.org.br/noticia/tese-do-seculo-receita-trava-compensacoes/",
-               pdf: "receita_trava_compensacoes_tese_seculo.pdf.pdf"
+               data: "14/02/2026",
+               tags: ["#IPTU", "#Goiânia", "#Desconto"],
+               resumo: "A Prefeitura de Goiânia divulgou seu calendário de cobrança do IPTU 2026, oferecendo um desconto de 10% aos contribuintes que realizarem o pagamento em cota única.",
+               impacto: "Regional: Fique atento ao fluxo de caixa para propriedades localizadas no município de Goiânia (GO).",
+               link: "https://g1.globo.com/go/goias/noticia/2026/02/14/iptu-2026-prefeitura-de-goiania-oferece-10percent-de-desconto-e-opcoes-de-parcelamento-confira.ghtml",
+               pdf: "g1_iptu_goiania_2026.pdf.pdf"
             }
         ];
 
