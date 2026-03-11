@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +87,7 @@
                     <select id="filtro-veiculo" onchange="renderizarNoticias()">
                         <option value="Todos">Todas</option>
                         <option value="Jota">Jota</option>
-                        <option value="Valor">Valor Econômico</option>
+                        <option value="Valor">Valor Económico</option>
                         <option value="Conjur">Conjur</option>
                         <option value="APET">APET / Rota</option>
                         <option value="Receita Federal">Receita Federal</option>
@@ -118,172 +118,150 @@
     </div>
 
     <script>
-        // --- BASE DE DADOS: APENAS 26/02/2026 ---
+        // --- BASE DE DADOS: APENAS 11/03/2026 ---
         const noticias = [
             {
-               titulo: "SC Cosit nº 21/2026: Receita nega crédito adicional na Tese do Século (Exclusão ICMS)",
-               veiculo: "Receita Federal",
-               tribunal: "Receita Federal",
-               data: "26/02/2026",
-               tags: ["#PISCOFINS", "#TeseDoSéculo", "#Compensação", "#ICMS"],
-               resumo: "A Receita Federal fechou o cerco contra compensações via SC Cosit 21/2026, definindo que NÃO existe direito a 'crédito complementar' de PIS/Cofins pela aplicação da Tese do Século (exclusão do ICMS). A RFB barra contribuintes que tentavam aplicar o gross up (incluir o ICMS na própria base de cálculo para aumentar o indébito).",
-               impacto: "Risco Imediato: Alto risco de glosa para empresas que compensaram créditos de PIS/Cofins utilizando metodologias alternativas de cálculo infladas. Revisar memórias de cálculo das DCOMPs.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/02/26/receita-federal-nega-a-contribuintes-direito-a-creditos-extra-na-aplicacao-da-tese-do-seculo.ghtml",
-               pdf: "sc_cosit_21_tese_seculo.pdf.pdf"
-            },
-            {
-               titulo: "SC Cosit nº 19/2026: Multa Isolada não entra na Autorregularização Incentivada",
-               veiculo: "Receita Federal",
-               tribunal: "Receita Federal",
-               data: "26/02/2026",
-               tags: ["#Autorregularização", "#MultaIsolada", "#IRPJ", "#CSLL"],
-               resumo: "A RFB publicou a SC Cosit nº 19/2026, formalizando que a multa isolada (aplicada, por exemplo, por falta de recolhimento de estimativas mensais de IRPJ/CSLL) não é passível de inclusão no programa de Autorregularização Incentivada (Lei 14.740/23).",
-               impacto: "Passivo: Frustra contribuintes que buscavam desconto de 100% nas pesadas multas isoladas. Exige reavaliação estratégica de adesões já enviadas.",
-               link: "https://www.jota.info/tributos/matinal/receita-confirma-exclusao-de-multa-isolada-de-autorregularizacao-tributaria",
-               pdf: "sc_cosit_19_multa_isolada.pdf.pdf"
-            },
-            {
-               titulo: "Redata perde validade e Haddad tentará solução com Alcolumbre",
-               veiculo: "Jota",
-               tribunal: "Legislativo",
-               data: "26/02/2026",
-               tags: ["#Redata", "#Incentivos", "#Tecnologia", "#Fazenda"],
-               resumo: "O Regime Especial de Dados (Redata), voltado à infraestrutura e datacenters, perdeu sua validade no Congresso. O Ministro da Fazenda, Fernando Haddad, articula politicamente com o Senado para encontrar uma alternativa que preserve os incentivos ao setor tecnológico.",
-               impacto: "Tecnologia: Setor de datacenters perde segurança jurídica temporária. Necessário acompanhar a tramitação de eventual projeto de lei substitutivo.",
-               link: "https://www.jota.info/tributos/matinal/redata-perde-validade-e-haddad-vai-tentar-solucao-com-alcolumbre",
-               pdf: "jota_redata_haddad.pdf.pdf"
-            },
-            {
-               titulo: "CARF: Vista suspende julgamento sobre estornos de superveniências na CSLL",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "26/02/2026",
-               tags: ["#CARF", "#CSLL", "#InstituiçõesFinanceiras", "#Superveniências"],
-               resumo: "Um pedido de vista suspendeu o julgamento no CARF de um caso bilionário envolvendo estornos de superveniências ativas na apuração da CSLL de instituições financeiras. O tema debate o momento correto e a base normativa para a tributação.",
-               impacto: "Bancos e Finanças: Tese de alto impacto no setor financeiro. O adiamento mantém a indefinição jurisprudencial.",
-               link: "https://www.jota.info/tributos/direto-do-carf/vista-suspende-julgamento-sobre-estornos-de-superveniencias-na-csll",
-               pdf: "jota_carf_csll_superveniencias.pdf.pdf"
-            },
-            {
-               titulo: "STF pauta julgamento sobre benefícios a empresas da 'Moratória da Soja'",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "26/02/2026",
-               tags: ["#STF", "#Agro", "#MoratóriaSoja", "#BenefíciosFiscais"],
-               resumo: "O Supremo Tribunal Federal pautou o julgamento que debate a legalidade de leis estaduais que cortam benefícios fiscais (como redução de ICMS) de empresas signatárias do pacto ambiental 'Moratória da Soja'.",
-               impacto: "Agronegócio e ESG: Decisão definirá se Estados podem usar incentivos fiscais como ferramenta de retaliação contra políticas privadas de sustentabilidade.",
-               link: "https://www.jota.info/tributos/direto-da-corte/stf-pauta-julgamento-sobre-suspensao-de-beneficios-a-empresas-da-moratoria-da-soja",
-               pdf: "jota_stf_moratoria_soja.pdf.pdf"
-            },
-            {
-               titulo: "CARF mantém incentivo da Sudene para transporte de gás fora da área beneficiada",
-               veiculo: "Jota",
-               tribunal: "CARF",
-               data: "26/02/2026",
-               tags: ["#CARF", "#Sudene", "#IncentivosFiscais", "#Infraestrutura"],
-               resumo: "O CARF validou a fruição de incentivos fiscais da Sudene (redução de IRPJ) por uma empresa de transporte de gás, mesmo que parte de sua infraestrutura física e operacional avance para áreas fora da poligonal da Sudene, priorizando a localização da sede.",
-               impacto: "Infraestrutura: Ótimo precedente para empresas de concessão, energia e dutos que cruzam as fronteiras do Norte e Nordeste.",
-               link: "https://www.jota.info/tributos/direto-do-carf/carf-mantem-incentivo-da-sudene-a-transporte-de-gas-para-area-nao-beneficiada",
-               pdf: "jota_carf_sudene_gas.pdf.pdf"
-            },
-            {
-               titulo: "STF julgará com repercussão geral contribuição sobre 13º pago em aviso prévio",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "26/02/2026",
-               tags: ["#STF", "#INSS", "#FolhaDePagamento", "#RepercussãoGeral"],
-               resumo: "O STF reconheceu repercussão geral na controvérsia sobre a incidência de contribuição previdenciária patronal sobre a parcela do 13º salário calculada sobre o aviso prévio indenizado. Os contribuintes defendem o caráter indenizatório da verba.",
-               impacto: "Trabalhista/Previdenciário: Tese afeta o custo de rescisões de todas as empresas. Aconselhável ajuizar ação para garantir a devolução do passado.",
-               link: "https://www.jota.info/tributos/direto-da-corte/stf-julgara-com-repercussao-geral-contribuicao-sobre-13o-pago-em-aviso-previo",
-               pdf: "jota_stf_13_aviso_previo.pdf.pdf"
-            },
-            {
-               titulo: "Municípios devem adotar a Selic em cobranças fiscais, decidem tribunais",
+               titulo: "CARF livra contribuintes de contribuição previdenciária sobre 'stock options'",
                veiculo: "Valor",
-               tribunal: "Municipal",
-               data: "26/02/2026",
-               tags: ["#Municipal", "#Selic", "#ExecuçãoFiscal", "#IPTU", "#ISS"],
-               resumo: "Tribunais estaduais vêm consolidando a jurisprudência que proíbe os municípios de aplicarem índices de correção e juros de mora em dívidas fiscais (ISS, IPTU) superiores à taxa Selic, com base em determinação anterior do STF.",
-               impacto: "Passivo Municipal: Permite a revisão e o expurgo de juros abusivos em execuções fiscais locais, desinflando dívidas de IPTU e ISS.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/02/26/municipios-devem-adotar-selic-em-cobrancas-fiscais.ghtml",
-               pdf: "valor_municipios_selic.pdf.pdf"
+               tribunal: "CARF",
+               data: "11/03/2026",
+               tags: ["#CARF", "#StockOptions", "#INSS", "#Remuneração"],
+               resumo: "O CARF proferiu decisões favoráveis aos contribuintes, afastando a incidência de contribuição previdenciária patronal sobre os planos de opção de compra de ações (stock options), reconhecendo a natureza mercantil, e não remuneratória, da operação.",
+               impacto: "RH e Gestão Executiva: Precedente excelente que reduz substancialmente o risco e os custos associados a planos de incentivo a longo prazo para executivos.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/03/10/carf-livra-contribuintes-de-pagar-contribuicao-previdenciaria-sobre-planos-de-stock-options.ghtml",
+               pdf: "valor_carf_stock_options_inss.pdf.pdf"
             },
             {
-               titulo: "Receita atualiza lista de exceções à redução de benefícios fiscais (IN 2.307)",
-               veiculo: "APET",
-               tribunal: "Receita Federal",
-               data: "26/02/2026",
-               tags: ["#BenefíciosFiscais", "#Incentivos", "#Compliance", "#IN2307"],
-               resumo: "A Receita Federal publicou a Instrução Normativa RFB nº 2.307/2026, atualizando e detalhando a lista dos setores e regimes especiais que estão isentos da redução linear obrigatória de benefícios fiscais determinada pelo Governo.",
-               impacto: "Planejamento Tributário: Empresas beneficiadas por regimes especiais devem auditar a nova IN para confirmar se a sua desoneração sofreu o corte de 10%.",
-               link: "https://apet.org.br/noticia/receita-atualiza-lista-de-excecoes-a-reducao-de-beneficios-fiscais-2/",
-               pdf: "apet_excecoes_beneficios.pdf.pdf"
-            },
-            {
-               titulo: "Receita Federal moderniza o pedido de ressarcimento de IPI (PER/DCOMP Web)",
-               veiculo: "APET",
-               tribunal: "Receita Federal",
-               data: "26/02/2026",
-               tags: ["#IPI", "#Ressarcimento", "#PERDCOMP", "#Tecnologia"],
-               resumo: "O processo de ressarcimento de IPI foi digitalizado e agora é feito integralmente pelo PER/DCOMP Web. A modernização dispensa o download de programas e agiliza o cruzamento de créditos acumulados diretamente com as informações da EFD.",
-               impacto: "Compliance Fiscal: Facilita o aproveitamento de saldo credor de IPI por indústrias, reduzindo burocracia na transmissão dos pedidos.",
-               link: "https://apet.org.br/noticia/receita-federal-moderniza-o-pedido-de-ressarcimento-de-ipi/",
-               pdf: "apet_ressarcimento_ipi_web.pdf.pdf"
-            },
-            {
-               titulo: "Contribuintes vencem nos tribunais disputa sobre exclusão do ISS do PIS/Cofins",
-               veiculo: "APET",
+               titulo: "OAB-RJ consegue liminar contra aumento do coeficiente do Lucro Presumido",
+               veiculo: "Valor",
                tribunal: "Judiciário",
-               data: "26/02/2026",
-               tags: ["#PISCOFINS", "#ISS", "#TeseDoSéculo", "#Judiciário"],
-               resumo: "Enquanto aguardam o julgamento final do STF (Tema 118), empresas do setor de serviços têm obtido vitórias em tribunais regionais que garantem o direito de excluir o ISS da base de cálculo do PIS e da Cofins.",
-               impacto: "Setor de Serviços: Empresa que ainda não possui ação judicial sobre o tema deve ingressar com urgência para resguardar o direito e evitar modulação do STF.",
-               link: "https://apet.org.br/noticia/contribuintes-vencem-nos-tribunais-disputa-sobre-exclusao-do-iss-do-calculo-do-pis-cofins/",
-               pdf: "apet_exclusao_iss_piscofins.pdf.pdf"
+               data: "11/03/2026",
+               tags: ["#LucroPresumido", "#Liminar", "#Serviços", "#OAB"],
+               resumo: "A Justiça Federal concedeu uma liminar à OAB-RJ afastando o aumento da base de cálculo do IRPJ/CSLL no Lucro Presumido para os escritórios de advocacia. A decisão evitou a majoração da presunção de 32% para um patamar superior via ato infralegal da Receita.",
+               impacto: "Setor de Serviços: Abre um precedente relevante para que outras categorias profissionais contestem reenquadramentos arbitrários de coeficientes pelo Fisco.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/03/10/oab-rj-consegue-liminar-para-afastar-aumento-de-10-pontos-percentuais-sobre-lucro-presumido.ghtml",
+               pdf: "valor_oab_liminar_lucro_presumido.pdf.pdf"
             },
             {
-               titulo: "Acordo Paulista: Prazo para renegociação de ICMS em dívida ativa termina dia 27",
-               veiculo: "Outros",
-               tribunal: "Municipal",
-               data: "26/02/2026",
-               tags: ["#ICMS", "#AcordoPaulista", "#Transação", "#SP"],
-               resumo: "O governo de São Paulo alerta que encerra nesta sexta-feira, 27 de fevereiro, o prazo para adesão ao Acordo Paulista. O programa permite renegociar ICMS inscrito em dívida ativa com 100% de desconto em juros e multas e uso de precatórios.",
-               impacto: "Regional/SP: Última chamada para regularização de passivos milionários no Estado de SP em condições excepcionais.",
-               link: "https://www.agenciasp.sp.gov.br/acordo-paulista-prazo-para-adesao-a-renegociacao-de-debitos-estaduais-em-divida-ativa-acaba-nesta-sexta-feira-27/",
-               pdf: "sp_acordo_paulista.pdf.pdf"
+               titulo: "STJ reafirma: PIS e Cofins compõem a base do IRPJ e CSLL no Lucro Presumido",
+               veiculo: "Valor",
+               tribunal: "Judiciário",
+               data: "11/03/2026",
+               tags: ["#STJ", "#LucroPresumido", "#PISCOFINS", "#BaseDeCálculo"],
+               resumo: "O STJ manteve o entendimento pacificado de que os valores pagos a título de PIS e Cofins não podem ser excluídos da receita bruta que serve de base de cálculo do IRPJ e da CSLL na sistemática do Lucro Presumido, rejeitando mais uma tese filhote da exclusão do ICMS.",
+               impacto: "Contencioso: Encerra as esperanças de redução da carga tributária para optantes do Lucro Presumido através desta tese de exclusão de bases.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/03/11/pis-e-cofins-compem-base-do-irpj-e-csll-no-lucro-presumido.ghtml",
+               pdf: "valor_pis_cofins_base_irpj_presumido.pdf.pdf"
             },
             {
-               titulo: "Cidades do Litoral prorrogam prazo para adesão ao Refis (Itanhaém mantém)",
-               veiculo: "Outros",
-               tribunal: "Municipal",
-               data: "26/02/2026",
-               tags: ["#Refis", "#Municipal", "#LitoralSP", "#IPTU"],
-               resumo: "Prefeituras da Baixada Santista e litoral prorrogaram as datas de seus programas de regularização fiscal (Refis) para atenuar o impacto de multas em atrasos de IPTU e ISS.",
-               impacto: "Regional: Aviso importante para contribuintes e empresas de turismo/imobiliário com atuação no litoral.",
-               link: "https://jornaldaorla.com.br/noticias/duas-cidades-prorrogam-prazo-para-adesao-ao-refis-itanhaem-mantem/",
-               pdf: "refis_litoral_sp.pdf.pdf"
+               titulo: "CARF pauta tributação de ativos garantidores e multa de perdimento",
+               veiculo: "Jota",
+               tribunal: "CARF",
+               data: "11/03/2026",
+               tags: ["#CARF", "#AtivosGarantidores", "#Seguros", "#Aduaneiro"],
+               resumo: "A pauta do CARF desta semana inclui a discussão sobre a incidência de PIS/Cofins sobre receitas de ativos garantidores de seguradoras, um tema que tem sofrido reviravoltas recentes nas turmas, além do julgamento de casos sensíveis sobre a aplicação de multa de perdimento.",
+               impacto: "Seguradoras e Comex: Atenção redobrada à flutuação da jurisprudência administrativa, que impacta milhares de milhões em autuações pendentes.",
+               link: "https://www.jota.info/tributos/apostas-da-semana/carf-julga-casos-sobre-tributacao-de-ativos-garantidores-e-multa-de-perdimento",
+               pdf: "jota_carf_ativos_garantidores_perdimento.pdf.pdf"
             },
             {
-               titulo: "SC Cosit nº 20/2026: Prazos originais de validade do REGPI (Papel Imune)",
-               veiculo: "Receita Federal",
+               titulo: "STF retoma julgamento sobre adicional de ICMS para telecomunicações",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "11/03/2026",
+               tags: ["#STF", "#ICMS", "#Telecom", "#FCEP"],
+               resumo: "O Supremo Tribunal Federal volta a julgar a validade da cobrança do adicional de ICMS, destinado ao Fundo de Combate à Pobreza (FCEP), sobre os serviços de telecomunicações. O foco recai sobre o respeito ao princípio da seletividade por parte da legislação estadual.",
+               impacto: "Telecomunicações: Risco de manutenção ou oportunidade de redução da carga tributária estadual, afetando a competitividade e os custos operacionais.",
+               link: "https://www.jota.info/tributos/apostas-da-semana/stf-retoma-julgamento-sobre-adicional-de-icms-para-telecom",
+               pdf: "jota_stf_icms_telecom.pdf.pdf"
+            },
+            {
+               titulo: "STJ volta a analisar se limite de 20 salários do Sistema S vale para outras contribuições",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "11/03/2026",
+               tags: ["#STJ", "#SistemaS", "#ContribuiçõesParafiscais", "#FolhaDePagamento"],
+               resumo: "O STJ volta a debater o teto de 20 salários mínimos para as contribuições de terceiros. Após recentes decisões contrárias em repetitivos, a corte avalia a aplicabilidade restrita a rubricas específicas e eventuais necessidades de modulação.",
+               impacto: "Folha de Pagamento: Monitorização contínua da modulação de efeitos e da abrangência exata da tese para os diferentes componentes do sistema S.",
+               link: "https://www.jota.info/tributos/apostas-da-semana/stj-decide-se-limite-do-sistema-s-vale-para-outras-contribuicoes",
+               pdf: "jota_stj_limite_sistema_s.pdf.pdf"
+            },
+            {
+               titulo: "STF retomará julgamento sobre distribuição de lucros por empresas com débitos fiscais",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "11/03/2026",
+               tags: ["#STF", "#Dividendos", "#EmpresasDevedoras", "#RegularidadeFiscal"],
+               resumo: "O STF voltará a analisar a constitucionalidade do artigo 32 da Lei 4.357/64, que proíbe empresas com débitos tributários não garantidos de distribuírem lucros ou dividendos aos seus sócios e acionistas.",
+               impacto: "Planeamento Societário: Caso a proibição seja mantida, as empresas com passivos não suspensos não poderão distribuir dividendos sem incorrerem num sério risco de multa.",
+               link: "https://www.jota.info/tributos/apostas-da-semana/stf-retomara-julgamento-sobre-distribuicao-de-lucros-por-empresas-devedoras",
+               pdf: "jota_stf_distribuicao_lucros_devedoras.pdf.pdf"
+            },
+            {
+               titulo: "STF retoma julgamento de R$ 17 bi sobre sub-rogação do Funrural",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "11/03/2026",
+               tags: ["#STF", "#Funrural", "#Agro", "#Frigoríficos"],
+               resumo: "O Supremo julga a validade da sub-rogação do adquirente (frigoríficos, laticínios, tradings) no que diz respeito ao recolhimento do Funrural, num caso com impacto avaliado em 17 mil milhões de reais aos cofres públicos.",
+               impacto: "Agronegócio: Trata-se de um risco sistémico e bilionário para as agroindústrias que adquirem produção rural de pessoas físicas.",
+               link: "https://www.jota.info/tributos/apostas-da-semana/stf-retoma-julgamentos-com-caso-de-r-17-bi-sobre-sub-rogacao-do-funrural",
+               pdf: "jota_stf_funrural_subrogacao.pdf.pdf"
+            },
+            {
+               titulo: "Governo revisará cálculos do anexo de riscos fiscais",
+               veiculo: "Valor",
+               tribunal: "Executivo",
+               data: "11/03/2026",
+               tags: ["#RiscosFiscais", "#Governo", "#LDO", "#Contencioso"],
+               resumo: "Após críticas, o governo federal anunciou que irá proceder a uma revisão metodológica nos cálculos do anexo de riscos fiscais, no sentido de reavaliar o impacto financeiro das principais teses tributárias em debate nos tribunais superiores.",
+               impacto: "Estratégico: Esta revisão poderá alterar a postura negocial da PGFN e influenciar o desenho de novos programas de transação tributária.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/03/11/governo-vai-revisar-calculos-feitos-para-o-anexo-de-riscos-fiscais.ghtml",
+               pdf: "valor_revisao_riscos_fiscais.pdf.pdf"
+            },
+            {
+               titulo: "Receita lança portal 'Minhas Dívidas e Pendências'",
+               veiculo: "APET",
                tribunal: "Receita Federal",
-               data: "26/02/2026",
-               tags: ["#IPI", "#PapelImune", "#REGPI", "#Cosit"],
-               resumo: "A SC Cosit nº 20/2026 detalha as regras de contagem do prazo original de validade (3 anos) das inscrições no Registro Especial de Controle de Papel Imune (REGPI), variando conforme a data do Ato Declaratório Executivo.",
-               impacto: "Setor Editorial/Gráfico: Define o compliance necessário para manter a imunidade de IPI em aquisições de papel.",
-               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149441",
-               pdf: "sc_cosit_20_regpi.pdf.pdf"
+               data: "11/03/2026",
+               tags: ["#ReceitaFederal", "#Compliance", "#Tecnologia", "#Regularidade"],
+               resumo: "A Receita Federal lançou uma nova funcionalidade no e-CAC designada 'Minhas Dívidas e Pendências', a qual unifica num só painel a visualização de todos os débitos exigíveis, pendências declaratórias e processos administrativos em curso.",
+               impacto: "Compliance Fiscal: Simplifica substancialmente as rotinas de auditoria interna e a gestão ágil da obtenção de Certidões Negativas de Débito (CND).",
+               link: "https://apet.org.br/noticia/receita-federal-lanca-o-minhas-dividas-e-pendencias-para-consulta-de-debitos/",
+               pdf: "apet_receita_minhas_dividas.pdf.pdf"
             },
             {
-               titulo: "SC Cosit nº 22/2026: Prazo e regras para Renovação do REGPI",
-               veiculo: "Receita Federal",
+               titulo: "RFB: Exigência de declaração para IOF reduzido de optantes do Simples",
+               veiculo: "Rota",
                tribunal: "Receita Federal",
-               data: "26/02/2026",
-               tags: ["#IPI", "#PapelImune", "#REGPI", "#Renovação"],
-               resumo: "A SC Cosit 22/2026 esclarece que o pedido de renovação do Registro Especial (REGPI) deve ser feito em janela temporal específica antes do vencimento. Pedidos intempestivos geram a caducidade do registro e suspensão da imunidade.",
-               impacto: "Setor Editorial: Risco de paralisação de operações isentas por falha no acompanhamento do prazo de renovação do registro perante a RFB.",
-               link: "https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/149500",
-               pdf: "sc_cosit_22_regpi.pdf.pdf"
+               data: "11/03/2026",
+               tags: ["#IOF", "#SimplesNacional", "#ReceitaFederal", "#Bancos"],
+               resumo: "A Receita Federal definiu que as instituições financeiras devem exigir, de forma obrigatória, uma declaração formal da empresa a comprovar a sua opção pelo Simples Nacional antes de aplicarem a alíquota reduzida de IOF nas operações de crédito.",
+               impacto: "Burocracia: As PME do Simples Nacional devem antecipar a entrega deste documento junto dos bancos para não serem tributadas com a alíquota geral.",
+               link: "https://rotadajurisprudencia.com.br/2026/03/instituicoes-financeiras-devem-exigir-declaracao-para-aplicar-iof-reduzido-para-empresas-do-simples-diz-receita/",
+               pdf: "rota_iof_reduzido_simples_declaracao.pdf.pdf"
+            },
+            {
+               titulo: "TIT-SP afasta ITCMD sobre doação de imóveis por residentes no exterior",
+               veiculo: "Rota",
+               tribunal: "Administrativo Estadual",
+               data: "11/03/2026",
+               tags: ["#TITSP", "#ITCMD", "#Exterior", "#Doação"],
+               resumo: "O Tribunal de Impostos e Taxas de São Paulo (TIT-SP) anulou autuações de ITCMD relativas a doações efetuadas por residentes no estrangeiro antes da entrada em vigor da lei complementar nacional, alinhando-se com o entendimento vinculante do STF.",
+               impacto: "Planeamento Patrimonial: Traz enorme segurança jurídica e alívio para operações antigas de planeamento sucessório e doações cross-border fiscalizadas pelo Estado de SP.",
+               link: "https://rotadajurisprudencia.com.br/2026/03/fazenda-perde-no-tit-sp-em-cobranca-de-itcmd-sobre-doacao-de-imoveis-por-residentes-no-exterior/",
+               pdf: "rota_tit_sp_itcmd_exterior.pdf.pdf"
+            },
+            {
+               titulo: "Receita aceita consultoria como 'atividade própria' para isenção de Cofins a associações",
+               veiculo: "Rota",
+               tribunal: "Receita Federal",
+               data: "11/03/2026",
+               tags: ["#ReceitaFederal", "#Cofins", "#Isenção", "#TerceiroSetor"],
+               resumo: "Através de uma nova Solução de Consulta, a RFB validou que serviços de consultoria e assistência técnica prestados por associações aos seus próprios filiados enquadram-se no conceito de 'atividade própria', estando por isso cobertos pela isenção da Cofins.",
+               impacto: "Terceiro Setor: Reforça o modelo de sustentabilidade das entidades de classe, mitigando fortemente o risco fiscal sobre receitas geradas pelos seus serviços.",
+               link: "https://rotadajurisprudencia.com.br/2026/03/consultoria-prestada-por-associacao-pode-ser-considerada-atividade-propria-para-isencao-de-cofins-diz-receita-federal/",
+               pdf: "rota_isencao_cofins_consultoria_associacao.pdf.pdf"
             }
         ];
 
