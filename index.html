@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +87,7 @@
                     <select id="filtro-veiculo" onchange="renderizarNoticias()">
                         <option value="Todos">Todas</option>
                         <option value="Jota">Jota</option>
-                        <option value="Valor">Valor Económico</option>
+                        <option value="Valor">Valor Econômico</option>
                         <option value="Conjur">Conjur</option>
                         <option value="APET">APET / Rota</option>
                         <option value="Receita Federal">Receita Federal</option>
@@ -118,150 +118,227 @@
     </div>
 
     <script>
-        // --- BASE DE DADOS: APENAS 11/03/2026 ---
+        // --- BASE DE DADOS: APENAS 16/03/2026 ---
         const noticias = [
             {
-               titulo: "CARF livra contribuintes de contribuição previdenciária sobre 'stock options'",
-               veiculo: "Valor",
-               tribunal: "CARF",
-               data: "11/03/2026",
-               tags: ["#CARF", "#StockOptions", "#INSS", "#Remuneração"],
-               resumo: "O CARF proferiu decisões favoráveis aos contribuintes, afastando a incidência de contribuição previdenciária patronal sobre os planos de opção de compra de ações (stock options), reconhecendo a natureza mercantil, e não remuneratória, da operação.",
-               impacto: "RH e Gestão Executiva: Precedente excelente que reduz substancialmente o risco e os custos associados a planos de incentivo a longo prazo para executivos.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/03/10/carf-livra-contribuintes-de-pagar-contribuicao-previdenciaria-sobre-planos-de-stock-options.ghtml",
-               pdf: "valor_carf_stock_options_inss.pdf.pdf"
-            },
-            {
-               titulo: "OAB-RJ consegue liminar contra aumento do coeficiente do Lucro Presumido",
-               veiculo: "Valor",
+               titulo: "STF: Dino destaca ação sobre imunidade de IPTU a imóveis de estatais",
+               veiculo: "Jota",
                tribunal: "Judiciário",
-               data: "11/03/2026",
-               tags: ["#LucroPresumido", "#Liminar", "#Serviços", "#OAB"],
-               resumo: "A Justiça Federal concedeu uma liminar à OAB-RJ afastando o aumento da base de cálculo do IRPJ/CSLL no Lucro Presumido para os escritórios de advocacia. A decisão evitou a majoração da presunção de 32% para um patamar superior via ato infralegal da Receita.",
-               impacto: "Setor de Serviços: Abre um precedente relevante para que outras categorias profissionais contestem reenquadramentos arbitrários de coeficientes pelo Fisco.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/03/10/oab-rj-consegue-liminar-para-afastar-aumento-de-10-pontos-percentuais-sobre-lucro-presumido.ghtml",
-               pdf: "valor_oab_liminar_lucro_presumido.pdf.pdf"
+               data: "16/03/2026",
+               tags: ["#STF", "#IPTU", "#Imunidade", "#Estatais"],
+               resumo: "O ministro Flávio Dino destacou para julgamento a ação que discute se imóveis pertencentes a empresas estatais delegatárias de serviços públicos, quando explorados por terceiros em atividades económicas, mantêm a imunidade recíproca de IPTU.",
+               impacto: "Imobiliário/Infraestrutura: Decisão relevante para concessionárias e terceiros que exploram áreas como portos e aeroportos, podendo aumentar os custos operacionais com IPTU.",
+               link: "https://www.jota.info/tributos/direto-da-corte/stf-dino-destaca-acao-sobre-imunidade-de-iptu-a-imoveis-de-estatais",
+               pdf: "jota_stf_iptu_imunidade_estatais.pdf.pdf"
             },
             {
-               titulo: "STJ reafirma: PIS e Cofins compõem a base do IRPJ e CSLL no Lucro Presumido",
-               veiculo: "Valor",
-               tribunal: "Judiciário",
-               data: "11/03/2026",
-               tags: ["#STJ", "#LucroPresumido", "#PISCOFINS", "#BaseDeCálculo"],
-               resumo: "O STJ manteve o entendimento pacificado de que os valores pagos a título de PIS e Cofins não podem ser excluídos da receita bruta que serve de base de cálculo do IRPJ e da CSLL na sistemática do Lucro Presumido, rejeitando mais uma tese filhote da exclusão do ICMS.",
-               impacto: "Contencioso: Encerra as esperanças de redução da carga tributária para optantes do Lucro Presumido através desta tese de exclusão de bases.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/03/11/pis-e-cofins-compem-base-do-irpj-e-csll-no-lucro-presumido.ghtml",
-               pdf: "valor_pis_cofins_base_irpj_presumido.pdf.pdf"
-            },
-            {
-               titulo: "CARF pauta tributação de ativos garantidores e multa de perdimento",
+               titulo: "CARF aguarda portaria da Fazenda para mudar contagem de prazos após LC 227",
                veiculo: "Jota",
                tribunal: "CARF",
-               data: "11/03/2026",
-               tags: ["#CARF", "#AtivosGarantidores", "#Seguros", "#Aduaneiro"],
-               resumo: "A pauta do CARF desta semana inclui a discussão sobre a incidência de PIS/Cofins sobre receitas de ativos garantidores de seguradoras, um tema que tem sofrido reviravoltas recentes nas turmas, além do julgamento de casos sensíveis sobre a aplicação de multa de perdimento.",
-               impacto: "Seguradoras e Comex: Atenção redobrada à flutuação da jurisprudência administrativa, que impacta milhares de milhões em autuações pendentes.",
-               link: "https://www.jota.info/tributos/apostas-da-semana/carf-julga-casos-sobre-tributacao-de-ativos-garantidores-e-multa-de-perdimento",
-               pdf: "jota_carf_ativos_garantidores_perdimento.pdf.pdf"
+               data: "16/03/2026",
+               tags: ["#CARF", "#Prazos", "#LC227", "#Aduaneiro"],
+               resumo: "Na sequência das alterações promovidas pela LC 227 no processo aduaneiro, o CARF encontra-se num compasso de espera por uma portaria do Ministério da Fazenda para adequar a contagem de prazos, gerando dúvidas temporárias nos trâmites de defesas administrativas.",
+               impacto: "Contencioso Aduaneiro: Advogados e empresas de comércio exterior devem monitorizar rigorosamente os prazos processuais para evitar a intempestividade nas defesas.",
+               link: "https://www.jota.info/tributos/relatorio-especial/carf-aguarda-portaria-da-fazenda-para-mudar-contagem-de-prazos-apos-lc-227",
+               pdf: "jota_carf_prazos_lc227.pdf.pdf"
             },
             {
-               titulo: "STF retoma julgamento sobre adicional de ICMS para telecomunicações",
+               titulo: "Lula assina pacote tributário para conter preço do diesel",
                veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "11/03/2026",
-               tags: ["#STF", "#ICMS", "#Telecom", "#FCEP"],
-               resumo: "O Supremo Tribunal Federal volta a julgar a validade da cobrança do adicional de ICMS, destinado ao Fundo de Combate à Pobreza (FCEP), sobre os serviços de telecomunicações. O foco recai sobre o respeito ao princípio da seletividade por parte da legislação estadual.",
-               impacto: "Telecomunicações: Risco de manutenção ou oportunidade de redução da carga tributária estadual, afetando a competitividade e os custos operacionais.",
-               link: "https://www.jota.info/tributos/apostas-da-semana/stf-retoma-julgamento-sobre-adicional-de-icms-para-telecom",
-               pdf: "jota_stf_icms_telecom.pdf.pdf"
-            },
-            {
-               titulo: "STJ volta a analisar se limite de 20 salários do Sistema S vale para outras contribuições",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "11/03/2026",
-               tags: ["#STJ", "#SistemaS", "#ContribuiçõesParafiscais", "#FolhaDePagamento"],
-               resumo: "O STJ volta a debater o teto de 20 salários mínimos para as contribuições de terceiros. Após recentes decisões contrárias em repetitivos, a corte avalia a aplicabilidade restrita a rubricas específicas e eventuais necessidades de modulação.",
-               impacto: "Folha de Pagamento: Monitorização contínua da modulação de efeitos e da abrangência exata da tese para os diferentes componentes do sistema S.",
-               link: "https://www.jota.info/tributos/apostas-da-semana/stj-decide-se-limite-do-sistema-s-vale-para-outras-contribuicoes",
-               pdf: "jota_stj_limite_sistema_s.pdf.pdf"
-            },
-            {
-               titulo: "STF retomará julgamento sobre distribuição de lucros por empresas com débitos fiscais",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "11/03/2026",
-               tags: ["#STF", "#Dividendos", "#EmpresasDevedoras", "#RegularidadeFiscal"],
-               resumo: "O STF voltará a analisar a constitucionalidade do artigo 32 da Lei 4.357/64, que proíbe empresas com débitos tributários não garantidos de distribuírem lucros ou dividendos aos seus sócios e acionistas.",
-               impacto: "Planeamento Societário: Caso a proibição seja mantida, as empresas com passivos não suspensos não poderão distribuir dividendos sem incorrerem num sério risco de multa.",
-               link: "https://www.jota.info/tributos/apostas-da-semana/stf-retomara-julgamento-sobre-distribuicao-de-lucros-por-empresas-devedoras",
-               pdf: "jota_stf_distribuicao_lucros_devedoras.pdf.pdf"
-            },
-            {
-               titulo: "STF retoma julgamento de R$ 17 bi sobre sub-rogação do Funrural",
-               veiculo: "Jota",
-               tribunal: "Judiciário",
-               data: "11/03/2026",
-               tags: ["#STF", "#Funrural", "#Agro", "#Frigoríficos"],
-               resumo: "O Supremo julga a validade da sub-rogação do adquirente (frigoríficos, laticínios, tradings) no que diz respeito ao recolhimento do Funrural, num caso com impacto avaliado em 17 mil milhões de reais aos cofres públicos.",
-               impacto: "Agronegócio: Trata-se de um risco sistémico e bilionário para as agroindústrias que adquirem produção rural de pessoas físicas.",
-               link: "https://www.jota.info/tributos/apostas-da-semana/stf-retoma-julgamentos-com-caso-de-r-17-bi-sobre-sub-rogacao-do-funrural",
-               pdf: "jota_stf_funrural_subrogacao.pdf.pdf"
-            },
-            {
-               titulo: "Governo revisará cálculos do anexo de riscos fiscais",
-               veiculo: "Valor",
                tribunal: "Executivo",
-               data: "11/03/2026",
-               tags: ["#RiscosFiscais", "#Governo", "#LDO", "#Contencioso"],
-               resumo: "Após críticas, o governo federal anunciou que irá proceder a uma revisão metodológica nos cálculos do anexo de riscos fiscais, no sentido de reavaliar o impacto financeiro das principais teses tributárias em debate nos tribunais superiores.",
-               impacto: "Estratégico: Esta revisão poderá alterar a postura negocial da PGFN e influenciar o desenho de novos programas de transação tributária.",
-               link: "https://valor.globo.com/legislacao/noticia/2026/03/11/governo-vai-revisar-calculos-feitos-para-o-anexo-de-riscos-fiscais.ghtml",
-               pdf: "valor_revisao_riscos_fiscais.pdf.pdf"
+               data: "16/03/2026",
+               tags: ["#Tributação", "#Diesel", "#ICMS", "#Governadores"],
+               resumo: "O Presidente da República assinou um novo pacote tributário com o intuito de conter a escalada dos preços do gasóleo (diesel). A medida envolve um sinal de articulação com os governadores para equalizar o impacto do ICMS sobre os combustíveis.",
+               impacto: "Logística e Transportes: Espera-se uma estabilização de custos de frete no curto prazo, aliviando a pressão inflacionária sobre as operações de transporte.",
+               link: "https://www.jota.info/tributos/matinal/lula-assina-pacote-tributario-para-conter-diesel-e-faz-sinal-a-governadores",
+               pdf: "jota_pacote_tributario_diesel.pdf.pdf"
             },
             {
-               titulo: "Receita lança portal 'Minhas Dívidas e Pendências'",
+               titulo: "STJ vai discutir legitimidade de associação genérica em ação coletiva tributária",
+               veiculo: "Jota",
+               tribunal: "Judiciário",
+               data: "16/03/2026",
+               tags: ["#STJ", "#AçãoColetiva", "#Processual", "#Associação"],
+               resumo: "O STJ irá julgar se associações consideradas 'genéricas' (sem representatividade específica de uma classe profissional ou económica estrita) possuem legitimidade ativa para propor ações coletivas visando a restituição de tributos em nome dos seus associados.",
+               impacto: "Processual: Pode limitar drasticamente o uso de ações coletivas por associações de defesa de contribuintes, obrigando empresas a ingressarem com ações individuais.",
+               link: "https://www.jota.info/tributos/stj-vai-discutir-legitimidade-de-associacao-generica-em-acao-coletiva-de-tributos",
+               pdf: "jota_stj_legitimidade_associacao_coletiva.pdf.pdf"
+            },
+            {
+               titulo: "CARF autoriza créditos de PIS e Cofins sobre serviços de processamento de pagamentos",
+               veiculo: "Valor",
+               tribunal: "CARF",
+               data: "16/03/2026",
+               tags: ["#CARF", "#PISCOFINS", "#Créditos", "#MeiosDePagamento"],
+               resumo: "Em vitória para o varejo, o CARF admitiu que as taxas pagas a administradoras de cartões e plataformas de processamento de pagamentos geram direito ao crédito de PIS e Cofins, sendo consideradas insumos essenciais à concretização das vendas.",
+               impacto: "Varejo e E-commerce: Confirma a tendência favorável para o setor, permitindo rentabilizar custos financeiros e operacionais essenciais às vendas modernas.",
+               link: "https://valor.globo.com/legislacao/noticia/2026/03/16/carf-autoriza-creditos-de-pis-e-cofins-sobre-servicos-de-processamento-de-pagamentos.ghtml",
+               pdf: "valor_carf_credito_piscofins_processamento.pdf.pdf"
+            },
+            {
+               titulo: "STJ: PIS e Cofins compõem base do IRPJ e CSLL no Lucro Presumido",
                veiculo: "APET",
-               tribunal: "Receita Federal",
-               data: "11/03/2026",
-               tags: ["#ReceitaFederal", "#Compliance", "#Tecnologia", "#Regularidade"],
-               resumo: "A Receita Federal lançou uma nova funcionalidade no e-CAC designada 'Minhas Dívidas e Pendências', a qual unifica num só painel a visualização de todos os débitos exigíveis, pendências declaratórias e processos administrativos em curso.",
-               impacto: "Compliance Fiscal: Simplifica substancialmente as rotinas de auditoria interna e a gestão ágil da obtenção de Certidões Negativas de Débito (CND).",
-               link: "https://apet.org.br/noticia/receita-federal-lanca-o-minhas-dividas-e-pendencias-para-consulta-de-debitos/",
-               pdf: "apet_receita_minhas_dividas.pdf.pdf"
+               tribunal: "Judiciário",
+               data: "16/03/2026",
+               tags: ["#STJ", "#PISCOFINS", "#LucroPresumido", "#IRPJ"],
+               resumo: "O STJ reafirmou a sua jurisprudência no sentido de que os valores recolhidos a título de PIS e Cofins não podem ser excluídos da receita bruta que serve de base para o cálculo do IRPJ e da CSLL sob o regime do Lucro Presumido.",
+               impacto: "Contencioso: Tranca definitivamente as vias para a tese 'filhote' da exclusão do ICMS aplicada ao Lucro Presumido.",
+               link: "https://apet.org.br/noticia/stj-pis-e-cofins-compoem-base-do-irpj-e-csll-no-lucro-presumido/",
+               pdf: "apet_stj_pis_cofins_base_presumido.pdf.pdf"
             },
             {
-               titulo: "RFB: Exigência de declaração para IOF reduzido de optantes do Simples",
+               titulo: "STJ nega direito a créditos de PIS e Cofins a empresas comerciais",
+               veiculo: "APET",
+               tribunal: "Judiciário",
+               data: "16/03/2026",
+               tags: ["#STJ", "#PISCOFINS", "#Créditos", "#Comércio"],
+               resumo: "A 1ª Seção do STJ firmou o entendimento de que empresas de comércio varejista e atacadista não têm direito ao creditamento de PIS/Cofins sobre despesas (insumos) que não estejam diretamente atreladas à produção ou fabricação, limitando o conceito de insumo para o comércio.",
+               impacto: "Varejo/Comércio: Impacto negativo severo, exigindo revisão profunda da matriz de créditos não cumulativos utilizados por comerciantes.",
+               link: "https://apet.org.br/noticia/stj-nega-direito-a-creditos-de-pis-e-cofins-a-comerciantes/",
+               pdf: "apet_stj_nega_creditos_pis_cofins_comerciantes.pdf.pdf"
+            },
+            {
+               titulo: "Extinção em bloco de execuções fiscais exige intimação prévia do município",
+               veiculo: "APET",
+               tribunal: "Judiciário",
+               data: "16/03/2026",
+               tags: ["#ExecuçãoFiscal", "#Município", "#STJ", "#Processual"],
+               resumo: "O STJ determinou que os juízes de primeira instância não podem extinguir execuções fiscais em massa (por baixo valor) sem realizar a prévia intimação do Município exequente, garantindo o devido processo legal à Fazenda local.",
+               impacto: "Passivo Municipal: Pode atrasar a limpeza de varas de execução fiscal, forçando os municípios a manifestarem-se sobre cada processo individualmente.",
+               link: "https://apet.org.br/noticia/extincao-em-bloco-de-execucoes-fiscais-exige-intimacao-previa-do-municipio/",
+               pdf: "apet_extincao_execucoes_fiscais_intimacao.pdf.pdf"
+            },
+            {
+               titulo: "Receita: Levantamento de depósito judicial exige retenção de IRRF pelo banco",
                veiculo: "Rota",
                tribunal: "Receita Federal",
-               data: "11/03/2026",
-               tags: ["#IOF", "#SimplesNacional", "#ReceitaFederal", "#Bancos"],
-               resumo: "A Receita Federal definiu que as instituições financeiras devem exigir, de forma obrigatória, uma declaração formal da empresa a comprovar a sua opção pelo Simples Nacional antes de aplicarem a alíquota reduzida de IOF nas operações de crédito.",
-               impacto: "Burocracia: As PME do Simples Nacional devem antecipar a entrega deste documento junto dos bancos para não serem tributadas com a alíquota geral.",
-               link: "https://rotadajurisprudencia.com.br/2026/03/instituicoes-financeiras-devem-exigir-declaracao-para-aplicar-iof-reduzido-para-empresas-do-simples-diz-receita/",
-               pdf: "rota_iof_reduzido_simples_declaracao.pdf.pdf"
+               data: "16/03/2026",
+               tags: ["#ReceitaFederal", "#IRRF", "#DepósitoJudicial", "#Bancos"],
+               resumo: "A Receita Federal publicou entendimento determinando que a instituição financeira depositária é obrigada a efetuar a retenção do Imposto de Renda (IRRF) sobre os rendimentos auferidos, no momento em que o contribuinte realiza o levantamento do depósito judicial.",
+               impacto: "Tesouraria/Contencioso: Empresas vitoriosas em ações judiciais devem prever o desconto do IRRF diretamente na fonte no ato do levantamento dos valores depositados.",
+               link: "https://rotadajurisprudencia.com.br/2026/03/levantamento-de-deposito-judicial-exige-retencao-de-irrf-por-banco-depositario-diz-receita/",
+               pdf: "rota_retencao_irrf_deposito_judicial.pdf.pdf"
             },
             {
-               titulo: "TIT-SP afasta ITCMD sobre doação de imóveis por residentes no exterior",
+               titulo: "TIT-SP cancela cobrança de ICMS por falhas metodológicas em levantamento fiscal",
                veiculo: "Rota",
                tribunal: "Administrativo Estadual",
-               data: "11/03/2026",
-               tags: ["#TITSP", "#ITCMD", "#Exterior", "#Doação"],
-               resumo: "O Tribunal de Impostos e Taxas de São Paulo (TIT-SP) anulou autuações de ITCMD relativas a doações efetuadas por residentes no estrangeiro antes da entrada em vigor da lei complementar nacional, alinhando-se com o entendimento vinculante do STF.",
-               impacto: "Planeamento Patrimonial: Traz enorme segurança jurídica e alívio para operações antigas de planeamento sucessório e doações cross-border fiscalizadas pelo Estado de SP.",
-               link: "https://rotadajurisprudencia.com.br/2026/03/fazenda-perde-no-tit-sp-em-cobranca-de-itcmd-sobre-doacao-de-imoveis-por-residentes-no-exterior/",
-               pdf: "rota_tit_sp_itcmd_exterior.pdf.pdf"
+               data: "16/03/2026",
+               tags: ["#TITSP", "#ICMS", "#Fiscalização", "#ProcessoAdministrativo"],
+               resumo: "O Tribunal de Impostos e Taxas de São Paulo (TIT-SP) anulou um Auto de Infração e Imposição de Multa (AIIM) de ICMS por constatar que o Fisco estadual utilizou metodologias matemáticas e presunções falhas no arbitramento das saídas da empresa.",
+               impacto: "Defesa Fiscal: Reforça a importância de defesas técnicas robustas baseadas em perícia contabil para desconstituir arbitramentos do Fisco paulista.",
+               link: "https://rotadajurisprudencia.com.br/2026/03/falhas-metodologicas-em-levantamento-fiscal-levam-tit-sp-a-cancelar-cobranca-de-icms/",
+               pdf: "rota_tit_sp_cancela_icms_falhas.pdf.pdf"
             },
             {
-               titulo: "Receita aceita consultoria como 'atividade própria' para isenção de Cofins a associações",
+               titulo: "TIT-SP afasta ICMS sobre serviços digitais vinculados à telefonia (SVA)",
+               veiculo: "Rota",
+               tribunal: "Administrativo Estadual",
+               data: "16/03/2026",
+               tags: ["#TITSP", "#ICMS", "#Telecom", "#ServiçosDigitais"],
+               resumo: "O TIT-SP rejeitou recurso da Fazenda Estadual e manteve a anulação da cobrança de ICMS sobre Serviços de Valor Adicionado (SVA) e serviços digitais acoplados a pacotes de telefonia, reafirmando que não se tratam de serviços de telecomunicação.",
+               impacto: "Telecom e Tech: Jurisprudência favorável à não incidência de ICMS sobre apps e serviços digitais oferecidos juntamente com planos de internet/voz.",
+               link: "https://rotadajurisprudencia.com.br/2026/03/tit-sp-rejeita-recurso-da-fazenda-e-afasta-icms-sobre-servicos-digitais-ligados-a-telefonia/",
+               pdf: "rota_tit_sp_afasta_icms_servicos_digitais.pdf.pdf"
+            },
+            {
+               titulo: "Isenção de Cofins para entidades sem fins lucrativos depende de coerência estatutária",
                veiculo: "Rota",
                tribunal: "Receita Federal",
-               data: "11/03/2026",
-               tags: ["#ReceitaFederal", "#Cofins", "#Isenção", "#TerceiroSetor"],
-               resumo: "Através de uma nova Solução de Consulta, a RFB validou que serviços de consultoria e assistência técnica prestados por associações aos seus próprios filiados enquadram-se no conceito de 'atividade própria', estando por isso cobertos pela isenção da Cofins.",
-               impacto: "Terceiro Setor: Reforça o modelo de sustentabilidade das entidades de classe, mitigando fortemente o risco fiscal sobre receitas geradas pelos seus serviços.",
-               link: "https://rotadajurisprudencia.com.br/2026/03/consultoria-prestada-por-associacao-pode-ser-considerada-atividade-propria-para-isencao-de-cofins-diz-receita-federal/",
-               pdf: "rota_isencao_cofins_consultoria_associacao.pdf.pdf"
+               data: "16/03/2026",
+               tags: ["#Cofins", "#Isenção", "#TerceiroSetor", "#Estatuto"],
+               resumo: "Análise sobre o entendimento da Receita de que a isenção de Cofins sobre receitas de entidades sem fins lucrativos exige que as atividades geradoras dessas receitas (como consultorias a associados) estejam rigorosamente previstas nos estatutos sociais.",
+               impacto: "Terceiro Setor: Entidades devem promover auditorias aos seus estatutos para alinhar a redação com a real prestação de serviços e garantir a isenção.",
+               link: "https://rotadajurisprudencia.com.br/2026/03/entidades-sem-fins-lucrativos-quando-a-isencao-de-cofins-depende-da-coerencia-estatutaria/",
+               pdf: "rota_isencao_cofins_coerencia_estatutaria.pdf.pdf"
+            },
+            {
+               titulo: "STJ exclui IPI não recuperável da base de cálculo de créditos de PIS e Cofins",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "16/03/2026",
+               tags: ["#STJ", "#PISCOFINS", "#IPI", "#Créditos"],
+               resumo: "O Superior Tribunal de Justiça determinou que o valor do IPI não recuperável pago na aquisição de insumos não compõe a base de cálculo para tomada de créditos da contribuição ao PIS e da Cofins, contrariando o pleito dos contribuintes industriais.",
+               impacto: "Indústria: Redução no montante de créditos não cumulativos admissíveis nas aquisições, gerando um custo efetivo maior na cadeia produtiva.",
+               link: "https://www.conjur.com.br/2026-mar-16/stj-exclui-ipi-nao-recuperavel-do-calculo-de-creditos-de-pis-e-cofins/",
+               pdf: "conjur_stj_exclui_ipi_creditos_piscofins.pdf.pdf"
+            },
+            {
+               titulo: "Legalidade tributária e os efeitos de medidas provisórias rejeitadas pelo Congresso",
+               veiculo: "Conjur",
+               tribunal: "Doutrina",
+               data: "16/03/2026",
+               tags: ["#Doutrina", "#MedidaProvisória", "#SegurançaJurídica", "#Congresso"],
+               resumo: "Artigo aborda a insegurança gerada por Medidas Provisórias de matéria tributária que produzem efeitos financeiros temporários e depois caducam ou são rejeitadas pelo Legislativo, exigindo a edição de decretos legislativos para regrar o passado.",
+               impacto: "Estratégico: Traz fundamentos para as defesas face a autuações que se baseiem em períodos abrangidos por MPs extintas.",
+               link: "https://www.conjur.com.br/2026-mar-16/legalidade-tributaria-e-medidas-provisorias-rejeitadas-pelo-congresso/",
+               pdf: "conjur_legalidade_tributaria_mps_rejeitadas.pdf.pdf"
+            },
+            {
+               titulo: "STJ vai definir se descontos obtidos por varejistas compõem base de PIS e Cofins",
+               veiculo: "Conjur",
+               tribunal: "Judiciário",
+               data: "16/03/2026",
+               tags: ["#STJ", "#PISCOFINS", "#Varejo", "#Descontos"],
+               resumo: "O STJ irá julgar, sob o rito de recursos repetitivos, se os descontos comerciais e bonificações obtidos por supermercados e varejistas junto dos fornecedores configuram receita bruta sujeita à incidência de PIS e Cofins.",
+               impacto: "Varejo: Julgamento de enorme impacto económico. A incidência sobre estas bonificações desestruturaria a prática comercial de negociação com fornecedores.",
+               link: "https://www.conjur.com.br/2026-mar-16/stj-vai-definir-se-descontos-de-varejistas-compoem-base-de-calculo-de-pis-e-cofins/",
+               pdf: "conjur_stj_descontos_varejistas_piscofins.pdf.pdf"
+            },
+            {
+               titulo: "Cessão de imóvel por holding ao sócio sem onerosidade: incide IBS e CBS?",
+               veiculo: "Conjur",
+               tribunal: "Reforma Tributária",
+               data: "16/03/2026",
+               tags: ["#ReformaTributária", "#IBS", "#CBS", "#Holding", "#Imobiliário"],
+               resumo: "Análise sobre as futuras implicações da Reforma Tributária em estruturas de holding patrimonial. A discussão centra-se em saber se a cedência gratuita de imóveis aos sócios para uso próprio configurar-se-á fato gerador do IBS e da CBS por equiparação.",
+               impacto: "Planeamento Patrimonial: Estruturas familiares (holdings) devem reavaliar as suas operações antes do início da vigência do IBS/CBS para evitar onerosidade tributária inesperada.",
+               link: "https://www.conjur.com.br/2026-mar-16/holding-concede-imovel-ao-socio-sem-onerosidade-incide-ibs-e-cbs/",
+               pdf: "conjur_ibs_cbs_cessao_imovel_holding.pdf.pdf"
+            },
+            {
+               titulo: "Tributação em parcerias de escritórios de advocacia (Lei 14.365 e SC 161/2025)",
+               veiculo: "Conjur",
+               tribunal: "Receita Federal",
+               data: "16/03/2026",
+               tags: ["#Advocacia", "#Tributação", "#Parcerias", "#Cosit"],
+               resumo: "O artigo analisa a interpretação restritiva da Receita Federal (através de Soluções de Consulta) sobre os contratos de parceria entre escritórios de advocacia regulados pela Lei 14.365, e o risco de bi-tributação na divisão de honorários.",
+               impacto: "Setor Jurídico: Alerta direto para escritórios parceiros que dividem honorários, exigindo cautela na formatação das faturas para não tributar o mesmo montante duas vezes.",
+               link: "https://www.conjur.com.br/2026-mar-16/parcerias-entre-escritorios-de-advocacia-e-tributacao-o-alcance-da-lei-14-365-e-da-sc-cosit-161-2025/",
+               pdf: "conjur_tributacao_parcerias_advocacia.pdf.pdf"
+            },
+            {
+               titulo: "Reforma Tributária: o estorno de crédito de IBS/CBS em casos de perda, furto ou roubo",
+               veiculo: "Conjur",
+               tribunal: "Reforma Tributária",
+               data: "16/03/2026",
+               tags: ["#ReformaTributária", "#EstornoDeCrédito", "#IBS", "#CBS", "#Perdas"],
+               resumo: "O artigo aborda o regime previsto na regulamentação do IBS e CBS para o estorno obrigatório dos créditos tomados na aquisição de mercadorias que venham a sofrer perda, perecimento, furto ou roubo no armazém ou transporte.",
+               impacto: "Logística e Varejo: As quebras de stock continuarão a penalizar severamente os contribuintes no novo modelo tributário, exigindo controlos de inventário rigorosos.",
+               link: "https://www.conjur.com.br/2026-mar-15/reforma-tributaria-do-consumo-e-o-estorno-de-credito-nos-casos-de-perda-furto-ou-roubo/",
+               pdf: "conjur_reforma_estorno_credito_perda_roubo.pdf.pdf"
+            },
+            {
+               titulo: "ITBI na integralização de imóveis em PJs: limites da atuação municipal",
+               veiculo: "Conjur",
+               tribunal: "Municipal",
+               data: "16/03/2026",
+               tags: ["#ITBI", "#Integralização", "#Imobiliário", "#Municípios"],
+               resumo: "Avaliação dos limites da cobrança do ITBI (Imposto de Transmissão de Bens Imóveis) pelos municípios na integralização de bens imóveis no capital de empresas, face aos precedentes do STF sobre a imunidade e o valor a ser considerado (venal vs. histórico).",
+               impacto: "Direito Societário: Fornece o contexto jurisprudencial necessário para contestar os municípios que exigem ITBI sobre a diferença do valor de mercado ao integralizar bens no capital social.",
+               link: "https://www.conjur.com.br/2026-mar-15/itbi-sobre-integralizacao-de-imoveis-em-pjs-limites-da-atuacao-municipal-e-da-legislacao/",
+               pdf: "conjur_itbi_integralizacao_imoveis_pjs.pdf.pdf"
+            },
+            {
+               titulo: "SC: Governo abre renegociação de dívidas tributárias com o programa 'Recupera Mais'",
+               veiculo: "Outros",
+               tribunal: "Estadual",
+               data: "16/03/2026",
+               tags: ["#SantaCatarina", "#Refis", "#RecuperaMais", "#ICMS"],
+               resumo: "O Governo de Santa Catarina (SEF/SC) lançou o novo programa 'Recupera Mais', permitindo aos contribuintes renegociarem dívidas de ICMS com descontos substanciais em juros e multas.",
+               impacto: "Regional/SC: Excelente oportunidade de compliance para empresas que possuam litígios ou passivos acumulados no Estado de Santa Catarina.",
+               link: "https://www.sef.sc.gov.br/noticias/governo-do-estado-abre-renegociacao-de-dividas-com-o-novo-recupera-mais",
+               pdf: "sc_recupera_mais_renegociacao.pdf.pdf"
             }
         ];
 
